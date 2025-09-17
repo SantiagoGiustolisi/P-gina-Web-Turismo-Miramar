@@ -24,6 +24,20 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- Estilos del logo en navbar (listo para usar) -->
+    <style>
+      .navbar .navbar-brand .logo-miramar{
+        height: 40px; /* ajustá a gusto */
+        width: auto;
+        display: block;
+      }
+      @media (min-width: 992px){
+        .navbar .navbar-brand .logo-miramar{ height: 48px; }
+      }
+      /* Alinea mejor el brand con el padding del nav si querés ajustar */
+      /* .nav-bar .navbar { padding-top: .75rem; padding-bottom: .75rem; } */
+    </style>
 </head>
 
 <body>
@@ -59,9 +73,14 @@
     <div class="container-fluid position-relative nav-bar p-0">
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
-                <a href="" class="navbar-brand">
-                    <h1 class="m-0 text-primary"><span class="text-dark">MIRA</span>MAR</h1>
-
+                <a href="index.html" class="navbar-brand d-flex align-items-center">
+                    <img
+                      src="img/logo-miramar.png"
+                      srcset="img/logo-miramar@2x.png 2x"
+                      alt="Miramar de Ansenuza"
+                      class="logo-miramar"
+                    >
+                    <span class="sr-only">Miramar de Ansenuza</span>
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -70,7 +89,7 @@
                     <div class="navbar-nav ml-auto py-0">
                         <a href="index.html" class="nav-item nav-link active">Inicio</a>
                         <a href="service.html" class="nav-item nav-link">Servicios</a>
-                         <a href="about.html" class="nav-item nav-link">Acerca de</a>   
+                        <a href="about.html" class="nav-item nav-link">Acerca de</a>
                         <a href="package.html" class="nav-item nav-link">Alojamientos</a>
                         <a href="contact.html" class="nav-item nav-link">Contacto</a>
                     </div>
@@ -86,7 +105,7 @@
         <div id="header-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <video src="WhatsApp Video 2025-09-17 at 12.15.32.mp4" autoplay loop> </video>
+                   <video class="hero-video" src="WhatsApp Video 2025-09-17 at 12.15.32.mp4" autoplay muted playsinline loop></video>
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
 
@@ -97,38 +116,69 @@
     </div>
     <!-- Carousel End -->
 
-    <!-- About Start -->
+    <br>    <br>
+    <!-- Destination Start -->
     <div class="container-fluid py-5">
-        <div class="container pt-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Destino</h6>
+                <h1>Explora Miramar de Ansenuza</h1>
+            </div>
             <div class="row">
-                <div class="col-lg-6" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="img/about.jpg" style="object-fit: cover;">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="img/ZPSYQXPVJFGW3LTKHIAJRKIE4Y.png" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="">
+                            <h5 class="text-white">Nuestra Historia</h5>
+                        </a>
                     </div>
                 </div>
-                <div class="col-lg-6 pt-5 pb-lg-5">
-                    <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
-                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">About Us</h6>
-                        <h1 class="mb-3">We Provide Best Tour Packages In Your Budget</h1>
-                        <p>Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
-                        <div class="row mb-4">
-                            <div class="col-6">
-                                <img class="img-fluid" src="img/about-1.jpg" alt="">
-                            </div>
-                            <div class="col-6">
-                                <img class="img-fluid" src="img/about-2.jpg" alt="">
-                            </div>
-                        </div>
-                        <a href="" class="btn btn-primary mt-1">Book Now</a>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="img/destination-2.jpg" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="">
+                            <h5 class="text-white">Nuestros Museos</h5>
+                           
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="img/destination-3.jpg" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="">
+                            <h5 class="text-white">Nuestros Alojamientos</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="img/destination-4.jpg" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="">
+                            <h5 class="text-white">Nuestra Gastronomía</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="img/destination-5.jpg" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="">
+                            <h5 class="text-white">Nuestras Actividades</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="img/destination-6.jpg" alt="">
+                        <a class="destination-overlay text-white text-decoration-none" href="">
+                            <h5 class="text-white">Nuestros Eventos</h5>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- About End -->
-
-
-    <!-- Feature Start -->
+    <!-- Destination Start -->
+   <!-- Feature Start -->
     <div class="container-fluid pb-5">
         <div class="container pb-5">
             <div class="row">
@@ -170,74 +220,35 @@
     </div>
     <!-- Feature End -->
 
-
-    <!-- Destination Start -->
+<!-- About Start -->
     <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            <div class="text-center mb-3 pb-3">
-                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Destination</h6>
-                <h1>Explore Top Destination</h1>
-            </div>
+        <div class="container pt-5">
             <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-1.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">United States</h5>
-                            <span>100 Cities</span>
-                        </a>
+                <div class="col-lg-6" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="img/about.jpg" style="object-fit: cover;">
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-2.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">United Kingdom</h5>
-                            <span>100 Cities</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-3.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Australia</h5>
-                            <span>100 Cities</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-4.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">India</h5>
-                            <span>100 Cities</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-5.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">South Africa</h5>
-                            <span>100 Cities</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-6.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Indonesia</h5>
-                            <span>100 Cities</span>
-                        </a>
+                <div class="col-lg-6 pt-5 pb-lg-5">
+                    <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
+                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Sobre nosotros</h6>
+                        <h1 class="mb-3">Te ofrecemos los mejores paquetes turísticos según su presupuesto</h1>
+                        <p>Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <img class="img-fluid" src="img/multimedia.normal.b3a215b705947c1e.45434f4f424a455449564f20464f544f204156455320415247454e54494e41535f6e6f726d616c2e77656270.png" alt="">
+                            </div>
+                            <div class="col-6">
+                                <img class="img-fluid" src="img/ARCHI_613763.jpg" alt="">
+                            </div>
+                        </div>
+                        <a href="" class="btn btn-primary mt-1">Ver mas</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Destination Start -->
-
+    <!-- About End -->
 
     <!-- Service Start -->
     <div class="container-fluid py-5">
