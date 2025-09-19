@@ -212,9 +212,9 @@
             <article class="timeline-card position-relative">
               <!-- Carrusel 1911 -->
               <div id="tl-1911" class="owl-carousel">
-                <div class="item"><img class="timeline-media" src="img/1911-1.jpg" alt="Primeras construcciones 1911" /></div>
-                <div class="item"><img class="timeline-media" src="img/1911-2.jpg" alt="Colonos en la costa 1911" /></div>
-                <div class="item"><img class="timeline-media" src="img/1911-3.jpg" alt="Balneario naciente 1911" /></div>
+                <div class="item"><img class="timeline-media" src="img/munoz_-_Figura_5b.jpg"  /></div>
+                <div class="item"><img class="timeline-media" src="img/U3MG4GBL7FGBXHYSXGOXOZTYOE.avif" /></div>
+                
               </div>
               <div class="timeline-body">
                 <p class="timeline-year">1911</p>
@@ -238,9 +238,7 @@
             <article class="timeline-card position-relative">
               <!-- Carrusel 1938 -->
               <div id="tl-1938" class="owl-carousel">
-                <div class="item"><img class="timeline-media" src="img/1938-1.jpg" alt="Gran Hotel Viena" /></div>
-                <div class="item"><img class="timeline-media" src="img/1938-2.jpg" alt="Playas y balneario 1930-50" /></div>
-                <div class="item"><img class="timeline-media" src="img/1938-3.jpg" alt="Turismo de salud" /></div>
+               <div class="item"><img class="timeline-media" src="img/gran_ha712022011.jpg"  /></div>
               </div>
               <div class="timeline-body">
                 <p class="timeline-year">Décadas de 1930–50</p>
@@ -262,9 +260,11 @@
             <article class="timeline-card position-relative">
               <!-- Carrusel 1977 -->
               <div id="tl-1977" class="owl-carousel">
-                <div class="item"><img class="timeline-media" src="img/1977-1.jpg" alt="Creciente de la laguna 1970-80" /></div>
-                <div class="item"><img class="timeline-media" src="img/1977-2.jpg" alt="Calles anegadas" /></div>
-                <div class="item"><img class="timeline-media" src="img/1977-3.jpg" alt="Reconstrucción" /></div>
+                <div class="item"><img class="timeline-media" src="img/images.jpg"  /></div>
+              
+                <div class="item"><img class="timeline-media" src="img/ZPSYQXPVJFGW3LTKHIAJRKIE4Y.png"  /></div>
+                <div class="item"><img class="timeline-media" src="img/XZN5SBWG5BHZRBVGOFEEFAKP5Y.jpg" /></div>
+
               </div>
               <div class="timeline-body">
                 <p class="timeline-year">1970–1980</p>
@@ -286,9 +286,9 @@
             <article class="timeline-card position-relative">
               <!-- Carrusel 2022 -->
               <div id="tl-2022" class="owl-carousel">
-                <div class="item"><img class="timeline-media" src="img/2022-1.jpg" alt="Parque Nacional Ansenuza - aves" /></div>
-                <div class="item"><img class="timeline-media" src="img/2022-2.jpg" alt="Laguna y humedales" /></div>
-                <div class="item"><img class="timeline-media" src="img/2022-3.jpg" alt="Conservación y naturaleza" /></div>
+                <div class="item"><img class="timeline-media" src="img/OTRG2SSJZJD73F7TTMBMOGBJIM.webp"  /></div>
+                <div class="item"><img class="timeline-media" src="img/HUGUI-15-scaled.jpg"  /></div>
+                <div class="item"><img class="timeline-media" src="img/Y1A1018aves_0-480x320.jpg"  /></div>
               </div>
               <div class="timeline-body">
                 <p class="timeline-year">2022</p>
@@ -310,9 +310,9 @@
             <article class="timeline-card position-relative">
               <!-- Carrusel Hoy -->
               <div id="tl-hoy" class="owl-carousel">
-                <div class="item"><img class="timeline-media" src="img/hoy-1.jpg" alt="Atardecer Miramar" /></div>
-                <div class="item"><img class="timeline-media" src="img/hoy-2.jpg" alt="Hamaca Miramar de Ansenuza" /></div>
-                <div class="item"><img class="timeline-media" src="img/hoy-3.jpg" alt="Actividades y costanera" /></div>
+                <div class="item"><img class="timeline-media" src="img/WhatsApp-Image-2024-11-20-at-13.35.02.jpeg.webp"  /></div>
+                <div class="item"><img class="timeline-media" src="img/miramar01_1582308818.jpg"  /></div>
+                <div class="item"><img class="timeline-media" src="img/laguna-6-1.jpg"  /></div>
               </div>
               <div class="timeline-body">
                 <p class="timeline-year">Hoy</p>
@@ -326,8 +326,48 @@
             </article>
           </div>
         </div>
-
       </div>
+      <style>
+/* ===== Tamaño uniforme de imágenes en la timeline ===== */
+.timeline-media{
+  width: 100%;
+  height: 320px;      /* <-- cambiá este valor si querés otro alto */
+  object-fit: cover;  /* recorta sin deformar */
+  display: block;
+}
+
+/* Asegura que el contenedor del carrusel respete el mismo alto */
+.timeline-card .owl-stage-outer,
+.timeline-card .owl-stage,
+.timeline-card .owl-item,
+.timeline-card .owl-item .item{
+  height: 320px;      /* mismo valor que .timeline-media */
+}
+
+/* Responsive: bajamos alturas para pantallas chicas */
+@media (max-width: 991.98px){
+  .timeline-media{
+    height: 260px;
+  }
+  .timeline-card .owl-stage-outer,
+  .timeline-card .owl-stage,
+  .timeline-card .owl-item,
+  .timeline-card .owl-item .item{
+    height: 260px;
+  }
+}
+@media (max-width: 575.98px){
+  .timeline-media{
+    height: 220px;
+  }
+  .timeline-card .owl-stage-outer,
+  .timeline-card .owl-stage,
+  .timeline-card .owl-item,
+  .timeline-card .owl-item .item{
+    height: 220px;
+  }
+}
+</style>
 
       <!-- CTA inferior -->
       <div class="historia-cta mt-4">
