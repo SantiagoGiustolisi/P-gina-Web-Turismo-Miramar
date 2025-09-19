@@ -6524,6 +6524,10 @@ button.bg-dark:focus {
   background:linear-gradient(0deg, rgba(0,0,0,.45), rgba(0,0,0,.25));
 }
 .page-header > .container{ position:relative; } /* para que el texto quede arriba del overlay */
+/* Overlay del header: dejar pasar los clicks */
+.page-header-ansenuza::after{
+  pointer-events: none;
+}
 
 @media (min-width: 992px) {
   .d-lg-none {
