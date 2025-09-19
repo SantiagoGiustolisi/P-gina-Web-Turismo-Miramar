@@ -2,117 +2,136 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>TRAVELER - Free Travel Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+  <meta charset="utf-8">
+  <title>Gastronomía - Miramar de Ansenuza</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Miramar de Ansenuza Gastronomía" name="keywords">
+  <meta content="Dónde comer en Miramar de Ansenuza" name="description">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+  <!-- Libraries Stylesheet -->
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
 
-    <!-- Estilos del logo en navbar (listo para usar) -->
-    <style>
-      .navbar .navbar-brand .logo-miramar{
-        height: 40px; /* ajustá a gusto */
-        width: auto;
-        display: block;
-      }
-      @media (min-width: 992px){
-        .navbar .navbar-brand .logo-miramar{ height: 48px; }
-      }
-      /* Alinea mejor el brand con el padding del nav si querés ajustar */
-      /* .nav-bar .navbar { padding-top: .75rem; padding-bottom: .75rem; } */
-    </style>
+  <!-- Estilos propios -->
+  <style>
+    .navbar .navbar-brand .logo-miramar{ height:40px; width:auto; display:block; }
+    @media (min-width: 992px){ .navbar .navbar-brand .logo-miramar{ height:48px; } }
+
+    /* Header / Hero */
+    .page-header-ansenuza{
+      position:relative; color:#fff;
+      background-position:center; background-size:cover; background-repeat:no-repeat;
+      min-height: 380px;
+    }
+    .page-header-ansenuza::after{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.45));
+      /* IMPORTANTE: que no bloquee clics del breadcrumb */
+      pointer-events: none;
+    }
+    .page-header-ansenuza .hero-wrap{
+      position:relative; z-index:2; min-height:380px; padding:60px 0; text-align:center;
+    }
+    .hero-kicker{
+      display:inline-block; background:#eaf0ff; color:#1e3a6d; font-weight:600;
+      padding:.35rem .75rem; border-radius:999px; margin-bottom:10px; letter-spacing:.08em;
+    }
+    .hero-title{ font-weight:700; margin:0 0 .5rem; }
+    .hero-accent{ background:linear-gradient(90deg,#fff, #dbeafe); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .hero-subtitle{ margin:0 0 12px; font-size:1.05rem; }
+
+    /* Cards */
+    .gastro-card{ transition:transform .2s ease, box-shadow .2s ease; }
+    .gastro-card:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.08); }
+    .hr-soft{ border:0; border-top:1px solid #eef2f7; }
+
+    /* Botones de filtro */
+    .gastro-filter.active { pointer-events: none; }
+  </style>
+</head>
+
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-light pt-3 d-none d-lg-block">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-                    <div class="d-inline-flex align-items-center">
-                        <p><i class="fa fa-envelope mr-2"></i>oficinadeturismo2@gmail.com</p>
-                        <p class="text-body px-3">|</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-center text-lg-right">
-                    <div class="d-inline-flex align-items-center">
-                        <a class="text-primary px-3" href="https://www.facebook.com/turismomiramardeansenuza/">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="text-primary px-3" href="https://www.instagram.com/miramardeansenuza/">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+  <!-- Topbar -->
+  <div class="container-fluid bg-light pt-3 d-none d-lg-block">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+          <div class="d-inline-flex align-items-center">
+            <p><i class="fa fa-envelope mr-2"></i>oficinadeturismo2@gmail.com</p>
+            <p class="text-body px-3">|</p>
+            <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
+          </div>
         </div>
-    </div>
-    <!-- Topbar End -->
-
-
-    <!-- Navbar Start -->
-    <div class="container-fluid position-relative nav-bar p-0">
-        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
-            <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
-               <a href="index.html" class="navbar-brand d-flex align-items-center">
-                    <img
-                      src="img/logo-miramar.png"
-                      srcset="img/logo-miramar@2x.png 2x"
-                      alt="Miramar de Ansenuza"
-                      class="logo-miramar"
-                    >
-                    <span class="sr-only">Miramar de Ansenuza</span>
-                </a>    
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                    <div class="navbar-nav ml-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Inicio</a>
-                        <a href="service.html" class="nav-item nav-link">Acerca de</a>
-                        <a href="gastronomia.html" class="nav-item nav-link active">Gastronomía </a>
-                        <a href="contact.html" class="nav-item nav-link">Contacto</a>
-                    </div>
-                </div>
-            </nav>
+        <div class="col-lg-6 text-center text-lg-right">
+          <div class="d-inline-flex align-items-center">
+            <a class="text-primary px-3" href="https://www.facebook.com/turismomiramardeansenuza/" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a class="text-primary px-3" href="https://www.instagram.com/miramardeansenuza/" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
         </div>
+      </div>
     </div>
-    <!-- Navbar End -->
-<header class="page-header-ansenuza"
-        style="background-image:url('img/flamencos.jpg'); background-position:center; background-size:cover;">
-  <div class="container">
-    <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
-      
-      <h1 class="hero-title"><span class="hero-accent">Gastronomía</span></h1>
-      <p class="hero-subtitle">Proba nuestros mejores platos</p>
+  </div>
+  <!-- /Topbar -->
 
-      <nav aria-label="breadcrumb" class="hero-breadcrumb">
-        <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Gastronomía</li>
-        </ol>
+  <!-- Navbar -->
+  <div class="container-fluid position-relative nav-bar p-0">
+    <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+      <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+        <a href="index.html" class="navbar-brand d-flex align-items-center">
+          <img src="img/logo-miramar.png" srcset="img/logo-miramar@2x.png 2x" alt="Miramar de Ansenuza" class="logo-miramar">
+          <span class="sr-only">Miramar de Ansenuza</span>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+          <div class="navbar-nav ml-auto py-0">
+            <a href="index.html" class="nav-item nav-link">Inicio</a>
+            <a href="service.html" class="nav-item nav-link">Acerca de</a>
+            <a href="gastronomia.html" class="nav-item nav-link active">Gastronomía</a>
+            <a href="contact.html" class="nav-item nav-link">Contacto</a>
+          </div>
+        </div>
       </nav>
     </div>
   </div>
-</header>
+  <!-- /Navbar -->
 
-  <!-- Intro breve Start -->
+  <!-- Header -->
+  <header class="page-header-ansenuza" style="background-image:url('img/flamencos.jpg');">
+    <div class="container">
+      <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
+        <span class="hero-kicker">Delicias</span>
+        <h1 class="hero-title"><span class="hero-accent">Gastronomía</span></h1>
+        <p class="hero-subtitle">Probá nuestros mejores platos</p>
+        <nav aria-label="breadcrumb" class="hero-breadcrumb">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Gastronomía</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Intro breve -->
   <div class="container-fluid booking mt-5 pb-4">
     <div class="container pb-4">
       <div class="bg-light shadow" style="padding: 28px;">
@@ -131,9 +150,8 @@
       </div>
     </div>
   </div>
-  <!-- Intro breve End -->
 
-  <!-- Gastronomía Start -->
+  <!-- Gastronomía -->
   <div id="gastronomia" class="container-fluid py-5">
     <div class="container pt-5 pb-3">
       <div class="text-center mb-4">
@@ -167,238 +185,579 @@
         </button>
       </div>
 
-      <div class="row" id="gastro-grid">
-        <!-- Los Amigos -->
-        <div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="restaurante">
-          <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
-            <img class="img-fluid w-100" src="img/gastro/los-amigos.jpg" alt="Los Amigos">
-            <div class="p-4 d-flex flex-column flex-grow-1">
-              <h5 class="text-truncate mb-1">Los Amigos</h5>
-              <div class="gastro-badges mb-2">
-                <span class="badge badge-primary">Restaurante</span>
-              </div>
-              <p class="mb-2"><strong>Especialidad:</strong> Mesa americana y mesa dulce diente libre.</p>
-              <p class="mb-2"><strong>Otros:</strong> Pollo relleno al champiñón, parrillada, pejerrey, nutria y pastas caseras.</p>
-              <hr class="hr-soft">
-              <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i>Urquiza 173</p>
-              <p class="mb-3"><i class="fa fa-phone-alt mr-2"></i>03563-493411 / 493123 • <strong>Tenedores:</strong> 120</p>
-              <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
-            </div>
-          </div>
-        </div>
+<div class="row" id="gastro-grid">
+     <!-- =================== GRID GASTRONOMÍA (REEMPLAZAR CONTENIDO) =================== -->
+<!-- RESTAURANTES -->
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="restaurante">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/los-amigos.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Los Amigos">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Los Amigos</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-primary">Restaurante</span></div>
+      <p class="mb-2"><strong>Especialidad:</strong> Mesa Americana y mesa dulce (diente libre).</p>
+      <p class="mb-2"><strong>Otros:</strong> Pollo relleno al champiñón, parrillada, pejerrey, nutria y pastas caseras.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Urquiza 173">Urquiza 173</a></p>
+      <p class="mb-2"><i class="fa fa-phone-alt mr-2"></i>03563-493411 / 493123</p>
+      <p class="mb-3"><strong>Tenedores:</strong> 120</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
 
-        <!-- El Patio -->
-        <div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="restaurante comedor">
-          <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
-            <img class="img-fluid w-100" src="img/gastro/el-patio.jpg" alt="El Patio">
-            <div class="p-4 d-flex flex-column flex-grow-1">
-              <h5 class="text-truncate mb-1">El Patio</h5>
-              <div class="gastro-badges mb-2">
-                <span class="badge badge-primary">Restaurante</span>
-                <span class="badge badge-secondary">Comedor</span>
-              </div>
-              <p class="mb-2"><strong>Especialidad:</strong> Diente libre.</p>
-              <p class="mb-2"><strong>Otros:</strong> Parrillada, pejerrey, pastas y minutas.</p>
-              <hr class="hr-soft">
-              <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i>Córdoba esq. Juan B. Justo</p>
-              <p class="mb-3"><i class="fa fa-phone-alt mr-2"></i>03563-493098 • <strong>Tenedores:</strong> 500</p>
-              <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
-            </div>
-          </div>
-        </div>
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="restaurante comedor">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/el-patio.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="El Patio">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">El Patio</h5>
+      <div class="gastro-badges mb-2">
+        <span class="badge badge-primary">Restaurante</span>
+        <span class="badge badge-secondary">Comedor</span>
+      </div>
+      <p class="mb-2"><strong>Especialidad:</strong> Diente libre.</p>
+      <p class="mb-2"><strong>Otros:</strong> Parrillada, pejerrey, pastas y minutas.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Córdoba y Juan B. Justo">Córdoba esq. Juan B. Justo</a></p>
+      <p class="mb-2"><i class="fa fa-phone-alt mr-2"></i>03563-493098</p>
+      <p class="mb-3"><strong>Tenedores:</strong> 500</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
 
-        <!-- Petit Bar -->
-        <div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="restaurante comedor">
-          <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
-            <img class="img-fluid w-100" src="img/gastro/petit-bar.jpg" alt="Petit Bar">
-            <div class="p-4 d-flex flex-column flex-grow-1">
-              <h5 class="text-truncate mb-1">Petit Bar</h5>
-              <div class="gastro-badges mb-2">
-                <span class="badge badge-primary">Restaurante</span>
-                <span class="badge badge-secondary">Comedor</span>
-              </div>
-              <p class="mb-2"><strong>Especialidad:</strong> Pejerrey (8 variedades) y pastas caseras (ñoquis rellenos).</p>
-              <p class="mb-2"><strong>Otros:</strong> Parrillada, nutria, cabrito, lechón. <em>Modalidad:</em> autoservicio por kg.</p>
-              <hr class="hr-soft">
-              <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i>Córdoba y Costanera</p>
-              <p class="mb-3"><i class="fa fa-phone-alt mr-2"></i>(03543) 15654975 • <strong>Tenedores:</strong> 400</p>
-              <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
-            </div>
-          </div>
-        </div>
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="restaurante comedor">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/petit-bar.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Petit Bar">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Petit Bar</h5>
+      <div class="gastro-badges mb-2">
+        <span class="badge badge-primary">Restaurante</span>
+        <span class="badge badge-secondary">Comedor</span>
+      </div>
+      <p class="mb-2"><strong>Especialidad:</strong> Pejerrey (8 variedades) y pastas caseras (ñoquis rellenos).</p>
+      <p class="mb-2"><strong>Otros:</strong> Parrillada, nutria, cabrito, lechón. <em>Modalidad:</em> autoservicio por kg.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Córdoba y Costanera">Córdoba y Costanera</a></p>
+      <p class="mb-2"><i class="fa fa-phone-alt mr-2"></i>(03543) 15654975</p>
+      <p class="mb-3"><strong>Tenedores:</strong> 400</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
 
-        <!-- Restaurant del Hotel Marchetti -->
-        <div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="restaurante">
-          <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
-            <img class="img-fluid w-100" src="img/gastro/hotel-marchetti.jpg" alt="Restaurant del Hotel Marchetti">
-            <div class="p-4 d-flex flex-column flex-grow-1">
-              <h5 class="text-truncate mb-1">Restaurant del Hotel Marchetti</h5>
-              <div class="gastro-badges mb-2"><span class="badge badge-primary">Restaurante</span></div>
-              <p class="mb-2"><strong>Especialidad:</strong> Pejerrey.</p>
-              <p class="mb-2"><strong>Otros:</strong> Mesa diente libre, pollo, nutria, pastas y minutas.</p>
-              <hr class="hr-soft">
-              <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i>Córdoba 170</p>
-              <p class="mb-3"><i class="fa fa-phone-alt mr-2"></i>03563-493143 • <strong>Tenedores:</strong> 80</p>
-              <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
-            </div>
-          </div>
-        </div>
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="restaurante">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/hotel-marchetti.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Restaurant del Hotel Marchetti">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Restaurant del Hotel Marchetti</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-primary">Restaurante</span></div>
+      <p class="mb-2"><strong>Especialidad:</strong> Pejerrey.</p>
+      <p class="mb-2"><strong>Otros:</strong> Mesa diente libre, pollo, nutria, pastas y minutas.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Córdoba 170">Córdoba 170</a></p>
+      <p class="mb-2"><i class="fa fa-phone-alt mr-2"></i>03563-493143</p>
+      <p class="mb-3"><strong>Tenedores:</strong> 80</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
 
-        <!-- Parrilla Marchetti -->
-        <div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="restaurante">
-          <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
-            <img class="img-fluid w-100" src="img/gastro/parrilla-marchetti.jpg" alt="Parrilla Marchetti">
-            <div class="p-4 d-flex flex-column flex-grow-1">
-              <h5 class="text-truncate mb-1">Parrilla Marchetti</h5>
-              <div class="gastro-badges mb-2"><span class="badge badge-primary">Restaurante</span></div>
-              <p class="mb-2">Carnes asadas con vista a la laguna Mar Chiquita.</p>
-              <hr class="hr-soft">
-              <p class="mb-3"><i class="fa fa-map-marker-alt mr-2"></i>Av. Costanera</p>
-              <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
-            </div>
-          </div>
-        </div>
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="restaurante">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/parrilla-marchetti.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Parrilla Marchetti">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Parrilla Marchetti</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-primary">Restaurante</span></div>
+      <p class="mb-2">Restaurant de Carnes Asadas con vista a la laguna Mar Chiquita.</p>
+      <hr class="hr-soft">
+      <p class="mb-3"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Avenida Costanera">Av. Costanera</a></p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
 
-        <!-- Andaluhe -->
-        <div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="restaurante bar">
-          <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
-            <img class="img-fluid w-100" src="img/gastro/andaluhe.jpg" alt="Andaluhe">
-            <div class="p-4 d-flex flex-column flex-grow-1">
-              <h5 class="text-truncate mb-1">Andaluhe</h5>
-              <div class="gastro-badges mb-2">
-                <span class="badge badge-primary">Restaurante</span>
-                <span class="badge badge-info">Bar & Café</span>
-              </div>
-              <p class="mb-2">Exquisitos platos de nutria. Bar y cafetería.</p>
-              <hr class="hr-soft">
-              <p class="mb-3"><i class="fa fa-map-marker-alt mr-2"></i>Calle General Paz</p>
-              <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
-            </div>
-          </div>
-        </div>
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="restaurante bar">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/andaluhe.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Andaluhe">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Andaluhe</h5>
+      <div class="gastro-badges mb-2">
+        <span class="badge badge-primary">Restaurante</span>
+        <span class="badge badge-info">Bar & Café</span>
+      </div>
+      <p class="mb-2">Exquisitos platos de nutria. Bar y cafetería.</p>
+      <hr class="hr-soft">
+      <p class="mb-3"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Calle General Paz">Calle General Paz</a></p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
 
-        <!-- Restaurant Hotel Ansenuza -->
-        <div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="restaurante">
-          <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
-            <img class="img-fluid w-100" src="img/gastro/hotel-ansenuza.jpg" alt="Restaurant Hotel Ansenuza">
-            <div class="p-4 d-flex flex-column flex-grow-1">
-              <h5 class="text-truncate mb-1">Restaurant Hotel Ansenuza</h5>
-              <div class="gastro-badges mb-2"><span class="badge badge-primary">Restaurante</span></div>
-              <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i>Costanera – Sector Oeste</p>
-              <p class="mb-2"><i class="fa fa-phone-alt mr-2"></i>(03563) 493791 / 493792 – (03548) 15630634</p>
-              <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
-            </div>
-          </div>
-        </div>
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="restaurante">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/hotel-ansenuza.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Restaurant Hotel Ansenuza">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Restaurant Hotel Ansenuza</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-primary">Restaurante</span></div>
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Costanera Sector Oeste">Costanera – Sector Oeste</a></p>
+      <p class="mb-2"><i class="fa fa-phone-alt mr-2"></i>(03563) 493791 / 493792 – (03548) 15630634</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
 
-        <!-- Pomodoro Pizza Resto -->
-        <div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="restaurante pizzeria">
-          <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
-            <img class="img-fluid w-100" src="img/gastro/pomodoro.jpg" alt="Pomodoro Pizza Resto">
-            <div class="p-4 d-flex flex-column flex-grow-1">
-              <h5 class="text-truncate mb-1">Pomodoro Pizza Resto</h5>
-              <div class="gastro-badges mb-2">
-                <span class="badge badge-primary">Restaurante</span>
-                <span class="badge badge-warning">Pizzería</span>
-              </div>
-              <p class="mb-2">Platos elaborados y sabores típicos de Miramar de Ansenuza.</p>
-              <hr class="hr-soft">
-              <p class="mb-3"><i class="fa fa-map-marker-alt mr-2"></i>Calle céntrica</p>
-              <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
-            </div>
-          </div>
-        </div>
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="restaurante pizzeria">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/pomodoro.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Pomodoro Pizza Resto">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Pomodoro Pizza Resto</h5>
+      <div class="gastro-badges mb-2">
+        <span class="badge badge-primary">Restaurante</span>
+        <span class="badge badge-warning">Pizzería</span>
+      </div>
+      <p class="mb-2">Platos elaborados y comida típica de Miramar de Ansenuza.</p>
+      <hr class="hr-soft">
+      <p class="mb-3"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Zona céntrica, Miramar">Calle céntrica</a></p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
 
-        <!-- Slots listos para futuras altas (rotiserías / heladerías / fábrica de pastas) -->
+<!-- COMEDORES -->
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="comedor">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/clasico-bar.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Clásico Bar">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Clásico Bar</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-secondary">Comedor</span></div>
+      <p class="mb-2"><strong>Especialidad:</strong> Pejerrey y mariscos.</p>
+      <p class="mb-2"><strong>Otros:</strong> Pastas, minutas.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Córdoba 224">Córdoba 224</a></p>
+      <p class="mb-2"><i class="fa fa-phone-alt mr-2"></i>03563-493187</p>
+      <p class="mb-3"><strong>Tenedores:</strong> 190</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="comedor">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/alianza.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Alianza">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Alianza</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-secondary">Comedor</span></div>
+      <p class="mb-2"><strong>Especialidad:</strong> Pastas caseras.</p>
+      <p class="mb-2"><strong>Otros:</strong> Parrillada y minutas.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Santiago del Estero 302">Santiago del Estero 302</a></p>
+      <p class="mb-2"><i class="fa fa-phone-alt mr-2"></i>03563-493280</p>
+      <p class="mb-3"><strong>Tenedores:</strong> 150</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="comedor hotel">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/hotel-miramar.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Hotel Miramar">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Hotel Miramar</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-secondary">Comedor</span></div>
+      <p class="mb-2">Menú a la carta.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Buenos Aires 200">Buenos Aires 200</a></p>
+      <p class="mb-2"><i class="fa fa-phone-alt mr-2"></i>03563-493000</p>
+      <p class="mb-3"><strong>Tenedores:</strong> 45</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="comedor">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/hosteria-portal-del-mar.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Hostería Portal del Mar">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Hostería Portal del Mar</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-secondary">Comedor</span></div>
+      <p class="mb-2"><strong>Especialidad:</strong> Pejerrey.</p>
+      <p class="mb-2"><strong>Otros:</strong> Menú a la carta.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Ruta Provincial 3">Ruta prov. Nº 3</a></p>
+      <p class="mb-3"><i class="fa fa-phone-alt mr-2"></i>03563-493361 / 493051</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="comedor">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/don-prego.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Don Prego">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Don Prego</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-secondary">Comedor</span></div>
+      <p class="mb-2"><strong>Especialidad:</strong> Pejerrey y rabas.</p>
+      <p class="mb-2"><strong>Otros:</strong> Parrillada, pastas y minutas.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Córdoba 309">Córdoba 309</a></p>
+      <p class="mb-3"><i class="fa fa-phone-alt mr-2"></i>03563-408829</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="comedor bar">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/la-aguada.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="La Aguada Resto Bar">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">La Aguada Resto Bar</h5>
+      <div class="gastro-badges mb-2">
+        <span class="badge badge-secondary">Comedor</span>
+        <span class="badge badge-info">Bar</span>
+      </div>
+      <p class="mb-2">Ubicados en Avenida Costanera. Con vista a la laguna.</p>
+      <hr class="hr-soft">
+      <p class="mb-3"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Avenida Costanera">Av. Costanera</a></p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="comedor bar cafeteria">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/la-terminal.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Bar Comedor La Terminal">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Bar Comedor La Terminal</h5>
+      <div class="gastro-badges mb-2">
+        <span class="badge badge-secondary">Comedor</span>
+        <span class="badge badge-info">Bar & Cafetería</span>
+      </div>
+      <p class="mb-2">Pastas caseras, pollo asado y mucho más. Bar–Cafetería.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Libertad 301">Libertad 301</a></p>
+      <p class="mb-3"><i class="fa fa-phone-alt mr-2"></i>Reservas 3563-493730</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="comedor rotiseria">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/qoya.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Qoya Rotisería y Comedor">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Qoya Rotisería y Comedor</h5>
+      <div class="gastro-badges mb-2">
+        <span class="badge badge-secondary">Comedor</span>
+        <span class="badge badge-warning">Rotisería</span>
+      </div>
+      <p class="mb-2">Ubicado en Juan B. Justo, zona céntrica.</p>
+      <hr class="hr-soft">
+      <p class="mb-3"><i class="fa fa-phone-alt mr-2"></i>Reservas 3563-411917</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="comedor bar">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/sea-bar.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Sea Bar">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Sea Bar</h5>
+      <div class="gastro-badges mb-2">
+        <span class="badge badge-secondary">Comedor</span>
+        <span class="badge badge-info">Bar</span>
+      </div>
+      <p class="mb-2">Pizzas a la parrilla, cervezas artesanales, licuados y tragos. (Abierto en temporada de verano)</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Av. Costanera, frente al Mar de Ansenuza">Av. Costanera (frente al Mar de Ansenuza)</a></p>
+      <p class="mb-3"><i class="fa fa-phone-alt mr-2"></i>Reservas 3564-675863</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="comedor pizzeria">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/esquina-libre.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Comedor Esquina Libre">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Comedor Esquina Libre</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-secondary">Comedor</span></div>
+      <p class="mb-2">Minutas, pejerrey, pizzas.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Córdoba y Juan B. Justo">Córdoba esq. Juan B. Justo</a></p>
+      <p class="mb-3"><i class="fa fa-phone-alt mr-2"></i>Reservas 3563-408978</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="comedor bar">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/roseus.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Roseus Resto-Bar">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Roseus Resto-Bar</h5>
+      <div class="gastro-badges mb-2">
+        <span class="badge badge-secondary">Comedor</span>
+        <span class="badge badge-info">Bar</span>
+      </div>
+      <p class="mb-2">Especialidad en nutria.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Crocia 98">Calle Crocia 98</a></p>
+      <p class="mb-3"><i class="fa fa-phone-alt mr-2"></i>Reservas 3563-409540</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<!-- PIZZERÍAS -->
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="pizzeria comedor">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/pizzeria-macarena.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Pizzería Macarena">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Pizzería Macarena</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-warning">Pizzería</span></div>
+      <p class="mb-2"><strong>Especialidad:</strong> Pejerrey a la cerveza.</p>
+      <p class="mb-2"><strong>Otros:</strong> Pollo al horno con champiñón, minutas.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Córdoba 264">Córdoba 264</a></p>
+      <p class="mb-2"><i class="fa fa-phone-alt mr-2"></i>03563-493013</p>
+      <p class="mb-3"><strong>Tenedores:</strong> 150</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<!-- ROTISERÍAS -->
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="rotiseria">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/rotiseria-jaleo.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Rotisería Jaleo">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Rotisería Jaleo</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-warning">Rotisería</span></div>
+      <p class="mb-2">Comidas para llevar con elaboración propia y porciones abundantes.</p>
+      <hr class="hr-soft">
+      <p class="mb-3"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Juan B. Justo">Juan B. Justo</a></p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="rotiseria">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/rotiseria-marta.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Rotisería Marta">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Rotisería Marta</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-warning">Rotisería</span></div>
+      <p class="mb-2">Empanadas criollas, sandwiches de miga y más.</p>
+      <hr class="hr-soft">
+      <p class="mb-3"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Juan B. Justo entre Córdoba y Vélez Sarsfield">Juan B. Justo (entre Córdoba y Vélez Sarsfield)</a></p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<!-- FÁBRICA DE PASTAS -->
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="fabrica-pastas">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/pastas-marina.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Pastas Marina">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Pastas Marina</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-dark">Fábrica de Pastas</span></div>
+      <p class="mb-2">Elaboración de pastas frescas. Lun–Sáb 9:30–13:00 y 18:00–21:30. Dom por la mañana.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Libertad">Calle Libertad</a></p>
+      <p class="mb-3"><i class="fa fa-phone-alt mr-2"></i>Pedidos 3563-403691</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="fabrica-pastas">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/tentaciones-pastas.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Fábrica Tentaciones Pastas Caseras">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Fábrica Tentaciones Pastas Caseras</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-dark">Fábrica de Pastas</span></div>
+      <p class="mb-2">Elaboración de pastas caseras. 10:00–13:30 y 18:00–22:00.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Buenos Aires 135">Buenos Aires 135</a></p>
+      <p class="mb-3"><i class="fa fa-phone-alt mr-2"></i>Pedidos 3563-407477</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<!-- HELADERÍAS -->
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="heladeria cafeteria">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/eluney.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Eluney Heladería – Cafetería">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Eluney Heladería – Cafetería</h5>
+      <div class="gastro-badges mb-2">
+        <span class="badge badge-info">Cafetería</span>
+        <span class="badge badge-success">Heladería</span>
+      </div>
+      <p class="mb-2">Café y helado, variedad de sabores y tortas.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Córdoba 100">Córdoba 100</a></p>
+      <p class="mb-3"><i class="fa fa-phone-alt mr-2"></i>03563-41-2027</p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="heladeria">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/yo-helados.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Yo Helados">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Yo Helados</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-success">Heladería</span></div>
+      <p class="mb-2">Heladería.</p>
+      <hr class="hr-soft">
+      <p class="mb-3"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Córdoba 366">Córdoba 366</a></p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 mb-4 gastro-item" data-cat="heladeria">
+  <div class="bg-white shadow-sm h-100 d-flex flex-column gastro-card">
+    <img class="img-fluid w-100" src="img/gastro/grido.jpg" onerror="this.src='img/gastro/placeholder.jpg'" alt="Grido Helados">
+    <div class="p-4 d-flex flex-column flex-grow-1">
+      <h5 class="text-truncate mb-1">Grido</h5>
+      <div class="gastro-badges mb-2"><span class="badge badge-success">Heladería</span></div>
+      <p class="mb-2">2 sucursales en zona céntrica.</p>
+      <hr class="hr-soft">
+      <p class="mb-2"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Avenida Costanera">Av. Costanera</a></p>
+      <p class="mb-3"><i class="fa fa-map-marker-alt mr-2"></i><a class="gmap-link" data-addr="Córdoba">Calle Córdoba</a></p>
+      <small class="text-muted mt-auto">Imágenes a modo ilustrativo</small>
+    </div>
+  </div>
+</div>
+
+</div>
+================ /GRID GASTRONOMÍA =================== -->
+
       </div>
     </div>
   </div>
-  <!-- Gastronomía End -->
+  <!-- /Gastronomía -->
 
-    <!-- Footer Start (limpio y en español) -->
-<div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
-  <div class="row pt-4">
-    <!-- Col 1: Logo + breve -->
-    <div class="col-lg-4 col-md-6 mb-4">
-      <a href="index.html" class="navbar-brand d-inline-flex align-items-center mb-2">
-        <img src="img/logo-miramar@2x.png" alt="Miramar de Ansenuza" style="height:34px;width:auto;">
-      </a>
-      <p class="mt-2">
-        Miramar de Ansenuza, puerta del Parque y Reserva Nacional Ansenuza. 
-        Atardeceres únicos, avistaje de aves y la laguna salada más grande de Sudamérica.
-      </p>
-      <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 4px;">Seguinos</h6>
-      <div class="d-flex">
-        <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/turismomiramardeansenuza/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/miramardeansenuza/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-
-    <!-- Col 2: Navegación esencial -->
-    <div class="col-lg-4 col-md-6 mb-4">
-      <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Navegación</h5>
-      <div class="d-flex flex-column">
-        <a class="text-white-50 mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-        <a class="text-white-50 mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Acerca de</a>
-        <a class="text-white-50 mb-2" href="package.html"><i class="fa fa-angle-right mr-2"></i>Alojamientos</a>
-        <a class="text-white-50" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
-      </div>
-    </div>
-
-    <!-- Col 3: Contacto + CTA -->
-    <div class="col-lg-4 col-md-6 mb-4">
-      <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Contacto</h5>
-      <p><i class="fa fa-map-marker-alt mr-2"></i>DIRECCIÓN OFICINA DE TURISMO (General Paz 465, Miramar Córdoba.)</p>
-      <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
-      <p><i class="fa fa-envelope mr-2"></i> oficinadeturismo2@gmail.com <br> infomiramarcba@gmail.com </p>
-
-      <!-- CTA WhatsApp (mejor que newsletter) -->
-      <div class="mt-3">
-        <a class="btn btn-success btn-block"
-           href="https://wa.me/5493563409731" target="_blank" rel="noopener">
-          <i class="fab fa-whatsapp mr-2"></i>Escribinos por WhatsApp
+  <!-- Footer -->
+  <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+    <div class="row pt-4">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <a href="index.html" class="navbar-brand d-inline-flex align-items-center mb-2">
+          <img src="img/logo-miramar@2x.png" alt="Miramar de Ansenuza" style="height:34px;width:auto;">
         </a>
-        <small class="d-block mt-2 text-muted">
-          Horario de atención: Lunes a Viernes 08:00–13:00
-        </small>
+        <p class="mt-2">
+          Miramar de Ansenuza, puerta del Parque y Reserva Nacional Ansenuza.
+          Atardeceres únicos, avistaje de aves y la laguna salada más grande de Sudamérica.
+        </p>
+        <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 4px;">Seguinos</h6>
+        <div class="d-flex">
+          <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/turismomiramardeansenuza/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/miramardeansenuza/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Navegación</h5>
+        <div class="d-flex flex-column">
+          <a class="text-white-50 mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+          <a class="text-white-50 mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Acerca de</a>
+          <a class="text-white-50 mb-2" href="package.html"><i class="fa fa-angle-right mr-2"></i>Alojamientos</a>
+          <a class="text-white-50" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Contacto</h5>
+        <p><i class="fa fa-map-marker-alt mr-2"></i>DIRECCIÓN OFICINA DE TURISMO (General Paz 465, Miramar Córdoba.)</p>
+        <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
+        <p><i class="fa fa-envelope mr-2"></i> oficinadeturismo2@gmail.com <br> infomiramarcba@gmail.com </p>
       </div>
     </div>
   </div>
-</div>
 
-<div class="container-fluid bg-dark text-white border-top py-3 px-sm-3 px-md-5" style="border-color: rgba(255,255,255,.08) !important;">
-  <div class="row">
-    <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
-      <small class="m-0 text-white-50">© <span id="year"></span> Municipalidad de Miramar de Ansenuza. Todos los derechos reservados.</small>
-    </div>
-    <div class="col-md-6 text-center text-md-right">
-      <small class="m-0 text-white-50">Sitio oficial de Turismo</small>
+  <div class="container-fluid bg-dark text-white border-top py-3 px-sm-3 px-md-5" style="border-color: rgba(255,255,255,.08) !important;">
+    <div class="row">
+      <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
+        <small class="m-0 text-white-50">© <span id="year"></span> Municipalidad de Miramar de Ansenuza. Todos los derechos reservados.</small>
+      </div>
+      <div class="col-md-6 text-center text-md-right">
+        <small class="m-0 text-white-50">Sitio oficial de Turismo</small>
+      </div>
     </div>
   </div>
-</div>
-<!-- Footer End -->
+  <!-- /Footer -->
 
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/tempusdominus/js/moment.min.js"></script>
+  <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+  <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+  <!-- Contact Javascript File -->
+  <script src="mail/jqBootstrapValidation.min.js"></script>
+  <script src="mail/contact.js"></script>
 
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+  <!-- Filtros + Google Maps links + Año -->
+  <script>
+    (function () {
+      // ====== Filtro por rubro ======
+      var buttons = document.querySelectorAll('.gastro-filter');
+      var items   = document.querySelectorAll('.gastro-item');
 
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
+      function applyFilter(cat){
+        items.forEach(function(card){
+          if (cat === '*') { card.style.display = ''; return; }
+          var cats = (card.getAttribute('data-cat') || '').split(/\s+/);
+          card.style.display = cats.includes(cat) ? '' : 'none';
+        });
+      }
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+      buttons.forEach(function(btn){
+        btn.addEventListener('click', function(){
+          buttons.forEach(function(b){
+            b.classList.remove('active','btn-primary');
+            if (!b.classList.contains('btn-outline-primary')) b.classList.add('btn-outline-primary');
+          });
+          btn.classList.add('active','btn-primary');
+          btn.classList.remove('btn-outline-primary');
+
+          var cat = btn.getAttribute('data-filter') || '*';
+          applyFilter(cat);
+        });
+      });
+
+      // Estado inicial
+      applyFilter('*');
+
+      // ====== Google Maps links automáticos ======
+      var defaultCity = 'Miramar de Ansenuza, Córdoba, Argentina';
+      document.querySelectorAll('.gmap-link').forEach(function(a){
+        var addr = a.dataset.addr || a.textContent.trim();
+        var city = a.dataset.city || defaultCity;
+        var q = encodeURIComponent(addr + ', ' + city);
+        a.setAttribute('href', 'https://www.google.com/maps/search/?api=1&query=' + q);
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener');
+      });
+
+      // Año en footer
+      var y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
-
 </html>

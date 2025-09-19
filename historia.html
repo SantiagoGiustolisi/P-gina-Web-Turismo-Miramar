@@ -1,30 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>TRAVELER - Free Travel Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+  <meta charset="utf-8" />
+  <title>Historia - Miramar de Ansenuza</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="Miramar de Ansenuza" name="keywords" />
+  <meta content="Historia de Miramar de Ansenuza" name="description" />
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon" />
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+  <!-- Libraries Stylesheet -->
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/style.css" rel="stylesheet" />
+
+  <!-- ESTILOS PROPIOS -->
+  <style>
+    /* --------- Header / Hero --------- */
+    .page-header-ansenuza{
+      position:relative; color:#fff;
+      background-position:center; background-size:cover; background-repeat:no-repeat;
+      min-height: 380px;
+    }
+    .page-header-ansenuza::after{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.45));
+    }
+    .page-header-ansenuza .hero-wrap{
+      position:relative; z-index:2; min-height:380px; padding:60px 0;
+      text-align:center;
+    }
+    .hero-kicker{
+      display:inline-block; background:#eaf0ff; color:#1e3a6d; font-weight:600;
+      padding:.35rem .75rem; border-radius:999px; margin-bottom:10px; letter-spacing:.08em;
+    }
+    .hero-title{ font-weight:700; margin:0 0 .5rem; }
+    .hero-accent{ background:linear-gradient(90deg,#fff, #dbeafe); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .hero-subtitle{ margin:0 0 12px; font-size:1.05rem; }
+
+    /* --------- Sección Historia --------- */
+    .historia-section{
+      position:relative; padding:80px 0 40px;
+      background: linear-gradient(180deg, rgba(30,58,109,.06), rgba(30,58,109,0)), #fff;
+    }
+    .historia-lead{ max-width:900px; margin:0 auto 1.5rem; font-size:1.1rem; }
+
+    /* Línea central */
+    .timeline{ position:relative; padding:40px 0; }
+    .timeline::before{
+      content:""; position:absolute; top:0; bottom:0; left:50%;
+      width:3px; background:linear-gradient(180deg,#e5e7eb,#cbd5e1); transform:translateX(-50%);
+    }
+
+    .timeline-item{ position:relative; margin-bottom:40px; }
+    .timeline-bullet{
+      position:absolute; top:16px; left:50%; transform:translate(-50%,-50%);
+      width:46px; height:46px; border-radius:50%; background:#fff; border:3px solid #1e3a6d;
+      display:flex; align-items:center; justify-content:center; font-weight:700; color:#1e3a6d;
+      box-shadow:0 6px 16px rgba(0,0,0,.08);
+    }
+    .timeline-col{ width:50%; padding:0 20px; }
+    .timeline-left{ float:left; clear:left; }
+    .timeline-right{ float:right; clear:right; }
+
+    .timeline-card{
+      background:#fff; border:1px solid #eef2f7; border-radius:14px;
+      box-shadow:0 8px 24px rgba(0,0,0,.06); overflow:hidden;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .timeline-card:hover{ transform:translateY(-3px); box-shadow:0 16px 36px rgba(0,0,0,.10); }
+
+    /* Galería (OwlCarousel) */
+    .timeline-media{ height:220px; width:100%; object-fit:cover; display:block; }
+    .timeline-card .owl-dots{ text-align:center; margin:8px 0 0; }
+    .timeline-card .owl-dot span{
+      width:8px; height:8px; margin:3px; display:block; border-radius:999px; background:#c7d2fe;
+    }
+    .timeline-card .owl-dot.active span{ background:#1e3a6d; }
+    .timeline-card .owl-nav{
+      position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between;
+      pointer-events:none; padding:0 8px;
+    }
+    .timeline-card .owl-nav button{
+      pointer-events:auto; width:34px; height:34px; border-radius:999px;
+      background:rgba(255,255,255,.9)!important; border:1px solid #e5e7eb;
+      display:flex; align-items:center; justify-content:center; line-height:1;
+      transition:transform .2s ease;
+    }
+    .timeline-card .owl-nav button:hover{ transform:scale(1.06); }
+    .timeline-card .owl-nav .owl-prev::after{ content:"‹"; font-size:20px; color:#1e3a6d; }
+    .timeline-card .owl-nav .owl-next::after{ content:"›"; font-size:20px; color:#1e3a6d; }
+
+    .timeline-body{ padding:18px 18px 16px; }
+    .timeline-year{ font-weight:700; color:#1e3a6d; margin:0 0 6px; }
+    .timeline-title{ margin:0 0 6px; }
+    .timeline-tags{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem; }
+    .chip{
+      font-size:.85rem; padding:.25rem .6rem; border-radius:999px;
+      background:#f3f4f6; border:1px solid #e5e7eb; color:#374151;
+    }
+
+    /* CTA */
+    .historia-cta{
+      margin-top:30px; background:linear-gradient(135deg,#1e3a6d,#2d4d9b);
+      color:#fff; border-radius:16px; padding:24px; box-shadow:0 10px 28px rgba(30,58,109,.28);
+    }
+
+    /* Responsive */
+    @media (max-width: 991.98px){
+      .timeline::before{ left:28px; }
+      .timeline-bullet{ left:28px; transform:translate(-50%,-50%); }
+      .timeline-col{ width:100%; padding-left:64px; padding-right:0; float:none; }
+      .timeline-left, .timeline-right{ float:none; }
+      .page-header-ansenuza, .page-header-ansenuza .hero-wrap{ min-height:320px; }
+    }
+  </style>
 </head>
+
 <body>
   <!-- Topbar -->
   <div class="container-fluid bg-light pt-3 d-none d-lg-block">
@@ -53,374 +155,332 @@
   <!-- /Topbar -->
 
   <!-- Navbar -->
- <div class="container-fluid position-relative nav-bar p-0">
-  <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
-    <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
-      <a href="index.html" class="navbar-brand d-flex align-items-center">
-        <img src="img/logo-miramar@2x.png" alt="Miramar de Ansenuza" style="height:40px;width:auto">
-        <span class="sr-only">Miramar de Ansenuza</span>
-      </a>
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-        <div class="navbar-nav ml-auto py-0">
-          <a href="index.html"   class="nav-item nav-link">Inicio</a>
-          <a href="about.html"   class="nav-item nav-link">Acerca de</a>
-          <a href="contact.html" class="nav-item nav-link">Contacto</a>
+  <div class="container-fluid position-relative nav-bar p-0">
+    <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+      <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+        <a href="index.html" class="navbar-brand d-flex align-items-center">
+          <img src="img/logo-miramar@2x.png" alt="Miramar de Ansenuza" style="height:40px;width:auto" />
+          <span class="sr-only">Miramar de Ansenuza</span>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+          <div class="navbar-nav ml-auto py-0">
+            <a href="index.html" class="nav-item nav-link">Inicio</a>
+            <a href="about.html" class="nav-item nav-link">Acerca de</a>
+            <a href="contact.html" class="nav-item nav-link">Contacto</a>
+          </div>
         </div>
-      </div>
-    </nav>
-  </div>
-</div>
-
-  <!-- /Navbar -->
-
-<!-- Header -->
-<header class="page-header-ansenuza"
-        style="background-image:url('img/flamencos.jpg'); background-position:center; background-size:cover;">
-  <div class="container">
-    <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
-      <span class="hero-kicker">Historia</span>
-     <h1 class="hero-title"><span class="hero-accent">Miramar de Ansenuza a través del tiempo</span></h1>
-
-      <p class="hero-subtitle">El ejemplo de superacion</p>
-
-      <nav aria-label="breadcrumb" class="hero-breadcrumb">
-        <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Historia</li>
-        </ol>
       </nav>
     </div>
   </div>
-</header>
-<!-- ===================== Historia de Miramar de Ansenuza ===================== -->
-<style>
-  /* Sección */
-  .historia-section{
-    position:relative;
-    padding:80px 0 40px;
-    background:
-      linear-gradient(180deg, rgba(30,58,109,.06), rgba(30,58,109,0)) ,
-      #fff;
-  }
-  .historia-eyebrow{
-    letter-spacing:5px;
-  }
-  .historia-lead{
-    max-width:900px;
-    margin:0 auto 1.5rem;
-    font-size:1.1rem;
-  }
+  <!-- /Navbar -->
 
-  /* Línea de tiempo */
-  .timeline{
-    position:relative;
-    padding:40px 0;
-  }
-  .timeline::before{
-    content:"";
-    position:absolute; top:0; bottom:0; left:50%;
-    width:3px; background:linear-gradient(180deg,#e5e7eb,#cbd5e1);
-    transform:translateX(-50%);
-  }
-  .timeline-item{
-    position:relative;
-    margin-bottom:40px;
-  }
-  .timeline-bullet{
-    position:absolute; top:16px; left:50%;
-    transform:translate(-50%,-50%);
-    width:46px; height:46px; border-radius:50%;
-    background:#fff; border:3px solid #1e3a6d; display:flex;
-    align-items:center; justify-content:center; font-weight:700; color:#1e3a6d;
-    box-shadow:0 6px 16px rgba(0,0,0,.08);
-  }
-  .timeline-col{
-    width:50%;
-    padding:0 20px;
-  }
-  .timeline-card{
-    background:#ffffff; border:1px solid #eef2f7; border-radius:14px;
-    box-shadow:0 8px 24px rgba(0,0,0,.06);
-    overflow:hidden;
-    transition:transform .25s ease, box-shadow .25s ease;
-  }
-  .timeline-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 16px 36px rgba(0,0,0,.10);
-  }
+  <!-- Header -->
+  <header class="page-header-ansenuza" style="background-image:url('img/flamencos.jpg');">
+    <div class="container">
+      <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
+        <span class="hero-kicker">Historia</span>
+        <h1 class="hero-title"><span class="hero-accent">Miramar de Ansenuza a través del tiempo</span></h1>
+        <p class="hero-subtitle">El ejemplo de superación</p>
+        <nav aria-label="breadcrumb" class="hero-breadcrumb">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Historia</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== Historia de Miramar de Ansenuza (con carrusel) ===================== -->
+  <section class="historia-section">
+    <div class="container">
+      <div class="text-center mb-2">
+        <p class="historia-lead text-muted">
+          De humilde villa ribereña a ícono turístico junto a la laguna salada más grande de Sudamérica.
+          Una evolución marcada por la naturaleza, la hospitalidad y el espíritu emprendedor de su gente.
+        </p>
+      </div>
+
+      <div class="timeline clearfix">
+        <!-- ITEM 1 -->
+        <div class="timeline-item">
+          <div class="timeline-bullet">1911</div>
+          <div class="timeline-col timeline-left">
+            <article class="timeline-card position-relative">
+              <!-- Carrusel 1911 -->
+              <div id="tl-1911" class="owl-carousel">
+                <div class="item"><img class="timeline-media" src="img/munoz_-_Figura_5b.jpg"  /></div>
+                <div class="item"><img class="timeline-media" src="img/U3MG4GBL7FGBXHYSXGOXOZTYOE.avif" /></div>
+                
+              </div>
+              <div class="timeline-body">
+                <p class="timeline-year">1911</p>
+                <h5 class="timeline-title">Primeros pobladores y visionarios</h5>
+                <p class="m-0 text-muted">
+                  Nacen los primeros asentamientos permanentes, atraídos por las propiedades terapéuticas de las aguas salinas y el potencial turístico de la costa.
+                </p>
+                <div class="timeline-tags">
+                  <span class="chip"><i class="fas fa-water"></i> Aguas salinas</span>
+                  <span class="chip"><i class="fas fa-seedling"></i> Orígenes</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ITEM 2 -->
+        <div class="timeline-item">
+          <div class="timeline-bullet">1938</div>
+          <div class="timeline-col timeline-right">
+            <article class="timeline-card position-relative">
+              <!-- Carrusel 1938 -->
+              <div id="tl-1938" class="owl-carousel">
+               <div class="item"><img class="timeline-media" src="img/gran_ha712022011.jpg"  /></div>
+              </div>
+              <div class="timeline-body">
+                <p class="timeline-year">Décadas de 1930–50</p>
+                <h5 class="timeline-title">Apogeo hotelero y balneario</h5>
+                <p class="m-0 text-muted">Crece la infraestructura turística: hoteles, balnearios y servicios de temporada convierten a Miramar en un destino de salud y descanso reconocido.</p>
+                <div class="timeline-tags">
+                  <span class="chip"><i class="fas fa-hotel"></i> Hotelería</span>
+                  <span class="chip"><i class="fas fa-umbrella-beach"></i> Balneario</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ITEM 3 -->
+        <div class="timeline-item">
+          <div class="timeline-bullet">1977</div>
+          <div class="timeline-col timeline-left">
+            <article class="timeline-card position-relative">
+              <!-- Carrusel 1977 -->
+              <div id="tl-1977" class="owl-carousel">
+                <div class="item"><img class="timeline-media" src="img/images.jpg"  /></div>
+              
+                <div class="item"><img class="timeline-media" src="img/ZPSYQXPVJFGW3LTKHIAJRKIE4Y.png"  /></div>
+                <div class="item"><img class="timeline-media" src="img/XZN5SBWG5BHZRBVGOFEEFAKP5Y.jpg" /></div>
+
+              </div>
+              <div class="timeline-body">
+                <p class="timeline-year">1970–1980</p>
+                <h5 class="timeline-title">Desafíos ambientales y resiliencia</h5>
+                <p class="m-0 text-muted">Los cambios hídricos impactan la costa. La comunidad se reinventa, preservando su identidad y proyectando un desarrollo sostenible.</p>
+                <div class="timeline-tags">
+                  <span class="chip"><i class="fas fa-water"></i> Creciente</span>
+                  <span class="chip"><i class="fas fa-hands-helping"></i> Comunidad</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ITEM 4 -->
+        <div class="timeline-item">
+          <div class="timeline-bullet">2022</div>
+          <div class="timeline-col timeline-right">
+            <article class="timeline-card position-relative">
+              <!-- Carrusel 2022 -->
+              <div id="tl-2022" class="owl-carousel">
+                <div class="item"><img class="timeline-media" src="img/OTRG2SSJZJD73F7TTMBMOGBJIM.webp"  /></div>
+                <div class="item"><img class="timeline-media" src="img/HUGUI-15-scaled.jpg"  /></div>
+                <div class="item"><img class="timeline-media" src="img/Y1A1018aves_0-480x320.jpg"  /></div>
+              </div>
+              <div class="timeline-body">
+                <p class="timeline-year">2022</p>
+                <h5 class="timeline-title">Parque Nacional Ansenuza</h5>
+                <p class="m-0 text-muted">La creación del Parque impulsa la conservación de la biodiversidad y posiciona a Miramar como puerta de entrada a un tesoro natural único.</p>
+                <div class="timeline-tags">
+                  <span class="chip"><i class="fas fa-dove"></i> Aves</span>
+                  <span class="chip"><i class="fas fa-leaf"></i> Conservación</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ITEM 5 -->
+        <div class="timeline-item">
+          <div class="timeline-bullet"><i class="fas fa-star"></i></div>
+          <div class="timeline-col timeline-left">
+            <article class="timeline-card position-relative">
+              <!-- Carrusel Hoy -->
+              <div id="tl-hoy" class="owl-carousel">
+                <div class="item"><img class="timeline-media" src="img/WhatsApp-Image-2024-11-20-at-13.35.02.jpeg.webp"  /></div>
+                <div class="item"><img class="timeline-media" src="img/miramar01_1582308818.jpg"  /></div>
+                <div class="item"><img class="timeline-media" src="img/laguna-6-1.jpg"  /></div>
+              </div>
+              <div class="timeline-body">
+                <p class="timeline-year">Hoy</p>
+                <h5 class="timeline-title">Presente & Futuro</h5>
+                <p class="m-0 text-muted">Turismo responsable, gastronomía local, experiencias de naturaleza y una comunidad que cuida su legado. Miramar sigue escribiendo su historia.</p>
+                <div class="timeline-tags">
+                  <span class="chip"><i class="fas fa-map-marked-alt"></i> Experiencias</span>
+                  <span class="chip"><i class="fas fa-heart"></i> Identidad</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+      <style>
+/* ===== Tamaño uniforme de imágenes en la timeline ===== */
+.timeline-media{
+  width: 100%;
+  height: 320px;      /* <-- cambiá este valor si querés otro alto */
+  object-fit: cover;  /* recorta sin deformar */
+  display: block;
+}
+
+/* Asegura que el contenedor del carrusel respete el mismo alto */
+.timeline-card .owl-stage-outer,
+.timeline-card .owl-stage,
+.timeline-card .owl-item,
+.timeline-card .owl-item .item{
+  height: 320px;      /* mismo valor que .timeline-media */
+}
+
+/* Responsive: bajamos alturas para pantallas chicas */
+@media (max-width: 991.98px){
   .timeline-media{
-    height:200px; width:100%; object-fit:cover; display:block;
+    height: 260px;
   }
-  .timeline-body{ padding:18px 18px 16px; }
-  .timeline-year{ font-weight:700; color:#1e3a6d; margin:0 0 6px; }
-  .timeline-title{ margin:0 0 6px; }
-  .timeline-tags{
-    display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem;
+  .timeline-card .owl-stage-outer,
+  .timeline-card .owl-stage,
+  .timeline-card .owl-item,
+  .timeline-card .owl-item .item{
+    height: 260px;
   }
-  .chip{
-    font-size:.85rem; padding:.25rem .6rem; border-radius:999px;
-    background:#f3f4f6; border:1px solid #e5e7eb; color:#374151;
+}
+@media (max-width: 575.98px){
+  .timeline-media{
+    height: 220px;
   }
-  /* Alternado izquierda/derecha */
-  .timeline-left{ float:left; clear:left; }
-  .timeline-right{ float:right; clear:right; }
-
-  /* CTA inferior */
-  .historia-cta{
-    margin-top:30px;
-    background:linear-gradient(135deg,#1e3a6d,#2d4d9b);
-    color:#fff; border-radius:16px; padding:24px;
-    box-shadow:0 10px 28px rgba(30,58,109,.28);
+  .timeline-card .owl-stage-outer,
+  .timeline-card .owl-stage,
+  .timeline-card .owl-item,
+  .timeline-card .owl-item .item{
+    height: 220px;
   }
-  .historia-cta .btn{ box-shadow:none; }
-
-  /* Responsive */
-  @media (max-width: 991.98px){
-    .timeline::before{ left:28px; }
-    .timeline-bullet{ left:28px; transform:translate(-50%,-50%); }
-    .timeline-col{ width:100%; padding-left:64px; padding-right:0; float:none; }
-    .timeline-left, .timeline-right{ float:none; }
-  }
+}
 </style>
 
-<section class="historia-section">
-  <div class="container">
-    <div class="text-center mb-2">
-      <p class="historia-lead text-muted">
-        De humilde villa ribereña a ícono turístico junto a la laguna salada más grande de Sudamérica.
-        Una evolución marcada por la naturaleza, la hospitalidad y el espíritu emprendedor de su gente.
-      </p>
+      <!-- CTA inferior -->
+      <div class="historia-cta mt-4">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <h4 class="mb-1">¿Querés recorrer la historia en persona?</h4>
+            <p class="mb-0">Visitá nuestros museos y puntos históricos o sumate a una visita guiada.</p>
+          </div>
+          <div class="col-md-4 text-md-right mt-3 mt-md-0">
+            <a href="about.html" class="btn btn-light btn-lg mr-2">Museos</a>
+            <a href="contact.html" class="btn btn-outline-light btn-lg">Visitas guiadas</a>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
+  <!-- ===================== /Historia ===================== -->
 
-    <!-- ===== Línea de tiempo ===== -->
-    <div class="timeline clearfix">
-
-      <!-- ITEM 1 -->
-      <div class="timeline-item">
-        <div class="timeline-bullet">1911</div>
-        <div class="timeline-col timeline-left">
-          <article class="timeline-card">
-            <!-- Reemplazá la imagen -->
-            <img class="timeline-media" src="img/historia-1911.jpg" alt="Primeros pobladores">
-            <div class="timeline-body">
-              <p class="timeline-year">1911</p>
-              <h5 class="timeline-title">Primeros pobladores y visionarios</h5>
-              <p class="m-0 text-muted">
-                Nacen los primeros asentamientos permanentes, atraídos por las propiedades terapéuticas
-                de las aguas salinas y el potencial turístico de la costa.
-              </p>
-              <div class="timeline-tags">
-                <span class="chip"><i class="fas fa-water"></i> Aguas salinas</span>
-                <span class="chip"><i class="fas fa-seedling"></i> Orígenes</span>
-              </div>
-            </div>
-          </article>
+  <!-- Footer Start (puedes personalizar) -->
+  <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+    <div class="row pt-5">
+      <div class="col-lg-3 col-md-6 mb-5">
+        <img src="img/logo-miramar@2x.png" alt="Miramar de Ansenuza" style="height:40px;width:auto">
+        <p class="mt-3">Miramar de Ansenuza, puerta de entrada al Parque Nacional. Naturaleza, historia y atardeceres únicos.</p>
+        <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Seguinos</h6>
+        <div class="d-flex justify-content-start">
+          <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/turismomiramardeansenuza/"><i class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/miramardeansenuza/"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
-
-      <!-- ITEM 2 -->
-      <div class="timeline-item">
-        <div class="timeline-bullet">1938</div>
-        <div class="timeline-col timeline-right">
-          <article class="timeline-card">
-            <img class="timeline-media" src="img/historia-1938.jpg" alt="Apogeo hotelero">
-            <div class="timeline-body">
-              <p class="timeline-year">Décadas de 1930–50</p>
-              <h5 class="timeline-title">Apogeo hotelero y balneario</h5>
-              <p class="m-0 text-muted">
-                Crece la infraestructura turística: hoteles, balnearios y servicios de temporada convierten a Miramar
-                en un destino de salud y descanso reconocido nacionalmente.
-              </p>
-              <div class="timeline-tags">
-                <span class="chip"><i class="fas fa-hotel"></i> Hotelería</span>
-                <span class="chip"><i class="fas fa-umbrella-beach"></i> Balneario</span>
-              </div>
-            </div>
-          </article>
+      <div class="col-lg-3 col-md-6 mb-5">
+        <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Secciones</h5>
+        <div class="d-flex flex-column justify-content-start">
+          <a class="text-white-50 mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Acerca de</a>
+          <a class="text-white-50 mb-2" href="package.html"><i class="fa fa-angle-right mr-2"></i>Alojamientos</a>
+          <a class="text-white-50 mb-2" href="gastronomia.html"><i class="fa fa-angle-right mr-2"></i>Gastronomía</a>
+          <a class="text-white-50 mb-2" href="Actividades.html"><i class="fa fa-angle-right mr-2"></i>Actividades</a>
+          <a class="text-white-50" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
         </div>
       </div>
-
-      <!-- ITEM 3 -->
-      <div class="timeline-item">
-        <div class="timeline-bullet">1977</div>
-        <div class="timeline-col timeline-left">
-          <article class="timeline-card">
-            <img class="timeline-media" src="img/historia-1977.jpg" alt="Creciente de la laguna">
-            <div class="timeline-body">
-              <p class="timeline-year">1970–1980</p>
-              <h5 class="timeline-title">Desafíos ambientales y resiliencia</h5>
-              <p class="m-0 text-muted">
-                Los cambios hídricos impactan la costa. La comunidad se reinventa, preservando su identidad
-                y proyectando un desarrollo sostenible.
-              </p>
-              <div class="timeline-tags">
-                <span class="chip"><i class="fas fa-water"></i> Creciente</span>
-                <span class="chip"><i class="fas fa-hands-helping"></i> Comunidad</span>
-              </div>
-            </div>
-          </article>
-        </div>
+      <div class="col-lg-3 col-md-6 mb-5">
+        <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contacto</h5>
+        <p><i class="fa fa-map-marker-alt mr-2"></i>Buenos Aires 200, Miramar de Ansenuza</p>
+        <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
+        <p><i class="fa fa-envelope mr-2"></i>oficinadeturismo2@gmail.com</p>
       </div>
-
-      <!-- ITEM 4 -->
-      <div class="timeline-item">
-        <div class="timeline-bullet">2022</div>
-        <div class="timeline-col timeline-right">
-          <article class="timeline-card">
-            <img class="timeline-media" src="img/historia-2022.jpg" alt="Parque Nacional Ansenuza">
-            <div class="timeline-body">
-              <p class="timeline-year">2022</p>
-              <h5 class="timeline-title">Parque Nacional Ansenuza</h5>
-              <p class="m-0 text-muted">
-                La creación del Parque Nacional impulsa la conservación de la biodiversidad y posiciona a Miramar
-                como puerta de entrada a un tesoro natural único.
-              </p>
-              <div class="timeline-tags">
-                <span class="chip"><i class="fas fa-dove"></i> Aves</span>
-                <span class="chip"><i class="fas fa-leaf"></i> Conservación</span>
-              </div>
+      <div class="col-lg-3 col-md-6 mb-5">
+        <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Newsletter</h5>
+        <div class="w-100">
+          <div class="input-group">
+            <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Tu email" />
+            <div class="input-group-append">
+              <button class="btn btn-primary px-3">Suscribirme</button>
             </div>
-          </article>
-        </div>
-      </div>
-
-      <!-- ITEM 5 -->
-      <div class="timeline-item">
-        <div class="timeline-bullet"><i class="fas fa-star"></i></div>
-        <div class="timeline-col timeline-left">
-          <article class="timeline-card">
-            <img class="timeline-media" src="img/historia-hoy.jpg" alt="Presente y futuro">
-            <div class="timeline-body">
-              <p class="timeline-year">Hoy</p>
-              <h5 class="timeline-title">Presente & Futuro</h5>
-              <p class="m-0 text-muted">
-                Turismo responsable, gastronomía local, experiencias de naturaleza y una comunidad que cuida su legado.
-                Miramar sigue escribiendo su historia.
-              </p>
-              <div class="timeline-tags">
-                <span class="chip"><i class="fas fa-map-marked-alt"></i> Experiencias</span>
-                <span class="chip"><i class="fas fa-heart"></i> Identidad</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-
-    </div>
-    <!-- ===== /Línea de tiempo ===== -->
-
-    <!-- CTA inferior -->
-    <div class="historia-cta mt-4">
-      <div class="row align-items-center">
-        <div class="col-md-8">
-          <h4 class="mb-1">¿Querés recorrer la historia en persona?</h4>
-          <p class="mb-0">Visitá nuestros museos y puntos históricos o sumate a una visita guiada.</p>
-        </div>
-        <div class="col-md-4 text-md-right mt-3 mt-md-0">
-          <a href="about.html" class="btn btn-light btn-lg mr-2">Museos</a>
-          <a href="contact.html" class="btn btn-outline-light btn-lg">Visitas guiadas</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</section>
-<!-- ===================== /Historia de Miramar de Ansenuza ===================== -->
-
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
-        <div class="row pt-5">
-            <div class="col-lg-3 col-md-6 mb-5">
-                <a href="" class="navbar-brand">
-                    <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
-                </a>
-                <p>Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet labore rebum lorem ipsum dolor. No sed vero lorem dolor dolor</p>
-                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
-                <div class="d-flex justify-content-start">
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
-                    <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
-                    <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
-                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Newsletter</h6>
-                <div class="w-100">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary px-3">Sign Up</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+    <div class="row">
+      <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+        <p class="m-0 text-white-50">© <span id="year"></span> Miramar de Ansenuza. Todos los derechos reservados.</p>
+      </div>
+      <div class="col-lg-6 text-center text-md-right">
+        <p class="m-0 text-white-50">Diseño base: <a href="https://htmlcodex.com">HTML Codex</a></p>
+      </div>
     </div>
-    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
-        <div class="row">
-            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
-                <p class="m-0 text-white-50">Copyright &copy; <a href="#">Domain</a>. All Rights Reserved.</a>
-                </p>
-            </div>
-            <div class="col-lg-6 text-center text-md-right">
-                <p class="m-0 text-white-50">Designed by <a href="https://htmlcodex.com">HTML Codex</a>
-                </p>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
+  </div>
+  <!-- Footer End -->
 
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/tempusdominus/js/moment.min.js"></script>
+  <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+  <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
+  <!-- Contact Javascript File -->
+  <script src="mail/jqBootstrapValidation.min.js"></script>
+  <script src="mail/contact.js"></script>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
 
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+  <!-- Inicialización de carruseles + utilidades -->
+  <script>
+    (function($){
+      function initTl(selector){
+        $(selector).owlCarousel({
+          items: 1,
+          loop: true,
+          margin: 0,
+          autoplay: true,
+          autoplayTimeout: 3500,
+          autoplayHoverPause: true,
+          dots: true,
+          nav: true,
+          navText: ["",""], // Flechas via CSS ::after
+          smartSpeed: 500
+        });
+      }
+      $(function(){
+        ['#tl-1911','#tl-1938','#tl-1977','#tl-2022','#tl-hoy'].forEach(initTl);
+        // Año automático en el footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+      });
+    })(jQuery);
+  </script>
 </body>
-
 </html>
