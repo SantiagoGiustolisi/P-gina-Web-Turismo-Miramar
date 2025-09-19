@@ -112,70 +112,108 @@
                 </div>
         </div>
     </div>
-    <!-- Carousel End -->
+<!-- ======= Destino ======= -->
+<style>
+  /* Tamaño uniforme para todas las imágenes */
+  .destination-item img{
+    width:100%;
+    height:240px;           /* ajustá a 220/260 si preferís */
+    object-fit:cover;       /* recorte elegante manteniendo proporción */
+    display:block;
+  }
+  /* Tarjeta prolija y consistente */
+  .destination-item{
+    border-radius:10px;
+    overflow:hidden;
+    background:#000;        /* evita parpadeo en carga */
+  }
+  /* Overlay ordenado y legible */
+  .destination-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:end;
+    justify-content:center;
+    padding:16px;
+    text-align:center;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%);
+  }
+  .destination-overlay h5{
+    margin:0;
+  }
+  /* Hover sutil */
+  .destination-item:hover img{
+    transform:scale(1.03);
+    transition:transform .25s ease;
+  }
+</style>
 
-    <br>    <br>
-    <!-- Destination Start -->
-    <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            <div class="text-center mb-3 pb-3">
-                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Destino</h6>
-                <h1>Explora Miramar de Ansenuza</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/ZPSYQXPVJFGW3LTKHIAJRKIE4Y.png" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="about.html">
-                            <h5 class="text-white">Nuestra Historia</h5>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-2.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Nuestros Museos</h5>
-                           
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-3.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="package.html">
-                            <h5 class="text-white">Nuestros Alojamientos</h5>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/dextar-vision-RdGio6Z-1uA-unsplash.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="gastronomia.html">
-                            <h5 class="text-white">Nuestra Gastronomía</h5>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-5.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="Actividades.html">
-                            <h5 class="text-white">Nuestras Actividades</h5>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-6.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Nuestros Eventos</h5>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="container-fluid py-5">
+  <div class="container pt-5 pb-3">
+    <div class="text-center mb-3 pb-3">
+      <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Destino</h6>
+      <h1>Explora Miramar de Ansenuza</h1>
     </div>
-    <!-- Destination Start -->
+
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="destination-item position-relative overflow-hidden mb-2">
+          <img class="img-fluid" src="img/XZN5SBWG5BHZRBVGOFEEFAKP5Y.jpg" alt="Nuestra Historia">
+          <a class="destination-overlay text-white text-decoration-none" href="historia.html">
+            <h5 class="text-white">Nuestra Historia</h5>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="destination-item position-relative overflow-hidden mb-2">
+          <img class="img-fluid" src="img/Gran-Hotel-Viena-2021.jpg" alt="Nuestros Museos">
+          <a class="destination-overlay text-white text-decoration-none" href="#">
+            <h5 class="text-white">Nuestros Museos</h5>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="destination-item position-relative overflow-hidden mb-2">
+          <img class="img-fluid" src="img/ansenuza-hotel-casino.jpg" alt="Nuestros Alojamientos">
+          <a class="destination-overlay text-white text-decoration-none" href="package.html">
+            <h5 class="text-white">Nuestros Alojamientos</h5>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="destination-item position-relative overflow-hidden mb-2">
+          <img class="img-fluid" src="img/dextar-vision-RdGio6Z-1uA-unsplash.jpg" alt="Nuestra Gastronomía">
+          <a class="destination-overlay text-white text-decoration-none" href="gastronomia.html">
+            <h5 class="text-white">Nuestra Gastronomía</h5>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="destination-item position-relative overflow-hidden mb-2">
+          <img class="img-fluid" src="img/Deportes-acuaticos.webp" alt="Nuestras Actividades">
+          <a class="destination-overlay text-white text-decoration-none" href="Actividades.html">
+            <h5 class="text-white">Nuestras Actividades</h5>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="destination-item position-relative overflow-hidden mb-2">
+          <img class="img-fluid" src="img/25289578_1559256707500944_2350661798966849926_n.jpg" alt="Nuestros Eventos">
+          <a class="destination-overlay text-white text-decoration-none" href="#">
+            <h5 class="text-white">Nuestros Eventos</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ======= /Destino ======= -->
+
    <!-- Feature Start -->
     <div class="container-fluid pb-5">
         <div class="container pb-5">
@@ -240,7 +278,7 @@
                                 <img class="img-fluid" src="img/ARCHI_613763.jpg" alt="">
                             </div>
                         </div>
-                        <a href="" class="btn btn-primary mt-1">Ver mas</a>
+                        <a href="about.html" class="btn btn-primary mt-1">Ver mas</a>
                     </div>
                 </div>
             </div>
