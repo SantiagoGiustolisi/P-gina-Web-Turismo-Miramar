@@ -24,7 +24,7 @@
   <!-- Customized Bootstrap Stylesheet -->
   <link href="css/style.css" rel="stylesheet" />
 
-  <!-- ESTILOS PROPIOS -->
+  <!-- ESTILOS PROPIOS (tu base, sin tocar) -->
   <style>
     /* --------- Header / Hero --------- */
     .page-header-ansenuza{
@@ -206,17 +206,29 @@
         </p>
       </div>
 
+      <!-- NAV de años -->
+      <div class="d-flex flex-wrap justify-content-center mb-3 gap-2" id="nav-anios">
+        <a class="btn btn-sm btn-outline-primary rounded-pill px-3" href="#y1911">1911</a>
+        <a class="btn btn-sm btn-outline-primary rounded-pill px-3" href="#y1938">1938</a>
+        <a class="btn btn-sm btn-outline-primary rounded-pill px-3" href="#y1977">1970–1980</a>
+        <a class="btn btn-sm btn-outline-primary rounded-pill px-3" href="#y2022">2022</a>
+        <a class="btn btn-sm btn-outline-primary rounded-pill px-3" href="#yhoy"><i class="fas fa-star"></i> Hoy</a>
+      </div>
+
       <div class="timeline clearfix">
         <!-- ITEM 1 -->
-        <div class="timeline-item">
+        <div class="timeline-item" id="y1911">
           <div class="timeline-bullet">1911</div>
           <div class="timeline-col timeline-left">
             <article class="timeline-card position-relative">
               <!-- Carrusel 1911 -->
               <div id="tl-1911" class="owl-carousel">
-                <div class="item"><img class="timeline-media" src="img/munoz_-_Figura_5b.jpg"  /></div>
-                <div class="item"><img class="timeline-media" src="img/U3MG4GBL7FGBXHYSXGOXOZTYOE.avif" /></div>
-                
+                <div class="item">
+                  <img class="timeline-media owl-lazy" data-src="img/munoz_-_Figura_5b.jpg" alt="Primeros pobladores en Miramar" width="1200" height="800" />
+                </div>
+                <div class="item">
+                  <img class="timeline-media owl-lazy" data-src="img/U3MG4GBL7FGBXHYSXGOXOZTYOE.avif" alt="Asentamientos ribereños históricos" width="1200" height="800" />
+                </div>
               </div>
               <div class="timeline-body">
                 <p class="timeline-year">1911</p>
@@ -234,13 +246,15 @@
         </div>
 
         <!-- ITEM 2 -->
-        <div class="timeline-item">
+        <div class="timeline-item" id="y1938">
           <div class="timeline-bullet">1938</div>
           <div class="timeline-col timeline-right">
             <article class="timeline-card position-relative">
               <!-- Carrusel 1938 -->
               <div id="tl-1938" class="owl-carousel">
-               <div class="item"><img class="timeline-media" src="img/gran_ha712022011.jpg"  /></div>
+                <div class="item">
+                  <img class="timeline-media owl-lazy" data-src="img/gran_ha712022011.jpg" alt="Hotelería y balnearios en Miramar" width="1200" height="800" />
+                </div>
               </div>
               <div class="timeline-body">
                 <p class="timeline-year">Décadas de 1930–50</p>
@@ -256,17 +270,21 @@
         </div>
 
         <!-- ITEM 3 -->
-        <div class="timeline-item">
+        <div class="timeline-item" id="y1977">
           <div class="timeline-bullet">1977</div>
           <div class="timeline-col timeline-left">
             <article class="timeline-card position-relative">
               <!-- Carrusel 1977 -->
               <div id="tl-1977" class="owl-carousel">
-                <div class="item"><img class="timeline-media" src="img/images.jpg"  /></div>
-              
-                <div class="item"><img class="timeline-media" src="img/ZPSYQXPVJFGW3LTKHIAJRKIE4Y.png"  /></div>
-                <div class="item"><img class="timeline-media" src="img/XZN5SBWG5BHZRBVGOFEEFAKP5Y.jpg" /></div>
-
+                <div class="item">
+                  <img class="timeline-media owl-lazy" data-src="img/images.jpg" alt="Creciente en la costa de Miramar" width="1200" height="800" />
+                </div>
+                <div class="item">
+                  <img class="timeline-media owl-lazy" data-src="img/ZPSYQXPVJFGW3LTKHIAJRKIE4Y.png" alt="Transformaciones ambientales en Miramar" width="1200" height="800" />
+                </div>
+                <div class="item">
+                  <img class="timeline-media owl-lazy" data-src="img/XZN5SBWG5BHZRBVGOFEEFAKP5Y.jpg" alt="Resiliencia de la comunidad" width="1200" height="800" />
+                </div>
               </div>
               <div class="timeline-body">
                 <p class="timeline-year">1970–1980</p>
@@ -282,15 +300,21 @@
         </div>
 
         <!-- ITEM 4 -->
-        <div class="timeline-item">
+        <div class="timeline-item" id="y2022">
           <div class="timeline-bullet">2022</div>
           <div class="timeline-col timeline-right">
             <article class="timeline-card position-relative">
               <!-- Carrusel 2022 -->
               <div id="tl-2022" class="owl-carousel">
-                <div class="item"><img class="timeline-media" src="img/OTRG2SSJZJD73F7TTMBMOGBJIM.webp"  /></div>
-                <div class="item"><img class="timeline-media" src="img/HUGUI-15-scaled.jpg"  /></div>
-                <div class="item"><img class="timeline-media" src="img/Y1A1018aves_0-480x320.jpg"  /></div>
+                <div class="item">
+                  <img class="timeline-media owl-lazy" data-src="img/OTRG2SSJZJD73F7TTMBMOGBJIM.webp" alt="Parque Nacional Ansenuza" width="1200" height="800" />
+                </div>
+                <div class="item">
+                  <img class="timeline-media owl-lazy" data-src="img/HUGUI-15-scaled.jpg" alt="Humedales y aves de Ansenuza" width="1200" height="800" />
+                </div>
+                <div class="item">
+                  <img class="timeline-media owl-lazy" data-src="img/Y1A1018aves_0-480x320.jpg" alt="Avistaje de aves en Miramar" width="1200" height="800" />
+                </div>
               </div>
               <div class="timeline-body">
                 <p class="timeline-year">2022</p>
@@ -306,15 +330,21 @@
         </div>
 
         <!-- ITEM 5 -->
-        <div class="timeline-item">
+        <div class="timeline-item" id="yhoy">
           <div class="timeline-bullet"><i class="fas fa-star"></i></div>
           <div class="timeline-col timeline-left">
             <article class="timeline-card position-relative">
               <!-- Carrusel Hoy -->
               <div id="tl-hoy" class="owl-carousel">
-                <div class="item"><img class="timeline-media" src="img/WhatsApp-Image-2024-11-20-at-13.35.02.jpeg.webp"  /></div>
-                <div class="item"><img class="timeline-media" src="img/miramar01_1582308818.jpg"  /></div>
-                <div class="item"><img class="timeline-media" src="img/laguna-6-1.jpg"  /></div>
+                <div class="item">
+                  <img class="timeline-media owl-lazy" data-src="img/WhatsApp-Image-2024-11-20-at-13.35.02.jpeg.webp" alt="Paseo actual en Miramar" width="1200" height="800" />
+                </div>
+                <div class="item">
+                  <img class="timeline-media owl-lazy" data-src="img/miramar01_1582308818.jpg" alt="Costanera de Miramar" width="1200" height="800" />
+                </div>
+                <div class="item">
+                  <img class="timeline-media owl-lazy" data-src="img/laguna-6-1.jpg" alt="Atardecer en la laguna" width="1200" height="800" />
+                </div>
               </div>
               <div class="timeline-body">
                 <p class="timeline-year">Hoy</p>
@@ -329,12 +359,14 @@
           </div>
         </div>
       </div>
+
+      <!-- Mantengo tu estilo local de alturas y sumo tweaks abajo -->
       <style>
 /* ===== Tamaño uniforme de imágenes en la timeline ===== */
 .timeline-media{
   width: 100%;
-  height: 320px;      /* <-- cambiá este valor si querés otro alto */
-  object-fit: cover;  /* recorta sin deformar */
+  height: 320px;
+  object-fit: cover;
   display: block;
 }
 
@@ -343,33 +375,57 @@
 .timeline-card .owl-stage,
 .timeline-card .owl-item,
 .timeline-card .owl-item .item{
-  height: 320px;      /* mismo valor que .timeline-media */
+  height: 320px;
 }
 
 /* Responsive: bajamos alturas para pantallas chicas */
 @media (max-width: 991.98px){
-  .timeline-media{
-    height: 260px;
-  }
+  .timeline-media{ height: 260px; }
   .timeline-card .owl-stage-outer,
   .timeline-card .owl-stage,
   .timeline-card .owl-item,
-  .timeline-card .owl-item .item{
-    height: 260px;
-  }
+  .timeline-card .owl-item .item{ height: 260px; }
 }
 @media (max-width: 575.98px){
-  .timeline-media{
-    height: 220px;
-  }
+  .timeline-media{ height: 220px; }
   .timeline-card .owl-stage-outer,
   .timeline-card .owl-stage,
   .timeline-card .owl-item,
-  .timeline-card .owl-item .item{
-    height: 220px;
-  }
+  .timeline-card .owl-item .item{ height: 220px; }
 }
-</style>
+
+/* ====== MEJORAS VISUALES (pulido) ====== */
+.timeline-card{
+  border-radius:16px;
+  border-color:#e9eef6;
+  box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+.timeline-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 36px rgba(0,0,0,.10);
+}
+.timeline-bullet{
+  background:linear-gradient(180deg,#fff,#f8fafc);
+  box-shadow:0 10px 26px rgba(0,0,0,.10);
+}
+.timeline::before{
+  background:linear-gradient(180deg,#eef2f7,#dbe4f0);
+}
+.chip{
+  background:#f7f9fc;
+  border-color:#e8edf5;
+}
+
+/* NAV de años: pill sutil */
+#nav-anios .btn{
+  margin:4px;
+  border-color:#dbeafe;
+}
+#nav-anios .btn:hover{
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
+  transform:translateY(-1px);
+}
+      </style>
 
       <!-- CTA inferior -->
       <div class="historia-cta mt-4">
@@ -380,14 +436,14 @@
           </div>
           <div class="col-md-4 text-md-right mt-3 mt-md-0">
             <a href="museos.html" class="btn btn-light btn-lg mr-2">Museos</a>
-            <a href="contact.html" class="btn btn-outline-light btn-lg">Visitas guiadas</a>
           </div>
         </div>
       </div>
     </div>
   </section>
   <!-- ===================== /Historia ===================== -->
-     <!-- Footer (limpio) -->
+
+  <!-- Footer (limpio) -->
   <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 40px;">
     <div class="row pt-4">
       <div class="col-lg-4 col-md-6 mb-4">
@@ -441,6 +497,18 @@
   <!-- Back to Top -->
   <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
+  <!-- Modal para ver fotos en grande -->
+  <div class="modal fade" id="fotoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content" style="background:#000;">
+        <button type="button" class="close text-white ml-auto p-2" data-dismiss="modal" aria-label="Cerrar" style="position:absolute; right:6px; top:6px; z-index:2; opacity:.9;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img id="fotoAmpliada" src="" alt="" style="width:100%; height:auto; border-radius:6px;">
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script>
     // Año automático
@@ -454,5 +522,45 @@
   <script src="lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="lib/easing/easing.min.js"></script>
   <script src="js/main.js"></script>
+
+  <!-- Init carruseles + mejoras -->
+  <script>
+    // Inicializar los carruseles de cada hito (fade + lazy + autoHeight)
+    ['#tl-1911','#tl-1938','#tl-1977','#tl-2022','#tl-hoy'].forEach(function(sel){
+      if ($(sel).length) {
+        $(sel).owlCarousel({
+          items: 1,
+          loop: true,
+          nav: true,
+          dots: true,
+          autoplay: true,
+          autoplayTimeout: 3600,
+          autoplayHoverPause: true,
+          smartSpeed: 500,
+          autoHeight: true,
+          animateOut: 'fadeOut',
+          lazyLoad: true,
+          navText: ['‹','›']
+        });
+      }
+    });
+
+    // Scroll suave para los anclajes de año
+    document.querySelectorAll('#nav-anios a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        const el = document.querySelector(this.getAttribute('href'));
+        if(!el) return;
+        window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
+      });
+    });
+
+    // Click en imagen para abrir modal en grande
+    $(document).on('click', '.timeline-card .item img', function(){
+      var src = $(this).attr('data-src') || $(this).attr('src');
+      $('#fotoAmpliada').attr('src', src);
+      $('#fotoModal').modal('show');
+    });
+  </script>
 </body>
 </html>

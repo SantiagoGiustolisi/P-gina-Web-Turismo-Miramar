@@ -793,141 +793,156 @@
   <script src="js/main.js"></script>
 
   <!-- Filtros + Google Maps + Año + Paginación -->
-  <script>
-    (function () {
-      // ====== Config ======
-      var PER_PAGE = 6;
-      var currentFilter = '*';
-      var currentPage = 1;
-      var items = Array.from(document.querySelectorAll('.gastro-item'));
-      var pagerEl = document.getElementById('gastro-pager');
-      var emptyEl = document.getElementById('gastro-empty');
+<script>
+  (function () {
+    // ====== Config ======
+    var PER_PAGE = 6;
+    var currentFilter = '*';
+    var currentPage = 1;
+    var items = Array.from(document.querySelectorAll('.gastro-item'));
+    var pagerEl = document.getElementById('gastro-pager');
+    var emptyEl = document.getElementById('gastro-empty');
 
-      // ====== Helpers ======
-      function matchesFilter(el, cat){
-        if (cat === '*') return true;
-        var cats = (el.getAttribute('data-cat') || '').split(/\s+/);
-        return cats.includes(cat);
-      }
-      function getFilteredItems(){ return items.filter(function(el){ return matchesFilter(el, currentFilter); }); }
-      function hideAll(){ items.forEach(function(el){ el.style.display = 'none'; }); }
+    // Flag para saber si la acción fue del usuario
+    var shouldScrollNext = false;
 
-      function renderPage(page){
-        var filtered = getFilteredItems();
-        var total = Math.ceil(filtered.length / PER_PAGE);
+    // ====== Helpers ======
+    function matchesFilter(el, cat){
+      if (cat === '*') return true;
+      var cats = (el.getAttribute('data-cat') || '').split(/\s+/);
+      return cats.includes(cat);
+    }
+    function getFilteredItems(){ return items.filter(function(el){ return matchesFilter(el, currentFilter); }); }
+    function hideAll(){ items.forEach(function(el){ el.style.display = 'none'; }); }
 
-        if (filtered.length === 0){
-          hideAll();
-          pagerEl.innerHTML = '';
-          emptyEl.classList.remove('d-none');
-          return;
-        } else { emptyEl.classList.add('d-none'); }
+    function renderPage(page){
+      var filtered = getFilteredItems();
+      var total = Math.ceil(filtered.length / PER_PAGE);
 
-        if (page < 1) page = 1;
-        if (page > total) page = total;
-        currentPage = page;
-
+      if (filtered.length === 0){
         hideAll();
-        var start = (page - 1) * PER_PAGE;
-        var slice = filtered.slice(start, start + PER_PAGE);
-        slice.forEach(function(el){ el.style.display = ''; });
-
-        renderPager(page, total);
-
-        var gridTop = document.getElementById('gastro-grid').offsetTop - 80;
-        window.scrollTo({ top: gridTop, behavior: 'smooth' });
-      }
-
-      function pageButton(label, page, disabled, active, ariaLabel){
-        var li = document.createElement('li');
-        li.className = 'page-item' + (disabled ? ' disabled' : '') + (active ? ' active' : '');
-        var a = document.createElement('a');
-        a.className = 'page-link';
-        a.textContent = label;
-        if (ariaLabel) a.setAttribute('aria-label', ariaLabel);
-        if (!disabled){
-          a.addEventListener('click', function(){ renderPage(page); });
-        }
-        li.appendChild(a);
-        return li;
-      }
-
-      function renderPager(page, total){
         pagerEl.innerHTML = '';
-        if (!total || total <= 1){ return; }
+        emptyEl.classList.remove('d-none');
+        return;
+      } else { emptyEl.classList.add('d-none'); }
 
-        var ul = document.createElement('ul');
-        ul.className = 'pagination';
+      if (page < 1) page = 1;
+      if (page > total) page = total;
+      currentPage = page;
 
-        ul.appendChild(pageButton('«', page-1, page === 1, false, 'Anterior'));
+      hideAll();
+      var start = (page - 1) * PER_PAGE;
+      var slice = filtered.slice(start, start + PER_PAGE);
+      slice.forEach(function(el){ el.style.display = ''; });
 
-        var windowSize = 7;
-        var start = Math.max(1, page - 3);
-        var end = Math.min(total, start + windowSize - 1);
-        if (end - start + 1 < windowSize){ start = Math.max(1, end - windowSize + 1); }
+      renderPager(page, total);
 
-        if (start > 1){
-          ul.appendChild(pageButton('1', 1, false, page === 1));
-          if (start > 2){
-            var liDots = document.createElement('li');
-            liDots.className = 'page-item disabled';
-            liDots.innerHTML = '<span class="page-link">…</span>';
-            ul.appendChild(liDots);
-          }
+      // 🔽 SOLO scrollea si fue una acción del usuario (paginación/filtro)
+      if (shouldScrollNext) {
+        var grid = document.getElementById('gastro-grid');
+        if (grid) {
+          var gridTop = grid.offsetTop - 80;
+          window.scrollTo({ top: gridTop, behavior: 'smooth' });
         }
+        shouldScrollNext = false; // reset
+      }
+    }
 
-        for (var i = start; i <= end; i++){
-          ul.appendChild(pageButton(String(i), i, false, page === i));
+    function pageButton(label, page, disabled, active, ariaLabel){
+      var li = document.createElement('li');
+      li.className = 'page-item' + (disabled ? ' disabled' : '') + (active ? ' active' : '');
+      var a = document.createElement('a');
+      a.className = 'page-link';
+      a.textContent = label;
+      if (ariaLabel) a.setAttribute('aria-label', ariaLabel);
+      if (!disabled){
+        a.addEventListener('click', function(){
+          shouldScrollNext = true;      // ✅ usuario clickeó paginación
+          renderPage(page);
+        });
+      }
+      li.appendChild(a);
+      return li;
+    }
+
+    function renderPager(page, total){
+      pagerEl.innerHTML = '';
+      if (!total || total <= 1){ return; }
+
+      var ul = document.createElement('ul');
+      ul.className = 'pagination';
+
+      ul.appendChild(pageButton('«', page-1, page === 1, false, 'Anterior'));
+
+      var windowSize = 7;
+      var start = Math.max(1, page - 3);
+      var end = Math.min(total, start + windowSize - 1);
+      if (end - start + 1 < windowSize){ start = Math.max(1, end - windowSize + 1); }
+
+      if (start > 1){
+        ul.appendChild(pageButton('1', 1, false, page === 1));
+        if (start > 2){
+          var liDots = document.createElement('li');
+          liDots.className = 'page-item disabled';
+          liDots.innerHTML = '<span class="page-link">…</span>';
+          ul.appendChild(liDots);
         }
-
-        if (end < total){
-          if (end < total - 1){
-            var liDots2 = document.createElement('li');
-            liDots2.className = 'page-item disabled';
-            liDots2.innerHTML = '<span class="page-link">…</span>';
-            ul.appendChild(liDots2);
-          }
-          ul.appendChild(pageButton(String(total), total, false, page === total));
-        }
-
-        ul.appendChild(pageButton('»', page+1, page === total, false, 'Siguiente'));
-        pagerEl.appendChild(ul);
       }
 
-      // ====== Filtro por rubro ======
-      var buttons = document.querySelectorAll('.gastro-filter');
-      buttons.forEach(function(btn){
-        btn.addEventListener('click', function(){
-          buttons.forEach(function(b){
-            b.classList.remove('active','btn-primary');
-            if (!b.classList.contains('btn-outline-primary')) b.classList.add('btn-outline-primary');
-          });
-          btn.classList.add('active','btn-primary');
-          btn.classList.remove('btn-outline-primary');
+      for (var i = start; i <= end; i++){
+        ul.appendChild(pageButton(String(i), i, false, page === i));
+      }
 
-          currentFilter = btn.getAttribute('data-filter') || '*';
-          renderPage(1);
+      if (end < total){
+        if (end < total - 1){
+          var liDots2 = document.createElement('li');
+          liDots2.className = 'page-item disabled';
+          liDots2.innerHTML = '<span class="page-link">…</span>';
+          ul.appendChild(liDots2);
+        }
+        ul.appendChild(pageButton(String(total), total, false, page === total));
+      }
+
+      ul.appendChild(pageButton('»', page+1, page === total, false, 'Siguiente'));
+      pagerEl.appendChild(ul);
+    }
+
+    // ====== Filtro por rubro ======
+    var buttons = document.querySelectorAll('.gastro-filter');
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        buttons.forEach(function(b){
+          b.classList.remove('active','btn-primary');
+          if (!b.classList.contains('btn-outline-primary')) b.classList.add('btn-outline-primary');
         });
+        btn.classList.add('active','btn-primary');
+        btn.classList.remove('btn-outline-primary');
+
+        currentFilter = btn.getAttribute('data-filter') || '*';
+        shouldScrollNext = true;    // ✅ usuario cambió el filtro
+        renderPage(1);
       });
+    });
 
-      // ====== Google Maps links automáticos ======
-      var defaultCity = 'Miramar de Ansenuza, Córdoba, Argentina';
-      document.querySelectorAll('.gmap-link').forEach(function(a){
-        var addr = a.dataset.addr || a.textContent.trim();
-        var city = a.dataset.city || defaultCity;
-        var q = encodeURIComponent(addr + ', ' + city);
-        a.setAttribute('href', 'https://www.google.com/maps/search/?api=1&query=' + q);
-        a.setAttribute('target', '_blank');
-        a.setAttribute('rel', 'noopener');
-      });
+    // ====== Google Maps links automáticos ======
+    var defaultCity = 'Miramar de Ansenuza, Córdoba, Argentina';
+    document.querySelectorAll('.gmap-link').forEach(function(a){
+      var addr = a.dataset.addr || a.textContent.trim();
+      var city = a.dataset.city || defaultCity;
+      var q = encodeURIComponent(addr + ', ' + city);
+      a.setAttribute('href', 'https://www.google.com/maps/search/?api=1&query=' + q);
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+    });
 
-      // Año en footer
-      var y = document.getElementById('year');
-      if (y) y.textContent = new Date().getFullYear();
+    // Año en footer
+    var y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
 
-      // Estado inicial
-      renderPage(1);
-    })();
-  </script>
+    // ====== Estado inicial (SIN SCROLL) ======
+    renderPage(1);
+  })();
+</script>
+
 </body>
 </html>
