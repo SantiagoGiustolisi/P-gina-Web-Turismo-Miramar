@@ -24,28 +24,27 @@
 
   <!-- ====== ESTILOS PROPIOS ====== -->
   <style>
-    .lodging{border:1px solid #eef2f5;border-radius:12px;overflow:hidden;background:#fff}
-    .lodging + .lodging{margin-top:2rem}
+    .lodging{border:1px solid #eef2f5;border-radius:12px;overflow:hidden;background:#fff;margin-bottom:2rem}
     .lodging-title{font-size:1.35rem;color:#123055;font-weight:700}
     .lodging-photo{position:relative;display:block;width:100%;height:300px;overflow:hidden}
     .lodging-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-    .amenities{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap}
-    .amenities li{margin:.25rem .6rem .25rem 0;font-size:1.05rem;color:#123055}
-    .amenities li.muted{color:#c0392b}
-    .link-map{color:#e05c74;text-decoration:none}
-    .link-map:hover{text-decoration:underline}
+    .amenities{list-style:none;padding:0;margin:0 0 1rem;display:flex;flex-wrap:wrap;gap:8px}
+    .amenities li i{font-size:18px;color:#1e3a6d}
+    .amenities li.muted i{color:#e63946}
+    .lbl{font-weight:600;margin-top:12px;margin-bottom:4px;color:#123055}
+    .addr{margin-bottom:8px;color:#333}
+    .addr i{color:#28a745;margin-right:6px;}
+    .map-link{color:#e05c74;text-decoration:none;font-size:.9rem}
+    .map-link:hover{text-decoration:underline}
 
-    /* Caja de CATEGORÍAS (la blanca de arriba) */
+    /* Caja de CATEGORÍAS */
     .filters-box{background:#fff; box-shadow:0 10px 26px rgba(0,0,0,.10); padding:22px; border-radius:8px;}
     .filters-box .nav-link{color:black; display:inline-block; transition:transform .18s ease, color .18s ease;}
     .filters-box .nav-link:hover{transform:scale(1.06); color:#6bb8ff}
 
-    /* BUSCADOR FLOTANTE (fuera del recuadro blanco) */
-    .search-standalone{ margin-top:18px; } /* <— separación clara del recuadro blanco */
-    .search-card{
-      background:#fff; border:1px solid #e6eaf0; border-radius:12px;
-      padding:12px 16px; box-shadow:0 8px 22px rgba(0,0,0,.08);
-    }
+    /* BUSCADOR */
+    .search-standalone{ margin-top:18px; }
+    .search-card{background:#fff; border:1px solid #e6eaf0; border-radius:12px; padding:12px 16px; box-shadow:0 8px 22px rgba(0,0,0,.08);}
     .search-wrap{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
     .search-input{flex:1 1 260px;border:1px solid #dfe5ea;border-radius:10px;padding:.65rem .85rem;outline:none;font-size:.95rem}
     .search-input:focus{border-color:#79a9ff;box-shadow:0 0 0 3px rgba(56,132,255,.12)}
@@ -89,7 +88,6 @@
       <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
         <a href="index.html" class="navbar-brand d-flex align-items-center">
           <img src="img/logo-miramar.png" alt="Miramar de Ansenuza" style="height:36px;">
-          <span class="sr-only">Miramar de Ansenuza</span>
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
@@ -111,465 +109,240 @@
     <div class="container">
       <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
         <span class="hero-kicker">Oficina de Turismo</span>
-        <h1 class="hero-title"><span class="hero-accent">Hoteles</span></h1>
+        <h1 class="hero-title"><span class="hero-accent">Hospedajes</span></h1>
         <p class="hero-subtitle">Estamos para ayudarte</p>
-        <nav aria-label="breadcrumb" class="hero-breadcrumb">
-          <ol class="breadcrumb justify-content-center">
-            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Hoteles</li>
-          </ol>
-        </nav>
       </div>
     </div>
   </header>
+ <!-- Booking Start -->
+<!-- Filtros -->
+<div class="container-fluid booking mt-5 pb-3">
+  <div class="container pb-3">
+    <div class="bg-light shadow" style="padding: 20px;">
+      <div class="d-flex justify-content-center flex-wrap gap-3">
 
-  <!-- ===== LISTADO: CABAÑAS ===== -->
-  <section id="cabanas" class="container py-5">
-    
-    <!-- 1) CATEGORÍAS EN CAJA BLANCA -->
-    <div class="container-fluid booking mt-5">
-      <div class="container">
-        <div class="filters-box">
-          <div class="row text-center">
-            <div class="col-md-2"><div class="mb-2"><a href="#" class="nav-item nav-link active">Todos</a></div></div>
-            <div class="col-md-2"><div class="mb-2"><a href="cabañas.html" class="nav-item nav-link active">Cabañas</a></div></div>
-            <div class="col-md-2"><div class="mb-2"><a href="campings.html" class="nav-item nav-link active">Campings</a></div></div>
-            <div class="col-md-2">
-              <div class="mb-2" style="position:relative;">
-                <a href="#" class="nav-item nav-link active"
-                   onmouseover="this.nextElementSibling.style.display='block';"
-                   onmouseout="setTimeout(()=>{ if(!this.nextElementSibling.matches(':hover')) this.nextElementSibling.style.display='none'; },120);">
-                  Departamentos
-                </a>
-                <div style="display:none; position:absolute; top:100%; left:50%; transform:translateX(-50%);
-                            min-width:260px; background:#fff; border:1px solid #e6e6e6; border-radius:12px;
-                            box-shadow:0 10px 24px rgba(0,0,0,.12); padding:.5rem 0; z-index:10;"
-                     onmouseover="this.style.display='block';"
-                     onmouseleave="this.style.display='none';">
-                  <a href="#" class="dropdown-item">Premium / Superior</a>
-                  <a href="#" class="dropdown-item">Confort / Estándar Plus</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-2"><div class="mb-2"><a href="#" class="nav-item nav-link active">Hoteles</a></div></div>
+        <a href="todos.html" class="nav-item nav-link active"
+           style="color:black; transition:transform .18s ease, color .18s ease;"
+           onmouseover="this.style.transform='scale(1.06)'; this.style.color='#6bb8ff';"
+           onmouseout="this.style.transform='none'; this.style.color='black';">
+          Todos
+        </a>
+
+        <a href="cabañas.html" class="nav-item nav-link active"
+           style="color:black; transition:transform .18s ease, color .18s ease;"
+           onmouseover="this.style.transform='scale(1.06)'; this.style.color='#6bb8ff';"
+           onmouseout="this.style.transform='none'; this.style.color='black';">
+          Cabañas
+        </a>
+
+        <a href="campings.html" class="nav-item nav-link active"
+           style="color:black; transition:transform .18s ease, color .18s ease;"
+           onmouseover="this.style.transform='scale(1.06)'; this.style.color='#6bb8ff';"
+           onmouseout="this.style.transform='none'; this.style.color='black';">
+          Campings
+        </a>
+
+        <!-- Dropdown Departamentos -->
+        <div style="position:relative;">
+          <a href="departamentos.html" class="nav-item nav-link active"
+             style="color:black; transition:transform .18s ease, color .18s ease;"
+             onmouseover="this.style.transform='scale(1.06)'; this.style.color='#6bb8ff'; this.nextElementSibling.style.display='block';"
+             onmouseout="this.style.transform='none'; this.style.color='black'; setTimeout(()=>{ if(!this.nextElementSibling.matches(':hover')) this.nextElementSibling.style.display='none'; },120);">
+            Departamentos
+          </a>
+          <div style="display:none; position:absolute; top:100%; left:50%; transform:translateX(-50%);
+                      min-width:220px; background:#fff; border:1px solid #e6e6e6; border-radius:12px;
+                      box-shadow:0 10px 24px rgba(0,0,0,.12); padding:.5rem 0; z-index:10;"
+               onmouseover="this.style.display='block';"
+               onmouseleave="this.style.display='none';">
+            <a href="deptoSuperior.html" class="dropdown-item">Premium / Superior</a>
+            <a href="#" class="dropdown-item">Confort / Estándar Plus</a>
           </div>
         </div>
+
+        <a href="hoteles.html" class="nav-item nav-link active"
+           style="color:black; transition:transform .18s ease, color .18s ease;"
+           onmouseover="this.style.transform='scale(1.06)'; this.style.color='#6bb8ff';"
+           onmouseout="this.style.transform='none'; this.style.color='black';">
+          Hoteles
+        </a>
+
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- 2) BUSCADOR FUERA DEL RECUADRO (DESPEGADO) -->
+  <!-- ===== LISTADO ===== -->
+  <section id="cabanas" class="container py-5">
+    <!-- BUSCADOR -->
     <div class="container search-standalone">
       <div class="search-card">
         <div class="search-wrap">
-          <i class="fas fa-search" aria-hidden="true"></i>
-          <input id="search-cabanas" class="search-input" type="search"
-                 placeholder="Buscar por nombre de alojamiento"
-                 aria-label="Buscar por nombre de alojamiento">
-          <button id="clear-search" class="btn-clear" type="button" aria-label="Limpiar búsqueda">Limpiar</button>
+          <i class="fas fa-search"></i>
+          <input id="search-cabanas" class="search-input" type="search" placeholder="Buscar por nombre de alojamiento">
+          <button id="clear-search" class="btn-clear" type="button">Limpiar</button>
           <span id="search-meta" class="search-meta ml-auto">Mostrando <strong id="count-visible">0</strong> de <strong id="count-total">0</strong></span>
         </div>
       </div>
     </div>
 
     <!-- MENSAJE: sin resultados -->
-    <div id="no-results" class="no-results">No se encontraron campings que coincidan con la búsqueda.</div>
+    <div id="no-results" class="no-results">No se encontraron alojamientos que coincidan con la búsqueda.</div>
 
-    <!-- ITEM: Alas del Sol -->
-    <!-- ITEM: Camping Don Osvaldo -->
-<!-- ITEM: Ansenuza Hotel Casino Spa -->
-<!-- ITEM: Ansenuza Hotel Casino Spa -->
-<article class="lodging row no-gutters mb-5" data-name="Ansenuza Hotel Casino Spa">
-  <div class="col-lg-7">
-    <a class="lodging-photo" href="#" aria-label="Ver galería de Ansenuza Hotel Casino Spa">
-      <img src="img/MDT_fk_obra-galeria__1703079284.webp" class="img-fluid" alt="Ansenuza Hotel Casino Spa">
-    </a>
-  </div>
-  <div class="col-lg-5 bg-white p-4 p-md-4 shadow-sm">
-    <h3 class="lodging-title mb-2 js-title">Ansenuza Hotel Casino Spa</h3>
+    <!-- ====== ALOJAMIENTOS ====== -->
+    <!-- Repetimos estructura col-lg-7 (foto) / col-lg-5 (info) -->
 
-    <ul class="amenities mb-3">
-      <li title="Desayuno"><i class="fas fa-mug-hot"></i></li>
-      <li title="Estacionamiento"><i class="fas fa-car"></i></li>
-      <li title="Aire acondicionado"><i class="far fa-snowflake"></i></li>
-      <li title="Wi-Fi"><i class="fas fa-wifi"></i></li>
-      <li title="TV"><i class="fas fa-tv"></i></li>
-      <li title="Tarjetas de crédito"><i class="fas fa-credit-card"></i></li>
-      <li title="No se admiten mascotas" class="muted"><i class="fas fa-paw"></i></li>
-      <li title="Pileta"><i class="fas fa-swimming-pool"></i></li>
-    </ul>
-
-    <div class="mb-3">
-      <h6 class="mb-1">Dirección:</h6>
-      <p class="mb-0">
-        <i class="fas fa-map-marker-alt text-primary mr-2"></i>
-        Calle Costanera Oeste
-        <a class="ml-1 small link-map" target="_blank"
-           href="https://www.google.com/maps/place/Hotel+Comedor+Marchetti/@-30.914945,-62.678084,15z/data=!4m5!3m4!1s0x0:0x1ea8a57b0d08166a!8m2!3d-30.9149195!4d-62.678102?ll=-30.914945,-62.678084&z=15&t=m&hl=es-US&gl=US&mapclient=embed&cid=2209197565143422570&coh=164777&entry=tt&shorturl=1">
-          (Ver en Google Maps)
-        </a>
-      </p>
-    </div>
-
-    <!-- Consultas y Reservas -->
-    <div>
-      <h6 class="mb-2">Consultas y Reservas:</h6>
-      <p class="mb-1">
-        <i class="fas fa-phone-alt text-primary mr-2"></i>
-        <a href="tel:+543563493791">(03563) 493791</a>
-      </p>
-      <p class="mb-1">
-        <i class="fas fa-envelope text-primary mr-2"></i>
-        <a href="mailto:reservas@ansenuzahotelcasino.com.ar">reservas@ansenuzahotelcasino.com.ar</a>
-      </p>
-      <p class="mb-0">
-        <i class="fas fa-globe text-primary mr-2"></i>
-        <a href="https://ansenuzahotelcasino.com.ar/" target="_blank" rel="noopener">ansenuzahotelcasino.com.ar</a>
-      </p>
-    </div>
-  </div>
-</article>
-
-
-<!-- ITEM: Hotel Miramar -->
-<!-- ITEM: Hotel Miramar -->
-<article class="lodging row no-gutters mb-5" data-name="Hotel Miramar">
-  <div class="col-lg-7">
-    <a class="lodging-photo" href="#" aria-label="Ver galería de Hotel Miramar">
-      <img src="img/Hotel-miramar.jpg.webp" class="img-fluid" alt="Hotel Miramar">
-    </a>
-  </div>
-  <div class="col-lg-5 bg-white p-4 p-md-4 shadow-sm">
-    <h3 class="lodging-title mb-2 js-title">Hotel Miramar</h3>
-
-    <ul class="amenities mb-3">
-      <li title="Desayuno"><i class="fas fa-mug-hot"></i></li>
-      <li title="Estacionamiento"><i class="fas fa-car"></i></li>
-      <li title="Aire acondicionado"><i class="far fa-snowflake"></i></li>
-      <li title="Wi-Fi"><i class="fas fa-wifi"></i></li>
-      <li title="TV"><i class="fas fa-tv"></i></li>
-      <li title="Tarjetas de crédito"><i class="fas fa-credit-card"></i></li>
-      <li title="No se admiten mascotas" class="muted"><i class="fas fa-paw"></i></li>
-      <li title="Pileta"><i class="fas fa-swimming-pool"></i></li>
-    </ul>
-
-    <div class="mb-3">
-      <h6 class="mb-1">Dirección:</h6>
-      <p class="mb-0">
-        <i class="fas fa-map-marker-alt text-primary mr-2"></i>
-        Buenos Aires 200
-        <a class="ml-1 small link-map" target="_blank"
-           href="https://www.google.com/maps/place/Hotel+Comedor+Marchetti/@-30.914945,-62.678084,15z/data=!4m5!3m4!1s0x0:0x1ea8a57b0d08166a!8m2!3d-30.9149195!4d-62.678102?ll=-30.914945,-62.678084&z=15&t=m&hl=es-US&gl=US&mapclient=embed&cid=2209197565143422570&coh=164777&entry=tt&shorturl=1">
-          (Ver en Google Maps)
-        </a>
-      </p>
-    </div>
-
-    <!-- Consultas y Reservas -->
-    <div>
-      <h6 class="mb-2">Consultas y Reservas:</h6>
-      <p class="mb-1">
-        <i class="fas fa-phone-alt text-primary mr-2"></i>
-        <a href="tel:+543563493000">03563-493000</a>
-      </p>
-      <p class="mb-0">
-        <i class="fas fa-globe text-primary mr-2"></i>
-        <a href="https://hotelmiramarcordoba.com.ar/home" target="_blank" rel="noopener">hotelmiramarcordoba.com.ar/home</a>
-      </p>
-    </div>
-  </div>
-</article>
-
-<article class="lodging row no-gutters mb-5" data-name="Alas del Sol">
+    <!-- Ansenuza Hotel Casino Spa -->
+    <article class="lodging row no-gutters" data-name="Ansenuza Hotel Casino Spa">
       <div class="col-lg-7">
-        <a class="lodging-photo" href="#" aria-label="Ver galería de Alas del Sol">
-          <img src="img/1541597884_alas-del-sol.jpg.webp" class="img-fluid" alt="Cabañas Alas del Sol">
-        </a>
+        <a class="lodging-photo"><img src="img/MDT_fk_obra-galeria__1703079284.webp" alt="Ansenuza Hotel Casino Spa"></a>
       </div>
-      <div class="col-lg-5 bg-white p-4 p-md-4 shadow-sm">
-        <h3 class="lodging-title mb-2 js-title">Alas del Sol</h3>
-        <ul class="amenities mb-3">
-          <li title="Estacionamiento"><i class="fas fa-car"></i></li>
-          <li title="Aire acondicionado"><i class="far fa-snowflake"></i></li>
-          <li title="Wi-Fi"><i class="fas fa-wifi"></i></li>
-          <li title="TV"><i class="fas fa-tv"></i></li>
-          <li title="Piscina"><i class="fas fa-swimming-pool"></i></li>
-          <li title="Parrilla / Asador"><i class="fas fa-fire"></i></li>
-          <li title="No se admiten mascotas" class="muted"><i class="fas fa-paw"></i></li>
-        </ul>
-
-        <div class="mb-3">
-          <h6 class="mb-1">Dirección:</h6>
-          <p class="mb-0">
-            <i class="fas fa-map-marker-alt text-primary mr-2"></i>
-            Patricias Argentinas 392
-            <a class="ml-1 small link-map" target="_blank"
-               href="https://www.google.com/maps?q=Patricias+Argentinas+392,+Miramar+de+Ansenuza">(Ver en Google Maps)</a>
-          </p>
-        </div>
-
-        <div>
-          <h6 class="mb-2">Consultas y Reservas:</h6>
-          <p class="mb-1"><i class="fas fa-phone-alt text-primary mr-2"></i> 3563-414257</p>
-          <p class="mb-1">
-            <i class="fas fa-envelope text-primary mr-2"></i>
-            <a href="mailto:alasdelsol@hotmail.com.ar">alasdelsol@hotmail.com.ar</a>
-          </p>
-          <p class="mb-0">
-            <i class="fas fa-globe text-primary mr-2"></i>
-            <a href="http://www.alasdelsol.com.ar/" target="_blank" rel="noopener">www.alasdelsol.com.ar</a>
-          </p>
-        </div>
+      <div class="col-lg-5 p-4">
+        <h3 class="lodging-title js-title">Ansenuza Hotel Casino Spa</h3>
+        <ul class="amenities"><li><i class="fas fa-car"></i></li><li><i class="fas fa-mug-hot"></i></li><li><i class="far fa-snowflake"></i></li><li><i class="fas fa-wifi"></i></li><li><i class="fas fa-tv"></i></li><li><i class="fas fa-credit-card"></i></li><li class="muted"><i class="fas fa-paw"></i></li><li><i class="fas fa-swimming-pool"></i></li></ul>
+        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Calle Costanera Oeste <a class="map-link" target="_blank" href="#">(Ver en Google Maps)</a></div>
       </div>
     </article>
 
-    <!-- ITEM: Costa Marina -->
-    <article class="lodging row no-gutters mb-5" data-name="Costa Marina">
-      <div class="col-lg-7">
-        <a class="lodging-photo" href="#" aria-label="Ver galería de Costa Marina">
-          <img src="img/WhatsApp-Image-2024-11-20-at-13.35.02.jpeg.webp" class="img-fluid" alt="Cabañas Costa Marina">
-        </a>
-      </div>
-      <div class="col-lg-5 bg-white p-4 p-md-4 shadow-sm">
-        <h3 class="lodging-title mb-2 js-title">Costa Marina</h3>
-        <ul class="amenities mb-3">
-          <li title="Estacionamiento"><i class="fas fa-car"></i></li>
-          <li title="Aire acondicionado"><i class="far fa-snowflake"></i></li>
-          <li title="Wi-Fi"><i class="fas fa-wifi"></i></li>
-          <li title="TV"><i class="fas fa-tv"></i></li>
-          <li title="Piscina"><i class="fas fa-swimming-pool"></i></li>
-          <li title="No se admiten mascotas"><i class="fas fa-paw" style="color:#1e3a6d;"></i></li>
-          <li title="Asador / Parrilla"><i class="fas fa-fire"></i></li>
-        </ul>
-
-        <div class="mb-3">
-          <h6 class="mb-1">Dirección:</h6>
-          <p class="mb-0">
-            <i class="fas fa-map-marker-alt text-primary mr-2"></i>
-            Ruta Provincial N°3
-            <a class="ml-1 small link-map" target="_blank"
-               href="https://www.google.com/maps?q=Ruta+Provincial+3,+Miramar+de+Ansenuza">(Ver en Google Maps)</a>
-          </p>
-        </div>
-
-        <div>
-          <h6 class="mb-2">Consultas y Reservas:</h6>
-          <p class="mb-1"><i class="fas fa-phone-alt text-primary mr-2"></i> (03563) 15410005</p>
-          <p class="mb-1">
-            <i class="fas fa-envelope text-primary mr-2"></i>
-            <a href="mailto:cabanaslaquinta@outlook.com.ar">cabanaslaquinta@outlook.com.ar</a>
-          </p>
-          <p class="mb-0">
-            <i class="fab fa-facebook text-primary mr-2"></i>
-            <a href="https://www.facebook.com/cabanaslaquintamiramar/" target="_blank" rel="noopener">/cabanaslaquintamiramar</a>
-          </p>
-        </div>
+    <!-- Hotel Miramar -->
+    <article class="lodging row no-gutters" data-name="Hotel Miramar">
+      <div class="col-lg-7"><a class="lodging-photo"><img src="img/Hotel-miramar.jpg.webp" alt="Hotel Miramar"></a></div>
+      <div class="col-lg-5 p-4">
+        <h3 class="lodging-title js-title">Hotel Miramar</h3>
+        <ul class="amenities"><li><i class="fas fa-car"></i></li><li><i class="fas fa-mug-hot"></i></li><li><i class="far fa-snowflake"></i></li><li><i class="fas fa-wifi"></i></li><li><i class="fas fa-tv"></i></li><li><i class="fas fa-credit-card"></i></li><li class="muted"><i class="fas fa-paw"></i></li><li><i class="fas fa-swimming-pool"></i></li></ul>
+        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Buenos Aires 200 <a class="map-link" target="_blank" href="#">(Ver en Google Maps)</a></div>
       </div>
     </article>
 
-    <article class="lodging row no-gutters mb-5" data-name="Camping Don Osvaldo">
-  <div class="col-lg-7">
-    <a class="lodging-photo" href="#" aria-label="Ver galería de Camping Don Osvaldo">
-      <img src="img/camping-don-osvaldo.jpg" class="img-fluid" alt="Camping Don Osvaldo">
-    </a>
-  </div>
-  <div class="col-lg-5 bg-white p-4 p-md-4 shadow-sm">
-    <h3 class="lodging-title mb-2 js-title">Camping Don Osvaldo</h3>
+    <!-- Alas del Sol -->
+    <article class="lodging row no-gutters" data-name="Alas del Sol">
+      <div class="col-lg-7"><a class="lodging-photo"><img src="img/1541597884_alas-del-sol.jpg.webp" alt="Alas del Sol"></a></div>
+      <div class="col-lg-5 p-4">
+        <h3 class="lodging-title js-title">Alas del Sol</h3>
+        <ul class="amenities"><li><i class="fas fa-car"></i></li><li><i class="far fa-snowflake"></i></li><li><i class="fas fa-wifi"></i></li><li><i class="fas fa-tv"></i></li><li><i class="fas fa-swimming-pool"></i></li><li><i class="fas fa-fire"></i></li><li class="muted"><i class="fas fa-paw"></i></li></ul>
+        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Patricias Argentinas 392 <a class="map-link" target="_blank" href="#">(Ver en Google Maps)</a></div>
+      </div>
+    </article>
 
-    <ul class="amenities mb-3">
-      <li title="No se admiten mascotas" class="muted"><i class="fas fa-paw"></i></li>
-      <li title="Estacionamiento"><i class="fas fa-car"></i></li>
-    </ul>
+    <!-- Costa Marina -->
+    <article class="lodging row no-gutters" data-name="Costa Marina">
+      <div class="col-lg-7"><a class="lodging-photo"><img src="img/WhatsApp-Image-2024-11-20-at-13.35.02.jpeg.webp" alt="Costa Marina"></a></div>
+      <div class="col-lg-5 p-4">
+        <h3 class="lodging-title js-title">Costa Marina</h3>
+        <ul class="amenities"><li><i class="fas fa-car"></i></li><li><i class="far fa-snowflake"></i></li><li><i class="fas fa-wifi"></i></li><li><i class="fas fa-tv"></i></li><li><i class="fas fa-swimming-pool"></i></li><li><i class="fas fa-fire"></i></li><li class="muted"><i class="fas fa-paw"></i></li></ul>
+        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Ruta Provincial N°3 <a class="map-link" target="_blank" href="#">(Ver en Google Maps)</a></div>
+      </div>
+    </article>
 
-    <div class="mb-3">
-      <h6 class="mb-1">Dirección:</h6>
-      <p class="mb-0">
-        <i class="fas fa-map-marker-alt text-primary mr-2"></i>
-        1 de Octubre s/n
-        <a class="ml-1 small link-map" target="_blank"
-           href="https://www.google.com/maps/place/Camping+Don+Osvaldo/@-30.924604,-62.682838,15z/data=!4m5!3m4!1s0x0:0x71ab9e631160ed0c!8m2!3d-30.9246044!4d-62.6828381?hl=es-US&coh=164777&entry=tt&shorturl=1">
-           (Ver en Google Maps)
-        </a>
-      </p>
-    </div>
-  </div>
-</article>
+    <!-- Camping Don Osvaldo -->
+    <article class="lodging row no-gutters" data-name="Camping Don Osvaldo">
+      <div class="col-lg-7"><a class="lodging-photo"><img src="img/camping-don-osvaldo.jpg" alt="Camping Don Osvaldo"></a></div>
+      <div class="col-lg-5 p-4">
+        <h3 class="lodging-title js-title">Camping Don Osvaldo</h3>
+        <ul class="amenities"><li><i class="fas fa-car"></i></li><li class="muted"><i class="fas fa-paw"></i></li></ul>
+        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> 1 de Octubre s/n <a class="map-link" target="_blank" href="#">(Ver en Google Maps)</a></div>
+      </div>
+    </article>
 
-    <!-- ITEM: Costa Marina -->
-   <!-- ITEM: Camping Los Sanavirones -->
-<article class="lodging row no-gutters mb-5" data-name="Camping Los Sanavirones">
-  <div class="col-lg-7">
-    <a class="lodging-photo" href="#" aria-label="Ver galería de Camping Los Sanavirones">
-      <img src="img/Screenshot-2023-01-25-at-3.54.44-PM.png" class="img-fluid" alt="Camping Los Sanavirones">
-    </a>
-  </div>
-  <div class="col-lg-5 bg-white p-4 p-md-4 shadow-sm">
-    <h3 class="lodging-title mb-2 js-title">Camping Los Sanavirones</h3>
+    <!-- Camping Los Sanavirones -->
+    <article class="lodging row no-gutters" data-name="Camping Los Sanavirones">
+      <div class="col-lg-7"><a class="lodging-photo"><img src="img/Screenshot-2023-01-25-at-3.54.44-PM.png" alt="Camping Los Sanavirones"></a></div>
+      <div class="col-lg-5 p-4">
+        <h3 class="lodging-title js-title">Camping Los Sanavirones</h3>
+        <ul class="amenities"><li class="muted"><i class="fas fa-paw"></i></li></ul>
+        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Sanavirones 250 <a class="map-link" target="_blank" href="#">(Ver en Google Maps)</a></div>
+      </div>
+    </article>
 
-    <ul class="amenities mb-3">
-      <li title="No se admiten mascotas" class="muted">
-        <i class="fas fa-paw" style="color:#e63946;"></i>
-      </li>
-      <!-- Agregá más íconos si corresponde, siguiendo el patrón:
-      <li title="Estacionamiento"><i class="fas fa-car"></i></li>
-      -->
-    </ul>
+    <!-- El Mistolar -->
+    <article class="lodging row no-gutters" data-name="El Mistolar">
+      <div class="col-lg-7"><a class="lodging-photo"><img src="img/el-mistolar-cabanas.jpg.webp" alt="El Mistolar"></a></div>
+      <div class="col-lg-5 p-4">
+        <h3 class="lodging-title js-title">El Mistolar</h3>
+        <ul class="amenities"><li><i class="fas fa-car"></i></li><li><i class="fas fa-mug-hot"></i></li><li><i class="far fa-snowflake"></i></li><li><i class="fas fa-wifi"></i></li><li><i class="fas fa-tv"></i></li><li><i class="fas fa-credit-card"></i></li><li><i class="fas fa-swimming-pool"></i></li><li class="muted"><i class="fas fa-paw"></i></li></ul>
+        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Buenos Aires 198 <a class="map-link" target="_blank" href="#">(Ver en Google Maps)</a></div>
+      </div>
+    </article>
 
-    <div class="mb-3">
-      <h6 class="mb-1">Dirección:</h6>
-      <p class="mb-0">
-        <i class="fas fa-map-marker-alt text-primary mr-2"></i>
-        Sanavirones 250
-        <a class="ml-1 small link-map" target="_blank"
-           href="https://www.google.com/maps/place/Camping+Los+Sanavirones/@-30.9039987,-62.6673627,15z/data=!4m8!3m7!1s0x0:0x1b4c619a5521b4dd!5m2!4m1!1i2!8m2!3d-30.9039987!4d-62.6673627?coh=164777&entry=tt&shorturl=1">
-          (Ver en Google Maps)
-        </a>
-      </p>
-    </div>
+    <!-- La Aldea -->
+    <article class="lodging row no-gutters" data-name="La Aldea">
+      <div class="col-lg-7"><a class="lodging-photo"><img src="img/la-aldea.jpg.webp" alt="La Aldea"></a></div>
+      <div class="col-lg-5 p-4">
+        <h3 class="lodging-title js-title">La Aldea</h3>
+        <ul class="amenities"><li><i class="fas fa-car"></i></li><li><i class="fas fa-mug-hot"></i></li><li><i class="far fa-snowflake"></i></li><li><i class="fas fa-wifi"></i></li><li><i class="fas fa-tv"></i></li><li><i class="fas fa-fire"></i></li><li><i class="fas fa-swimming-pool"></i></li><li class="muted"><i class="fas fa-paw"></i></li></ul>
+        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Córdoba 06 <a class="map-link" target="_blank" href="#">(Ver en Google Maps)</a></div>
+      </div>
+    </article>
 
-    <!-- Si luego tenés teléfonos / email / redes, podés agregarlos aquí
-    <div>
-      <h6 class="mb-2">Consultas y Reservas:</h6>
-      <p class="mb-1"><i class="fas fa-phone-alt text-primary mr-2"></i> </p>
-      <p class="mb-1">
-        <i class="fas fa-envelope text-primary mr-2"></i>
-        <a href="mailto:"></a>
-      </p>
-    </div>
-    -->
-  </div>
-</article>
+    <!-- Lo de Nina -->
+    <article class="lodging row no-gutters" data-name="Lo de Nina">
+      <div class="col-lg-7"><a class="lodging-photo"><img src="img/WhatsApp-Image-2024-02-01-at-14.22.22.jpeg.webp" alt="Lo de Nina"></a></div>
+      <div class="col-lg-5 p-4">
+        <h3 class="lodging-title js-title">Lo de Nina</h3>
+        <ul class="amenities"><li><i class="fas fa-car"></i></li><li><i class="far fa-snowflake"></i></li><li><i class="fas fa-wifi"></i></li><li><i class="fas fa-tv"></i></li><li><i class="fas fa-swimming-pool"></i></li><li class="muted"><i class="fas fa-paw"></i></li></ul>
+        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Ruta N°5 <a class="map-link" target="_blank" href="#">(Ver en Google Maps)</a></div>
+      </div>
+    </article>
 
+    <!-- Gina -->
+    <article class="lodging row no-gutters" data-name="Gina">
+      <div class="col-lg-7"><a class="lodging-photo"><img src="img/WhatsApp-Image-2023-12-13-at-17.31.43.jpeg.webp" alt="Gina"></a></div>
+      <div class="col-lg-5 p-4">
+        <h3 class="lodging-title js-title">Gina</h3>
+        <ul class="amenities"><li><i class="fas fa-car"></i></li><li><i class="far fa-snowflake"></i></li><li><i class="fas fa-wifi"></i></li><li><i class="fas fa-tv"></i></li><li><i class="fas fa-swimming-pool"></i></li><li class="muted"><i class="fas fa-paw"></i></li></ul>
+        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Ruta N°9 <a class="map-link" target="_blank" href="#">(Ver en Google Maps)</a></div>
+      </div>
+    </article>
 
   </section>
 
-  <!-- PAGINACIÓN -->
-  <div class="pagination-wrapper" id="pagination"></div>
-
   <!-- Footer -->
-  <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+  <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5">
     <div class="row pt-4">
       <div class="col-lg-4 col-md-6 mb-4">
-        <a href="index.html" class="navbar-brand d-inline-flex align-items-center mb-2">
-          <img src="img/logo-miramar@2x.png" alt="Miramar de Ansenuza" style="height:34px;width:auto;">
-        </a>
-        <p class="mt-2">Miramar de Ansenuza, puerta del Parque y Reserva Nacional Ansenuza. Atardeceres únicos, avistaje de aves y la laguna salada más grande de Sudamérica.</p>
-        <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 4px;">Seguinos</h6>
-        <div class="d-flex">
-          <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/turismomiramardeansenuza/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/miramardeansenuza/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
+        <img src="img/logo-miramar@2x.png" alt="Miramar de Ansenuza" style="height:34px;width:auto;">
+        <p class="mt-2">Miramar de Ansenuza, puerta del Parque Nacional Ansenuza.</p>
       </div>
-
       <div class="col-lg-4 col-md-6 mb-4">
-        <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Navegación</h5>
-        <div class="d-flex flex-column">
-          <a class="text-white-50 mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-          <a class="text-white-50 mb-2" href="service.html"><i class="fa fa-angle-right mr-2"></i>Servicios</a>
-          <a class="text-white-50 mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Acerca de</a>
-          <a class="text-white-50 mb-2" href="package.html"><i class="fa fa-angle-right mr-2"></i>Alojamientos</a>
-          <a class="text-white-50" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
-        </div>
+        <h5 class="text-white">Navegación</h5>
+        <a href="index.html" class="text-white-50 d-block">Inicio</a>
+        <a href="service.html" class="text-white-50 d-block">Servicios</a>
+        <a href="package.html" class="text-white-50 d-block">Alojamientos</a>
       </div>
-
       <div class="col-lg-4 col-md-6 mb-4">
-        <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Contacto</h5>
-        <p><i class="fa fa-map-marker-alt mr-2"></i>DIRECCIÓN OFICINA DE TURISMO (General Paz 465, Miramar Córdoba.)</p>
+        <h5 class="text-white">Contacto</h5>
         <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
-        <p><i class="fa fa-envelope mr-2"></i> oficinadeturismo2@gmail.com <br> infomiramarcba@gmail.com </p>
-        <div class="mt-3">
-          <a class="btn btn-success btn-block" href="https://wa.me/5493563409731" target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp mr-2"></i>Escribinos por WhatsApp
-          </a>
-          <small class="d-block mt-2 text-muted">Horario de atención: Lunes a Viernes 08:00–13:00</small>
-        </div>
+        <p><i class="fa fa-envelope mr-2"></i>oficinadeturismo2@gmail.com</p>
       </div>
     </div>
   </div>
 
-  <div class="container-fluid bg-dark text-white border-top py-3 px-sm-3 px-md-5" style="border-color: rgba(255,255,255,.08) !important;">
-    <div class="row">
-      <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
-        <small class="m-0 text-white-50">© <span id="year"></span> Municipalidad de Miramar de Ansenuza. Todos los derechos reservados.</small>
-      </div>
-      <div class="col-md-6 text-center text-md-right">
-        <small class="m-0 text-white-50">Sitio oficial de Turismo</small>
-      </div>
-    </div>
-  </div>
-
-  <!-- Back to Top -->
-  <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-  <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/tempusdominus/js/moment.min.js"></script>
-  <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-  <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-  <script src="mail/jqBootstrapValidation.min.js"></script>
-  <script src="mail/contact.js"></script>
-
-  <!-- ====== BUSCADOR (filtrado por nombre) ====== -->
+  <!-- JS Buscador -->
   <script>
     (function(){
-      const $input  = document.getElementById('search-cabanas');
-      const $clear  = document.getElementById('clear-search');
-      const $noRes  = document.getElementById('no-results');
-      const $countV = document.getElementById('count-visible');
-      const $countT = document.getElementById('count-total');
-      const cards   = Array.from(document.querySelectorAll('article.lodging'));
-      const titles  = cards.map(c => c.querySelector('.js-title'));
-
-      $countT.textContent = cards.length;
-
-      const norm = (s='') => s.toString()
-        .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-        .replace(/\s+/g,' ').trim().toLowerCase();
-
-      function clearHighlights(){ titles.forEach(t => { t.innerHTML = t.textContent; }); }
-
-      function highlight(titleEl, q){
-        if(!q) return;
-        const txt = titleEl.textContent;
-        const idx = norm(txt).indexOf(norm(q));
-        if(idx === -1) return;
-        const start = txt.slice(0, idx);
-        const mid   = txt.slice(idx, idx + q.length);
-        const end   = txt.slice(idx + q.length);
-        titleEl.innerHTML = `${start}<mark class="search-hit">${mid}</mark>${end}`;
-      }
-
-      let to = null;
+      const $input=document.getElementById('search-cabanas');
+      const $clear=document.getElementById('clear-search');
+      const $noRes=document.getElementById('no-results');
+      const $countV=document.getElementById('count-visible');
+      const $countT=document.getElementById('count-total');
+      const cards=Array.from(document.querySelectorAll('article.lodging'));
+      const titles=cards.map(c=>c.querySelector('.js-title'));
+      $countT.textContent=cards.length;
+      function norm(s=''){return s.toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
       function applyFilter(){
-        const q = norm($input.value);   
-        let visibles = 0;
-        clearHighlights();
-
-        cards.forEach(card => {
-          const nameAttr = norm(card.getAttribute('data-name') || '');
-          const titleEl  = card.querySelector('.js-title');
-          const titleTxt = norm(titleEl ? titleEl.textContent : '');
-
-          const match = !q || nameAttr.includes(q) || titleTxt.includes(q);
-          card.style.display = match ? '' : 'none';
-          if(match){ visibles++; highlight(titleEl, $input.value); }
+        const q=norm($input.value);let visibles=0;
+        cards.forEach(card=>{
+          const titleEl=card.querySelector('.js-title');
+          const match=!q||norm(card.dataset.name).includes(q)||norm(titleEl.textContent).includes(q);
+          card.style.display=match?'':'none';if(match)visibles++;
         });
-
-        $countV.textContent = visibles;
-        $noRes.style.display = (visibles === 0) ? 'block' : 'none';
+        $countV.textContent=visibles;
+        $noRes.style.display=visibles===0?'block':'none';
       }
-
-      function debouncedFilter(){ clearTimeout(to); to = setTimeout(applyFilter, 120); }
-
-      $input.addEventListener('input', debouncedFilter);
-      $clear.addEventListener('click', () => { $input.value = ''; $input.focus(); applyFilter(); });
-
+      $input.addEventListener('input',applyFilter);
+      $clear.addEventListener('click',()=>{$input.value='';applyFilter();});
       applyFilter();
     })();
   </script>
-
-  <script src="js/main.js"></script>
 </body>
 </html>
