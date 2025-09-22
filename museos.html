@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>TRAVELER - Free Travel Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<style>
+    .navbar .navbar-brand .logo-miramar{ height:40px; width:auto; display:block; }
+    @media (min-width: 992px){ .navbar .navbar-brand .logo-miramar{ height:48px; } }
+
+    /* Header / Hero */
+    .page-header-ansenuza{
+      position:relative; color:#fff;
+      background-position:center; background-size:cover; background-repeat:no-repeat;
+      min-height: 380px;
+    }
+    .page-header-ansenuza::after{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.45));
+      pointer-events:none;
+    }
+    .page-header-ansenuza .hero-wrap{
+      position:relative; z-index:2; min-height:380px; padding:60px 0; text-align:center;
+    }
+    .hero-kicker{
+      display:inline-block; background:#eaf0ff; color:#1e3a6d; font-weight:600;
+      padding:.35rem .75rem; border-radius:999px; margin-bottom:10px; letter-spacing:.08em;
+    }
+    .hero-title{ font-weight:700; margin:0 0 .5rem; }
+    .hero-accent{ background:linear-gradient(90deg,#fff, #dbeafe); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .hero-subtitle{ margin:0 0 12px; font-size:1.05rem; }
+
+    /* Grid + Cards */
+    #gastro-grid{ row-gap: 1.5rem; }
+    .gastro-card{
+      display:flex; flex-direction:column;
+      transition:transform .2s ease, box-shadow .2s ease;
+      will-change: transform;
+      contain: content;
+      min-height: 420px;
+    }
+    .gastro-card:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.08); }
+    .hr-soft{ border:0; border-top:1px solid #eef2f7; }
+
+    /* Imagen estable (evita “temblores”) */
+    .gastro-thumb{
+      width:100%;
+      aspect-ratio:16/9;
+      object-fit:cover;
+      display:block;
+      background:#f3f4f6;
+    }
+
+    /* Filtros */
+    .gastro-filter{ white-space:nowrap; }
+    .gastro-filter.active{ pointer-events:none; }
+    .filters-wrap{ min-height: 48px; }
+
+    /* Paginación */
+    #gastro-pager .page-item.disabled .page-link{ pointer-events:none; }
+    #gastro-pager .page-link{ cursor:pointer; }
+  </style>
+</head>
+
+<body>
+  <!-- Topbar -->
+  <div class="container-fluid bg-light pt-3 d-none d-lg-block">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+          <div class="d-inline-flex align-items-center">
+            <p><i class="fa fa-envelope mr-2"></i>oficinadeturismo2@gmail.com</p>
+            <p class="text-body px-3">|</p>
+            <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
+          <div class="d-inline-flex align-items-center">
+            <a class="text-primary px-3" href="https://www.facebook.com/turismomiramardeansenuza/" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a class="text-primary px-3" href="https://www.instagram.com/miramardeansenuza/" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Topbar -->
+
+  <!-- Navbar -->
+  <div class="container-fluid position-relative nav-bar p-0">
+    <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+      <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+        <a href="index.html" class="navbar-brand d-flex align-items-center">
+          <img src="img/logo-miramar.png" srcset="img/logo-miramar@2x.png 2x" alt="Miramar de Ansenuza" class="logo-miramar">
+          <span class="sr-only">Miramar de Ansenuza</span>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+          <div class="navbar-nav ml-auto py-0">
+            <a href="index.html" class="nav-item nav-link">Inicio</a>
+            <a href="service.html" class="nav-item nav-link">Acerca de</a>
+            <a href="museos.html" class="nav-item nav-link active">Museos</a> 
+             <a href="contact.html" class="nav-item nav-link">Contacto</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- /Navbar -->
+
+  <!-- Header -->
+  <header class="page-header-ansenuza" style="background-image:url('img/flamencos.jpg');">
+    <div class="container">
+      <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
+        <span class="hero-kicker">Museos</span>
+        <h1 class="hero-title"><span class="hero-accent">Un viaje por nuestro patrimonio</span></h1>
+        <p class="hero-subtitle">Recorre nuestra historia</p>
+        <nav aria-label="breadcrumb" class="hero-breadcrumb">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Museos</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== ESTILOS DE LA SECCIÓN MUSEOS (inline; podés mover a css/style.css) ====== -->
+<style>
+/* Cards minimalistas: foto + título + tag */
+.museo-card-min{
+  position: relative; border:0; border-radius:18px; overflow:hidden;
+  box-shadow:0 14px 28px rgba(0,0,0,.08); cursor:pointer;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.museo-card-min:hover{ transform: translateY(-4px); box-shadow:0 18px 34px rgba(0,0,0,.12); }
+.museo-cover{ width:100%; height:240px; object-fit:cover; display:block; }
+
+/* Overlay inferior con degradado */
+.museo-overlay{
+  position:absolute; inset:0; display:flex; align-items:flex-end;
+  padding:14px; background:linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.55) 100%);
+}
+.museo-chip{
+  display:inline-block; font-size:.75rem; background:#f3f6ff; color:#1e3a6d;
+  padding:.25rem .55rem; border-radius:999px; font-weight:700; margin-bottom:6px;
+}
+.museo-title-min{
+  color:#fff; font-weight:800; margin:0; font-size:1.05rem; line-height:1.2; text-shadow:0 2px 8px rgba(0,0,0,.35);
+}
+.museo-overlay .info{
+  margin-top:auto; /* mantiene el contenido abajo */
+}
+
+/* Para que toda la tarjeta sea clickeable */
+.museo-card-min .stretched-link{ position:absolute; inset:0; }
+
+/* ====== Modales estilo “placa/folleto” ====== */
+.museo-modal .modal-content{ border:0; border-radius:18px; overflow:hidden; }
+.museo-modal .modal-header{ background:#1e3a6d; color:#fff; border:0; }
+.museo-modal .modal-title{ font-weight:800; }
+.museo-modal .modal-body{ padding:0; background:#f5f7fb; }
+
+.placa{ background:#fff; margin:18px; border-radius:14px; box-shadow:0 8px 24px rgba(0,0,0,.08); overflow:hidden; }
+.placa .placa-inner{ padding:26px 26px 0 26px; }
+.placa h2{ font-weight:800; color:#1e3a6d; margin:0 0 .25rem; font-size:clamp(1.6rem, 2.4vw, 2.2rem); letter-spacing:.02em; }
+.placa .sub{ color:#6a7a95; font-weight:600; margin-bottom:14px; text-transform:uppercase; letter-spacing:.05em; }
+.placa p{ color:#394355; line-height:1.6; margin-bottom:1rem; }
+.placa h3{ color:#1e3a6d; font-weight:800; font-size:1.2rem; letter-spacing:.03em; margin:10px 0 12px; }
+
+.placa .cols{ display:flex; gap:18px; }
+.placa .col-left{ flex:0 0 42%; }
+.placa .col-right{ flex:1; }
+
+.placa .bullets{ list-style:none; padding:0; margin:0; }
+.placa .bullets li{ margin-bottom:.5rem; }
+.placa .bullets i{ color:#1e3a6d; margin-right:.4rem; }
+
+/* Foto inferior con degradado */
+.placa .placa-photo{ position:relative; height:220px; overflow:hidden; margin-top:10px; }
+.placa .placa-photo img{ width:100%; height:100%; object-fit:cover; }
+.placa .placa-photo::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.75) 55%, #fff 100%);
+}
+
+/* Responsive */
+@media (max-width: 768px){
+  .placa .cols{ flex-direction:column; }
+  .placa .col-left{ flex:1 1 auto; }
+}
+</style>
+
+<!-- ===== Museos Start (solo NOMBRE + TAG en las cards) ===== -->
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 text-center">
+      <h2 class="mb-3" style="color:#1e3a6d; font-weight:800;">Los testimonios materiales y espirituales</h2>
+      <p class="lead mb-2" style="color:#2b2b2b;">
+        Ocupan un lugar de privilegio en la historia y en el presente de <strong>Miramar de Ansenuza</strong>.
+      </p>
+      <div style="width:120px;height:4px;background:#ff8a00;border-radius:999px;margin:14px auto 24px;"></div>
+      <p class="mb-5">
+        Recorre este pequeño circuito y abrí cada museo para ver horarios, ubicación y contactos.
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Gran Hotel Viena -->
+    <div class="col-sm-6 col-lg-3 mb-4">
+      <div class="museo-card-min" data-toggle="modal" data-target="#modalViena">
+        <img src="img/museo1 viena.jpg" class="museo-cover" alt="Gran Hotel Viena">
+        <div class="museo-overlay">
+          <div class="info">
+            <div class="museo-chip">Patrimonio Histórico</div>
+            <h5 class="museo-title-min">Gran Hotel Viena</h5>
+          </div>
+        </div>
+        <a class="stretched-link" aria-label="Abrir Gran Hotel Viena"></a>
+      </div>
+    </div>
+
+    <!-- Museo de Ciencias Naturales -->
+    <div class="col-sm-6 col-lg-3 mb-4">
+      <div class="museo-card-min" data-toggle="modal" data-target="#modalCiencias">
+        <img src="img/museo de ciencias 1.jpg" class="museo-cover" alt="Museo de Ciencias Naturales">
+        <div class="museo-overlay">
+          <div class="info">
+            <div class="museo-chip">Fauna & Laguna</div>
+            <h5 class="museo-title-min">Museo de Ciencias Naturales</h5>
+          </div>
+        </div>
+        <a class="stretched-link" aria-label="Abrir Museo de Ciencias Naturales"></a>
+      </div>
+    </div>
+
+    <!-- Museo Fotográfico -->
+    <div class="col-sm-6 col-lg-3 mb-4">
+      <div class="museo-card-min" data-toggle="modal" data-target="#modalFoto">
+        <img src="img/fotografico 1.jpg" class="museo-cover" alt="Museo Fotográfico">
+        <div class="museo-overlay">
+          <div class="info">
+            <div class="museo-chip">Memoria Visual</div>
+            <h5 class="museo-title-min">Museo Fotográfico</h5>
+          </div>
+        </div>
+        <a class="stretched-link" aria-label="Abrir Museo Fotográfico"></a>
+      </div>
+    </div>
+
+    <!-- Capilla San Antonio (Patrimonio Cultural) -->
+    <div class="col-sm-6 col-lg-3 mb-4">
+      <div class="museo-card-min" data-toggle="modal" data-target="#modalIglesia">
+        <img src="img/capilla 2.jpg" class="museo-cover" alt="Capilla San Antonio">
+        <div class="museo-overlay">
+          <div class="info">
+            <div class="museo-chip">Patrimonio Cultural</div>
+            <h5 class="museo-title-min">Capilla San Antonio</h5>
+          </div>
+        </div>
+        <a class="stretched-link" aria-label="Abrir Capilla San Antonio"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="text-center mt-3">
+    <a href="https://maps.google.com" target="_blank" class="btn btn-outline-primary px-4">
+      <i class="fa fa-map-marker-alt mr-2"></i> Ver mapa de museos
+    </a>
+  </div>
+</div>
+<!-- Museos End -->
+
+<!-- ===== Modales (con toda la info) ===== -->
+
+<!-- Gran Hotel Viena -->
+<div class="modal fade museo-modal" id="modalViena" tabindex="-1" role="dialog" aria-labelledby="vienaTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="vienaTitle" class="modal-title">Gran Hotel Viena</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="placa">
+          <div class="placa-inner">
+            <h2>GRAN HOTEL <br>VIENA</h2>
+            <div class="sub">Patrimonio Histórico Municipal</div>
+
+            <p>Quizás mucho se ha hablado o escrito sobre la historia de este Gran Hotel, de una manera u otra se relacionan con la Segunda Guerra Mundial y post guerra. Construido en la década del 40, exponente único de la arquitectura racionalista alemana en la región, atrae miradas de turistas, estudiosos y científicos del mundo.</p>
+
+            <h3>Misterios y Leyendas</h3>
+            <p><strong>¡Animate a recorrerlo y descubrir un lugar impresionante!</strong> Las visitas guiadas son de una hora de duración y comienzan puntualmente.</p>
+            <ul class="bullets">
+              <li><i class="fa fa-map-marker-alt"></i>Calle Liniers s/n – Asociación Civil Amigos del Gran Hotel Viena</li>
+              <li><i class="fa fa-phone"></i>Cel: (03563) 15414731</li>
+              <li><i class="fa fa-envelope"></i>granviena@hotmail.com</li>
+              <li><i class="fa fa-clock"></i>Horarios: varían según temporada</li>
+            </ul>
+          </div>
+
+          <!-- Imagen inferior única (igual que los otros modales) -->
+          <div class="placa-photo">
+            <!-- Asegurate que el nombre del archivo exista; podés usar .jpg/.webp/.avif -->
+            <img src="img/viena 5.jpg" alt="Gran Hotel Viena">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Museo de Ciencias Naturales -->
+<div class="modal fade museo-modal" id="modalCiencias" tabindex="-1" role="dialog" aria-labelledby="cienciasTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="cienciasTitle" class="modal-title">Museo de Ciencias Naturales</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="placa">
+          <div class="placa-inner">
+            <h2>MUSEO DE CIENCIAS <br>NATURALES</h2>
+            <div class="sub">ANÍBAL MONTES</div>
+
+            <div class="row">
+              <div class="col-12 mb-3">
+                <h3>Sala 1</h3>
+                <p>Documentario histórico, publicaciones del museo, cartografía cronológica, fotos satelitales y registro sedimentario de la laguna.</p>
+              </div>
+              <div class="col-12 mb-3">
+                <h3>Sala 2</h3>
+                <p>Aportes de científicos; Mapa geológico Dr. Luis Brackebush (1891) Mar Chiquita.</p>
+              </div>
+              <div class="col-12 mb-3">
+                <h3>Sala 3</h3>
+                <p>Paleontología de Ansenuza, antropología, arqueología, geología regional; archivo histórico; relieve de la laguna.</p>
+              </div>
+              <div class="col-12 mb-2">
+                <h3>Sala 4</h3>
+                <p>En honor a Darío Izurieta. Ornitología, herpetología, entomología, geohídrica y audiovisuales con cantos y características de cada especie.</p>
+              </div>
+            </div>
+          </div>
+          <div class="placa-photo">
+            <img src="img/museo de ciencias 2.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Museo Fotográfico -->
+<div class="modal fade museo-modal" id="modalFoto" tabindex="-1" role="dialog" aria-labelledby="fotoTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="fotoTitle" class="modal-title">Museo Fotográfico</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="placa">
+          <div class="placa-inner">
+            <h2>FOTOGRÁFICO</h2>
+            <div class="sub">DANTE MARCHETTI</div>
+
+            <p>Conocer el pasado para comprender este presente. El museo invita a viajar por la historia del pueblo a través de videos, fotografías, charlas y audiovisuales que ayudan a entender el origen de una de las primeras localidades turísticas de Córdoba.</p>
+
+            <h3>Horarios de atención</h3>
+            <div class="row">
+              <div class="col-6"><strong>Mañana</strong><br><span class="text-muted">Todos los días</span></div>
+              <div class="col-6"><strong>Tarde</strong><br><span class="text-muted">Todos los días</span></div>
+            </div>
+
+            <h3 class="mt-3">Charla audiovisual</h3>
+            <ul class="bullets">
+              <li><i class="fa fa-phone"></i>Tel: 03563 – 493078</li>
+              <li><i class="fa fa-envelope"></i>cooppmir@redcoop.com.ar</li>
+              <li><i class="fa fa-home"></i>Domicilio: Libertad 175</li>
+            </ul>
+          </div>
+          <div class="placa-photo">
+            <img src="img/fotografico 2.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Capilla San Antonio (Patrimonio Cultural) -->
+<div class="modal fade museo-modal" id="modalIglesia" tabindex="-1" role="dialog" aria-labelledby="iglesiaTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="iglesiaTitle" class="modal-title">Capilla San Antonio</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="placa">
+          <div class="placa-inner">
+            <h2>CAPILLA <br>SAN ANTONIO</h2>
+            <div class="sub">Primera capilla croata de Córdoba</div>
+
+            <h3>Horarios de visita</h3>
+            <div class="row">
+              <div class="col-md-6 mb-2">
+                <strong>Sábado y Domingo:</strong><br>
+                15:00 hs a 18:30 hs
+              </div>
+              <div class="col-md-6 mb-2">
+                <strong>Charlas narrativas:</strong><br>
+                15:30 hs y 17:00 hs
+              </div>
+            </div>
+
+            <h3 class="mt-3">Horarios de misa</h3>
+            <p><strong>Domingo 12 hs</strong></p>
+          </div>
+          <div class="placa-photo">
+            <img src="img/capilla 3.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ===== Fin Modales ===== -->
+
+<!-- ===== Fin Modales ===== -->
+    <!-- Footer Start (limpio y en español) -->
+<div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+  <div class="row pt-4">
+    <!-- Col 1: Logo + breve -->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <a href="index.html" class="navbar-brand d-inline-flex align-items-center mb-2">
+        <img src="img/logo-miramar@2x.png" alt="Miramar de Ansenuza" style="height:34px;width:auto;">
+      </a>
+      <p class="mt-2">
+        Miramar de Ansenuza, puerta del Parque y Reserva Nacional Ansenuza. 
+        Atardeceres únicos, avistaje de aves y la laguna salada más grande de Sudamérica.
+      </p>
+      <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 4px;">Seguinos</h6>
+      <div class="d-flex">
+        <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/turismomiramardeansenuza/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/miramardeansenuza/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+
+    <!-- Col 2: Navegación esencial -->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Navegación</h5>
+      <div class="d-flex flex-column">
+        <a class="text-white-50 mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+        <a class="text-white-50 mb-2" href="service.html"><i class="fa fa-angle-right mr-2"></i>Servicios</a>
+        <a class="text-white-50 mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Acerca de</a>
+        <a class="text-white-50 mb-2" href="package.html"><i class="fa fa-angle-right mr-2"></i>Alojamientos</a>
+        <a class="text-white-50" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
+      </div>
+    </div>
+
+    <!-- Col 3: Contacto + CTA -->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Contacto</h5>
+      <p><i class="fa fa-map-marker-alt mr-2"></i>DIRECCIÓN OFICINA DE TURISMO (General Paz 465, Miramar Córdoba.)</p>
+      <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
+      <p><i class="fa fa-envelope mr-2"></i> oficinadeturismo2@gmail.com <br> infomiramarcba@gmail.com </p>
+
+      <!-- CTA WhatsApp (mejor que newsletter) -->
+      <div class="mt-3">
+        <a class="btn btn-success btn-block"
+           href="https://wa.me/5493563409731" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp mr-2"></i>Escribinos por WhatsApp
+        </a>
+        <small class="d-block mt-2 text-muted">
+          Horario de atención: Lunes a Viernes 08:00–13:00
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid bg-dark text-white border-top py-3 px-sm-3 px-md-5" style="border-color: rgba(255,255,255,.08) !important;">
+  <div class="row">
+    <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
+      <small class="m-0 text-white-50">© <span id="year"></span> Municipalidad de Miramar de Ansenuza. Todos los derechos reservados.</small>
+    </div>
+    <div class="col-md-6 text-center text-md-right">
+      <small class="m-0 text-white-50">Sitio oficial de Turismo</small>
+    </div>
+  </div>
+</div>
+<!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
