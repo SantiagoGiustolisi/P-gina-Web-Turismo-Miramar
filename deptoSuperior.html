@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Miramar de Ansenuza – Hoteles</title>
+  <title>Miramar de Ansenuza – Deptos Superiores</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
   <!-- Favicon -->
@@ -22,42 +22,58 @@
   <!-- Template CSS -->
   <link href="css/style.css" rel="stylesheet" />
 
-  <!-- ====== ESTILOS PROPIOS ====== -->
+  <!-- ====== ESTILOS PROPIOS (clonado del estilo de “campings”) ====== -->
   <style>
-    .lodging{border:1px solid #eef2f5;border-radius:12px;overflow:hidden;background:#fff}
-    .lodging + .lodging{margin-top:2rem}
-    .lodging-title{font-size:1.35rem;color:#123055;font-weight:700}
-    .lodging-photo{position:relative;display:block;width:100%;height:300px;overflow:hidden}
-    .lodging-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-    .amenities{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap}
-    .amenities li{margin:.25rem .6rem .25rem 0;font-size:1.05rem;color:#123055}
-    .amenities li.muted{color:#c0392b}
-    .link-map{color:#e05c74;text-decoration:none}
-    .link-map:hover{text-decoration:underline}
-
-    /* Caja de CATEGORÍAS (la blanca de arriba) */
-    .filters-box{background:#fff; box-shadow:0 10px 26px rgba(0,0,0,.10); padding:22px; border-radius:8px;}
-    .filters-box .nav-link{color:black; display:inline-block; transition:transform .18s ease, color .18s ease;}
-    .filters-box .nav-link:hover{transform:scale(1.06); color:#6bb8ff}
-
-    /* BUSCADOR FLOTANTE (fuera del recuadro blanco) */
-    .search-standalone{ margin-top:18px; } /* <— separación clara del recuadro blanco */
-    .search-card{
-      background:#fff; border:1px solid #e6eaf0; border-radius:12px;
-      padding:12px 16px; box-shadow:0 8px 22px rgba(0,0,0,.08);
+    :root{
+      --azul:#0d2b57;         /* texto y amenities */
+      --rosa:#e05c74;         /* links “Ver en Google Maps” */
+      --verde:#2ecc71;        /* íconos de contacto/ubicación */
+      --gris:#6c7a89;
+      --borde:#e9eef4;
+      --card-shadow:0 10px 26px rgba(0,0,0,.08);
+      --radius:14px;
     }
-    .search-wrap{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
-    .search-input{flex:1 1 260px;border:1px solid #dfe5ea;border-radius:10px;padding:.65rem .85rem;outline:none;font-size:.95rem}
-    .search-input:focus{border-color:#79a9ff;box-shadow:0 0 0 3px rgba(56,132,255,.12)}
-    .btn-clear{border:1px solid #dfe5ea;background:#fff;border-radius:10px;padding:.55rem .9rem;cursor:pointer}
-    .search-meta{font-size:.9rem;color:#48607a}
-    mark.search-hit{background:#fff3bf;padding:0 .15rem;border-radius:4px}
 
-    /* mensaje sin resultados */
-    .no-results{display:none;text-align:center;color:#4a5a6a;border:1px dashed #d9e2ec;border-radius:12px;padding:1.25rem;background:#fbfdff;margin-top:16px}
+    /* Cards tipo listado (imagen grande a la izquierda) */
+    .lodging{background:#fff; border:1px solid var(--borde); border-radius:var(--radius); overflow:hidden; box-shadow:var(--card-shadow);}
+    .lodging + .lodging{margin-top:28px;}
+    .lodging-photo{position:relative; display:block; width:100%; height:380px; overflow:hidden;}
+    .lodging-photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s ease;}
+    .lodging-photo:hover img{transform:scale(1.03);}
+    .lodging-title{font-weight:700; font-size:1.7rem; color:var(--azul); margin:0 0 .35rem;}
 
-    @media (max-width: 991.98px){ .lodging-photo{height:220px} }
-    @media (min-width: 1200px){ .lodging-photo{height:360px} }
+    /* Amenities (azules, con pata roja si es “no pets”) */
+    .amenities{list-style:none; padding:0; margin:0 0 .75rem; display:flex; flex-wrap:wrap; gap:.55rem .75rem; color:var(--azul); font-size:1.05rem;}
+    .amenities i{font-size:1.05rem; vertical-align:middle;}
+    .amenities .muted{color:#e63946;}
+
+    /* Bloques de info a la derecha */
+    .info-block{padding:20px 26px;}
+    .lbl{font-weight:600; color:var(--azul); margin:.35rem 0;}
+    .addr{color:var(--azul);}
+    .addr i{color:var(--verde); margin-right:.45rem;}          /* Pin verde */
+    .map-link{color:var(--rosa); text-decoration:none; margin-left:.25rem;}
+    .map-link:hover{text-decoration:underline;}
+
+    /* Caja de CATEGORÍAS (la blanca superior) */
+    .filters-box{background:#fff; box-shadow:var(--card-shadow); padding:20px; border-radius:12px;}
+    .filters-box .nav-link{color:#000; display:inline-block; transition:transform .18s ease, color .18s ease;}
+    .filters-box .nav-link:hover{transform:scale(1.05); color:#6bb8ff}
+
+    /* BUSCADOR standalone + contador “Mostrando X de Y” */
+    .search-standalone{margin-top:18px;}
+    .search-card{background:#fff; border:1px solid #e6eaf0; border-radius:12px; padding:12px 16px; box-shadow:0 8px 22px rgba(0,0,0,.08);}
+    .search-wrap{display:flex; gap:.5rem; align-items:center; flex-wrap:wrap;}
+    .search-input{flex:1 1 320px; border:1px solid #dfe5ea; border-radius:10px; padding:.65rem .85rem; outline:none; font-size:.95rem;}
+    .search-input:focus{border-color:#79a9ff; box-shadow:0 0 0 3px rgba(56,132,255,.12)}
+    .btn-clear{border:1px solid #dfe5ea; background:#fff; border-radius:10px; padding:.55rem .9rem; cursor:pointer}
+    .search-meta{font-size:.9rem; color:#48607a}
+    mark.search-hit{background:#fff3bf; padding:0 .15rem; border-radius:4px}
+
+    /* Mensaje sin resultados */
+    .no-results{display:none; text-align:center; color:#4a5a6a; border:1px dashed #d9e2ec; border-radius:12px; padding:1.25rem; background:#fbfdff; margin-top:16px}
+
+    @media (max-width: 991.98px){ .lodging-photo{height:240px} }
   </style>
 </head>
 
@@ -111,32 +127,32 @@
     <div class="container">
       <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
         <span class="hero-kicker">Oficina de Turismo</span>
-        <h1 class="hero-title"><span class="hero-accent">Hoteles</span></h1>
+        <h1 class="hero-title"><span class="hero-accent">Deptos Superiores</span></h1>
         <p class="hero-subtitle">Estamos para ayudarte</p>
         <nav aria-label="breadcrumb" class="hero-breadcrumb">
           <ol class="breadcrumb justify-content-center">
             <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Hoteles</li>
+            <li class="breadcrumb-item active" aria-current="page">Deptos Superiores</li>
           </ol>
         </nav>
       </div>
     </div>
   </header>
 
-  <!-- ===== LISTADO: CABAÑAS ===== -->
-  <section id="cabanas" class="container py-5">
-    
-    <!-- 1) CATEGORÍAS EN CAJA BLANCA -->
-    <div class="container-fluid booking mt-5">
+  <!-- ===== LISTADO ===== -->
+  <section class="container py-5">
+
+    <!-- CATEGORÍAS -->
+    <div class="container-fluid booking">
       <div class="container">
         <div class="filters-box">
           <div class="row text-center">
-            <div class="col-md-2"><div class="mb-2"><a href="todos.html" class="nav-item nav-link active">Todos</a></div></div>
-            <div class="col-md-2"><div class="mb-2"><a href="cabañas.html" class="nav-item nav-link active">Cabañas</a></div></div>
-            <div class="col-md-2"><div class="mb-2"><a href="campings.html" class="nav-item nav-link active">Campings</a></div></div>
+            <div class="col-md-2"><div class="mb-2"><a href="todos.html" class="nav-item nav-link">Todos</a></div></div>
+            <div class="col-md-2"><div class="mb-2"><a href="cabañas.html" class="nav-item nav-link">Cabañas</a></div></div>
+            <div class="col-md-2"><div class="mb-2"><a href="campings.html" class="nav-item nav-link">Campings</a></div></div>
             <div class="col-md-2">
               <div class="mb-2" style="position:relative;">
-                <a href="departamentos.html" class="nav-item nav-link active"
+                <a href="departamentos.html" class="nav-item nav-link"
                    onmouseover="this.nextElementSibling.style.display='block';"
                    onmouseout="setTimeout(()=>{ if(!this.nextElementSibling.matches(':hover')) this.nextElementSibling.style.display='none'; },120);">
                   Departamentos
@@ -144,145 +160,112 @@
                 <div style="display:none; position:absolute; top:100%; left:50%; transform:translateX(-50%);
                             min-width:260px; background:#fff; border:1px solid #e6e6e6; border-radius:12px;
                             box-shadow:0 10px 24px rgba(0,0,0,.12); padding:.5rem 0; z-index:10;"
-                     onmouseover="this.style.display='block';"
-                     onmouseleave="this.style.display='none';">
+                     onmouseover="this.style.display='block';" onmouseleave="this.style.display='none';">
                   <a href="#" class="dropdown-item">Premium / Superior</a>
                   <a href="#" class="dropdown-item">Confort / Estándar Plus</a>
                 </div>
               </div>
             </div>
-            <div class="col-md-2"><div class="mb-2"><a href="hoteles.html" class="nav-item nav-link active">Hoteles</a></div></div>
+            <div class="col-md-2"><div class="mb-2"><a href="hoteles.html" class="nav-item nav-link">Hoteles</a></div></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 2) BUSCADOR FUERA DEL RECUADRO (DESPEGADO) -->
+    <!-- BUSCADOR -->
     <div class="container search-standalone">
       <div class="search-card">
         <div class="search-wrap">
           <i class="fas fa-search" aria-hidden="true"></i>
           <input id="search-cabanas" class="search-input" type="search"
-                 placeholder="Buscar por nombre de hotel"
-                 aria-label="Buscar por nombre de hotel">
+                 placeholder="Buscar por nombre de Depto Superior"
+                 aria-label="Buscar por nombre de Depto Superior">
           <button id="clear-search" class="btn-clear" type="button" aria-label="Limpiar búsqueda">Limpiar</button>
-          <span id="search-meta" class="search-meta ml-auto">Mostrando <strong id="count-visible">0</strong> de <strong id="count-total">0</strong></span>
+          <span id="search-meta" class="search-meta ml-auto">
+            Mostrando <strong id="count-visible">0</strong> de <strong id="count-total">0</strong>
+          </span>
         </div>
       </div>
     </div>
 
     <!-- MENSAJE: sin resultados -->
-    <div id="no-results" class="no-results">No se encontraron campings que coincidan con la búsqueda.</div>
+    <div id="no-results" class="no-results">No se encontraron Departamentos Superiores que coincidan con la búsqueda.</div>
 
-    <!-- ITEM: Alas del Sol -->
-    <!-- ITEM: Camping Don Osvaldo -->
-<!-- ITEM: Ansenuza Hotel Casino Spa -->
-<!-- ITEM: Ansenuza Hotel Casino Spa -->
-<article class="lodging row no-gutters mb-5" data-name="Ansenuza Hotel Casino Spa">
-  <div class="col-lg-7">
-    <a class="lodging-photo" href="#" aria-label="Ver galería de Ansenuza Hotel Casino Spa">
-      <img src="img/MDT_fk_obra-galeria__1703079284.webp" class="img-fluid" alt="Ansenuza Hotel Casino Spa">
-    </a>
-  </div>
-  <div class="col-lg-5 bg-white p-4 p-md-4 shadow-sm">
-    <h3 class="lodging-title mb-2 js-title">Ansenuza Hotel Casino Spa</h3>
+    <!-- ====== ITEMS (mismo layout que campings) ====== -->
+    <div class="container mt-4">
 
-    <ul class="amenities mb-3">
-      <li title="Desayuno"><i class="fas fa-mug-hot"></i></li>
-      <li title="Estacionamiento"><i class="fas fa-car"></i></li>
-      <li title="Aire acondicionado"><i class="far fa-snowflake"></i></li>
-      <li title="Wi-Fi"><i class="fas fa-wifi"></i></li>
-      <li title="TV"><i class="fas fa-tv"></i></li>
-      <li title="Tarjetas de crédito"><i class="fas fa-credit-card"></i></li>
-      <li title="No se admiten mascotas" class="muted"><i class="fas fa-paw"></i></li>
-      <li title="Pileta"><i class="fas fa-swimming-pool"></i></li>
-    </ul>
+      <!-- El Mistolar -->
+      <article class="lodging row no-gutters" data-name="El Mistolar">
+        <div class="col-lg-7">
+          <a class="lodging-photo" href="#" aria-label="El Mistolar">
+            <img src="img/el-mistolar-cabanas.jpg.webp" alt="El Mistolar - Foto principal">
+          </a>
+        </div>
+        <div class="col-lg-5">
+          <div class="info-block">
+            <h3 class="lodging-title js-title">El Mistolar</h3>
 
-    <div class="mb-3">
-      <h6 class="mb-1">Dirección:</h6>
-      <p class="mb-0">
-        <i class="fas fa-map-marker-alt text-primary mr-2"></i>
-        Calle Costanera Oeste
-        <a class="ml-1 small link-map" target="_blank"
-           href="https://www.google.com/maps/place/Hotel+Comedor+Marchetti/@-30.914945,-62.678084,15z/data=!4m5!3m4!1s0x0:0x1ea8a57b0d08166a!8m2!3d-30.9149195!4d-62.678102?ll=-30.914945,-62.678084&z=15&t=m&hl=es-US&gl=US&mapclient=embed&cid=2209197565143422570&coh=164777&entry=tt&shorturl=1">
-          (Ver en Google Maps)
-        </a>
-      </p>
+            <ul class="amenities" aria-label="Servicios">
+              <li title="Estacionamiento"><i class="fas fa-car"></i></li>
+              <li title="Desayuno"><i class="fas fa-mug-hot"></i></li>
+              <li title="Aire acondicionado"><i class="far fa-snowflake"></i></li>
+              <li title="Wi-Fi"><i class="fas fa-wifi"></i></li>
+              <li title="TV"><i class="fas fa-tv"></i></li>
+              <li title="Tarjetas"><i class="fas fa-credit-card"></i></li>
+              <li class="muted" title="No se admiten mascotas"><i class="fas fa-paw"></i></li>
+              <li title="Pileta"><i class="fas fa-swimming-pool"></i></li>
+            </ul>
+
+            <div class="lbl">Dirección:</div>
+            <div class="addr">
+              <i class="fas fa-map-marker-alt"></i> Buenos Aires 198
+              <a class="map-link" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/place/Buenos+Aires+198,+X5143AGO+Miramar+de+Ansenuza,+C%C3%B3rdoba/@-30.9168626,-62.6765377,17z">
+                (Ver en Google Maps)
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- La Aldea -->
+      <article class="lodging row no-gutters" data-name="La Aldea">
+        <div class="col-lg-7">
+          <a class="lodging-photo" href="#" aria-label="La Aldea">
+            <img src="img/la-aldea.jpg.webp" alt="La Aldea - Foto principal">
+          </a>
+        </div>
+        <div class="col-lg-5">
+          <div class="info-block">
+            <h3 class="lodging-title js-title">La Aldea</h3>
+
+            <ul class="amenities" aria-label="Servicios">
+              <li title="Estacionamiento"><i class="fas fa-car"></i></li>
+              <li title="Desayuno"><i class="fas fa-mug-hot"></i></li>
+              <li title="Aire acondicionado"><i class="far fa-snowflake"></i></li>
+              <li title="Wi-Fi"><i class="fas fa-wifi"></i></li>
+              <li title="TV"><i class="fas fa-tv"></i></li>
+              <li title="Pileta"><i class="fas fa-swimming-pool"></i></li>
+              <li title="Asador / Parrilla"><i class="fas fa-fire"></i></li>
+              <li class="muted" title="No se admiten mascotas"><i class="fas fa-paw"></i></li>
+            </ul>
+
+            <div class="lbl">Dirección:</div>
+            <div class="addr">
+              <i class="fas fa-map-marker-alt"></i> Córdoba 06
+              <a class="map-link" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/place/La+Aldea+-+Ecoposada/@-30.91594,-62.6798115,17z">
+                (Ver en Google Maps)
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
     </div>
-
-    <!-- Consultas y Reservas -->
-    <div>
-      <h6 class="mb-2">Consultas y Reservas:</h6>
-      <p class="mb-1">
-        <i class="fas fa-phone-alt text-primary mr-2"></i>
-        <a href="tel:+543563493791">(03563) 493791</a>
-      </p>
-      <p class="mb-1">
-        <i class="fas fa-envelope text-primary mr-2"></i>
-        <a href="mailto:reservas@ansenuzahotelcasino.com.ar">reservas@ansenuzahotelcasino.com.ar</a>
-      </p>
-      <p class="mb-0">
-        <i class="fas fa-globe text-primary mr-2"></i>
-        <a href="https://ansenuzahotelcasino.com.ar/" target="_blank" rel="noopener">ansenuzahotelcasino.com.ar</a>
-      </p>
-    </div>
-  </div>
-</article>
-
-
-<!-- ITEM: Hotel Miramar -->
-<!-- ITEM: Hotel Miramar -->
-<article class="lodging row no-gutters mb-5" data-name="Hotel Miramar">
-  <div class="col-lg-7">
-    <a class="lodging-photo" href="#" aria-label="Ver galería de Hotel Miramar">
-      <img src="img/Hotel-miramar.jpg.webp" class="img-fluid" alt="Hotel Miramar">
-    </a>
-  </div>
-  <div class="col-lg-5 bg-white p-4 p-md-4 shadow-sm">
-    <h3 class="lodging-title mb-2 js-title">Hotel Miramar</h3>
-
-    <ul class="amenities mb-3">
-      <li title="Desayuno"><i class="fas fa-mug-hot"></i></li>
-      <li title="Estacionamiento"><i class="fas fa-car"></i></li>
-      <li title="Aire acondicionado"><i class="far fa-snowflake"></i></li>
-      <li title="Wi-Fi"><i class="fas fa-wifi"></i></li>
-      <li title="TV"><i class="fas fa-tv"></i></li>
-      <li title="Tarjetas de crédito"><i class="fas fa-credit-card"></i></li>
-      <li title="No se admiten mascotas" class="muted"><i class="fas fa-paw"></i></li>
-      <li title="Pileta"><i class="fas fa-swimming-pool"></i></li>
-    </ul>
-
-    <div class="mb-3">
-      <h6 class="mb-1">Dirección:</h6>
-      <p class="mb-0">
-        <i class="fas fa-map-marker-alt text-primary mr-2"></i>
-        Buenos Aires 200
-        <a class="ml-1 small link-map" target="_blank"
-           href="https://www.google.com/maps/place/Hotel+Comedor+Marchetti/@-30.914945,-62.678084,15z/data=!4m5!3m4!1s0x0:0x1ea8a57b0d08166a!8m2!3d-30.9149195!4d-62.678102?ll=-30.914945,-62.678084&z=15&t=m&hl=es-US&gl=US&mapclient=embed&cid=2209197565143422570&coh=164777&entry=tt&shorturl=1">
-          (Ver en Google Maps)
-        </a>
-      </p>
-    </div>
-
-    <!-- Consultas y Reservas -->
-    <div>
-      <h6 class="mb-2">Consultas y Reservas:</h6>
-      <p class="mb-1">
-        <i class="fas fa-phone-alt text-primary mr-2"></i>
-        <a href="tel:+543563493000">03563-493000</a>
-      </p>
-      <p class="mb-0">
-        <i class="fas fa-globe text-primary mr-2"></i>
-        <a href="https://hotelmiramarcordoba.com.ar/home" target="_blank" rel="noopener">hotelmiramarcordoba.com.ar/home</a>
-      </p>
-    </div>
-  </div>
-</article>
-
-
   </section>
 
-  <!-- PAGINACIÓN -->
+  <!-- PAGINACIÓN (si la usás) -->
   <div class="pagination-wrapper" id="pagination"></div>
 
   <!-- Footer -->
@@ -340,7 +323,7 @@
   <!-- Back to Top -->
   <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-  <!-- JavaScript Libraries -->
+  <!-- JS libs -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
   <script src="lib/easing/easing.min.js"></script>
@@ -351,7 +334,7 @@
   <script src="mail/jqBootstrapValidation.min.js"></script>
   <script src="mail/contact.js"></script>
 
-  <!-- ====== BUSCADOR (filtrado por nombre) ====== -->
+  <!-- ====== BUSCADOR / CONTADOR ====== -->
   <script>
     (function(){
       const $input  = document.getElementById('search-cabanas');
@@ -372,12 +355,12 @@
 
       function highlight(titleEl, q){
         if(!q) return;
-        const txt = titleEl.textContent;
-        const idx = norm(txt).indexOf(norm(q));
-        if(idx === -1) return;
-        const start = txt.slice(0, idx);
-        const mid   = txt.slice(idx, idx + q.length);
-        const end   = txt.slice(idx + q.length);
+        const raw = titleEl.textContent;
+        const ix  = norm(raw).indexOf(norm(q));
+        if(ix === -1) return;
+        const start = raw.slice(0, ix);
+        const mid   = raw.slice(ix, ix + q.length);
+        const end   = raw.slice(ix + q.length);
         titleEl.innerHTML = `${start}<mark class="search-hit">${mid}</mark>${end}`;
       }
 
@@ -405,6 +388,10 @@
 
       $input.addEventListener('input', debouncedFilter);
       $clear.addEventListener('click', () => { $input.value = ''; $input.focus(); applyFilter(); });
+
+      // Año automático en el footer
+      const yEl = document.getElementById('year');
+      if (yEl) yEl.textContent = new Date().getFullYear();
 
       applyFilter();
     })();
