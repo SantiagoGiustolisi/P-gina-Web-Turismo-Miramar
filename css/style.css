@@ -9952,3 +9952,99 @@ h6,
   .placa .cols{ flex-direction:column; }
   .placa .col-left{ flex:1 1 auto; }
 }
+/* ===== Eventos: tarjetas & medios uniformes ===== */
+.event-card{
+  background:#fff;
+  border:1px solid #e9eef5;
+  border-radius:18px;
+  overflow:hidden;                 /* Recorta bien los bordes del header imagen */
+  box-shadow:0 6px 22px rgba(20,35,90,.06);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.event-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 28px rgba(20,35,90,.12);
+}
+
+/* Contenedor de imagen con relación fija */
+.event-media{
+  position:relative;
+  /* Relación 16:10 (podés usar 16/9 si querés más panorámica) */
+  aspect-ratio: 16 / 10;           /* Navegadores modernos */
+  background:#f4f6fa;              /* Color de fondo por si tarda en cargar */
+  overflow:hidden;
+}
+
+/* Fallback para navegadores sin aspect-ratio (opcional) */
+@supports not (aspect-ratio: 16 / 10){
+  .event-media{ height: 260px; }    /* Ajustá a gusto para desktop */
+  @media (max-width: 575.98px){
+    .event-media{ height: 200px; }  /* Altura en mobile */
+  }
+}
+
+/* Imagen siempre llena, centrada y recortada prolija */
+.event-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  transition:transform .35s ease, filter .35s ease;
+}
+
+/* Zoom sutil al pasar el mouse */
+.event-card:hover .event-media img{
+  transform:scale(1.05);
+  filter:saturate(1.03) contrast(1.02);
+}
+
+/* Badge de fecha más prolijo y legible */
+.date-badge{
+  position:absolute;
+  top:12px; left:12px;
+  background:linear-gradient(180deg, #ffffffea, #f3f6ffea);
+  color:#1e3a6d;
+  font-weight:700;
+  font-size:.9rem;
+  line-height:1;
+  padding:.5rem .55rem;
+  border-radius:10px;
+  border:1px solid #dfe7ff;
+  box-shadow:0 6px 16px rgba(0,0,0,.08);
+  letter-spacing:.03em;
+}
+
+/* Cuerpo de la tarjeta */
+.event-body{
+  padding:14px 16px 18px;
+}
+
+/* Títulos y textos */
+.event-title{
+  font-weight:700;
+  color:#1e2a44;
+}
+.event-body small i{
+  color:#3b7cff !important;        /* Acento ícono */
+}
+
+/* Botón más redondeado */
+.event-body .btn{
+  border-radius:999px;
+  padding:.35rem .8rem;
+}
+
+/* Espaciado entre tarjetas en mobile */
+@media (max-width: 767.98px){
+  .event-card{ border-radius:16px; }
+}
+
+/* Opcional: sutil borde interior para la imagen */
+.event-media::after{
+  content:"";
+  position:absolute; inset:0;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.6);
+  border-radius:inherit;
+  pointer-events:none;
+}

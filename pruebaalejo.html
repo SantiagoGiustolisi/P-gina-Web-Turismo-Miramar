@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Contacto - Miramar de Ansenuza</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Miramar de Ansenuza Contacto" name="keywords">
+  <meta content="Oficina de Turismo de Miramar de Ansenuza - Contacto" name="description">
+  <link href="img/favicon.ico" rel="icon">
+
+  <!-- Fonts / Icons -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+  <!-- (si ya usás Bootstrap/estilos del template, dejá tus links) -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <style>
+    .page-header-ansenuza{position:relative;color:#fff;min-height:360px;background-position:center;background-size:cover;background-repeat:no-repeat}
+    .page-header-ansenuza::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.45))}
+    .page-header-ansenuza .hero-wrap{position:relative;z-index:2;min-height:360px;padding:60px 0;text-align:center}
+    .hero-kicker{display:inline-block;background:#eaf0ff;color:#1e3a6d;font-weight:600;padding:.35rem .75rem;border-radius:999px;margin-bottom:10px;letter-spacing:.08em}
+    .hero-title{font-weight:700;margin:0 0 .25rem}
+    .hero-accent{background:linear-gradient(90deg,#fff,#dbe4ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .btn-pill{border-radius:999px}
+    #whatsapp-optin .form-control:focus,
+    #whatsapp-optin .custom-control-input:focus ~ .custom-control-label::before{
+      box-shadow:0 0 0 .2rem rgba(37,211,102,.18);
+    }
+    .alert{border-radius:12px}
+  </style>
+</head>
+
+<body>
+  <!-- Topbar (si no lo usás, podés quitarlo) -->
+  <div class="container-fluid bg-light pt-3 d-none d-lg-block">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+          <div class="d-inline-flex align-items-center">
+            <p><i class="fa fa-envelope mr-2"></i>oficinadeturismo2@gmail.com</p>
+            <p class="text-body px-3">|</p>
+            <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
+          <div class="d-inline-flex align-items-center">
+            <a class="text-primary px-3" href="https://www.facebook.com/turismomiramardeansenuza/"><i class="fab fa-facebook-f"></i></a>
+            <a class="text-primary px-3" href="https://www.instagram.com/miramardeansenuza/"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar mínima (ajustá a tu template) -->
+  <div class="container-fluid position-relative nav-bar p-0">
+    <div class="container-lg position-relative p-0 px-lg-3" style="z-index:9;">
+      <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+        <a href="index.html" class="navbar-brand d-flex align-items-center">
+          <img src="img/logo-miramar.png" srcset="img/logo-miramar@2x.png 2x" alt="Miramar de Ansenuza" style="height:38px;width:auto">
+          <span class="sr-only">Miramar de Ansenuza</span>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+          <div class="navbar-nav ml-auto py-0">
+            <a href="index.html" class="nav-item nav-link">Inicio</a>
+            <a href="about.html" class="nav-item nav-link">Acerca de</a>
+            <a href="contact.html" class="nav-item nav-link active">Contacto</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="page-header-ansenuza" style="background-image:url('img/flamencos.jpg');">
+    <div class="container">
+      <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
+        <span class="hero-kicker">Oficina de Turismo</span>
+        <h1 class="hero-title"><span class="hero-accent">Contacto</span></h1>
+        <a href="#whatsapp-optin" class="btn btn-success btn-pill mt-2">
+          <i class="fab fa-whatsapp mr-1"></i> Quiero recibir info por WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- OPT-IN WHATSAPP (guarda en Google Sheet) -->
+  <section id="whatsapp-optin" class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+            <h5 class="mb-3">Recibir información por WhatsApp</h5>
+
+            <div id="waAlert" class="alert alert-success d-none" role="alert">
+              ¡Listo! Guardamos tus datos correctamente. Gracias 🙌
+            </div>
+            <div id="waAlertError" class="alert alert-danger d-none" role="alert">
+              Uy, hubo un problema guardando tus datos. Probá de nuevo en un momento.
+            </div>
+
+            <form id="wa-form" class="needs-validation" novalidate>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="wa_name">Nombre</label>
+                  <input type="text" class="form-control" id="wa_name" placeholder="Tu nombre" required>
+                  <div class="invalid-feedback">Ingresá tu nombre.</div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="wa_phone">Tu WhatsApp</label>
+                  <input type="tel" class="form-control" id="wa_phone" placeholder="Ej: 3512345678" required>
+                  <div class="invalid-feedback">Ingresá tu número de WhatsApp.</div>
+                </div>
+              </div>
+
+              <div class="custom-control custom-checkbox my-2">
+                <input type="checkbox" class="custom-control-input" id="wa_consent" required>
+                <label class="custom-control-label" for="wa_consent">
+                  Acepto recibir información por WhatsApp y que se registre mi consentimiento.
+                </label>
+                <div class="invalid-feedback d-block" id="consentError" style="display:none;">
+                  Tenés que aceptar para continuar.
+                </div>
+              </div>
+
+              <!-- Honeypot anti-spam -->
+              <input type="text" id="wa_hp" name="wa_hp" style="position:absolute;left:-9999px;" tabindex="-1" autocomplete="off">
+
+              <!-- Tracking oculto -->
+              <input type="hidden" id="utm_source">
+              <input type="hidden" id="utm_medium">
+              <input type="hidden" id="utm_campaign">
+              <input type="hidden" id="utm_content">
+              <input type="hidden" id="utm_term">
+              <input type="hidden" id="page_url">
+              <input type="hidden" id="page_title">
+
+              <button type="submit" id="waBtn" class="btn btn-success rounded-pill px-4">
+                <i class="fab fa-whatsapp mr-1"></i> Quiero recibir por WhatsApp
+              </button>
+              
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer mínimo -->
+  <div class="container-fluid bg-dark text-white border-top py-3 px-sm-3 px-md-5" style="border-color:rgba(255,255,255,.08)!important;">
+    <div class="row">
+      <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
+        <small class="m-0 text-white-50">© <span id="year"></span> Municipalidad de Miramar de Ansenuza. Todos los derechos reservados.</small>
+      </div>
+      <div class="col-md-6 text-center text-md-right">
+        <small class="m-0 text-white-50">Sitio oficial de Turismo</small>
+      </div>
+    </div>
+  </div>
+
+  <script>(function(){var y=document.getElementById('year');if(y) y.textContent=new Date().getFullYear();})();</script>
+
+  <!-- Si ya cargás jQuery/Bootstrap, podés omitir estos -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Lógica: guarda en Google Apps Script (NO abre WhatsApp) -->
+  <script>
+    // Tu Web App de Apps Script (ya incluida)
+    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbw2XXoI_WIdC-h2bHqpQ97pDe4Qt5-udmS_0TLr4naY6JbeN1knNFAEpxxVdFI5QNIy/exec';
+
+    function getUTMs(){
+      const p = new URLSearchParams(window.location.search);
+      return {
+        source:  p.get('utm_source')  || '',
+        medium:  p.get('utm_medium')  || '',
+        campaign:p.get('utm_campaign')|| '',
+        content: p.get('utm_content') || '',
+        term:    p.get('utm_term')    || ''
+      };
+    }
+
+    (function initHidden(){
+      const utm = getUTMs();
+      const map = {'utm_source':'source','utm_medium':'medium','utm_campaign':'campaign','utm_content':'content','utm_term':'term'};
+      Object.keys(map).forEach(id=>{
+        const el = document.getElementById(id);
+        if(el) el.value = utm[map[id]] || '';
+      });
+      const pu = document.getElementById('page_url');  if(pu) pu.value = location.href;
+      const pt = document.getElementById('page_title');if(pt) pt.value = document.title;
+    })();
+
+    (function(){
+      const form = document.getElementById('wa-form');
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        form.classList.add('was-validated');
+
+        const name = document.getElementById('wa_name').value.trim();
+        const phone = document.getElementById('wa_phone').value.trim();
+        const consent = document.getElementById('wa_consent').checked;
+        const hp = (document.getElementById('wa_hp').value || '').trim();
+
+        const consentError = document.getElementById('consentError');
+        consentError.style.display = consent ? 'none' : 'block';
+        if (!name || !phone || !consent || hp) return;
+
+        const payload = {
+          consent:true,
+          consent_text:'Acepto recibir información por WhatsApp.',
+          name, phone,
+          ts_iso:new Date().toISOString(),
+          utm:{
+            source:document.getElementById('utm_source').value,
+            medium:document.getElementById('utm_medium').value,
+            campaign:document.getElementById('utm_campaign').value,
+            content:document.getElementById('utm_content').value,
+            term:document.getElementById('utm_term').value
+          },
+          page:{
+            url:document.getElementById('page_url').value,
+            title:document.getElementById('page_title').value,
+            referrer:document.referrer || ''
+          },
+          user_agent:navigator.userAgent
+        };
+
+        const btn = document.getElementById('waBtn');
+        const prev = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm mr-2"></span>Guardando…';
+
+        const okAlert = document.getElementById('waAlert');
+        const errAlert = document.getElementById('waAlertError');
+        okAlert.classList.add('d-none'); errAlert.classList.add('d-none');
+
+        try{
+          // Importante: text/plain para evitar preflight CORS en Apps Script
+          const res = await fetch(WEBHOOK_URL, {
+            method:'POST',
+            headers:{'Content-Type':'text/plain;charset=utf-8'},
+            body: JSON.stringify(payload)
+          });
+          if (!res.ok) throw new Error('Bad response');
+
+          okAlert.classList.remove('d-none');
+          form.reset();
+          form.classList.remove('was-validated');
+
+          // Opcional: ocultar form y dejar solo el OK
+          // form.parentElement.style.display = 'none';
+
+        }catch(err){
+          errAlert.classList.remove('d-none');
+        }finally{
+          btn.disabled=false;
+          btn.innerHTML=prev;
+        }
+      }, false);
+    })();
+  </script>
+  
+</body>
+</html>
