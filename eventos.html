@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="utf-8">
-  <title>Acerca de – Miramar de Ansenuza</title>
+  <title data-i18n="page.title">Eventos – Miramar de Ansenuza</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta name="description" content="Conocé Miramar de Ansenuza: historia, naturaleza, Parque y Reserva Nacional Ansenuza, flamencos, actividades y cómo llegar.">
+  <meta name="description" data-i18n="page.desc"
+        content="Descubrí los eventos en Miramar de Ansenuza: maratones, fiestas, yoga, motoencuentros y más.">
   <link href="img/favicon.ico" rel="icon">
 
   <!-- Fonts & Icons -->
@@ -18,9 +18,8 @@
 
   <!-- Theme -->
   <link href="css/style.css" rel="stylesheet">
-</head>
 
-<style>
+  <style>
     /* --------- Header / Hero --------- */
     .page-header-ansenuza{
       position:relative; color:#fff;
@@ -43,80 +42,24 @@
     .hero-accent{ background:linear-gradient(90deg,#fff, #dbeafe); -webkit-background-clip:text; background-clip:text; color:transparent; }
     .hero-subtitle{ margin:0 0 12px; font-size:1.05rem; }
 
-    /* --------- Sección Historia --------- */
-    .historia-section{
-      position:relative; padding:80px 0 40px;
-      background: linear-gradient(180deg, rgba(30,58,109,.06), rgba(30,58,109,0)), #fff;
-    }
-    .historia-lead{ max-width:900px; margin:0 auto 1.5rem; font-size:1.1rem; }
-
-    /* Línea central */
-    .timeline{ position:relative; padding:40px 0; }
-    .timeline::before{
-      content:""; position:absolute; top:0; bottom:0; left:50%;
-      width:3px; background:linear-gradient(180deg,#e5e7eb,#cbd5e1); transform:translateX(-50%);
-    }
-
-    .timeline-item{ position:relative; margin-bottom:40px; }
-    .timeline-bullet{
-      position:absolute; top:16px; left:50%; transform:translate(-50%,-50%);
-      width:46px; height:46px; border-radius:50%; background:#fff; border:3px solid #1e3a6d;
-      display:flex; align-items:center; justify-content:center; font-weight:700; color:#1e3a6d;
-      box-shadow:0 6px 16px rgba(0,0,0,.08);
-    }
-    .timeline-col{ width:50%; padding:0 20px; }
-    .timeline-left{ float:left; clear:left; }
-    .timeline-right{ float:right; clear:right; }
-
-    .timeline-card{
+    /* --------- Tarjetas de eventos --------- */
+    .event-card{
       background:#fff; border:1px solid #eef2f7; border-radius:14px;
       box-shadow:0 8px 24px rgba(0,0,0,.06); overflow:hidden;
       transition:transform .25s ease, box-shadow .25s ease;
     }
-    .timeline-card:hover{ transform:translateY(-3px); box-shadow:0 16px 36px rgba(0,0,0,.10); }
-
-    /* Galería (OwlCarousel) */
-    .timeline-media{ height:220px; width:100%; object-fit:cover; display:block; }
-    .timeline-card .owl-dots{ text-align:center; margin:8px 0 0; }
-    .timeline-card .owl-dot span{
-      width:8px; height:8px; margin:3px; display:block; border-radius:999px; background:#c7d2fe;
+    .event-card:hover{ transform:translateY(-3px); box-shadow:0 16px 36px rgba(0,0,0,.10); }
+    .event-media{ position:relative; }
+    .event-media img{ height:220px; width:100%; object-fit:cover; display:block; }
+    .date-badge{
+      position:absolute; left:12px; top:12px; background:#1e3a6d; color:#fff; font-weight:800;
+      padding:.35rem .6rem; border-radius:10px; letter-spacing:.06em; font-size:.9rem;
+      box-shadow:0 6px 16px rgba(0,0,0,.18);
     }
-    .timeline-card .owl-dot.active span{ background:#1e3a6d; }
-    .timeline-card .owl-nav{
-      position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between;
-      pointer-events:none; padding:0 8px;
-    }
-    .timeline-card .owl-nav button{
-      pointer-events:auto; width:34px; height:34px; border-radius:999px;
-      background:rgba(255,255,255,.9)!important; border:1px solid #e5e7eb;
-      display:flex; align-items:center; justify-content:center; line-height:1;
-      transition:transform .2s ease;
-    }
-    .timeline-card .owl-nav button:hover{ transform:scale(1.06); }
-    .timeline-card .owl-nav .owl-prev::after{ content:"‹"; font-size:20px; color:#1e3a6d; }
-    .timeline-card .owl-nav .owl-next::after{ content:"›"; font-size:20px; color:#1e3a6d; }
-
-    .timeline-body{ padding:18px 18px 16px; }
-    .timeline-year{ font-weight:700; color:#1e3a6d; margin:0 0 6px; }
-    .timeline-title{ margin:0 0 6px; }
-    .timeline-tags{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem; }
-    .chip{
-      font-size:.85rem; padding:.25rem .6rem; border-radius:999px;
-      background:#f3f4f6; border:1px solid #e5e7eb; color:#374151;
-    }
-
-    /* CTA */
-    .historia-cta{
-      margin-top:30px; background:linear-gradient(135deg,#1e3a6d,#2d4d9b);
-      color:#fff; border-radius:16px; padding:24px; box-shadow:0 10px 28px rgba(30,58,109,.28);
-    }
+    .event-body{ padding:18px; }
 
     /* Responsive */
     @media (max-width: 991.98px){
-      .timeline::before{ left:28px; }
-      .timeline-bullet{ left:28px; transform:translate(-50%,-50%); }
-      .timeline-col{ width:100%; padding-left:64px; padding-right:0; float:none; }
-      .timeline-left, .timeline-right{ float:none; }
       .page-header-ansenuza, .page-header-ansenuza .hero-wrap{ min-height:320px; }
     }
   </style>
@@ -129,9 +72,9 @@
       <div class="row">
         <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
           <div class="d-inline-flex align-items-center">
-            <p><i class="fa fa-envelope mr-2"></i>oficinadeturismo2@gmail.com</p>
+            <p><i class="fa fa-envelope mr-2"></i><span data-i18n="top.mail">oficinadeturismo2@gmail.com</span></p>
             <p class="text-body px-3">|</p>
-            <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
+            <p><i class="fa fa-phone-alt mr-2"></i><span data-i18n="top.phone">3563 - 409731</span></p>
           </div>
         </div>
         <div class="col-lg-6 text-center text-lg-right">
@@ -162,80 +105,86 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
           <div class="navbar-nav ml-auto py-0">
-            <a href="index.html" class="nav-item nav-link">Inicio</a>
-             <a href="about.html" class="nav-item nav-link">Acerca de</a>
-              <a href="eventos.html" class="nav-item nav-link active">Eventos</a>
-            <a href="contact.html" class="nav-item nav-link">Contacto</a>
-           
+            <a href="index.html" class="nav-item nav-link" data-i18n="menu.home">Inicio</a>
+            <a href="about.html" class="nav-item nav-link" data-i18n="menu.about">Acerca de</a>
+            <a href="eventos.html" class="nav-item nav-link active" data-i18n="menu.events">Eventos</a>
+            <a href="contact.html" class="nav-item nav-link" data-i18n="menu.contact">Contacto</a>
           </div>
+          <!-- Botón idioma -->
+          <button id="langToggle" class="btn btn-sm btn-outline-primary ml-2" aria-label="Cambiar idioma">
+            <span id="langIcon">🇦🇷</span>
+          </button>
         </div>
       </nav>
     </div>
   </div>
   <!-- /Navbar -->
 
-
-<!-- Header -->
-<header class="page-header-ansenuza"
-        style="background-image:url('img/flamencos.jpg'); background-position:center; background-size:cover;">
-  <div class="container">
-    <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
-      <span class="hero-kicker">Eventos</span>
-     <h1 class="hero-title"><span class="hero-accent">Viví Miramar de Ansenuza</span></h1>
-
-      <p class="hero-subtitle">Maratón, fiestas, yoga, motoencuentros y mucho más</p>
-
-      <nav aria-label="breadcrumb" class="hero-breadcrumb">
-        <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Eventos</li>
-        </ol>
-      </nav>
+  <!-- Header -->
+  <header class="page-header-ansenuza" style="background-image:url('img/flamencos.jpg'); background-position:center; background-size:cover;">
+    <div class="container">
+      <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
+        <span class="hero-kicker" data-i18n="events.heroKicker">Eventos</span>
+        <h1 class="hero-title"><span class="hero-accent" data-i18n="events.heroTitle">Viví Miramar de Ansenuza</span></h1>
+        <p class="hero-subtitle" data-i18n="events.heroSubtitle">Maratón, fiestas, yoga, motoencuentros y mucho más</p>
+        <nav aria-label="breadcrumb" class="hero-breadcrumb">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item"><a href="index.html" data-i18n="breadcrumb.home">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page" data-i18n="breadcrumb.events">Eventos</li>
+          </ol>
+        </nav>
+      </div>
     </div>
-  </div>
-</header>
- <body>
-  <!-- HERO (ya lo tenés arriba) -->
+  </header>
 
-<!-- FILTROS (centrado y simple) -->
-<section class="py-3">
-  <div class="container d-flex justify-content-center">
-    <div class="w-100" style="max-width:980px;">
-      <div class="shadow-sm rounded-lg border bg-white">
-        <div class="p-3 p-md-4">
-          <div class="row justify-content-center align-items-center text-center">
-            <!-- BUSCADOR -->
-            <div class="col-12 col-md-7 mb-2">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" style="border-radius:999px 0 0 999px;">
-                    <i class="fa fa-search"></i>
-                  </span>
+  <!-- FILTROS -->
+  <section class="py-3">
+    <div class="container d-flex justify-content-center">
+      <div class="w-100" style="max-width:980px;">
+        <div class="shadow-sm rounded-lg border bg-white">
+          <div class="p-3 p-md-4">
+            <div class="row justify-content-center align-items-center text-center">
+              <!-- BUSCADOR -->
+              <div class="col-12 col-md-7 mb-2">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" style="border-radius:999px 0 0 999px;">
+                      <i class="fa fa-search"></i>
+                    </span>
+                  </div>
+                  <input id="q" type="search" class="form-control"
+                         placeholder="Buscar (yoga, fiesta, 10K…)"
+                         data-i18n-placeholder="search.placeholder"
+                         style="border-radius:0 999px 999px 0;">
                 </div>
-                <input id="q" type="search" class="form-control"
-                       placeholder="Buscar (yoga, fiesta, 10K…)"
-                       style="border-radius:0 999px 999px 0;">
               </div>
-            </div>
-            <!-- MES -->
-            <div class="col-12 col-md-3 mb-2">
-              <select id="mes" class="custom-select text-center" style="border-radius:999px;">
-                <option value="">Mes</option>
-                <option value="01">Enero</option><option value="02">Febrero</option><option value="03">Marzo</option>
-                <option value="04">Abril</option><option value="05">Mayo</option><option value="06">Junio</option>
-                <option value="07">Julio</option><option value="08">Agosto</option><option value="09">Septiembre</option>
-                <option value="10">Octubre</option><option value="11">Noviembre</option><option value="12">Diciembre</option>
-              </select>
+              <!-- MES -->
+              <div class="col-12 col-md-3 mb-2">
+                <select id="mes" class="custom-select text-center" style="border-radius:999px;">
+                  <option value="" data-i18n="month.any">Mes</option>
+                  <option value="01" data-i18n="month.jan">Enero</option>
+                  <option value="02" data-i18n="month.feb">Febrero</option>
+                  <option value="03" data-i18n="month.mar">Marzo</option>
+                  <option value="04" data-i18n="month.apr">Abril</option>
+                  <option value="05" data-i18n="month.may">Mayo</option>
+                  <option value="06" data-i18n="month.jun">Junio</option>
+                  <option value="07" data-i18n="month.jul">Julio</option>
+                  <option value="08" data-i18n="month.aug">Agosto</option>
+                  <option value="09" data-i18n="month.sep">Septiembre</option>
+                  <option value="10" data-i18n="month.oct">Octubre</option>
+                  <option value="11" data-i18n="month.nov">Noviembre</option>
+                  <option value="12" data-i18n="month.dec">Diciembre</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
+       
       </div>
-     
     </div>
-  </div>
-</section>
+  </section>
 
-  <!-- GRID: 2 POR FILA + EXPANSIÓN EN SITIO (centrado) -->
+  <!-- GRID EVENTOS -->
   <section class="container py-4">
     <div id="gridAccordion" class="row justify-content-center">
 
@@ -247,24 +196,24 @@
            data-month="06">
         <article class="event-card h-100 text-center">
           <div class="event-media">
-            <img src="img/yoga.jpg" alt="Respirá Yoga – Día Mundial del Yoga">
-            <div class="date-badge">21 JUN</div>
+            <img src="img/yoga.jpg" alt="Respirá Yoga – Día Mundial del Yoga" data-i18n-alt="event1.imgAlt">
+            <div class="date-badge" data-i18n="event1.badge">21 JUN</div>
           </div>
           <div class="event-body">
-            <h5 class="event-title mb-1">Respirá Yoga</h5>
+            <h5 class="event-title mb-1" data-i18n="event1.title">Respirá Yoga</h5>
             <small class="text-muted d-block mb-2">
-              <i class="fa fa-calendar mr-1 text-primary"></i>Sáb 21 Jun · 14:30
-              &nbsp;·&nbsp;<i class="fa fa-map-marker-alt mr-1 text-primary"></i>Playa Atardeceres
+              <i class="fa fa-calendar mr-1 text-primary"></i><span data-i18n="event1.when">Sáb 21 Jun · 14:30</span>
+              &nbsp;·&nbsp;<i class="fa fa-map-marker-alt mr-1 text-primary"></i><span data-i18n="event1.where">Playa Atardeceres</span>
             </small>
             <button class="btn btn-sm btn-outline-primary"
                     data-toggle="collapse" data-target="#ev1"
-                    aria-expanded="false" aria-controls="ev1">Más info</button>
+                    aria-expanded="false" aria-controls="ev1" data-i18n="btn.more">Más info</button>
           </div>
 
           <!-- Expandible -->
           <div id="ev1" class="collapse" data-parent="#gridAccordion">
             <div class="p-3 border-top text-left">
-              <p class="mb-2">Tarde de yoga y bienestar frente al lago. Traé manta o lona. 14:30 a 17:30.</p>
+              <p class="mb-2" data-i18n="event1.desc">Tarde de yoga y bienestar frente al lago. Traé manta o lona. 14:30 a 17:30.</p>
             </div>
           </div>
         </article>
@@ -278,24 +227,23 @@
            data-month="09">
         <article class="event-card h-100 text-center">
           <div class="event-media">
-            <img src="img/25289578_1559256707500944_2350661798966849926_n.jpg" alt="Flow Party Primavera">
-            <div class="date-badge">21 SEP</div>
+            <img src="img/25289578_1559256707500944_2350661798966849926_n.jpg" alt="Flow Party Primavera" data-i18n-alt="event2.imgAlt">
+            <div class="date-badge" data-i18n="event2.badge">21 SEP</div>
           </div>
           <div class="event-body">
-            <h5 class="event-title mb-1">Flow Party Primavera</h5>
+            <h5 class="event-title mb-1" data-i18n="event2.title">Flow Party Primavera</h5>
             <small class="text-muted d-block mb-2">
-              <i class="fa fa-calendar mr-1 text-primary"></i>Dom 21 Sep · 18:00
-              &nbsp;·&nbsp;<i class="fa fa-map-marker-alt mr-1 text-primary"></i>Costanera
+              <i class="fa fa-calendar mr-1 text-primary"></i><span data-i18n="event2.when">Dom 21 Sep · 18:00</span>
+              &nbsp;·&nbsp;<i class="fa fa-map-marker-alt mr-1 text-primary"></i><span data-i18n="event2.where">Costanera</span>
             </small>
             <button class="btn btn-sm btn-outline-primary"
                     data-toggle="collapse" data-target="#ev2"
-                    aria-expanded="false" aria-controls="ev2">Más info</button>
+                    aria-expanded="false" aria-controls="ev2" data-i18n="btn.more">Más info</button>
           </div>
 
           <div id="ev2" class="collapse" data-parent="#gridAccordion">
             <div class="p-3 border-top text-left">
-              <p class="mb-2">DJ, Playa, Foodtrucks y Seguridad. Entrada sujeta a cupo.</p>
-             
+              <p class="mb-2" data-i18n="event2.desc">DJ, Playa, Foodtrucks y Seguridad. Entrada sujeta a cupo.</p>
             </div>
           </div>
         </article>
@@ -309,30 +257,29 @@
            data-month="01">
         <article class="event-card h-100 text-center">
           <div class="event-media">
-            <img src="img/motoencuentro.jpg" alt="Motoencuentro">
-            <div class="date-badge">25 ENE</div>
+            <img src="img/motoencuentro.jpg" alt="Motoencuentro" data-i18n-alt="event3.imgAlt">
+            <div class="date-badge" data-i18n="event3.badge">25 ENE</div>
           </div>
           <div class="event-body">
-            <h5 class="event-title mb-1">Motoencuentro</h5>
+            <h5 class="event-title mb-1" data-i18n="event3.title">Motoencuentro</h5>
             <small class="text-muted d-block mb-2">
-              <i class="fa fa-calendar mr-1 text-primary"></i>Sáb 25 Ene · Todo el día
-              &nbsp;·&nbsp;<i class="fa fa-map-marker-alt mr-1 text-primary"></i>Predio Municipal
+              <i class="fa fa-calendar mr-1 text-primary"></i><span data-i18n="event3.when">Sáb 25 Ene · Todo el día</span>
+              &nbsp;·&nbsp;<i class="fa fa-map-marker-alt mr-1 text-primary"></i><span data-i18n="event3.where">Predio Municipal</span>
             </small>
             <button class="btn btn-sm btn-outline-primary"
                     data-toggle="collapse" data-target="#ev3"
-                    aria-expanded="false" aria-controls="ev3">Más info</button>
+                    aria-expanded="false" aria-controls="ev3" data-i18n="btn.more">Más info</button>
           </div>
 
           <div id="ev3" class="collapse" data-parent="#gridAccordion">
             <div class="p-3 border-top text-left"> 
-             <p class="mb-2">Vení con tu moto y pasá un día increíble, rodeado de fierros, amigos y buena música.
-    Habrá patio de comidas, stands y sorteos. ¡Aptos todas las cilindradas!</p> 
+              <p class="mb-2" data-i18n="event3.desc">Vení con tu moto y pasá un día increíble, rodeado de fierros, amigos y buena música. Habrá patio de comidas, stands y sorteos. ¡Aptos todas las cilindradas!</p> 
             </div>
           </div>
         </article>
       </div>
 
-      <!-- Evento 4 (pasado a modo ejemplo) -->
+      <!-- Evento 4 -->
       <div class="col-md-6 mb-3 event-item"
            data-title="Centenario: Los Palmeras"
            data-cat="Música"
@@ -340,25 +287,23 @@
            data-month="11">
         <article class="event-card h-100 text-center">
           <div class="event-media">
-            <img src="img/los palmeras.jpg" alt="Centenario – Los Palmeras">
-            <div class="date-badge">18 NOV</div>
+            <img src="img/los palmeras.jpg" alt="Centenario – Los Palmeras" data-i18n-alt="event4.imgAlt">
+            <div class="date-badge" data-i18n="event4.badge">18 NOV</div>
           </div>
           <div class="event-body">
-            <h5 class="event-title mb-1">Centenario: Los Palmeras</h5>
+            <h5 class="event-title mb-1" data-i18n="event4.title">Centenario: Los Palmeras</h5>
             <small class="text-muted d-block mb-2">
-              <i class="fa fa-calendar mr-1 text-primary"></i>Lun 18 Nov · 18:00
-              &nbsp;·&nbsp;<i class="fa fa-map-marker-alt mr-1 text-primary"></i>Costanera
+              <i class="fa fa-calendar mr-1 text-primary"></i><span data-i18n="event4.when">Lun 18 Nov · 18:00</span>
+              &nbsp;·&nbsp;<i class="fa fa-map-marker-alt mr-1 text-primary"></i><span data-i18n="event4.where">Costanera</span>
             </small>
             <button class="btn btn-sm btn-outline-primary"
                     data-toggle="collapse" data-target="#ev4"
-                    aria-expanded="false" aria-controls="ev4">Más info</button>
+                    aria-expanded="false" aria-controls="ev4" data-i18n="btn.more">Más info</button>
           </div>
 
           <div id="ev4" class="collapse" data-parent="#gridAccordion">
             <div class="p-3 border-top text-left">
-              
-              <p class="mb-2">Show central por los 100 años de Miramar con artistas invitados.</p>
-             
+              <p class="mb-2" data-i18n="event4.desc">Show central por los 100 años de Miramar con artistas invitados.</p>
             </div>
           </div>
         </article>
@@ -367,50 +312,17 @@
     </div>
   </section>
 
- <script>
-  const q    = document.getElementById('q');
-  const mes  = document.getElementById('mes');
-  const rows = [...document.querySelectorAll('.event-item')];
-
-  function applyFilters(){
-    const term  = (q.value||'').trim().toLowerCase();
-    const mval  = (mes.value||'');
-
-    rows.forEach(card=>{
-      const title = (card.dataset.title||'').toLowerCase();
-      const month = (card.dataset.month||'');
-
-      const matchQ   = !term || title.includes(term);
-      const matchMes = !mval || month===mval;
-      const show = matchQ && matchMes;
-
-      card.style.display = show ? '' : 'none';
-
-      // Si se oculta, cerrá su detalle
-      if(!show){
-        const col = card.querySelector('.collapse.show');
-        if(col){ $(col).collapse('hide'); }
-      }
-    });
-  }
-
-  [q, mes].forEach(el=>el.addEventListener('input', applyFilters));
-  applyFilters();
-</script>
-
-</body>
-
-  <!-- Footer (limpio) -->
+  <!-- Footer -->
   <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 40px;">
     <div class="row pt-4">
       <div class="col-lg-4 col-md-6 mb-4">
         <a href="index.html" class="navbar-brand d-inline-flex align-items-center mb-2">
           <img src="img/logo-miramar.png" alt="Miramar de Ansenuza" style="height:34px;width:auto;">
         </a>
-        <p class="mt-2">
+        <p class="mt-2" data-i18n="footer.about">
           Miramar de Ansenuza, puerta del Parque y Reserva Nacional Ansenuza. Atardeceres únicos y avistaje de aves en la laguna salada más grande de Sudamérica.
         </p>
-        <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 4px;">Seguinos</h6>
+        <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 4px;" data-i18n="footer.follow">Seguinos</h6>
         <div class="d-flex">
           <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/turismomiramardeansenuza/"><i class="fab fa-facebook-f"></i></a>
           <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/miramardeansenuza/"><i class="fab fa-instagram"></i></a>
@@ -418,22 +330,23 @@
       </div>
 
       <div class="col-lg-4 col-md-6 mb-4">
-        <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Navegación</h5>
+        <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;" data-i18n="footer.navTitle">Navegación</h5>
         <div class="d-flex flex-column">
-          <a class="text-white-50 mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-          <a class="text-white-50 mb-2" href="service.html"><i class="fa fa-angle-right mr-2"></i>Servicios</a>
-          <a class="text-white-50 mb-2" href="package.html"><i class="fa fa-angle-right mr-2"></i>Alojamientos</a>
-          <a class="text-white-50" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
+          <a class="text-white-50 mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i><span data-i18n="menu.home">Inicio</span></a>
+          <a class="text-white-50 mb-2" href="service.html"><i class="fa fa-angle-right mr-2"></i><span data-i18n="footer.services">Servicios</span></a>
+          <a class="text-white-50 mb-2" href="package.html"><i class="fa fa-angle-right mr-2"></i><span data-i18n="footer.stays">Alojamientos</span></a>
+          <a class="text-white-50" href="contact.html"><i class="fa fa-angle-right mr-2"></i><span data-i18n="menu.contact">Contacto</span></a>
+          <a href="pruebaalejo.html" class="nav-item nav-link text-white-50"><span data-i18n="footer.optin">Recibir información</span></a>
         </div>
       </div>
 
       <div class="col-lg-4 col-md-6 mb-4">
-        <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Contacto</h5>
-        <p><i class="fa fa-map-marker-alt mr-2"></i>Miramar de Ansenuza, Córdoba, Argentina</p>
-        <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
-        <p><i class="fa fa-envelope mr-2"></i>oficinadeturismo2@gmail.com</p>
+        <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;" data-i18n="footer.contactTitle">Contacto</h5>
+        <p><i class="fa fa-map-marker-alt mr-2"></i><span data-i18n="footer.addr">Miramar de Ansenuza, Córdoba, Argentina</span></p>
+        <p><i class="fa fa-phone-alt mr-2"></i><span data-i18n="footer.phone">3563 - 409731</span></p>
+        <p><i class="fa fa-envelope mr-2"></i><span data-i18n="footer.mail">oficinadeturismo2@gmail.com</span></p>
         <a class="btn btn-success btn-block mt-2" target="_blank" rel="noopener" href="https://wa.me/5493563XXXXXX">
-          <i class="fab fa-whatsapp mr-2"></i>Escribinos por WhatsApp
+          <i class="fab fa-whatsapp mr-2"></i><span data-i18n="footer.whats">Escribinos por WhatsApp</span>
         </a>
       </div>
     </div>
@@ -442,31 +355,157 @@
   <div class="container-fluid bg-dark text-white border-top py-3 px-sm-3 px-md-5" style="border-color: rgba(255,255,255,.08) !important;">
     <div class="row">
       <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
-        <small class="m-0 text-white-50">© <span id="year"></span> Municipalidad de Miramar de Ansenuza. Todos los derechos reservados.</small>
+        <small class="m-0 text-white-50">© <span id="year"></span> <span data-i18n="footer.rights">Municipalidad de Miramar de Ansenuza. Todos los derechos reservados.</span></small>
       </div>
       <div class="col-md-6 text-center text-md-right">
-        <small class="m-0 text-white-50">Sitio oficial de Turismo</small>
+        <small class="m-0 text-white-50" data-i18n="footer.official">Sitio oficial de Turismo</small>
       </div>
     </div>
   </div>
   <!-- /Footer -->
 
   <!-- Back to Top -->
-  <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+  <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top" aria-label="Volver arriba"><i class="fa fa-angle-double-up"></i></a>
 
-  <!-- Scripts -->
+  <!-- Año automático -->
   <script>
-    // Año automático
     (function () {
       var el = document.getElementById('year');
       if (el) el.textContent = new Date().getFullYear();
     })();
   </script>
+
+  <!-- Dependencias -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
   <script src="lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="lib/easing/easing.min.js"></script>
   <script src="js/main.js"></script>
-</body>
 
+  <!-- Filtros eventos -->
+  <script>
+    const q    = document.getElementById('q');
+    const mes  = document.getElementById('mes');
+    const rows = [...document.querySelectorAll('.event-item')];
+
+    function applyFilters(){
+      const term  = (q.value||'').trim().toLowerCase();
+      const mval  = (mes.value||'');
+
+      rows.forEach(card=>{
+        const title = (card.dataset.title||'').toLowerCase();
+        const month = (card.dataset.month||'');
+
+        const matchQ   = !term || title.includes(term);
+        const matchMes = !mval || month===mval;
+        const show = matchQ && matchMes;
+
+        card.style.display = show ? '' : 'none';
+
+        // Si se oculta, cerrá su detalle
+        if(!show){
+          const col = card.querySelector('.collapse.show');
+          if(col){ $(col).collapse('hide'); }
+        }
+      });
+    }
+
+    [q, mes].forEach(el=>el.addEventListener('input', applyFilters));
+    applyFilters();
+  </script>
+
+  <!-- Script Idioma -->
+  <script>
+  (function(){
+    const dict = {
+      es: {
+        "page.title":"Eventos – Miramar de Ansenuza",
+        "page.desc":"Descubrí los eventos en Miramar de Ansenuza: maratones, fiestas, yoga, motoencuentros y más.",
+        "menu.home":"Inicio","menu.about":"Acerca de","menu.events":"Eventos","menu.contact":"Contacto",
+        "top.mail":"oficinadeturismo2@gmail.com","top.phone":"3563 - 409731",
+        "events.heroKicker":"Eventos","events.heroTitle":"Viví Miramar de Ansenuza","events.heroSubtitle":"Maratón, fiestas, yoga, motoencuentros y mucho más",
+        "breadcrumb.home":"Inicio","breadcrumb.events":"Eventos",
+        "search.placeholder":"Buscar (yoga, fiesta, 10K…)",
+        "month.any":"Mes","month.jan":"Enero","month.feb":"Febrero","month.mar":"Marzo","month.apr":"Abril","month.may":"Mayo","month.jun":"Junio","month.jul":"Julio","month.aug":"Agosto","month.sep":"Septiembre","month.oct":"Octubre","month.nov":"Noviembre","month.dec":"Diciembre",
+
+        "event1.imgAlt":"Respirá Yoga – Día Mundial del Yoga","event1.badge":"21 JUN","event1.title":"Respirá Yoga","event1.when":"Sáb 21 Jun · 14:30","event1.where":"Playa Atardeceres","event1.desc":"Tarde de yoga y bienestar frente al lago. Traé manta o lona. 14:30 a 17:30.",
+        "event2.imgAlt":"Flow Party Primavera","event2.badge":"21 SEP","event2.title":"Flow Party Primavera","event2.when":"Dom 21 Sep · 18:00","event2.where":"Costanera","event2.desc":"DJ, Playa, Foodtrucks y Seguridad. Entrada sujeta a cupo.",
+        "event3.imgAlt":"Motoencuentro","event3.badge":"25 ENE","event3.title":"Motoencuentro","event3.when":"Sáb 25 Ene · Todo el día","event3.where":"Predio Municipal","event3.desc":"Vení con tu moto y pasá un día increíble, rodeado de fierros, amigos y buena música. Habrá patio de comidas, stands y sorteos. ¡Aptos todas las cilindradas!",
+        "event4.imgAlt":"Centenario – Los Palmeras","event4.badge":"18 NOV","event4.title":"Centenario: Los Palmeras","event4.when":"Lun 18 Nov · 18:00","event4.where":"Costanera","event4.desc":"Show central por los 100 años de Miramar con artistas invitados.",
+
+        "btn.more":"Más info",
+        "footer.about":"Miramar de Ansenuza, puerta del Parque y Reserva Nacional Ansenuza. Atardeceres únicos y avistaje de aves en la laguna salada más grande de Sudamérica.",
+        "footer.follow":"Seguinos","footer.navTitle":"Navegación","footer.services":"Servicios","footer.stays":"Alojamientos","footer.optin":"Recibir información",
+        "footer.contactTitle":"Contacto","footer.addr":"Miramar de Ansenuza, Córdoba, Argentina","footer.phone":"3563 - 409731","footer.mail":"oficinadeturismo2@gmail.com",
+        "footer.whats":"Escribinos por WhatsApp","footer.rights":"Municipalidad de Miramar de Ansenuza. Todos los derechos reservados.","footer.official":"Sitio oficial de Turismo"
+      },
+      en: {
+        "page.title":"Events – Miramar de Ansenuza",
+        "page.desc":"Discover events in Miramar de Ansenuza: marathons, parties, yoga, biker meetups and more.",
+        "menu.home":"Home","menu.about":"About","menu.events":"Events","menu.contact":"Contact",
+        "top.mail":"oficinadeturismo2@gmail.com","top.phone":"+54 3563 - 409731",
+        "events.heroKicker":"Events","events.heroTitle":"Live Miramar de Ansenuza","events.heroSubtitle":"Marathon, parties, yoga, biker meetups and more",
+        "breadcrumb.home":"Home","breadcrumb.events":"Events",
+        "search.placeholder":"Search (yoga, party, 10K…)",
+        "month.any":"Month","month.jan":"January","month.feb":"February","month.mar":"March","month.apr":"April","month.may":"May","month.jun":"June","month.jul":"July","month.aug":"August","month.sep":"September","month.oct":"October","month.nov":"November","month.dec":"December",
+
+        "event1.imgAlt":"Breathe Yoga – International Yoga Day","event1.badge":"21 JUN","event1.title":"Breathe Yoga","event1.when":"Sat Jun 21 · 2:30 PM","event1.where":"Atardeceres Beach","event1.desc":"An afternoon of yoga and wellness by the lake. Bring a mat or blanket. 2:30 to 5:30 PM.",
+        "event2.imgAlt":"Flow Party Spring","event2.badge":"21 SEP","event2.title":"Flow Party Spring","event2.when":"Sun Sep 21 · 6:00 PM","event2.where":"Waterfront","event2.desc":"DJ, beach vibes, food trucks and safety. Limited capacity.",
+        "event3.imgAlt":"Bike Meetup","event3.badge":"25 JAN","event3.title":"Bike Meetup","event3.when":"Sat Jan 25 · All day","event3.where":"Municipal Grounds","event3.desc":"Bring your bike and spend an amazing day with machines, friends and music. Food court, stands and raffles. All displacements welcome!",
+        "event4.imgAlt":"Centennial – Los Palmeras","event4.badge":"18 NOV","event4.title":"Centennial: Los Palmeras","event4.when":"Mon Nov 18 · 6:00 PM","event4.where":"Waterfront","event4.desc":"Main show for Miramar’s 100th anniversary with guest artists.",
+
+        "btn.more":"More info",
+        "footer.about":"Miramar de Ansenuza, gateway to the Ansenuza National Park and Reserve. Unique sunsets and birdwatching at South America’s largest salt lake.",
+        "footer.follow":"Follow us","footer.navTitle":"Navigation","footer.services":"Services","footer.stays":"Lodging","footer.optin":"Get updates",
+        "footer.contactTitle":"Contact","footer.addr":"Miramar de Ansenuza, Córdoba, Argentina","footer.phone":"+54 3563 - 409731","footer.mail":"oficinadeturismo2@gmail.com",
+        "footer.whats":"Message us on WhatsApp","footer.rights":"Municipality of Miramar de Ansenuza. All rights reserved.","footer.official":"Official Tourism Site"
+      }
+    };
+
+    const LS_KEY="site_lang";
+
+    function applyLang(lang){
+      document.documentElement.setAttribute("lang", lang);
+
+      // Text content
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const k = el.getAttribute("data-i18n");
+        if (dict[lang] && dict[lang][k] !== undefined) el.textContent = dict[lang][k];
+      });
+
+      // Placeholders
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{
+        const k = el.getAttribute("data-i18n-placeholder");
+        if (dict[lang] && dict[lang][k] !== undefined) el.setAttribute("placeholder", dict[lang][k]);
+      });
+
+      // Image alts
+      document.querySelectorAll("[data-i18n-alt]").forEach(el=>{
+        const k = el.getAttribute("data-i18n-alt");
+        if (dict[lang] && dict[lang][k] !== undefined) el.setAttribute("alt", dict[lang][k]);
+      });
+
+      // Botón bandera
+      const icon = document.getElementById("langIcon");
+      if (icon) icon.textContent = (lang === "en") ? "🇺🇸" : "🇦🇷";
+
+      localStorage.setItem(LS_KEY, lang);
+    }
+
+    // Inicial
+    const stored = localStorage.getItem(LS_KEY);
+    const initial = stored || "es";
+    applyLang(initial);
+
+    // Toggle
+    const btn = document.getElementById("langToggle");
+    if (btn) {
+      btn.addEventListener("click", ()=>{
+        const current = localStorage.getItem(LS_KEY) || "es";
+        applyLang(current === "es" ? "en" : "es");
+      });
+    }
+  })();
+  </script>
+</body>
 </html>
