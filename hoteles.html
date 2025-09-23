@@ -24,40 +24,161 @@
 
   <!-- ====== ESTILOS PROPIOS ====== -->
   <style>
-    .lodging{border:1px solid #eef2f5;border-radius:12px;overflow:hidden;background:#fff}
-    .lodging + .lodging{margin-top:2rem}
-    .lodging-title{font-size:1.35rem;color:#123055;font-weight:700}
-    .lodging-photo{position:relative;display:block;width:100%;height:300px;overflow:hidden}
-    .lodging-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-    .amenities{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap}
-    .amenities li{margin:.25rem .6rem .25rem 0;font-size:1.05rem;color:#123055}
-    .amenities li.muted{color:#c0392b}
-    .link-map{color:#e05c74;text-decoration:none}
-    .link-map:hover{text-decoration:underline}
-
-    /* Caja de CATEGORÍAS (la blanca de arriba) */
-    .filters-box{background:#fff; box-shadow:0 10px 26px rgba(0,0,0,.10); padding:22px; border-radius:8px;}
-    .filters-box .nav-link{color:black; display:inline-block; transition:transform .18s ease, color .18s ease;}
-    .filters-box .nav-link:hover{transform:scale(1.06); color:#6bb8ff}
-
-    /* BUSCADOR FLOTANTE (fuera del recuadro blanco) */
-    .search-standalone{ margin-top:18px; } /* <— separación clara del recuadro blanco */
-    .search-card{
-      background:#fff; border:1px solid #e6eaf0; border-radius:12px;
-      padding:12px 16px; box-shadow:0 8px 22px rgba(0,0,0,.08);
+    :root{
+      --azul:#0d2b57;         /* texto y amenities */
+      --rosa:#e05c74;         /* links “Ver en Google Maps” */
+      --verde:#2ecc71;        /* íconos de contacto/ubicación */
+      --gris:#6c7a89;
+      --borde:#e9eef4;
+      --card-shadow:0 10px 26px rgba(0,0,0,.08);
+      --radius:14px;
     }
-    .search-wrap{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
-    .search-input{flex:1 1 260px;border:1px solid #dfe5ea;border-radius:10px;padding:.65rem .85rem;outline:none;font-size:.95rem}
-    .search-input:focus{border-color:#79a9ff;box-shadow:0 0 0 3px rgba(56,132,255,.12)}
-    .btn-clear{border:1px solid #dfe5ea;background:#fff;border-radius:10px;padding:.55rem .9rem;cursor:pointer}
-    .search-meta{font-size:.9rem;color:#48607a}
-    mark.search-hit{background:#fff3bf;padding:0 .15rem;border-radius:4px}
+/* --------- Header / Hero --------- */
+.page-header-ansenuza {
+  position: relative;
+  color: #fff;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 380px;
+}
+.page-header-ansenuza::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.45));
+}
+.page-header-ansenuza .hero-wrap {
+  position: relative;
+  z-index: 2;
+  min-height: 380px;
+  padding: 60px 0;
+  text-align: center;
+}
+.hero-kicker {
+  display: inline-block;
+  background: #eaf0ff;       /* Fondo celeste */
+  color: #1e3a6d;            /* Azul oscuro */
+  font-weight: 600;
+  padding: .35rem .75rem;
+  border-radius: 999px;
+  margin-bottom: 10px;
+  letter-spacing: .08em;
+}
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 .5rem;
+  color: #fff;               /* Título en blanco */
+  text-shadow: 0 2px 6px rgba(0,0,0,.35);
+}
+.hero-accent {
+  background: linear-gradient(90deg, #fff, #dbeafe); 
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-subtitle {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #fff;               /* Subtítulo blanco */
+  text-shadow: 0 1px 4px rgba(0,0,0,.25);
+}
+/* --------- Header / Hero --------- */
+.page-header-ansenuza {
+  position: relative;
+  color: #fff;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 380px;
+}
+.page-header-ansenuza::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.45));
+}
+.page-header-ansenuza .hero-wrap {
+  position: relative;
+  z-index: 2;
+  min-height: 380px;
+  padding: 60px 0;
+  text-align: center;
+}
+.hero-kicker {
+  display: inline-block;
+  background: #eaf0ff;       /* Fondo celeste */
+  color: #1e3a6d;            /* Azul oscuro */
+  font-weight: 600;
+  padding: .35rem .75rem;
+  border-radius: 999px;
+  margin-bottom: 10px;
+  letter-spacing: .08em;
+}
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 .5rem;
+  color: #fff;               /* Título en blanco */
+  text-shadow: 0 2px 6px rgba(0,0,0,.35);
+}
+.hero-accent {
+  background: linear-gradient(90deg, #fff, #dbeafe); 
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-subtitle {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #fff;               /* Subtítulo blanco */
+  text-shadow: 0 1px 4px rgba(0,0,0,.25);
+}
 
-    /* mensaje sin resultados */
-    .no-results{display:none;text-align:center;color:#4a5a6a;border:1px dashed #d9e2ec;border-radius:12px;padding:1.25rem;background:#fbfdff;margin-top:16px}
 
-    @media (max-width: 991.98px){ .lodging-photo{height:220px} }
-    @media (min-width: 1200px){ .lodging-photo{height:360px} }
+    /* Cards tipo listado (imagen grande a la izquierda) */
+    .lodging{background:#fff; border:1px solid var(--borde); border-radius:var(--radius); overflow:hidden; box-shadow:var(--card-shadow);}
+    .lodging + .lodging{margin-top:28px;}
+    .lodging-photo{position:relative; display:block; width:100%; height:380px; overflow:hidden;}
+    .lodging-photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s ease;}
+    .lodging-photo:hover img{transform:scale(1.03);}
+    .lodging-title{font-weight:700; font-size:1.7rem; color:var(--azul); margin:0 0 .35rem;}
+
+    /* Amenities (azules, con pata roja si es “no pets”) */
+    .amenities{list-style:none; padding:0; margin:0 0 .75rem; display:flex; flex-wrap:wrap; gap:.55rem .75rem; color:var(--azul); font-size:1.05rem;}
+    .amenities i{font-size:1.05rem; vertical-align:middle;}
+    .amenities .muted{color:#e63946;}
+
+    /* Bloques de info a la derecha */
+    .info-block{padding:20px 26px;}
+    .lbl{font-weight:600; color:var(--azul); margin:.35rem 0;}
+    .addr{color:var(--azul);}
+    .addr i{color:var(--verde); margin-right:.45rem;}          /* Pin verde */
+    .map-link{color:var(--rosa); text-decoration:none; margin-left:.25rem;}
+    .map-link:hover{text-decoration:underline;}
+
+    /* Caja de CATEGORÍAS (la blanca superior) */
+    .filters-box{background:#fff; box-shadow:var(--card-shadow); padding:20px; border-radius:12px;}
+    .filters-box .nav-link{color:#000; display:inline-block; transition:transform .18s ease, color .18s ease;}
+    .filters-box .nav-link:hover{transform:scale(1.05); color:#6bb8ff}
+
+    /* BUSCADOR standalone + contador “Mostrando X de Y” */
+    .search-standalone{margin-top:18px;}
+    .search-card{background:#fff; border:1px solid #e6eaf0; border-radius:12px; padding:12px 16px; box-shadow:0 8px 22px rgba(0,0,0,.08);}
+    .search-wrap{display:flex; gap:.5rem; align-items:center; flex-wrap:wrap;}
+    .search-input{flex:1 1 320px; border:1px solid #dfe5ea; border-radius:10px; padding:.65rem .85rem; outline:none; font-size:.95rem;}
+    .search-input:focus{border-color:#79a9ff; box-shadow:0 0 0 3px rgba(56,132,255,.12)}
+    .btn-clear{border:1px solid #dfe5ea; background:#fff; border-radius:10px; padding:.55rem .9rem; cursor:pointer}
+    .search-meta{font-size:.9rem; color:#48607a}
+    mark.search-hit{background:#fff3bf; padding:0 .15rem; border-radius:4px}
+
+    /* Mensaje sin resultados */
+    .no-results{display:none; text-align:center; color:#4a5a6a; border:1px dashed #d9e2ec; border-radius:12px; padding:1.25rem; background:#fbfdff; margin-top:16px}
+
+    @media (max-width: 991.98px){ .lodging-photo{height:240px} }
   </style>
 </head>
 
@@ -108,20 +229,26 @@
 
   <!-- Header -->
   <header class="page-header-ansenuza" style="background-image:url('img/flamencos.jpg'); background-position:center; background-size:cover;">
-    <div class="container">
-      <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
-        <span class="hero-kicker">Oficina de Turismo</span>
-        <h1 class="hero-title"><span class="hero-accent">Hoteles</span></h1>
-        <p class="hero-subtitle">Estamos para ayudarte</p>
-        <nav aria-label="breadcrumb" class="hero-breadcrumb">
-          <ol class="breadcrumb justify-content-center">
-            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Hoteles</li>
-          </ol>
-        </nav>
-      </div>
+  <div class="container">
+    <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
+      <span class="hero-kicker">Alojamientos</span>
+
+      <!-- Título específico -->
+      <h1 class="hero-title"><span class="hero-accent">Hoteles</span></h1>
+
+      <!-- Subtítulo más descriptivo -->
+      <p class="hero-subtitle">Descubrí el confort y la atención que merecés</p>
+
+      <nav aria-label="breadcrumb" class="hero-breadcrumb">
+        <ol class="breadcrumb justify-content-center">
+          <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Hoteles</li>
+        </ol>
+      </nav>
     </div>
-  </header>
+  </div>
+</header>
+
 
   <!-- ===== LISTADO: CABAÑAS ===== -->
   <section id="cabanas" class="container py-5">
@@ -146,8 +273,8 @@
                             box-shadow:0 10px 24px rgba(0,0,0,.12); padding:.5rem 0; z-index:10;"
                      onmouseover="this.style.display='block';"
                      onmouseleave="this.style.display='none';">
-                  <a href="#" class="dropdown-item">Premium / Superior</a>
-                  <a href="#" class="dropdown-item">Confort / Estándar Plus</a>
+                  <a href="deptoSuperior.html" class="dropdown-item">Premium / Superior</a>
+                  <a href="deptoEstandar.html" class="dropdown-item">Confort / Estándar Plus</a>
                 </div>
               </div>
             </div>
@@ -163,8 +290,8 @@
         <div class="search-wrap">
           <i class="fas fa-search" aria-hidden="true"></i>
           <input id="search-cabanas" class="search-input" type="search"
-                 placeholder="Buscar por nombre de hotel"
-                 aria-label="Buscar por nombre de hotel">
+                 placeholder="Buscar por nombre de Hotel"
+                 aria-label="Buscar por nombre de Hotel">
           <button id="clear-search" class="btn-clear" type="button" aria-label="Limpiar búsqueda">Limpiar</button>
           <span id="search-meta" class="search-meta ml-auto">Mostrando <strong id="count-visible">0</strong> de <strong id="count-total">0</strong></span>
         </div>

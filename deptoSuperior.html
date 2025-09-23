@@ -33,6 +33,58 @@
       --card-shadow:0 10px 26px rgba(0,0,0,.08);
       --radius:14px;
     }
+/* --------- Header / Hero --------- */
+.page-header-ansenuza {
+  position: relative;
+  color: #fff;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 380px;
+}
+.page-header-ansenuza::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.45));
+}
+.page-header-ansenuza .hero-wrap {
+  position: relative;
+  z-index: 2;
+  min-height: 380px;
+  padding: 60px 0;
+  text-align: center;
+}
+.hero-kicker {
+  display: inline-block;
+  background: #eaf0ff;       /* Fondo celeste */
+  color: #1e3a6d;            /* Azul oscuro */
+  font-weight: 600;
+  padding: .35rem .75rem;
+  border-radius: 999px;
+  margin-bottom: 10px;
+  letter-spacing: .08em;
+}
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 .5rem;
+  color: #fff;               /* Título en blanco */
+  text-shadow: 0 2px 6px rgba(0,0,0,.35);
+}
+.hero-accent {
+  background: linear-gradient(90deg, #fff, #dbeafe); 
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero-subtitle {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #fff;               /* Subtítulo blanco */
+  text-shadow: 0 1px 4px rgba(0,0,0,.25);
+}
 
     /* Cards tipo listado (imagen grande a la izquierda) */
     .lodging{background:#fff; border:1px solid var(--borde); border-radius:var(--radius); overflow:hidden; box-shadow:var(--card-shadow);}
@@ -124,20 +176,26 @@
 
   <!-- Header -->
   <header class="page-header-ansenuza" style="background-image:url('img/flamencos.jpg'); background-position:center; background-size:cover;">
-    <div class="container">
-      <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
-        <span class="hero-kicker">Oficina de Turismo</span>
-        <h1 class="hero-title"><span class="hero-accent">Deptos Superiores</span></h1>
-        <p class="hero-subtitle">Estamos para ayudarte</p>
-        <nav aria-label="breadcrumb" class="hero-breadcrumb">
-          <ol class="breadcrumb justify-content-center">
-            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Deptos Superiores</li>
-          </ol>
-        </nav>
-      </div>
+  <div class="container">
+    <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
+      <span class="hero-kicker">Alojamientos</span>
+      
+      <!-- Título específico -->
+      <h1 class="hero-title"><span class="hero-accent">Deptos Superiores</span></h1>
+
+      <!-- Subtítulo más descriptivo -->
+      <p class="hero-subtitle">Confort y categoría para disfrutar al máximo tu estadía</p>
+
+      <nav aria-label="breadcrumb" class="hero-breadcrumb">
+        <ol class="breadcrumb justify-content-center">
+          <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Deptos Superiores</li>
+        </ol>
+      </nav>
     </div>
-  </header>
+  </div>
+</header>
+
 
   <!-- ===== LISTADO ===== -->
   <section class="container py-5">
@@ -161,8 +219,8 @@
                             min-width:260px; background:#fff; border:1px solid #e6e6e6; border-radius:12px;
                             box-shadow:0 10px 24px rgba(0,0,0,.12); padding:.5rem 0; z-index:10;"
                      onmouseover="this.style.display='block';" onmouseleave="this.style.display='none';">
-                  <a href="#" class="dropdown-item">Premium / Superior</a>
-                  <a href="#" class="dropdown-item">Confort / Estándar Plus</a>
+                  <a href="deptoSuperior.html" class="dropdown-item">Premium / Superior</a>
+                  <a href="deptoEstandar.html" class="dropdown-item">Confort / Estándar Plus</a>
                 </div>
               </div>
             </div>
