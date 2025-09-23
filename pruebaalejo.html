@@ -82,9 +82,7 @@
       <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
         <span class="hero-kicker">Oficina de Turismo</span>
         <h1 class="hero-title"><span class="hero-accent">Contacto</span></h1>
-        <a href="#whatsapp-optin" class="btn btn-success btn-pill mt-2">
-          <i class="fab fa-whatsapp mr-1"></i> Quiero recibir info por WhatsApp
-        </a>
+       
       </div>
     </div>
   </header>
@@ -108,12 +106,23 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="wa_name">Nombre</label>
-                  <input type="text" class="form-control" id="wa_name" placeholder="Tu nombre" required>
+                  <input type="text" class="form-control" id="wa_name" placeholder="Tu nombre" required autocomplete="name">
                   <div class="invalid-feedback">Ingresá tu nombre.</div>
                 </div>
+
                 <div class="form-group col-md-6">
                   <label for="wa_phone">Tu WhatsApp</label>
-                  <input type="tel" class="form-control" id="wa_phone" placeholder="Ej: 3512345678" required>
+                  <!-- ✅ campo optimizado -->
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="wa_phone"
+                    placeholder="Ej: 3512345678"
+                    required
+                    inputmode="tel"
+                    autocomplete="tel"
+                    pattern="[0-9+ ]+"
+                    maxlength="20">
                   <div class="invalid-feedback">Ingresá tu número de WhatsApp.</div>
                 </div>
               </div>
@@ -172,7 +181,7 @@
 
   <!-- Lógica: guarda en Google Apps Script (NO abre WhatsApp) -->
   <script>
-    // Tu Web App de Apps Script (ya incluida)
+    // Tu Web App de Apps Script (el que ya te anda)
     const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbw2XXoI_WIdC-h2bHqpQ97pDe4Qt5-udmS_0TLr4naY6JbeN1knNFAEpxxVdFI5QNIy/exec';
 
     function getUTMs(){
@@ -243,7 +252,7 @@
         okAlert.classList.add('d-none'); errAlert.classList.add('d-none');
 
         try{
-          // Importante: text/plain para evitar preflight CORS en Apps Script
+          // text/plain evita preflight CORS en Apps Script
           const res = await fetch(WEBHOOK_URL, {
             method:'POST',
             headers:{'Content-Type':'text/plain;charset=utf-8'},
@@ -254,9 +263,6 @@
           okAlert.classList.remove('d-none');
           form.reset();
           form.classList.remove('was-validated');
-
-          // Opcional: ocultar form y dejar solo el OK
-          // form.parentElement.style.display = 'none';
 
         }catch(err){
           errAlert.classList.remove('d-none');
