@@ -24,6 +24,90 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+  /* ====== MOBILE FIRST ====== */
+  :root{
+    --primary:#1e3a6d; --line:#e5e7eb; --radius:14px;
+  }
+
+  /* NAV logo ya lo tenés, mantengo */
+
+  /* HERO VIDEO (ocupa pantalla sin cortar raro) */
+  .hero-video{
+    width:100%;
+    height: 52vh;         /* celular */
+    object-fit: cover;
+    display:block;
+    background:#000;
+  }
+  @media (min-width:768px){
+    .hero-video{ height: 62vh; }
+  }
+
+  /* TITULOS + espaciados más compactos en cel */
+  h1{ font-size:clamp(1.35rem, 6vw, 2rem); }
+  h6{ font-size:.9rem; }
+
+  /* ===== Destino ===== */
+  .destination-item{ border-radius:12px; overflow:hidden; background:#000; }
+  .destination-item img{
+    width:100%; height:200px; object-fit:cover; display:block;
+    transition:transform .25s ease;
+  }
+  .destination-overlay{
+    position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:center;
+    padding:14px; text-align:center;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%);
+  }
+  .destination-item:hover img{ transform:scale(1.03); }
+  @media (min-width:768px){ .destination-item img{ height:240px; } }
+
+  /* ===== Pink (guía) ===== */
+  .pink-wrap{ align-items:center; gap:14px; }
+  .pink-badge{
+    height:160px; width:220px; border-radius:20px; background:#fde7f1;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 28px rgba(0,0,0,.08);
+    margin-right:0;
+  }
+  .pink-badge img{ max-height:92%; max-width:92%; height:auto; width:auto; }
+  .pink-title{ font-weight:800; color:var(--primary); margin:.25rem 0; }
+  .pink-text{ color:#445066; margin:0 0 .75rem; font-size:.95rem; }
+  @media (min-width:576px){
+    .pink-wrap{ flex-direction:row; }
+    .pink-badge{ margin-right:1rem; height:200px; width:280px; }
+  }
+
+  /* ===== Service “cards” clicables (mejor tacto) ===== */
+  .service-card{
+    border:1px solid var(--line) !important; border-radius:12px;
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .service-card:active{ transform:scale(.99); }
+  @media (hover:hover){
+    .service-card:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.08); }
+  }
+
+  /* ===== Modales: margen menor en cel ===== */
+  .modal-dialog{ margin: .75rem; }
+
+  /* ===== Botón Pink + Back to top (que no se pisen) ===== */
+  .pinky-float{
+    position: fixed; bottom: 18px; right: 16px;
+    width: 68px; height: 68px; background:#fff; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 2px 2px 8px rgba(0,0,0,.3); z-index:1001; transition:transform .2s ease-in-out;
+    overflow:hidden;
+  }
+  .pinky-float img.pink-icon{ width: 76%; height:auto; }
+  .pinky-float:hover{ transform: scale(1.07); text-decoration:none; }
+
+  .back-to-top{
+    bottom: 96px !important;  /* subimos la flecha para que no tape al Pink */
+    right: 20px !important;
+    z-index:1000;
+  }
+</style>
 
     <!-- Estilos del logo en navbar (listo para usar) -->
     <style>
@@ -38,6 +122,7 @@
       /* Alinea mejor el brand con el padding del nav si querés ajustar */
       /* .nav-bar .navbar { padding-top: .75rem; padding-bottom: .75rem; } */
     </style>
+    
 </head>
 
 <body>
@@ -89,7 +174,7 @@
                     <div class="navbar-nav ml-auto py-0">
                         <a href="index.html" class="nav-item nav-link active">Inicio</a>
                         <a href="about.html" class="nav-item nav-link">Acerca de</a>
-                        <a href="contact.html" class="nav-item nav-link">Contacto</a>
+                       
                         <a href="pruebaalejo.html" class="nav-item nav-link">Recibir información</a>
                     </div>
                 </div>
