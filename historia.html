@@ -24,8 +24,16 @@
   <!-- Customized Bootstrap Stylesheet -->
   <link href="css/style.css" rel="stylesheet" />
 
-  <!-- ESTILOS PROPIOS (tu base, sin tocar) -->
+  <!-- ESTILOS PROPIOS -->
   <style>
+    /* ========= Variables PINK + BackToTop ========= */
+    :root{
+      --pink-size: 88px;      /* tamaño del botón Pink */
+      --pink-gap: 16px;       /* espacio entre Pink y la flecha */
+      --pink-bottom: 20px;    /* distancia al borde inferior */
+      --pink-right: 20px;     /* distancia al borde derecho */
+    }
+
     /* --------- Header / Hero --------- */
     .page-header-ansenuza{
       position:relative; color:#fff;
@@ -116,6 +124,38 @@
       color:#fff; border-radius:16px; padding:24px; box-shadow:0 10px 28px rgba(30,58,109,.28);
     }
 
+    /* ===== Botón Pink + Back to Top (no se pisan) ===== */
+    .pinky-float{
+      position: fixed;
+      bottom: var(--pink-bottom);
+      right: var(--pink-right);
+      width: var(--pink-size);
+      height: var(--pink-size);
+      background:#fff;
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 10px 24px rgba(0,0,0,.20);
+      z-index:1001;
+      transition:transform .2s ease-in-out, box-shadow .2s ease-in-out;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.06);
+      cursor:pointer;
+    }
+    .pinky-float img.pink-icon{ width:76%; height:auto; }
+    .pinky-float:hover{ transform:scale(1.07); box-shadow:0 14px 30px rgba(0,0,0,.25); }
+
+    .back-to-top{
+      position: fixed;
+      bottom: calc(var(--pink-bottom) + var(--pink-size) + var(--pink-gap));
+      right: calc(var(--pink-right) + 8px);
+      z-index:1000;
+      border-radius:12px !important;
+      box-shadow:0 10px 20px rgba(0,0,0,.18);
+      border:0;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .back-to-top:hover{ transform: translateY(-2px); box-shadow:0 14px 26px rgba(0,0,0,.22); }
+
     /* Responsive */
     @media (max-width: 991.98px){
       .timeline::before{ left:28px; }
@@ -123,6 +163,14 @@
       .timeline-col{ width:100%; padding-left:64px; padding-right:0; float:none; }
       .timeline-left, .timeline-right{ float:none; }
       .page-header-ansenuza, .page-header-ansenuza .hero-wrap{ min-height:320px; }
+    }
+    @media (max-width:575.98px){
+      :root{
+        --pink-size: 74px;
+        --pink-gap: 12px;
+        --pink-bottom: 16px;
+        --pink-right: 16px;
+      }
     }
   </style>
 </head>
@@ -169,10 +217,8 @@
           <div class="navbar-nav ml-auto py-0">
             <a href="index.html" class="nav-item nav-link">Inicio</a>
             <a href="about.html" class="nav-item nav-link">Acerca de</a>
-              <a href="historia.html" class="nav-item nav-link active">Historia</a>
-           
+            <a href="historia.html" class="nav-item nav-link active">Historia</a>
             <a href="pruebaalejo.html" class="nav-item nav-link">Recibir información</a>
-           
           </div>
         </div>
       </nav>
@@ -197,7 +243,7 @@
     </div>
   </header>
 
-  <!-- ===================== Historia de Miramar de Ansenuza (con carrusel) ===================== -->
+  <!-- ===================== Historia (con carrusel) ===================== -->
   <section class="historia-section">
     <div class="container">
       <!-- NAV de años -->
@@ -214,7 +260,6 @@
         <div class="timeline-item" id="y1911">
           <div class="timeline-col timeline-left">
             <article class="timeline-card position-relative">
-              <!-- Carrusel 1911 -->
               <div id="tl-1911" class="owl-carousel">
                 <div class="item">
                   <img class="timeline-media owl-lazy" data-src="img/munoz_-_Figura_5b.jpg" alt="Primeros pobladores en Miramar" width="1200" height="800" />
@@ -243,7 +288,6 @@
           <div class="timeline-bullet">1938</div>
           <div class="timeline-col timeline-right">
             <article class="timeline-card position-relative">
-              <!-- Carrusel 1938 -->
               <div id="tl-1938" class="owl-carousel">
                 <div class="item">
                   <img class="timeline-media owl-lazy" data-src="img/gran_ha712022011.jpg" alt="Hotelería y balnearios en Miramar" width="1200" height="800" />
@@ -267,7 +311,6 @@
           <div class="timeline-bullet">1977</div>
           <div class="timeline-col timeline-left">
             <article class="timeline-card position-relative">
-              <!-- Carrusel 1977 -->
               <div id="tl-1977" class="owl-carousel">
                 <div class="item">
                   <img class="timeline-media owl-lazy" data-src="img/images.jpg" alt="Creciente en la costa de Miramar" width="1200" height="800" />
@@ -286,7 +329,6 @@
                 <div class="timeline-tags">
                   <span class="chip"><i class="fas fa-water"></i> Creciente</span>
                   <span class="chip"><i class="fas fa-hands-helping"></i> Comunidad</span>
-
                 </div>
               </div>
             </article>
@@ -298,7 +340,6 @@
           <div class="timeline-bullet">2022</div>
           <div class="timeline-col timeline-right">
             <article class="timeline-card position-relative">
-              <!-- Carrusel 2022 -->
               <div id="tl-2022" class="owl-carousel">
                 <div class="item">
                   <img class="timeline-media owl-lazy" data-src="img/_JOP9956.jpg" alt="Parque Nacional Ansenuza" width="1200" height="800" />
@@ -331,7 +372,6 @@
           <div class="timeline-bullet"><i class="fas fa-star"></i></div>
           <div class="timeline-col timeline-left">
             <article class="timeline-card position-relative">
-              <!-- Carrusel Hoy -->
               <div id="tl-hoy" class="owl-carousel">
                 <div class="item">
                   <img class="timeline-media owl-lazy" data-src="img/DSCN0794.jpg" alt="Paseo actual en Miramar" width="1200" height="800" />
@@ -357,71 +397,34 @@
         </div>
       </div>
 
-      <!-- Mantengo tu estilo local de alturas y sumo tweaks abajo -->
+      <!-- Tweaks de alturas y pulido -->
       <style>
-/* ===== Tamaño uniforme de imágenes en la timeline ===== */
-.timeline-media{
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  display: block;
-}
-
-/* Asegura que el contenedor del carrusel respete el mismo alto */
-.timeline-card .owl-stage-outer,
-.timeline-card .owl-stage,
-.timeline-card .owl-item,
-.timeline-card .owl-item .item{
-  height: 320px;
-}
-
-/* Responsive: bajamos alturas para pantallas chicas */
-@media (max-width: 991.98px){
-  .timeline-media{ height: 260px; }
-  .timeline-card .owl-stage-outer,
-  .timeline-card .owl-stage,
-  .timeline-card .owl-item,
-  .timeline-card .owl-item .item{ height: 260px; }
-}
-@media (max-width: 575.98px){
-  .timeline-media{ height: 220px; }
-  .timeline-card .owl-stage-outer,
-  .timeline-card .owl-stage,
-  .timeline-card .owl-item,
-  .timeline-card .owl-item .item{ height: 220px; }
-}
-
-/* ====== MEJORAS VISUALES (pulido) ====== */
-.timeline-card{
-  border-radius:16px;
-  border-color:#e9eef6;
-  box-shadow:0 10px 30px rgba(0,0,0,.06);
-}
-.timeline-card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 16px 36px rgba(0,0,0,.10);
-}
-.timeline-bullet{
-  background:linear-gradient(180deg,#fff,#f8fafc);
-  box-shadow:0 10px 26px rgba(0,0,0,.10);
-}
-.timeline::before{
-  background:linear-gradient(180deg,#eef2f7,#dbe4f0);
-}
-.chip{
-  background:#f7f9fc;
-  border-color:#e8edf5;
-}
-
-/* NAV de años: pill sutil */
-#nav-anios .btn{
-  margin:4px;
-  border-color:#dbeafe;
-}
-#nav-anios .btn:hover{
-  box-shadow:0 6px 16px rgba(0,0,0,.06);
-  transform:translateY(-1px);
-}
+        .timeline-media{ width:100%; height:320px; object-fit:cover; display:block; }
+        .timeline-card .owl-stage-outer,
+        .timeline-card .owl-stage,
+        .timeline-card .owl-item,
+        .timeline-card .owl-item .item{ height:320px; }
+        @media (max-width: 991.98px){
+          .timeline-media{ height:260px; }
+          .timeline-card .owl-stage-outer,
+          .timeline-card .owl-stage,
+          .timeline-card .owl-item,
+          .timeline-card .owl-item .item{ height:260px; }
+        }
+        @media (max-width: 575.98px){
+          .timeline-media{ height:220px; }
+          .timeline-card .owl-stage-outer,
+          .timeline-card .owl-stage,
+          .timeline-card .owl-item,
+          .timeline-card .owl-item .item{ height:220px; }
+        }
+        .timeline-card{ border-radius:16px; border-color:#e9eef6; box-shadow:0 10px 30px rgba(0,0,0,.06); }
+        .timeline-card:hover{ transform:translateY(-2px); box-shadow:0 16px 36px rgba(0,0,0,.10); }
+        .timeline-bullet{ background:linear-gradient(180deg,#fff,#f8fafc); box-shadow:0 10px 26px rgba(0,0,0,.10); }
+        .timeline::before{ background:linear-gradient(180deg,#eef2f7,#dbe4f0); }
+        .chip{ background:#f7f9fc; border-color:#e8edf5; }
+        #nav-anios .btn{ margin:4px; border-color:#dbeafe; }
+        #nav-anios .btn:hover{ box-shadow:0 6px 16px rgba(0,0,0,.06); transform:translateY(-1px); }
       </style>
 
       <!-- CTA inferior -->
@@ -441,19 +444,53 @@
   <!-- ===================== /Historia ===================== -->
 
   <!-- Footer (limpio) -->
-  <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 40px;">
+  <style>
+    /* ===== Footer estilo Miramar oscuro ===== */
+    footer,
+    .container-fluid.bg-dark{
+      background: linear-gradient(180deg, #0b1421, #0a0f18);
+      color:#cbd5e1;
+      font-size:.96rem;
+      line-height:1.65;
+    }
+    .container-fluid.bg-dark p,
+    .container-fluid.bg-dark a{ color:#c9d5ffb3; text-decoration:none; }
+    .container-fluid.bg-dark a:hover{ color:#7cd2a5; text-decoration:none; }
+    .container-fluid.bg-dark h5,
+    .container-fluid.bg-dark h6{ color:#fff; font-weight:700; margin-bottom:1rem; letter-spacing:2px; }
+    .container-fluid.bg-dark .navbar-brand img{ height:42px; width:auto; filter: drop-shadow(0 8px 16px rgba(0,0,0,.35)); }
+    .container-fluid.bg-dark .btn-square{
+      width:38px; height:38px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;
+      color:#fff !important; border:1px solid #4a72d9 !important;
+      background: linear-gradient(180deg,#20315a,#1a2747) !important;
+      transition: transform .25s ease, background .25s ease, border-color .25s ease;
+    }
+    .container-fluid.bg-dark .btn-square:hover{ transform: translateY(-2px); background:#2c5fb8 !important; border-color:#2c5fb8 !important; }
+    .container-fluid.bg-dark .btn-success{ background-color:#35d07f !important; border:none; font-weight:700; transition: transform .25s ease, box-shadow .25s ease; }
+    .container-fluid.bg-dark .btn-success:hover{ transform: translateY(-1px); box-shadow: 0 10px 26px rgba(53,208,127,.35); }
+    .container-fluid.bg-dark.border-top{ border-color: rgba(255,255,255,.12) !important; }
+    .container-fluid.bg-dark small{ font-size:.86rem; color:#9fb0c8 !important; }
+    @media (max-width: 575.98px){
+      .container-fluid.bg-dark .btn-square{ width:36px; height:36px; }
+      .container-fluid.bg-dark .navbar-brand img{ height:38px; }
+    }
+  </style>
+
+  <!-- ===== FOOTER ===== -->
+  <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
     <div class="row pt-4">
       <div class="col-lg-4 col-md-6 mb-4">
         <a href="index.html" class="navbar-brand d-inline-flex align-items-center mb-2">
-          <img src="img/logo-miramar.png" alt="Miramar de Ansenuza" style="height:34px;width:auto;">
+          <img src="img/logo-miramar@2x.png" alt="Miramar de Ansenuza" style="height:34px;width:auto;">
         </a>
         <p class="mt-2">
-          Miramar de Ansenuza, puerta del Parque y Reserva Nacional Ansenuza. Atardeceres únicos y avistaje de aves en la laguna salada más grande de Sudamérica.
+          Miramar de Ansenuza, puerta del Parque y Reserva Nacional Ansenuza. 
+          Atardeceres únicos, avistaje de aves y la laguna salada más grande de Sudamérica.
         </p>
         <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 4px;">Seguinos</h6>
         <div class="d-flex">
-          <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/turismomiramardeansenuza/"><i class="fab fa-facebook-f"></i></a>
-          <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/miramardeansenuza/"><i class="fab fa-instagram"></i></a>
+          <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/turismomiramardeansenuza/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/miramardeansenuza/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
 
@@ -462,6 +499,7 @@
         <div class="d-flex flex-column">
           <a class="text-white-50 mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
           <a class="text-white-50 mb-2" href="service.html"><i class="fa fa-angle-right mr-2"></i>Servicios</a>
+          <a class="text-white-50 mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Acerca de</a>
           <a class="text-white-50 mb-2" href="package.html"><i class="fa fa-angle-right mr-2"></i>Alojamientos</a>
           <a class="text-white-50" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
         </div>
@@ -469,17 +507,20 @@
 
       <div class="col-lg-4 col-md-6 mb-4">
         <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Contacto</h5>
-        <p><i class="fa fa-map-marker-alt mr-2"></i>Miramar de Ansenuza, Córdoba, Argentina</p>
+        <p><i class="fa fa-map-marker-alt mr-2"></i>DIRECCIÓN OFICINA DE TURISMO (General Paz 465, Miramar Córdoba.)</p>
         <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
-        <p><i class="fa fa-envelope mr-2"></i>oficinadeturismo2@gmail.com</p>
-        <a class="btn btn-success btn-block mt-2" target="_blank" rel="noopener" href="https://wa.me/5493563XXXXXX">
-          <i class="fab fa-whatsapp mr-2"></i>Escribinos por WhatsApp
-        </a>
+        <p><i class="fa fa-envelope mr-2"></i> oficinadeturismo2@gmail.com <br> infomiramarcba@gmail.com </p>
+        <div class="mt-3">
+          <a class="btn btn-success btn-block" href="https://wa.me/5493563409731" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp mr-2"></i>Escribinos por WhatsApp
+          </a>
+          <small class="d-block mt-2 text-muted">Horario de atención: Lunes a Viernes 08:00–13:00</small>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="container-fluid bg-dark text-white border-top py-3 px-sm-3 px-md-5" style="border-color: rgba(255,255,255,.08) !important;">
+  <div class="container-fluid bg-dark text-white border-top py-3 px-sm-3 px-md-5">
     <div class="row">
       <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
         <small class="m-0 text-white-50">© <span id="year"></span> Municipalidad de Miramar de Ansenuza. Todos los derechos reservados.</small>
@@ -489,10 +530,22 @@
       </div>
     </div>
   </div>
-  <!-- /Footer -->
+
+  <script>
+    // año automático en el footer
+    (function(){ var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); })();
+  </script>
 
   <!-- Back to Top -->
   <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+  <!-- Botón PINK (flamenco) -->
+  <a href="https://wa.me/3563401392?text=Hola%20PINK,%20quisiera%20hacer%20una%20consulta"
+     class="pinky-float" target="_blank"
+     aria-label="Contactar con PINK por WhatsApp"
+     title="Hola soy Pink, tu asistente virtual">
+    <img src="img/eda83ab2-b9e0-456f-844d-81a7b667e614.jpeg" alt="PINK" class="pink-icon">
+  </a>
 
   <!-- Modal para ver fotos en grande -->
   <div class="modal fade" id="fotoModal" tabindex="-1" aria-hidden="true">
@@ -508,7 +561,7 @@
 
   <!-- Scripts -->
   <script>
-    // Año automático
+    // Año automático (backup)
     (function () {
       var el = document.getElementById('year');
       if (el) el.textContent = new Date().getFullYear();
@@ -522,7 +575,7 @@
 
   <!-- Init carruseles + mejoras -->
   <script>
-    // Inicializar los carruseles de cada hito (fade + lazy + autoHeight)
+    // Inicializar carruseles de cada hito
     ['#tl-1911','#tl-1938','#tl-1977','#tl-2022','#tl-hoy'].forEach(function(sel){
       if ($(sel).length) {
         $(sel).owlCarousel({
@@ -542,7 +595,7 @@
       }
     });
 
-    // Scroll suave para los anclajes de año
+    // Scroll suave para anclajes de año
     document.querySelectorAll('#nav-anios a[href^="#"]').forEach(function(a){
       a.addEventListener('click', function(e){
         e.preventDefault();

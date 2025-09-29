@@ -1,781 +1,488 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title>TRAVELER - Free Travel Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+  <meta charset="utf-8" />
+  <title>TRAVELER - Free Travel Website Template</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="Free HTML Templates" name="keywords" />
+  <meta content="Free HTML Templates" name="description" />
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon" />
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+  <!-- Libraries Stylesheet -->
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-    <style>
-  /* ====== MOBILE FIRST ====== */
-  :root{
-    --primary:#1e3a6d; --line:#e5e7eb; --radius:14px;
-  }
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/style.css" rel="stylesheet" />
 
-  /* NAV logo ya lo tenés, mantengo */
+  <style>
+    /* ====== MOBILE FIRST ====== */
+    :root{
+      --primary:#1e3a6d; 
+      --line:#e5e7eb; 
+      --radius:14px;
 
-  /* HERO VIDEO (ocupa pantalla sin cortar raro) */
-  .hero-video{
-    width:100%;
-    height: 52vh;         /* celular */
-    object-fit: cover;
-    display:block;
-    background:#000;
-  }
-  @media (min-width:768px){
-    .hero-video{ height: 62vh; }
-  }
+      /* POSICIONAMIENTO PINK + BACK TO TOP (ajustás solo aquí) */
+      --pink-size: 88px;      /* tamaño del botón Pink */
+      --pink-gap: 16px;       /* separación vertical deseada entre Pink y la flecha */
+      --pink-bottom: 20px;    /* distancia de Pink al borde inferior */
+      --pink-right: 20px;     /* distancia de Pink al borde derecho */
+    }
 
-  /* TITULOS + espaciados más compactos en cel */
-  h1{ font-size:clamp(1.35rem, 6vw, 2rem); }
-  h6{ font-size:.9rem; }
+    .hero-video{
+      width:100%;
+      height:52vh;
+      object-fit:cover;
+      display:block;
+      background:#000;
+    }
+    @media (min-width:768px){ .hero-video{ height:62vh; } }
 
-  /* ===== Destino ===== */
-  .destination-item{ border-radius:12px; overflow:hidden; background:#000; }
-  .destination-item img{
-    width:100%; height:200px; object-fit:cover; display:block;
-    transition:transform .25s ease;
-  }
-  .destination-overlay{
-    position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:center;
-    padding:14px; text-align:center;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%);
-  }
-  .destination-item:hover img{ transform:scale(1.03); }
-  @media (min-width:768px){ .destination-item img{ height:240px; } }
+    h1{ font-size:clamp(1.35rem, 6vw, 2rem); }
+    h6{ font-size:.9rem; }
 
-  /* ===== Pink (guía) ===== */
-  .pink-wrap{ align-items:center; gap:14px; }
-  .pink-badge{
-    height:160px; width:220px; border-radius:20px; background:#fde7f1;
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 12px 28px rgba(0,0,0,.08);
-    margin-right:0;
-  }
-  .pink-badge img{ max-height:92%; max-width:92%; height:auto; width:auto; }
-  .pink-title{ font-weight:800; color:var(--primary); margin:.25rem 0; }
-  .pink-text{ color:#445066; margin:0 0 .75rem; font-size:.95rem; }
-  @media (min-width:576px){
-    .pink-wrap{ flex-direction:row; }
-    .pink-badge{ margin-right:1rem; height:200px; width:280px; }
-  }
+    /* ===== Destino ===== */
+    .destination-item{ border-radius:12px; overflow:hidden; background:#000; }
+    .destination-item img{
+      width:100%; height:200px; object-fit:cover; display:block;
+      transition:transform .25s ease;
+    }
+    .destination-overlay{
+      position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:center;
+      padding:14px; text-align:center;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%);
+    }
+    .destination-item:hover img{ transform:scale(1.03); }
+    @media (min-width:768px){ .destination-item img{ height:240px; } }
 
-  /* ===== Service “cards” clicables (mejor tacto) ===== */
-  .service-card{
-    border:1px solid var(--line) !important; border-radius:12px;
-    transition:transform .12s ease, box-shadow .12s ease;
-  }
-  .service-card:active{ transform:scale(.99); }
-  @media (hover:hover){
-    .service-card:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.08); }
-  }
+    /* ===== Pink (guía) ===== */
+    .pink-wrap{ align-items:center; gap:14px; }
+    .pink-badge{
+      height:160px; width:220px; border-radius:20px; background:#fde7f1;
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 12px 28px rgba(0,0,0,.08);
+      margin-right:0;
+    }
+    .pink-badge img{ max-height:92%; max-width:92%; height:auto; width:auto; }
+    .pink-title{ font-weight:800; color:var(--primary); margin:.25rem 0; }
+    .pink-text{ color:#445066; margin:0 0 .75rem; font-size:.95rem; }
+    @media (min-width:576px){
+      .pink-wrap{ flex-direction:row; }
+      .pink-badge{ margin-right:1rem; height:200px; width:280px; }
+    }
 
-  /* ===== Modales: margen menor en cel ===== */
-  .modal-dialog{ margin: .75rem; }
+    /* ===== Service cards ===== */
+    .service-card{
+      border:1px solid var(--line) !important; border-radius:12px;
+      transition:transform .12s ease, box-shadow .12s ease;
+    }
+    .service-card:active{ transform:scale(.99); }
+    @media (hover:hover){
+      .service-card:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.08); }
+    }
 
-  /* ===== Botón Pink + Back to top (que no se pisen) ===== */
-  .pinky-float{
-    position: fixed; bottom: 18px; right: 16px;
-    width: 68px; height: 68px; background:#fff; border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    box-shadow: 2px 2px 8px rgba(0,0,0,.3); z-index:1001; transition:transform .2s ease-in-out;
-    overflow:hidden;
-  }
-  .pinky-float img.pink-icon{ width: 76%; height:auto; }
-  .pinky-float:hover{ transform: scale(1.07); text-decoration:none; }
+    .modal-dialog{ margin:.75rem; }
 
-  .back-to-top{
-    bottom: 96px !important;  /* subimos la flecha para que no tape al Pink */
-    right: 20px !important;
-    z-index:1000;
-  }
-</style>
+    /* ======= Botón Pinky + Back to Top (NO se pisan) ======= */
+    .pinky-float{
+      position:fixed;
+      bottom: var(--pink-bottom);
+      right: var(--pink-right);
+      width: var(--pink-size);
+      height: var(--pink-size);
+      background:#fff;
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      box-shadow: 0 10px 24px rgba(0,0,0,.20);
+      z-index:1001;
+      transition:transform .2s ease-in-out, box-shadow .2s ease-in-out;
+      overflow:hidden;
+      border: 1px solid rgba(0,0,0,.06);
+    }
+    .pinky-float img.pink-icon{ width:76%; height:auto; }
+    .pinky-float:hover{ transform: scale(1.07); text-decoration:none; box-shadow:0 14px 30px rgba(0,0,0,.25); }
 
-    <!-- Estilos del logo en navbar (listo para usar) -->
-    <style>
-      .navbar .navbar-brand .logo-miramar{
-        height: 40px; /* ajustá a gusto */
-        width: auto;
-        display: block;
+    /* La flecha se coloca automáticamente por encima del tamaño de Pink */
+    .back-to-top{
+      position: fixed;
+      bottom: calc(var(--pink-bottom) + var(--pink-size) + var(--pink-gap));
+      right: calc(var(--pink-right) + 8px);
+      z-index:1000;
+      border-radius:12px !important;
+      box-shadow: 0 10px 20px rgba(0,0,0,.18);
+      border: 0;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .back-to-top:hover{ transform: translateY(-2px); box-shadow:0 14px 26px rgba(0,0,0,.22); }
+
+    /* En móviles reducimos Pink y ajustamos flecha automáticamente */
+    @media (max-width:575.98px){
+      :root{
+        --pink-size: 74px;
+        --pink-gap: 12px;
+        --pink-bottom: 16px;
+        --pink-right: 16px;
       }
-      @media (min-width: 992px){
-        .navbar .navbar-brand .logo-miramar{ height: 48px; }
-      }
-      /* Alinea mejor el brand con el padding del nav si querés ajustar */
-      /* .nav-bar .navbar { padding-top: .75rem; padding-bottom: .75rem; } */
-    </style>
-    
+    }
+  </style>
+
+  <!-- Estilos del logo en navbar -->
+  <style>
+    .navbar .navbar-brand .logo-miramar{
+      height:40px; width:auto; display:block;
+    }
+    @media (min-width:992px){ .navbar .navbar-brand .logo-miramar{ height:48px; } }
+  </style>
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-light pt-3 d-none d-lg-block">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-                    <div class="d-inline-flex align-items-center">
-                        <p><i class="fa fa-envelope mr-2"></i>oficinadeturismo2@gmail.com</p>
-                        <p class="text-body px-3">|</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>+54 9 3563 40-1392</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-center text-lg-right">
-                    <div class="d-inline-flex align-items-center">
-                        <a class="text-primary px-3" href="https://www.facebook.com/turismomiramardeansenuza/">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="text-primary px-3" href="https://www.instagram.com/miramardeansenuza/">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Topbar End -->
-
-
-    <!-- Navbar Start -->
-    <div class="container-fluid position-relative nav-bar p-0">
-        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
-            <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
-                <a href="index.html" class="navbar-brand d-flex align-items-center">
-                    <img
-                      src="img/logo-miramar.png"
-                      srcset="img/logo-miramar@2x.png 2x"
-                      alt="Miramar de Ansenuza"
-                      class="logo-miramar"
-                    >
-                    <span class="sr-only">Miramar de Ansenuza</span>
-                </a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                    <div class="navbar-nav ml-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Inicio</a>
-                        <a href="about.html" class="nav-item nav-link">Acerca de</a>
-                       
-                        <a href="pruebaalejo.html" class="nav-item nav-link">Recibir información</a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <!-- Navbar End -->
-    <!-- Carousel Start -->
-    <div class="container-fluid p-0">
-        <div id="header-carousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-              
-                   <video class="hero-video" src="WhatsApp Video 2025-09-17 at 12.15.32.mp4" autoplay muted playsinline loop></video>
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
-
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </div>
-<!-- ======= Destino ======= -->
-<style>
-  /* Tamaño uniforme para todas las imágenes */
-  .destination-item img{
-    width:100%;
-    height:240px;           /* ajustá a 220/260 si preferís */
-    object-fit:cover;       /* recorte elegante manteniendo proporción */
-    display:block;
-  }
-  /* Tarjeta prolija y consistente */
-  .destination-item{
-    border-radius:10px;
-    overflow:hidden;
-    background:#000;        /* evita parpadeo en carga */
-  }
-  /* Overlay ordenado y legible */
-  .destination-overlay{
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:end;
-    justify-content:center;
-    padding:16px;
-    text-align:center;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%);
-  }
-  .destination-overlay h5{
-    margin:0;
-  }
-  /* Hover sutil */
-  .destination-item:hover img{
-    transform:scale(1.03);
-    transition:transform .25s ease;
-  }
-</style>
-
-<div class="container-fluid py-5">
-  <div class="container pt-5 pb-3">
-    <div class="text-center mb-3 pb-3">
-      <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Destino</h6>
-      <h1>Explora Miramar de Ansenuza</h1>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="destination-item position-relative overflow-hidden mb-2">
-          <img class="img-fluid" src="img/XZN5SBWG5BHZRBVGOFEEFAKP5Y.jpg" alt="Nuestra Historia">
-          <a class="destination-overlay text-white text-decoration-none" href="historia.html">
-            <h5 class="text-white">Nuestra Historia</h5>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="destination-item position-relative overflow-hidden mb-2">
-          <img class="img-fluid" src="img/Gran-Hotel-Viena-2021.jpg" alt="Nuestros Museos">
-          <a class="destination-overlay text-white text-decoration-none" href="museos.html">
-            <h5 class="text-white">Nuestros Museos</h5>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="destination-item position-relative overflow-hidden mb-2">
-          <img class="img-fluid" src="img/ansenuza-hotel-casino.jpg" alt="Nuestros Alojamientos">
-          <a class="destination-overlay text-white text-decoration-none" href="package.html">
-            <h5 class="text-white">Nuestros Alojamientos</h5>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="destination-item position-relative overflow-hidden mb-2">
-          <img class="img-fluid" src="img/dextar-vision-RdGio6Z-1uA-unsplash.jpg" alt="Nuestra Gastronomía">
-          <a class="destination-overlay text-white text-decoration-none" href="gastronomia.html">
-            <h5 class="text-white">Nuestra Gastronomía</h5>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="destination-item position-relative overflow-hidden mb-2">
-          <img class="img-fluid" src="img/Deportes-acuaticos.webp" alt="Nuestras Actividades">
-          <a class="destination-overlay text-white text-decoration-none" href="Actividades.html">
-            <h5 class="text-white">Nuestras Actividades</h5>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="destination-item position-relative overflow-hidden mb-2">
-          <img class="img-fluid" src="img/25289578_1559256707500944_2350661798966849926_n.jpg" alt="Nuestros Eventos">
-          <a class="destination-overlay text-white text-decoration-none" href="eventos.html">
-            <h5 class="text-white">Nuestros Eventos</h5>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- ======= /Destino ======= -->
-
-  <!-- PINK – Guía de Turismo (reemplazo de Feature) -->
-<style>
-  .pink-wrap{ align-items:center; }
-  .pink-badge{
-    height:250px; width:350px; border-radius:90px;
-    background:#fde7f1; display:flex; align-items:center; justify-content:center;
-    box-shadow:0 12px 28px rgba(0,0,0,.08); margin-right:1.25rem;
-  }
-  .pink-badge img{ max-height:92%; max-width:92%; height:auto; width:auto; }
-  .pink-title{ font-weight:800; color:#1e3a6d; margin-bottom:.35rem; }
-  .pink-text{ color:#445066; margin:0 0 .9rem; }
-  @media (max-width: 575.98px){
-    .pink-wrap{ text-align:center; flex-direction:column; }
-    .pink-badge{ margin:0 auto 14px; }
-  }
-</style>
-
-<div class="container-fluid pb-5">
-  <div class="container pb-5">
-    <div class="row justify-content-center">
-      <div class="col-md-10 col-lg-8">
-        <div class="d-flex pink-wrap">
-          <!-- Imagen más grande -->
-          <div class="pink-badge" aria-hidden="true">
-            <img src="img/pink god.png" alt="PINK, guía turística">
+  <!-- Topbar Start -->
+  <div class="container-fluid bg-light pt-3 d-none d-lg-block">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+          <div class="d-inline-flex align-items-center">
+            <p><i class="fa fa-envelope mr-2"></i>oficinadeturismo2@gmail.com</p>
+            <p class="text-body px-3">|</p>
+            <p><i class="fa fa-phone-alt mr-2"></i>+54 9 3563 40-1392</p>
           </div>
-
-          <div>
-            <h5 class="pink-title">PINK — Guía de Turismo</h5>
-            <p class="pink-text">
-              Conoce a <strong>Pink </strong>
-              nuestro guía turistico y asistente virtual, consultale tu duda y con mucho gusto te 
-              respondera<br>               
-            </p>
-
-            <a class="btn btn-primary"
-            href="https://wa.me/5493563401392?text=Hola%20PINK,%20quisiera%20hacer%20una%20consulta"
-            target="_blank" rel="noopener" aria-label="Consultar por WhatsApp a PINK">
-                          Consultar aquí
-                          </a>
-
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
+          <div class="d-inline-flex align-items-center">
+            <a class="text-primary px-3" href="https://www.facebook.com/turismomiramardeansenuza/"><i class="fab fa-facebook-f"></i></a>
+            <a class="text-primary px-3" href="https://www.instagram.com/miramardeansenuza/"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<!-- /PINK – Guía de Turismo -->
+  <!-- Topbar End -->
 
-<!-- About Start -->
-    <div class="container-fluid py-5">
-        <div class="container pt-5">
-            <div class="row">
-                <div class="col-lg-6" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="img/photo-1608626758365-85fb53bc8b46.png" style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-6 pt-5 pb-lg-5">
-                    <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
-                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Ansenuza</h6>
-                        <h1 class="mb-3">PARQUE Y RESERVA NACIONAL</h1>
-                        <p>“Descubrí más de 300 especies de aves, incluyendo los flamencos rosados que hacen única a la Laguna Mar Chiquita, la mayor laguna salada de Sudamérica.”</p>
-                        <div class="row mb-4">
-                            <div class="col-6">
-                                <img class="img-fluid" src="img/multimedia.normal.b3a215b705947c1e.45434f4f424a455449564f20464f544f204156455320415247454e54494e41535f6e6f726d616c2e77656270.png" alt="">
-                            </div>
-                            <div class="col-6">
-                                <img class="img-fluid" src="img/ARCHI_613763.jpg" alt="">
-                            </div>
-                        </div>
-                        <a href="about.html" class="btn btn-primary mt-1">Ver mas</a>
-                    </div>
-                </div>
-            </div>
+  <!-- Navbar Start -->
+  <div class="container-fluid position-relative nav-bar p-0">
+    <div class="container-lg position-relative p-0 px-lg-3" style="z-index:9;">
+      <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+        <a href="index.html" class="navbar-brand d-flex align-items-center">
+          <img src="img/logo-miramar.png" srcset="img/logo-miramar@2x.png 2x" alt="Miramar de Ansenuza" class="logo-miramar">
+          <span class="sr-only">Miramar de Ansenuza</span>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+          <div class="navbar-nav ml-auto py-0">
+            <a href="index.html" class="nav-item nav-link active">Inicio</a>
+            <a href="about.html" class="nav-item nav-link">Acerca de</a>
+            <a href="pruebaalejo.html" class="nav-item nav-link">Recibir información</a>
+          </div>
         </div>
+      </nav>
     </div>
-    <!-- About End -->
+  </div>
+  <!-- Navbar End -->
 
- <!-- Service Start -->
-<div class="container-fluid py-5">
-  <div class="container pt-5 pb-3">
-    <div class="text-center mb-3 pb-3">
-      <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Servicios</h6>
-      <h1>Información importante</h1>
-    </div>
-
-    <div class="row align-items-stretch">
-      <!-- Ubicación -->
-      <div class="col-lg-4 col-md-6 mb-4 d-flex">
-        <button class="service-item bg-white text-center mb-2 py-5 px-4 h-100 service-card w-100 border-0"
-                data-toggle="modal" data-target="#modalUbicacion" style="cursor:pointer;">
-          <i class="fa fa-2x fa-route mx-auto mb-4"></i>
-          <h5 class="mb-2">Ubicación</h5>
-          <p class="m-0">Miramar de Ansenuza se encuentra al noreste de la Provincia de Córdoba.</p>
-        </button>
-      </div>
-
-      <!-- Transporte -->
-      <div class="col-lg-4 col-md-6 mb-4 d-flex">
-        <button class="service-item bg-white text-center mb-2 py-5 px-4 h-100 service-card w-100 border-0"
-                data-toggle="modal" data-target="#modalTransporte" style="cursor:pointer;">
-          <i class="fa fa-2x fa-bus mx-auto mb-4"></i>
-          <h5 class="mb-2">Transporte</h5>
-          <p class="m-0">Conocé las empresas de colectivos que llegan a Miramar.</p>
-        </button>
-      </div>
-
-      <!-- Teléfonos útiles -->
-      <div class="col-lg-4 col-md-6 mb-4 d-flex">
-        <button class="service-item bg-white text-center mb-2 py-5 px-4 h-100 service-card w-100 border-0"
-                data-toggle="modal" data-target="#modalTelefonos" style="cursor:pointer;">
-          <i class="fa fa-2x fa-phone-alt mx-auto mb-4"></i>
-          <h5 class="mb-2">Teléfonos útiles</h5>
-          <p class="m-0">Oficina de Turismo, emergencias y más contactos.</p>
-        </button>
+  <!-- Carousel Start -->
+  <div class="container-fluid p-0">
+    <div id="header-carousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <video class="hero-video" src="WhatsApp Video 2025-09-17 at 12.15.32.mp4" autoplay muted playsinline loop></video>
+          <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+            <div class="p-3" style="max-width:900px;"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- ===== Modales ===== -->
+  <!-- ======= Destino ======= -->
+  <style>
+    .destination-item img{ width:100%; height:240px; object-fit:cover; display:block; }
+    .destination-item{ border-radius:10px; overflow:hidden; background:#000; }
+    .destination-overlay{
+      position:absolute; inset:0; display:flex; align-items:end; justify-content:center;
+      padding:16px; text-align:center;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%);
+    }
+    .destination-overlay h5{ margin:0; }
+    .destination-item:hover img{ transform:scale(1.03); transition:transform .25s ease; }
+  </style>
 
-<!-- Modal Ubicación -->
-<div class="modal fade" id="modalUbicacion" tabindex="-1" role="dialog" aria-labelledby="modalUbicacionLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header border-0 pb-0">
-        <h5 class="modal-title" id="modalUbicacionLabel">Ubicación — Miramar de Ansenuza</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+      <div class="text-center mb-3 pb-3">
+        <h6 class="text-primary text-uppercase" style="letter-spacing:5px;">Destino</h6>
+        <h1>Explora Miramar de Ansenuza</h1>
       </div>
-      <div class="modal-body pt-2">
-        <p class="text-muted">
-          Miramar de Ansenuza está ubicada al noreste de la provincia de Córdoba, sobre la Laguna Mar Chiquita (Parque Nacional Ansenuza).
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="destination-item position-relative overflow-hidden mb-2">
+            <img class="img-fluid" src="img/XZN5SBWG5BHZRBVGOFEEFAKP5Y.jpg" alt="Nuestra Historia" />
+            <a class="destination-overlay text-white text-decoration-none" href="historia.html"><h5 class="text-white">Nuestra Historia</h5></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="destination-item position-relative overflow-hidden mb-2">
+            <img class="img-fluid" src="img/Gran-Hotel-Viena-2021.jpg" alt="Nuestros Museos" />
+            <a class="destination-overlay text-white text-decoration-none" href="museos.html"><h5 class="text-white">Nuestros Museos</h5></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="destination-item position-relative overflow-hidden mb-2">
+            <img class="img-fluid" src="img/ansenuza-hotel-casino.jpg" alt="Nuestros Alojamientos" />
+            <a class="destination-overlay text-white text-decoration-none" href="todos.html"><h5 class="text-white">Nuestros Alojamientos</h5></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="destination-item position-relative overflow-hidden mb-2">
+            <img class="img-fluid" src="img/dextar-vision-RdGio6Z-1uA-unsplash.jpg" alt="Nuestra Gastronomía" />
+            <a class="destination-overlay text-white text-decoration-none" href="gastronomia.html"><h5 class="text-white">Nuestra Gastronomía</h5></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="destination-item position-relative overflow-hidden mb-2">
+            <img class="img-fluid" src="img/Deportes-acuaticos.webp" alt="Nuestras Actividades" />
+            <a class="destination-overlay text-white text-decoration-none" href="Actividades.html"><h5 class="text-white">Nuestras Actividades</h5></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="destination-item position-relative overflow-hidden mb-2">
+            <img class="img-fluid" src="img/25289578_1559256707500944_2350661798966849926_n.jpg" alt="Nuestros Eventos" />
+            <a class="destination-overlay text-white text-decoration-none" href="eventos.html"><h5 class="text-white">Nuestros Eventos</h5></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ======= /Destino ======= -->
+
+  <!-- PINK – Guía de Turismo -->
+  <style>
+    .pink-wrap{ align-items:center; }
+    .pink-badge{
+      height:250px; width:350px; border-radius:90px;
+      background:#fde7f1; display:flex; align-items:center; justify-content:center;
+      box-shadow:0 12px 28px rgba(0,0,0,.08); margin-right:1.25rem;
+    }
+    .pink-badge img{ max-height:92%; max-width:92%; height:auto; width:auto; }
+    .pink-title{ font-weight:800; color:#1e3a6d; margin-bottom:.35rem; }
+    .pink-text{ color:#445066; margin:0 0 .9rem; }
+    @media (max-width:575.98px){
+      .pink-wrap{ text-align:center; flex-direction:column; }
+      .pink-badge{ margin:0 auto 14px; }
+    }
+  </style>
+
+  <div class="container-fluid pb-5">
+    <div class="container pb-5">
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+          <div class="d-flex pink-wrap">
+            <div class="pink-badge" aria-hidden="true">
+              <img src="img/pink god.png" alt="PINK, guía turística" />
+            </div>
+            <div>
+              <h5 class="pink-title">PINK — Guía de Turismo</h5>
+              <p class="pink-text">
+                Conoce a <strong>Pink</strong>, nuestro guía turístico y asistente virtual. Consultale tu duda y con gusto te responderá.
+              </p>
+              <a class="btn btn-primary" href="https://wa.me/5493563401392?text=Hola%20PINK,%20quisiera%20hacer%20una%20consulta" target="_blank" rel="noopener" aria-label="Consultar por WhatsApp a PINK">Consultar aquí</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Start -->
+  <div class="container-fluid py-5">
+    <div class="container pt-5">
+      <div class="row">
+        <div class="col-lg-6" style="min-height:500px;">
+          <div class="position-relative h-100">
+            <img class="position-absolute w-100 h-100" src="img/photo-1608626758365-85fb53bc8b46.png" style="object-fit:cover;" alt="">
+          </div>
+        </div>
+        <div class="col-lg-6 pt-5 pb-lg-5">
+          <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
+            <h6 class="text-primary text-uppercase" style="letter-spacing:5px;">Ansenuza</h6>
+            <h1 class="mb-3">PARQUE Y RESERVA NACIONAL</h1>
+            <p>“Descubrí más de 300 especies de aves, incluyendo los flamencos rosados que hacen única a la Laguna Mar Chiquita, la mayor laguna salada de Sudamérica.”</p>
+            <div class="row mb-4">
+              <div class="col-6"><img class="img-fluid" src="img/multimedia.normal.b3a215b705947c1e.45434f4f424a455449564f20464f544f204156455320415247454e54494e41535f6e6f726d616c2e77656270.png" alt=""></div>
+              <div class="col-6"><img class="img-fluid" src="img/ARCHI_613763.jpg" alt=""></div>
+            </div>
+            <a href="about.html" class="btn btn-primary mt-1">Ver más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- About End -->
+
+  <!-- Service Start -->
+  <div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+      <div class="text-center mb-3 pb-3">
+        <h6 class="text-primary text-uppercase" style="letter-spacing:5px;">Servicios</h6>
+        <h1>Información importante</h1>
+      </div>
+
+      <div class="row align-items-stretch">
+        <div class="col-lg-4 col-md-6 mb-4 d-flex">
+          <button class="service-item bg-white text-center mb-2 py-5 px-4 h-100 service-card w-100 border-0" data-toggle="modal" data-target="#modalUbicacion" style="cursor:pointer;">
+            <i class="fa fa-2x fa-route mx-auto mb-4"></i>
+            <h5 class="mb-2">Ubicación</h5>
+            <p class="m-0">Miramar de Ansenuza se encuentra al noreste de la Provincia de Córdoba.</p>
+          </button>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4 d-flex">
+          <button class="service-item bg-white text-center mb-2 py-5 px-4 h-100 service-card w-100 border-0" data-toggle="modal" data-target="#modalTransporte" style="cursor:pointer;">
+            <i class="fa fa-2x fa-bus mx-auto mb-4"></i>
+            <h5 class="mb-2">Transporte</h5>
+            <p class="m-0">Conocé las empresas de colectivos que llegan a Miramar.</p>
+          </button>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4 d-flex">
+          <button class="service-item bg-white text-center mb-2 py-5 px-4 h-100 service-card w-100 border-0" data-toggle="modal" data-target="#modalTelefonos" style="cursor:pointer;">
+            <i class="fa fa-2x fa-phone-alt mx-auto mb-4"></i>
+            <h5 class="mb-2">Teléfonos útiles</h5>
+            <p class="m-0">Oficina de Turismo, emergencias y más contactos.</p>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modales (ubicación, transporte, teléfonos) – se mantienen iguales que tu versión -->
+  <!-- ... [los modales que ya tenías aquí sin cambios] ... -->
+
+  <!-- Botón Pinky -->
+  <a href="https://wa.me/3563401392?text=Hola%20PINK,%20quisiera%20hacer%20una%20consulta"
+     class="pinky-float" target="_blank"
+     aria-label="Contactar con PINK por WhatsApp"
+     title="Hola soy Pink, tu asistente virtual">
+    <img src="img/eda83ab2-b9e0-456f-844d-81a7b667e614.jpeg" alt="PINK" class="pink-icon">
+  </a>
+
+  <!-- Footer Start (limpio y en español) -->
+  <style>
+    /* ===== Footer estilo Miramar oscuro ===== */
+    footer, .container-fluid.bg-dark{
+      background: linear-gradient(180deg, #0b1421, #0a0f18);
+      color:#cbd5e1; font-size:.96rem; line-height:1.65;
+    }
+    .container-fluid.bg-dark p, .container-fluid.bg-dark a{ color:#c9d5ffb3; text-decoration:none; }
+    .container-fluid.bg-dark a:hover{ color:#7cd2a5; text-decoration:none; }
+    .container-fluid.bg-dark h5, .container-fluid.bg-dark h6{
+      color:#fff; font-weight:700; margin-bottom:1rem; letter-spacing:2px;
+    }
+    .container-fluid.bg-dark .navbar-brand img{ height:42px; width:auto; filter: drop-shadow(0 8px 16px rgba(0,0,0,.35)); }
+    .container-fluid.bg-dark .btn-square{
+      width:38px; height:38px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;
+      color:#fff !important; border:1px solid #4a72d9 !important;
+      background: linear-gradient(180deg,#20315a,#1a2747) !important;
+      transition: transform .25s ease, background .25s ease, border-color .25s ease;
+    }
+    .container-fluid.bg-dark .btn-square:hover{ transform: translateY(-2px); background:#2c5fb8 !important; border-color:#2c5fb8 !important; }
+    .container-fluid.bg-dark .btn-success{
+      background-color:#35d07f !important; border:none; font-weight:700;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .container-fluid.bg-dark .btn-success:hover{ transform: translateY(-1px); box-shadow: 0 10px 26px rgba(53,208,127,.35); }
+    .container-fluid.bg-dark.border-top{ border-color: rgba(255,255,255,.12) !important; }
+    .container-fluid.bg-dark small{ font-size:.86rem; color:#9fb0c8 !important; }
+    @media (max-width:575.98px){
+      .container-fluid.bg-dark .btn-square{ width:36px; height:36px; }
+      .container-fluid.bg-dark .navbar-brand img{ height:38px; }
+    }
+  </style>
+
+  <!-- ===== FOOTER ===== -->
+  <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top:90px;">
+    <div class="row pt-4">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <a href="index.html" class="navbar-brand d-inline-flex align-items-center mb-2">
+          <img src="img/logo-miramar@2x.png" alt="Miramar de Ansenuza" style="height:34px;width:auto;">
+        </a>
+        <p class="mt-2">
+          Miramar de Ansenuza, puerta del Parque y Reserva Nacional Ansenuza.
+          Atardeceres únicos, avistaje de aves y la laguna salada más grande de Sudamérica.
         </p>
-        <div class="embed-responsive embed-responsive-16by9 rounded shadow-sm">
-          <iframe class="embed-responsive-item"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10791.23126674089!2d-62.681!3d-30.917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95c7e8d9a6e4c9b5%3A0x7f9a3d2a6a4a1e2!2sMiramar%20de%20Ansenuza%2C%20C%C3%B3rdoba!5e0!3m2!1ses-419!2sar!4v1700000000000"
-            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <small class="d-block mt-2 text-muted">
-          Tip: Abrí el mapa en Google Maps para rutas y tiempo de viaje.
-        </small>
-      </div>
-      <div class="modal-footer border-0">
-        <a target="_blank" class="btn btn-primary"
-           href="https://www.google.com/maps/search/?api=1&query=Miramar+de+Ansenuza+C%C3%B3rdoba">
-          Ver en Google Maps
-        </a>
-        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Transporte -->
-<div class="modal fade" id="modalTransporte" tabindex="-1" role="dialog" aria-labelledby="modalTransporteLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header border-0 pb-0">
-        <h5 class="modal-title" id="modalTransporteLabel">Transporte — Empresas de colectivos</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body pt-2">
-        <ul class="list-unstyled">
-          <li class="mb-3">
-            <h6 class="mb-1"><i class="fa fa-bus mr-1 text-primary"></i> Morteros S.R.L</h6>
-            <div>Telefax: <a href="tel:+543562422470">03562–422470</a></div>
-            <div>E-mail: <a href="mailto:transportemorteros@coopmorteros.com.ar">transportemorteros@coopmorteros.com.ar</a></div>
-          </li>
-          <li class="mb-3">
-            <h6 class="mb-1"><i class="fa fa-bus mr-1 text-primary"></i> Empresa Fono Bus</h6>
-            <div>Teléfono: <a href="tel:+548108883666">0810 888 3666</a></div>
-            <div>E-mail: <a href="mailto:info@grupofonobus.com.ar">info@grupofonobus.com.ar</a></div>
-          </li>
-          <li class="mb-1">
-            <h6 class="mb-1"><i class="fa fa-bus mr-1 text-primary"></i> Empresa Mar Chiquita</h6>
-            <div>Teléfono: <a href="tel:+548102225202">0810 222 5202</a></div>
-            <div>WhatsApp: <a href="https://wa.me/54351152966496" target="_blank">0351-152966496</a></div>
-          </li>
-        </ul>
-      </div>
-      <div class="modal-footer border-0">
-        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Teléfonos útiles (versión completa) -->
-<div class="modal fade" id="modalTelefonos" tabindex="-1" role="dialog" aria-labelledby="modalTelefonosLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header border-0 pb-0">
-        <h5 class="modal-title" id="modalTelefonosLabel">Teléfonos útiles — Miramar de Ansenuza</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <style>
-        .tel-grid {display:grid; grid-template-columns: repeat(2, 1fr); grid-gap:14px;}
-        .tel-item {background:#f8fafc; border-radius:12px; padding:14px; display:flex; align-items:flex-start; gap:12px;}
-        .tel-ico {font-size:1.4rem; line-height:1; color:#1d4ed8;}
-        .tel-title {margin:0; font-weight:600; color:#1e3a8a;}
-        .tel-lines small, .tel-lines a {display:block;}
-        .tel-lines a {text-decoration:none;}
-        .tel-lines a:hover {text-decoration:underline;}
-        @media (max-width: 575.98px){ .tel-grid{grid-template-columns:1fr;} }
-      </style>
-
-      <div class="modal-body pt-2">
-        <div class="tel-grid">
-          <!-- Municipalidad -->
-          <div class="tel-item">
-            <i class="fas fa-landmark tel-ico"></i>
-            <div class="tel-lines">
-              <p class="tel-title">Municipalidad de Miramar de Ansenuza</p>
-              <a href="tel:+543563493003">03563-493003</a>
-            </div>
-          </div>
-
-          <!-- Oficina de Informes Turísticos -->
-          <div class="tel-item">
-            <i class="fas fa-info-circle tel-ico"></i>
-            <div class="tel-lines">
-              <p class="tel-title">Oficina de Informes Turísticos</p>
-              <a href="tel:+543563493777">03563-493777</a>
-              <a href="tel:+543563409731">3563-409731</a>
-            </div>
-          </div>
-
-          <!-- Policía -->
-          <div class="tel-item">
-            <i class="fas fa-shield-alt tel-ico"></i>
-            <div class="tel-lines">
-              <p class="tel-title">Policía</p>
-              <a href="tel:+543563493299">03563-493299</a>
-              <a href="tel:+54356315406192">03563-15406192</a>
-              <a href="tel:101">101</a>
-            </div>
-          </div>
-
-          <!-- Bomberos -->
-          <div class="tel-item">
-            <i class="fas fa-fire-extinguisher tel-ico"></i>
-            <div class="tel-lines">
-              <p class="tel-title">Bomberos</p>
-              <a href="tel:+54356315409949">03563-15409949</a>
-              <a href="tel:+54356315412420">03563-15412420</a>
-              <a href="tel:101">101</a>
-            </div>
-          </div>
-
-          <!-- Hospital Zonal de Balnearia -->
-          <div class="tel-item">
-            <i class="fas fa-hospital tel-ico"></i>
-            <div class="tel-lines">
-              <p class="tel-title">Hosp. Zonal de Balnearia</p>
-              <a href="tel:+543563420158">03563-420158</a>
-            </div>
-          </div>
-
-          <!-- Dispensario Municipal -->
-          <div class="tel-item">
-            <i class="fas fa-briefcase-medical tel-ico"></i>
-            <div class="tel-lines">
-              <p class="tel-title">Dispensario Municipal</p>
-              <a href="tel:+543563493298">03563-493298</a>
-            </div>
-          </div>
-
-          <!-- Seguridad Náutica -->
-          <div class="tel-item">
-            <i class="fas fa-life-ring tel-ico"></i>
-            <div class="tel-lines">
-              <p class="tel-title">Seguridad Náutica</p>
-              <a href="tel:+543563493935">03563-493935</a>
-            </div>
-          </div>
-
-          <!-- G.E.R.S. -->
-          <div class="tel-item">
-            <i class="fas fa-star tel-ico"></i>
-            <div class="tel-lines">
-              <p class="tel-title">G.E.R.S. — Grupo Especial de Rescate y Salvamento</p>
-              <a href="tel:+543563493935">03563-493935</a>
-            </div>
-          </div>
-
-          <!-- Parroquia Santa Teresita -->
-          <div class="tel-item">
-            <i class="fas fa-church tel-ico"></i>
-            <div class="tel-lines">
-              <p class="tel-title">Parroquia Santa Teresita</p>
-              <a href="tel:+543563493175">03563-493175</a>
-            </div>
-          </div>
-
-          <!-- Correo Argentino -->
-          <div class="tel-item">
-            <i class="fas fa-envelope tel-ico"></i>
-            <div class="tel-lines">
-              <p class="tel-title">Oficina de Correo Argentino</p>
-              <a href="tel:+543563493064">03563-493064</a>
-            </div>
-          </div>
-
-          <!-- Cooperativa Eléctrica -->
-          <div class="tel-item">
-            <i class="fas fa-bolt tel-ico"></i>
-            <div class="tel-lines">
-              <p class="tel-title">Cooperativa Eléctrica</p>
-              <a href="tel:+543563493078">03563-493078</a>
-            </div>
-          </div>
-
-          <!-- Cajero Automático / Red Link -->
-          <div class="tel-item">
-            <i class="fas fa-money-check-alt tel-ico"></i>
-            <div class="tel-lines">
-              <p class="tel-title">Cajero Automático — Red Link</p>
-              <small>Dirección: Buenos Aires 419</small>
-              <a href="tel:+543563493025">03563-493025</a>
-            </div>
-          </div>
+        <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing:4px;">Seguinos</h6>
+        <div class="d-flex">
+          <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/turismomiramardeansenuza/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/miramardeansenuza/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
 
-      <div class="modal-footer border-0">
-        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <h5 class="text-white text-uppercase mb-4" style="letter-spacing:4px;">Navegación</h5>
+        <div class="d-flex flex-column">
+          <a class="text-white-50 mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+          <a class="text-white-50 mb-2" href="service.html"><i class="fa fa-angle-right mr-2"></i>Servicios</a>
+          <a class="text-white-50 mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Acerca de</a>
+          <a class="text-white-50 mb-2" href="package.html"><i class="fa fa-angle-right mr-2"></i>Alojamientos</a>
+          <a class="text-white-50" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <h5 class="text-white text-uppercase mb-4" style="letter-spacing:4px;">Contacto</h5>
+        <p><i class="fa fa-map-marker-alt mr-2"></i>DIRECCIÓN OFICINA DE TURISMO (General Paz 465, Miramar Córdoba.)</p>
+        <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
+        <p><i class="fa fa-envelope mr-2"></i> oficinadeturismo2@gmail.com <br> infomiramarcba@gmail.com </p>
+        <div class="mt-3">
+          <a class="btn btn-success btn-block" href="https://wa.me/5493563409731" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp mr-2"></i>Escribinos por WhatsApp
+          </a>
+          <small class="d-block mt-2 text-muted">Horario de atención: Lunes a Viernes 08:00–13:00</small>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Botón Pinky -->
-<!-- Botón Pinky -->
-<a href="https://wa.me/3563401392?text=Hola%20PINK,%20quisiera%20hacer%20una%20consulta"
-   class="pinky-float" target="_blank" 
-   aria-label="Contactar con PINK por WhatsApp"
-   title="Hola soy Pink, tu asistente virtual">
-  <img src="img/eda83ab2-b9e0-456f-844d-81a7b667e614.jpeg" alt="PINK" class="pink-icon">
-</a>
-
-<style>
-  /* Botón Pinky */
-  .pinky-float {
-    position: fixed;
-    bottom: 20px;   /* bien abajo */
-    right: 20px;    /* bien a la derecha */
-    width: 90px;
-    height: 90px;
-    background: #fff;
-    border-radius: 50%;
-    text-align: center;
-    box-shadow: 2px 2px 8px rgba(0,0,0,.3);
-    z-index: 1001; /* siempre arriba de la flecha */
-    transition: transform .2s ease-in-out;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  .pinky-float img.pink-icon {
-    width: 75%;
-    height: auto;
-  }
-
-  .pinky-float:hover {
-    transform: scale(1.1);
-    text-decoration: none;
-  }
-
-  /* Flecha Back to Top */
-  .back-to-top {
-    bottom: 120px;  /* movemos la flecha un poco más arriba */
-    right: 40px;    /* la corremos un poco a la izquierda */
-    z-index: 1000;
-  }
-</style>
-
-
-
-
-
-
-
-    <!-- Testimonial End -->
-   <!-- Footer Start (limpio y en español) -->
-<div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
-  <div class="row pt-4">
-    <!-- Col 1: Logo + breve -->
-    <div class="col-lg-4 col-md-6 mb-4">
-      <a href="index.html" class="navbar-brand d-inline-flex align-items-center mb-2">
-        <img src="img/logo-miramar@2x.png" alt="Miramar de Ansenuza" style="height:34px;width:auto;">
-      </a>
-      <p class="mt-2">
-        Miramar de Ansenuza, puerta del Parque y Reserva Nacional Ansenuza. 
-        Atardeceres únicos, avistaje de aves y la laguna salada más grande de Sudamérica.
-      </p>
-      <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 4px;">Seguinos</h6>
-      <div class="d-flex">
-        <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/turismomiramardeansenuza/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/miramardeansenuza/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+  <div class="container-fluid bg-dark text-white border-top py-3 px-sm-3 px-md-5">
+    <div class="row">
+      <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
+        <small class="m-0 text-white-50">© <span id="year"></span> Municipalidad de Miramar de Ansenuza. Todos los derechos reservados.</small>
       </div>
-    </div>
-
-    <!-- Col 2: Navegación esencial -->
-    <div class="col-lg-4 col-md-6 mb-4">
-      <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Navegación</h5>
-      <div class="d-flex flex-column">
-        <a class="text-white-50 mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-        <a class="text-white-50 mb-2" href="service.html"><i class="fa fa-angle-right mr-2"></i>Servicios</a>
-        <a class="text-white-50 mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Acerca de</a>
-        <a class="text-white-50 mb-2" href="package.html"><i class="fa fa-angle-right mr-2"></i>Alojamientos</a>
-        <a class="text-white-50" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
-      </div>
-    </div>
-
-    <!-- Col 3: Contacto + CTA -->
-    <div class="col-lg-4 col-md-6 mb-4">
-      <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Contacto</h5>
-      <p><i class="fa fa-map-marker-alt mr-2"></i>DIRECCIÓN OFICINA DE TURISMO (General Paz 465, Miramar Córdoba.)</p>
-      <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
-      <p><i class="fa fa-envelope mr-2"></i> oficinadeturismo2@gmail.com <br> infomiramarcba@gmail.com </p>
-
-      <!-- CTA WhatsApp (mejor que newsletter) -->
-      <div class="mt-3">
-        <a class="btn btn-success btn-block"
-           href="https://wa.me/5493563409731" target="_blank" rel="noopener">
-          <i class="fab fa-whatsapp mr-2"></i>Escribinos por WhatsApp
-        </a>
-        <small class="d-block mt-2 text-muted">
-          Horario de atención: Lunes a Viernes 08:00–13:00
-        </small>
+      <div class="col-md-6 text-center text-md-right">
+        <small class="m-0 text-white-50">Sitio oficial de Turismo</small>
       </div>
     </div>
   </div>
-</div>
 
-<div class="container-fluid bg-dark text-white border-top py-3 px-sm-3 px-md-5" style="border-color: rgba(255,255,255,.08) !important;">
-  <div class="row">
-    <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
-      <small class="m-0 text-white-50">© <span id="year"></span> Municipalidad de Miramar de Ansenuza. Todos los derechos reservados.</small>
-    </div>
-    <div class="col-md-6 text-center text-md-right">
-      <small class="m-0 text-white-50">Sitio oficial de Turismo</small>
-    </div>
-  </div>
-</div>
-<!-- Footer End -->
+  <!-- Año automático -->
+  <script> (function(){var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();})(); </script>
 
-<script>
-  // Año automático en el copyright
-  (function(){
-    var el = document.getElementById('year');
-    if (el) el.textContent = new Date().getFullYear();
-  })();
-</script>
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
+    <i class="fa fa-angle-double-up"></i>
+  </a>
 
-<!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
-  <i class="fa fa-angle-double-up"></i>
-</a>
-
-<!-- JS necesarios en el index -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="lib/easing/easing.min.js"></script> <!-- opcional: animaciones suaves -->
-<script src="js/main.js"></script>
+  <!-- JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

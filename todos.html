@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Miramar de Ansenuza – Todos</title>
+  <title>Alojamientos – Miramar de Ansenuza</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
   <!-- Favicon -->
@@ -24,145 +24,363 @@
 
   <!-- ====== ESTILOS PROPIOS ====== -->
   <style>
+    /* ============================
+      Paleta + Reseteos suaves
+    ============================ */
     :root{
       --azul:#0d2b57;
+      --azul-700:#123a75;
+      --azul-500:#2c5fb8;
+      --azul-50:#eef5ff;
+
       --rosa:#e05c74;
-      --verde:#2ecc71;
-      --gris:#6c7a89;
+      --verde:#28c76f;
+
+      --gris-900:#101418;
+      --gris-700:#3c4b5e;
+      --gris-500:#6c7a89;
+      --gris-200:#e9eef4;
+      --gris-100:#f6f9fc;
+
       --borde:#e9eef4;
-      --card-shadow:0 10px 26px rgba(0,0,0,.08);
-      --radius:14px;
+      --card-shadow:0 15px 40px rgba(13,43,87,.10);
+      --radius:16px;
+      --radius-sm:12px;
+
+      --blur: saturate(120%) blur(0px);
+      --speed: .25s;
+
+      /* PINK + BackToTop */
+      --pink-size: 88px;
+      --pink-gap: 14px;
+      --pink-bottom: 18px;
+      --pink-right: 18px;
     }
 
-    /* --------- Header / Hero --------- */
+    * { box-sizing: border-box; }
+    img { max-width: 100%; display: block; }
+
+    /* ============================
+      HERO / ENCABEZADO
+    ============================ */
     .page-header-ansenuza {
       position: relative;
       color: #fff;
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
-      min-height: 380px;
+      min-height: 420px;
+      isolation: isolate;
     }
-    .page-header-ansenuza::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.45));
+    .page-header-ansenuza::before{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(1200px 420px at 50% 10%, rgba(255,255,255,.15), transparent),
+                  linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.55) 100%);
+      z-index:0;
     }
-    .page-header-ansenuza .hero-wrap {
+    .page-header-ansenuza .hero-wrap{
       position: relative;
-      z-index: 2;
-      min-height: 380px;
-      padding: 60px 0;
-      text-align: center;
+      z-index:1;
+      min-height:420px;
+      padding:72px 0 56px;
+      text-align:center;
     }
-    .hero-kicker {
-      display: inline-block;
-      background: #eaf0ff;
-      color: #1e3a6d;
-      font-weight: 600;
-      padding: .35rem .75rem;
-      border-radius: 999px;
-      margin-bottom: 10px;
-      letter-spacing: .08em;
+    .hero-kicker{
+      display:inline-block;
+      background: rgba(255,255,255,.85);
+      color: var(--azul-700);
+      font-weight:700;
+      padding:.4rem .9rem;
+      border-radius:999px;
+      letter-spacing:.08em;
+      box-shadow:0 6px 20px rgba(0,0,0,.08);
     }
-    .hero-title {
-      font-size: 3rem;
-      font-weight: 700;
-      margin: 0 0 .5rem;
-      color: #fff;
-      text-shadow: 0 2px 6px rgba(0,0,0,.35);
+    .hero-title{
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight:800;
+      margin:.6rem 0 .3rem;
+      letter-spacing:.4px;
     }
-    .hero-accent {
-      background: linear-gradient(90deg, #fff, #dbeafe);
+    .hero-accent{
+      background: linear-gradient(90deg, #fff, #dbeafe 55%, #b3d4ff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      text-shadow:none;
     }
-    .hero-subtitle {
-      margin: 0 0 12px;
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: #fff;
-      text-shadow: 0 1px 4px rgba(0,0,0,.25);
+    .hero-subtitle{
+      margin:0 0 1rem;
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+      font-weight:400;
+      opacity:.95;
     }
+    .hero-breadcrumb .breadcrumb{
+      background:transparent; margin:0;
+    }
+    .hero-breadcrumb .breadcrumb a{ color:#fff; opacity:.9; }
+    .hero-breadcrumb .breadcrumb .active{ color:#fff; opacity:.7; }
 
-    /* Cards tipo listado (imagen grande a la izquierda) */
-    .lodging{background:#fff; border:1px solid var(--borde); border-radius:var(--radius); overflow:hidden; box-shadow:var(--card-shadow);}
-    .lodging + .lodging{margin-top:28px;}
-    .lodging-photo{position:relative; display:block; width:100%; height:380px; overflow:hidden;}
-    .lodging-photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s ease;}
-    .lodging-photo:hover img{transform:scale(1.03);}
-    .lodging-title{font-weight:700; font-size:1.7rem; color:var(--azul); margin:0 0 .35rem;}
-
-    /* Amenities */
-    .amenities{list-style:none; padding:0; margin:0 0 .75rem; display:flex; flex-wrap:wrap; gap:.55rem .75rem; color:var(--azul); font-size:1.05rem;}
-    .amenities i{font-size:1.05rem; vertical-align:middle;}
-    .amenities .muted{color:#e63946;}
-
-    /* Bloques de info a la derecha */
-    .info-block{padding:20px 26px;}
-    .lbl{font-weight:600; color:var(--azul); margin:.35rem 0;}
-    .addr{color:var(--azul);}
-    .addr i{color:var(--verde); margin-right:.45rem;}
-    .map-link{color:var(--rosa); text-decoration:none; margin-left:.25rem;}
-    .map-link:hover{text-decoration:underline;}
-
-    /* Caja de CATEGORÍAS (la blanca superior) */
-    .filters-box{background:#fff; box-shadow:var(--card-shadow); padding:20px; border-radius:12px;}
+    /* ============================
+      CAJA DE FILTROS + DROPDOWN
+    ============================ */
+    .filters-box{
+      background: #ffffffcc;
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      box-shadow: var(--card-shadow);
+      padding: 22px 24px;
+      border-radius: var(--radius);
+      margin-top: -48px;
+      margin-bottom: 3px;
+      border: 1px solid rgba(255,255,255,.35);
+    }
     .filters-box .nav-link,
-    .filters-box .dropdown-item{color:#000; display:inline-block; transition:transform .18s ease, color .18s ease; cursor:pointer;}
-    .filters-box .nav-link:hover{transform:scale(1.05); color:#6bb8ff}
-    .filters-box .nav-link.active{color:#0d6efd; font-weight:700; transform:scale(1.05);}
-
-    /* BUSCADOR standalone + contador */
-    .search-standalone{margin-top:18px;}
-    .search-card{background:#fff; border:1px solid #e6eaf0; border-radius:12px; padding:12px 16px; box-shadow:0 8px 22px rgba(0,0,0,.08);}
-    .search-wrap{display:flex; gap:.5rem; align-items:center; flex-wrap:wrap;}
-    .search-input{flex:1 1 320px; border:1px solid #dfe5ea; border-radius:10px; padding:.65rem .85rem; outline:none; font-size:.95rem;}
-    .search-input:focus{border-color:#79a9ff; box-shadow:0 0 0 3px rgba(56,132,255,.12)}
-    .btn-clear{border:1px solid #dfe5ea; background:#fff; border-radius:10px; padding:.55rem .9rem; cursor:pointer}
-    .search-meta{font-size:.9rem; color:#48607a}
-    mark.search-hit{background:#fff3bf; padding:0 .15rem; border-radius:4px}
-
-    /* Mensaje sin resultados */
-    .no-results{display:none; text-align:center; color:#4a5a6a; border:1px dashed #d9e2ec; border-radius:12px; padding:1.25rem; background:#fbfdff; margin-top:16px}
-
-    @media (max-width: 991.98px){ .lodging-photo{height:240px} }
-
-    /* Espaciado del bloque de filtros */
-    .filters-box {
+    .filters-box .dropdown-item{
+      color: var(--azul);
+      display: inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.55rem 1rem;
+      border-radius: 999px;
+      border:1px solid var(--gris-200);
       background: #fff;
-      box-shadow: 0 10px 26px rgba(0,0,0,.10);
-      padding: 29px;
-      border-radius: 8px;
-      margin-bottom: -50px;
-      margin-top: 30px;
+      transition: transform var(--speed) ease, box-shadow var(--speed) ease, color var(--speed) ease, border-color var(--speed) ease;
+      cursor: pointer;
+      font-weight:600;
+      box-shadow: 0 8px 18px rgba(0,0,0,.04);
+    }
+    .filters-box .nav-link:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(0,0,0,.08);
+      border-color: #d7e6ff;
+      color: var(--azul-500);
+    }
+    .filters-box .nav-link.active{
+      background: linear-gradient(180deg,#f8fbff,#eaf2ff);
+      border-color:#cfe0ff;
+      color: var(--azul-700);
+      box-shadow: 0 10px 26px rgba(44,95,184,.18);
+    }
+    /* Popover dropdown (Departamentos) */
+    .filters-box [style*="position:absolute"]{
+      border:1px solid var(--gris-200) !important;
+      border-radius:14px !important;
+      box-shadow: 0 18px 40px rgba(0,0,0,.12) !important;
+      padding:.35rem 0 !important;
+    }
+    .filters-box .dropdown-item{
+      border:0; border-radius:10px; margin:.2rem .5rem;
+      justify-content:flex-start; padding:.55rem .8rem; font-weight:600;
+    }
+    .filters-box .dropdown-item:hover{
+      background:#f2f7ff; color: var(--azul-700);
     }
 
-    /* ===== FOOTER ===== */
+    /* ============================
+      BUSCADOR
+    ============================ */
+    .search-standalone{ margin-top: 22px; }
+    .search-card{
+      background:#fff; border:1px solid var(--gris-200);
+      border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--card-shadow);
+    }
+    .search-wrap{ display:flex; gap:.6rem; align-items:center; flex-wrap:wrap; }
+    .search-wrap i.fas.fa-search{ opacity:.6; }
+    .search-input{
+      flex:1 1 320px;
+      border:1px solid #dfe5ea; border-radius: 12px;
+      padding:.7rem .9rem; outline:none; font-size:1rem;
+      transition: box-shadow var(--speed) ease, border-color var(--speed) ease;
+    }
+    .search-input:focus{
+      border-color:#9cc4ff;
+      box-shadow: 0 0 0 4px rgba(44,95,184,.15);
+    }
+    .btn-clear{
+      border:1px solid #dfe5ea; background:#fff; border-radius: 12px;
+      padding:.6rem 1rem; cursor:pointer; font-weight:600;
+      transition: background var(--speed) ease, transform var(--speed) ease;
+    }
+    .btn-clear:hover{ background:#f7fbff; transform: translateY(-1px); }
+    .search-meta{ font-size:.92rem; color: var(--gris-700); }
+    mark.search-hit{ background:#fff3bf; padding:0 .15rem; border-radius:4px; }
+
+    .no-results{
+      display:none; text-align:center; color: var(--gris-700);
+      border:1px dashed #d9e2ec; border-radius:14px; padding:1.25rem; background:#fbfdff; margin-top:16px;
+    }
+
+    /* ============================
+      TARJETAS (LISTADO)
+    ============================ */
+    .lodging{
+      background:#fff; border:1px solid var(--borde);
+      border-radius: var(--radius); overflow:hidden; box-shadow: var(--card-shadow);
+      transition: transform var(--speed) ease, box-shadow var(--speed) ease, border-color var(--speed) ease;
+    }
+    .lodging + .lodging{ margin-top: 30px; }
+    .lodging:hover{
+      transform: translateY(-2px); box-shadow: 0 20px 50px rgba(13,43,87,.16); border-color: #dce8fb;
+    }
+
+    /* Imagen con efecto y skeleton */
+    .lodging-photo{ position:relative; display:block; width:100%; height:380px; overflow:hidden; background: #eaf1ff; }
+    .lodging-photo::before{
+      content:""; position:absolute; inset:0;
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.7) 50%, rgba(255,255,255,0) 100%);
+      transform: translateX(-100%); animation: shine 1.6s infinite ease-in-out;
+    }
+    @keyframes shine{ 0%{ transform: translateX(-100%);} 60%,100%{ transform: translateX(100%);} }
+    .lodging-photo img{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+      transition: transform .45s ease, filter .45s ease; filter: saturate(1.03) contrast(1.02);
+    }
+    .lodging:hover .lodging-photo img{ transform: scale(1.04); }
+
+    /* Contenido derecha */
+    .col-lg-5.bg-white{ background:#fff !important; }
+    .info-block, .col-lg-5.p-4{ padding: 26px !important; }
+    .lodging-title{
+      font-weight:800; font-size: clamp(1.35rem, 2vw, 1.75rem);
+      color: var(--azul); margin:0 0 .4rem; letter-spacing:.2px;
+    }
+
+    /* Amenities como chips */
+    .amenities{
+      list-style:none; padding:0; margin:.35rem 0 1rem;
+      display:flex; flex-wrap:wrap; gap:.5rem .6rem; color:var(--azul); font-size:1.02rem;
+    }
+    .amenities li{
+      display:inline-flex; align-items:center; gap:.45rem;
+      padding:.42rem .6rem; border:1px solid var(--gris-200);
+      border-radius:999px; background:#fff; box-shadow:0 6px 16px rgba(0,0,0,.04);
+    }
+    .amenities i{ font-size:1.02rem; vertical-align:middle; opacity:.95; }
+    .amenities .muted{ color:#e63946; opacity:.85; }
+
+    /* Dirección + links */
+    .lbl{ font-weight:700; color:var(--azul); margin:.35rem 0 .15rem; }
+    .addr{ color: var(--gris-700); }
+    .addr i{ color: var(--verde); margin-right:.45rem; }
+    .map-link, .link-map{
+      color: var(--azul-500); text-decoration:none; margin-left:.2rem; font-weight:600;
+      border-bottom:2px solid transparent; transition: border-color var(--speed) ease, color var(--speed) ease;
+    }
+    .map-link:hover, .link-map:hover{ color: var(--azul-700); border-color:#bcd4ff; }
+
+    /* ============================
+      PINK + Back to Top
+    ============================ */
+    .pinky-float{
+      position: fixed;
+      bottom: var(--pink-bottom);
+      right: var(--pink-right);
+      width: var(--pink-size);
+      height: var(--pink-size);
+      background:#fff;
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 10px 24px rgba(0,0,0,.20);
+      z-index:1001;
+      transition:transform .2s ease-in-out, box-shadow .2s ease-in-out;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.06);
+      cursor:pointer;
+    }
+    .pinky-float img.pink-icon{ width:76%; height:auto; }
+    .pinky-float:hover{ transform:scale(1.07); box-shadow:0 14px 30px rgba(0,0,0,.25); }
+
+    /* ===== Flecha verde Back To Top ===== */
+    .back-to-top{
+      position: fixed;
+      bottom: calc(var(--pink-bottom) + var(--pink-size) + var(--pink-gap));
+      right: calc(var(--pink-right) + 8px);
+      width: 54px;
+      height: 54px;
+      border-radius: 14px !important;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, #49b14a, #2f9f31);
+      border: none;
+      box-shadow: 0 8px 22px rgba(47,159,49,.35), 0 2px 8px rgba(0,0,0,.12);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease, visibility .2s;
+    }
+    .back-to-top i{ font-size: 20px; line-height: 1; }
+    .back-to-top:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(47,159,49,.45);
+    }
+    .back-to-top.show{ opacity: 1; visibility: visible; }
+
+    /* Por si Bootstrap intenta sobreescribir */
+    .back-to-top.btn,
+    .back-to-top.btn-lg,
+    .back-to-top.btn-primary,
+    .back-to-top.btn-lg-square{
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    /* ============================
+      RESPONSIVE
+    ============================ */
+    @media (max-width: 1199.98px){ .lodging-photo{ height:340px; } }
+    @media (max-width: 991.98px){
+      .lodging-photo{ height:260px; }
+      .filters-box{ margin-top: -36px; }
+    }
+    @media (max-width: 575.98px){
+      .filters-box{ padding:16px; }
+      .search-card{ padding:12px 12px; }
+      :root{
+        --pink-size: 74px;
+        --pink-gap: 12px;
+        --pink-bottom: 14px;
+        --pink-right: 14px;
+      }
+    }
+
+    /* ============================
+      FOOTER
+    ============================ */
     footer, .container-fluid.bg-dark {
-      background-color: #1c1c1c !important;
-      color: #ccc;
-      font-size: 0.95rem;
-      line-height: 1.6;
+      background: linear-gradient(180deg, #0b1421, #0a0f18);
+      color:#cbd5e1;
+      font-size:.96rem;
+      line-height:1.65;
     }
-    footer p, footer a, .container-fluid.bg-dark p, .container-fluid.bg-dark a { color: #bbbbbb61; }
-    footer a:hover, .container-fluid.bg-dark a:hover { color: #acc019; text-decoration: none; }
+    footer p, footer a, .container-fluid.bg-dark p, .container-fluid.bg-dark a { color:#c9d5ffb3; }
+    footer a:hover, .container-fluid.bg-dark a:hover { color:#7cd2a5; text-decoration:none; }
     footer h5, footer h6, .container-fluid.bg-dark h5, .container-fluid.bg-dark h6 {
-      color: #fff; font-weight: 600; margin-bottom: 1rem; letter-spacing: 2px;
+      color:#fff; font-weight:700; margin-bottom:1rem; letter-spacing:2px;
     }
-    footer .navbar-brand img { height: 40px; width: auto; }
-    footer .btn-square {
-      width: 36px; height: 36px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center;
-      color: #fff !important; border: 1px solid #6bb8ff; transition: all 0.3s ease;
+    footer .navbar-brand img { height:42px; width:auto; filter: drop-shadow(0 8px 16px rgba(0,0,0,.35)); }
+    footer .btn-square{
+      width:38px; height:38px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;
+      color:#fff !important; border:1px solid #4a72d9; transition: all var(--speed) ease;
+      background: linear-gradient(180deg,#20315a,#1a2747);
     }
-    footer .btn-square:hover { background: #6bb8ff; color: #fff !important; }
-    footer .btn-success { background-color: #4fe686 !important; border: none; font-weight: 600; transition: transform 0.2s ease; }
-    footer .btn-success:hover { transform: scale(1.05); }
-    footer small { font-size: 0.85rem; color: #888 !important; }
-    footer .border-top { border-color: rgba(255, 255, 255, .12) !important; }
+    footer .btn-square:hover{ transform: translateY(-2px); background:#2c5fb8; border-color:#2c5fb8; }
+    footer .btn-success{ background-color:#35d07f !important; border:none; font-weight:700; transition: transform var(--speed) ease, box-shadow var(--speed) ease; }
+    footer .btn-success:hover{ transform: translateY(-1px); box-shadow: 0 10px 26px rgba(53,208,127,.35); }
+    footer small{ font-size:.86rem; color:#9fb0c8 !important; }
+    footer .border-top{ border-color: rgba(255,255,255,.12) !important; }
+
+    /* ============================
+      Accesibilidad / Motion
+    ============================ */
+    @media (prefers-reduced-motion: reduce){
+      .lodging, .filters-box .nav-link, .btn-clear, .search-input, .lodging-photo img{ transition: none !important; }
+      .lodging-photo::before{ animation: none !important; }
+    }
   </style>
+
 </head>
 
 <body>
@@ -192,16 +410,17 @@
     <div class="container-lg position-relative p-0 px-lg-3" style="z-index:9;">
       <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
         <a href="index.html" class="navbar-brand d-flex align-items-center">
-          <img src="img/logo-miramar.png" alt="Miramar de Ansenuza" style="height:36px;">
+          <img src="img/logo-miramar.png" srcset="img/logo-miramar@2x.png 2x" alt="Miramar de Ansenuza" style="height:46px;">
+          <span class="sr-only">Miramar de Ansenuza</span>
         </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-label="Abrir menú">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
           <div class="navbar-nav ml-auto py-0">
             <a href="index.html" class="nav-item nav-link">Inicio</a>
-            <a href="service.html" class="nav-item nav-link">Acerca de</a>
-            <a href="package.html" class="nav-item nav-link active">Alojamientos</a>
+            <a href="about.html" class="nav-item nav-link">Acerca de</a>
+            <a href="package.html" class="nav-item nav-link active" aria-current="page">Alojamientos</a>
             <a href="contact.html" class="nav-item nav-link">Contacto</a>
           </div>
         </div>
@@ -215,7 +434,7 @@
     <div class="container">
       <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
         <span class="hero-kicker">Alojamientos</span>
-        <h1 class="hero-title"><span class="hero-accent">Encuentra tu estadía ideal</span></h1>
+        <h1 class="hero-title"><span class="hero-accent">Encontrá tu estadía ideal</span></h1>
         <p class="hero-subtitle">Hoteles, Cabañas, Departamentos y Campings en un solo lugar</p>
         <nav aria-label="breadcrumb" class="hero-breadcrumb">
           <ol class="breadcrumb justify-content-center">
@@ -227,7 +446,7 @@
     </div>
   </header>
 
-  <!-- Filtros (con filtrado en página) -->
+  <!-- Filtros -->
   <div class="container-fluid booking mt-5">
     <div class="container">
       <div class="filters-box">
@@ -251,7 +470,7 @@
                         min-width:260px; background:#fff; border:1px solid #e6e6e6; border-radius:12px;
                         box-shadow:0 10px 24px rgba(0,0,0,.12); padding:.5rem 0; z-index:10;"
                  onmouseover="this.style.display='block';"
-                 onmouseleave="this.style.display='none';">
+                 onmouseleave="this.style.display='none';" role="menu" aria-label="Subfiltros Departamentos">
               <button class="dropdown-item subfilter-btn" data-filter="depto-superior" type="button">
                 Premium / Superior
               </button>
@@ -274,8 +493,8 @@
     <div class="container search-standalone">
       <div class="search-card">
         <div class="search-wrap">
-          <i class="fas fa-search"></i>
-          <input id="search-cabanas" class="search-input" type="search" placeholder="Buscar por nombre de Alojamiento">
+          <i class="fas fa-search" aria-hidden="true"></i>
+          <input id="search-cabanas" class="search-input" type="search" placeholder="Buscar por nombre de Alojamiento" aria-label="Buscar alojamiento por nombre">
           <button id="clear-search" class="btn-clear" type="button">Limpiar</button>
           <span id="search-meta" class="search-meta ml-auto">Mostrando <strong id="count-visible">0</strong> de <strong id="count-total">0</strong></span>
         </div>
@@ -297,24 +516,24 @@
       <div class="col-lg-5 bg-white p-4 p-md-4 shadow-sm">
         <h3 class="lodging-title mb-2 js-title">Ansenuza Hotel Casino Spa</h3>
 
-        <ul class="amenities mb-3">
-          <li title="Desayuno"><i class="fas fa-mug-hot"></i></li>
-          <li title="Estacionamiento"><i class="fas fa-car"></i></li>
-          <li title="Aire acondicionado"><i class="far fa-snowflake"></i></li>
-          <li title="Wi-Fi"><i class="fas fa-wifi"></i></li>
-          <li title="TV"><i class="fas fa-tv"></i></li>
-          <li title="Tarjetas de crédito"><i class="fas fa-credit-card"></i></li>
-          <li title="No se admiten mascotas" class="muted"><i class="fas fa-paw"></i></li>
-          <li title="Pileta"><i class="fas fa-swimming-pool"></i></li>
+        <ul class="amenities mb-3" aria-label="Servicios">
+          <li title="Desayuno"><i class="fas fa-mug-hot" aria-hidden="true"></i></li>
+          <li title="Estacionamiento"><i class="fas fa-car" aria-hidden="true"></i></li>
+          <li title="Aire acondicionado"><i class="far fa-snowflake" aria-hidden="true"></i></li>
+          <li title="Wi-Fi"><i class="fas fa-wifi" aria-hidden="true"></i></li>
+          <li title="TV"><i class="fas fa-tv" aria-hidden="true"></i></li>
+          <li title="Tarjetas de crédito"><i class="fas fa-credit-card" aria-hidden="true"></i></li>
+          <li title="No se admiten mascotas" class="muted"><i class="fas fa-paw" aria-hidden="true"></i></li>
+          <li title="Pileta"><i class="fas fa-swimming-pool" aria-hidden="true"></i></li>
         </ul>
 
         <div class="mb-3">
           <h6 class="mb-1">Dirección:</h6>
           <p class="mb-0">
-            <i class="fas fa-map-marker-alt text-primary mr-2"></i>
+            <i class="fas fa-map-marker-alt text-primary mr-2" aria-hidden="true"></i>
             Calle Costanera Oeste
-            <a class="ml-1 small link-map" target="_blank"
-               href="https://www.google.com/maps/place/Hotel+Comedor+Marchetti/@-30.914945,-62.678084,15z/data=!4m5!3m4!1s0x0:0x1ea8a57b0d08166a!8m2!3d-30.9149195!4d-62.678102?ll=-30.914945,-62.678084&z=15&t=m&hl=es-US&gl=US&mapclient=embed&cid=2209197565143422570&coh=164777&entry=tt&shorturl=1">
+            <a class="ml-1 small link-map" target="_blank" rel="noopener"
+               href="https://www.google.com/maps/place/Hotel+Comedor+Marchetti/@-30.914945,-62.678084,15z/data=!4m5!3m4!1s0x0:0x1ea8a57b0d08166a!8m2!3d-30.9149195!4d-62.678102?entry=ttu">
               (Ver en Google Maps)
             </a>
           </p>
@@ -323,15 +542,15 @@
         <div>
           <h6 class="mb-2">Consultas y Reservas:</h6>
           <p class="mb-1">
-            <i class="fas fa-phone-alt text-primary mr-2"></i>
+            <i class="fas fa-phone-alt text-primary mr-2" aria-hidden="true"></i>
             <a href="tel:+543563493791">(03563) 493791</a>
           </p>
           <p class="mb-1">
-            <i class="fas fa-envelope text-primary mr-2"></i>
+            <i class="fas fa-envelope text-primary mr-2" aria-hidden="true"></i>
             <a href="mailto:reservas@ansenuzahotelcasino.com.ar">reservas@ansenuzahotelcasino.com.ar</a>
           </p>
           <p class="mb-0">
-            <i class="fas fa-globe text-primary mr-2"></i>
+            <i class="fas fa-globe text-primary mr-2" aria-hidden="true"></i>
             <a href="https://ansenuzahotelcasino.com.ar/" target="_blank" rel="noopener">ansenuzahotelcasino.com.ar</a>
           </p>
         </div>
@@ -348,7 +567,7 @@
       <div class="col-lg-5 bg-white p-4 p-md-4 shadow-sm">
         <h3 class="lodging-title mb-2 js-title">Hotel Miramar</h3>
 
-        <ul class="amenities mb-3">
+        <ul class="amenities mb-3" aria-label="Servicios">
           <li title="Desayuno"><i class="fas fa-mug-hot"></i></li>
           <li title="Estacionamiento"><i class="fas fa-car"></i></li>
           <li title="Aire acondicionado"><i class="far fa-snowflake"></i></li>
@@ -364,8 +583,8 @@
           <p class="mb-0">
             <i class="fas fa-map-marker-alt text-primary mr-2"></i>
             Buenos Aires 200
-            <a class="ml-1 small link-map" target="_blank"
-               href="https://www.google.com/maps/place/Hotel+Comedor+Marchetti/@-30.914945,-62.678084,15z/data=!4m5!3m4!1s0x0:0x1ea8a57b0d08166a!8m2!3d-30.9149195!4d-62.678102?ll=-30.914945,-62.678084&z=15&t=m&hl=es-US&gl=US&mapclient=embed&cid=2209197565143422570&coh=164777&entry=tt&shorturl=1">
+            <a class="ml-1 small link-map" target="_blank" rel="noopener"
+               href="https://www.google.com/maps/place/Hotel+Miramar+%28Cba%29/">
               (Ver en Google Maps)
             </a>
           </p>
@@ -394,7 +613,7 @@
       </div>
       <div class="col-lg-5 bg-white p-4 p-md-4 shadow-sm">
         <h3 class="lodging-title mb-2 js-title">Costa Marina</h3>
-        <ul class="amenities mb-3">
+        <ul class="amenities mb-3" aria-label="Servicios">
           <li title="Estacionamiento"><i class="fas fa-car"></i></li>
           <li title="Aire acondicionado"><i class="far fa-snowflake"></i></li>
           <li title="Wi-Fi"><i class="fas fa-wifi"></i></li>
@@ -409,7 +628,7 @@
           <p class="mb-0">
             <i class="fas fa-map-marker-alt text-primary mr-2"></i>
             Ruta Provincial N°3
-            <a class="ml-1 small link-map" target="_blank"
+            <a class="ml-1 small link-map" target="_blank" rel="noopener"
                href="https://www.google.com/maps?q=Ruta+Provincial+3,+Miramar+de+Ansenuza">(Ver en Google Maps)</a>
           </p>
         </div>
@@ -431,69 +650,69 @@
 
     <!-- Camping Don Osvaldo (CAMPING) -->
     <article class="lodging row no-gutters" data-name="Camping Don Osvaldo" data-cat="camping">
-      <div class="col-lg-7"><a class="lodging-photo"><img src="img/camping-don-osvaldo.jpg" alt="Camping Don Osvaldo"></a></div>
+      <div class="col-lg-7"><a class="lodging-photo" href="#" aria-label="Foto Camping Don Osvaldo"><img src="img/camping-don-osvaldo.jpg" alt="Camping Don Osvaldo"></a></div>
       <div class="col-lg-5 p-4">
         <h3 class="lodging-title js-title">Camping Don Osvaldo</h3>
-        <ul class="amenities"><li><i class="fas fa-car"></i></li><li class="muted"><i class="fas fa-paw"></i></li></ul>
-        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> 1 de Octubre s/n <a class="map-link" target="_blank" href="#">(Ver en Google Maps)</a></div>
+        <ul class="amenities" aria-label="Servicios"><li><i class="fas fa-car"></i></li><li class="muted"><i class="fas fa-paw"></i></li></ul>
+        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> 1 de Octubre s/n <a class="map-link" target="_blank" rel="noopener" href="#">(Ver en Google Maps)</a></div>
       </div>
     </article>
 
     <!-- Camping Los Sanavirones (CAMPING) -->
     <article class="lodging row no-gutters" data-name="Camping Los Sanavirones" data-cat="camping">
-      <div class="col-lg-7"><a class="lodging-photo"><img src="img/Screenshot-2023-01-25-at-3.54.44-PM.png" alt="Camping Los Sanavirones"></a></div>
+      <div class="col-lg-7"><a class="lodging-photo" href="#" aria-label="Foto Camping Los Sanavirones"><img src="img/Screenshot-2023-01-25-at-3.54.44-PM.png" alt="Camping Los Sanavirones"></a></div>
       <div class="col-lg-5 p-4">
         <h3 class="lodging-title js-title">Camping Los Sanavirones</h3>
-        <ul class="amenities"><li class="muted"><i class="fas fa-paw"></i></li></ul>
-        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Sanavirones 250 <a class="map-link" target="_blank" href="#">(Ver en Google Maps)</a></div>
+        <ul class="amenities" aria-label="Servicios"><li class="muted"><i class="fas fa-paw"></i></li></ul>
+        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Sanavirones 250 <a class="map-link" target="_blank" rel="noopener" href="#">(Ver en Google Maps)</a></div>
       </div>
     </article>
 
     <!-- El Mistolar (DEPTO SUPERIOR) -->
     <article class="lodging row no-gutters" data-name="El Mistolar" data-cat="depto-superior">
-      <div class="col-lg-7"><a class="lodging-photo"><img src="img/el-mistolar-cabanas.jpg.webp" alt="El Mistolar"></a></div>
+      <div class="col-lg-7"><a class="lodging-photo" href="#" aria-label="Foto El Mistolar"><img src="img/el-mistolar-cabanas.jpg.webp" alt="El Mistolar"></a></div>
       <div class="col-lg-5 p-4">
         <h3 class="lodging-title js-title">El Mistolar</h3>
-        <ul class="amenities">
+        <ul class="amenities" aria-label="Servicios">
           <li><i class="fas fa-car"></i></li><li><i class="fas fa-mug-hot"></i></li><li><i class="far fa-snowflake"></i></li>
           <li><i class="fas fa-wifi"></i></li><li><i class="fas fa-tv"></i></li><li><i class="fas fa-credit-card"></i></li>
           <li><i class="fas fa-swimming-pool"></i></li><li class="muted"><i class="fas fa-paw"></i></li>
         </ul>
-        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Buenos Aires 198 <a class="map-link" target="_blank" href="#">(Ver en Google Maps)</a></div>
+        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Buenos Aires 198 <a class="map-link" target="_blank" rel="noopener" href="#">(Ver en Google Maps)</a></div>
       </div>
     </article>
 
     <!-- La Aldea (DEPTO SUPERIOR) -->
     <article class="lodging row no-gutters" data-name="La Aldea" data-cat="depto-superior">
-      <div class="col-lg-7"><a class="lodging-photo"><img src="img/la-aldea.jpg.webp" alt="La Aldea"></a></div>
+      <div class="col-lg-7"><a class="lodging-photo" href="#" aria-label="Foto La Aldea"><img src="img/la-aldea.jpg.webp" alt="La Aldea"></a></div>
       <div class="col-lg-5 p-4">
         <h3 class="lodging-title js-title">La Aldea</h3>
-        <ul class="amenities">
+        <ul class="amenities" aria-label="Servicios">
           <li><i class="fas fa-car"></i></li><li><i class="fas fa-mug-hot"></i></li><li><i class="far fa-snowflake"></i></li>
           <li><i class="fas fa-wifi"></i></li><li><i class="fas fa-tv"></i></li><li><i class="fas fa-fire"></i></li>
           <li><i class="fas fa-swimming-pool"></i></li><li class="muted"><i class="fas fa-paw"></i></li>
         </ul>
-        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Córdoba 06 <a class="map-link" target="_blank" href="#">(Ver en Google Maps)</a></div>
+        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Córdoba 06 <a class="map-link" target="_blank" rel="noopener" href="#">(Ver en Google Maps)</a></div>
       </div>
     </article>
 
     <!-- Lo de Nina (DEPTO PLUS) -->
     <article class="lodging row no-gutters" data-name="Lo de Nina" data-cat="depto-plus">
-      <div class="col-lg-7"><a class="lodging-photo"><img src="img/WhatsApp-Image-2024-02-01-at-14.22.22.jpeg.webp" alt="Lo de Nina"></a></div>
+      <div class="col-lg-7"><a class="lodging-photo" href="#" aria-label="Foto Lo de Nina"><img src="img/WhatsApp-Image-2024-02-01-at-14.22.22.jpeg.webp" alt="Lo de Nina"></a></div>
       <div class="col-lg-5 p-4">
         <h3 class="lodging-title js-title">Lo de Nina</h3>
-        <ul class="amenities"><li><i class="fas fa-car"></i></li><li><i class="far fa-snowflake"></i></li><li><i class="fas fa-wifi"></i></li><li><i class="fas fa-tv"></i></li><li><i class="fas fa-swimming-pool"></i></li><li class="muted"><i class="fas fa-paw"></i></li></ul>
-        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Ruta N°9 <a class="map-link" target="_blank" href="#">(Ver en Google Maps)</a></div>
+        <ul class="amenities" aria-label="Servicios"><li><i class="fas fa-car"></i></li><li><i class="far fa-snowflake"></i></li><li><i class="fas fa-wifi"></i></li><li><i class="fas fa-tv"></i></li><li><i class="fas fa-swimming-pool"></i></li><li class="muted"><i class="fas fa-paw"></i></li></ul>
+        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Ruta N°9 <a class="map-link" target="_blank" rel="noopener" href="#">(Ver en Google Maps)</a></div>
       </div>
     </article>
 
     <!-- Gina (SIN CATEGORÍA MAPEADA: aparece solo en "Todos") -->
     <article class="lodging row no-gutters" data-name="Gina">
-      <div class="col-lg-7"><a class="lodging-photo"><img src="img/WhatsApp-Image-2023-12-13-at-17.31.43.jpeg.webp" alt="Gina"></a></div>
+      <div class="col-lg-7"><a class="lodging-photo" href="#" aria-label="Foto Gina"><img src="img/WhatsApp-Image-2023-12-13-at-17.31.43.jpeg.webp" alt="Gina"></a></div>
       <div class="col-lg-5 p-4">
         <h3 class="lodging-title js-title">Gina</h3>
-        <ul class="amenities"><li><i class="fas fa-car"></i></li><li><i class="far fa-snowflake"></i></li><li><i class="fas fa-wifi"></i></li><li><i class="fas fa-tv"></i></li><li><i class="fas fa-swimming-pool"></i></li><li class="muted"><i class="fas fa-paw"></i></li></ul>
-        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Ruta N°9 <a class="map-link" target="_blank" href="#">(Ver en Google Maps)</a></div>
+        <ul class="amenities" aria-label="Servicios"><li><i class="fas fa-car"></i></li><li><i class="far fa-snowflake"></i></li><li><i class="fas fa-wifi"></i></li><li><i class="fas fa-tv"></i></li><li><i class="fas fa-swimming-pool"></i></li><li class="muted"><i class="fas fa-paw"></i></li></ul>
+        <div class="lbl">Dirección:</div><div class="addr"><i class="fas fa-map-marker-alt"></i> Ruta N°9 <a class="map-link" target="_blank" rel="noopener" href="#">(Ver en Google Maps)</a></div>
       </div>
     </article>
 
@@ -560,6 +779,19 @@
     </div>
   </footer>
 
+  <!-- Flecha verde Back to Top -->
+  <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top" aria-label="Volver arriba">
+    <i class="fa fa-angle-double-up"></i>
+  </a>
+
+  <!-- Botón PINK (flamenco) -->
+  <a href="https://wa.me/3563401392?text=Hola%20PINK,%20quisiera%20hacer%20una%20consulta"
+     class="pinky-float" target="_blank" rel="noopener"
+     aria-label="Contactar con PINK por WhatsApp"
+     title="Hola soy Pink, tu asistente virtual">
+    <img src="img/eda83ab2-b9e0-456f-844d-81a7b667e614.jpeg" alt="PINK" class="pink-icon">
+  </a>
+
   <!-- ===== JS: búsqueda + filtros ===== -->
   <script>
     (function(){
@@ -585,9 +817,7 @@
       function matchCategory(card){
         const cat = (card.getAttribute('data-cat') || '').toLowerCase();
         if (currentFilter === 'todos') return true;
-
         if (currentFilter === 'departamentos') {
-          // agrupa ambos subtipos
           return cat === 'depto-superior' || cat === 'depto-plus';
         }
         return cat === currentFilter;
@@ -597,16 +827,37 @@
         const q = norm($input.value);
         let visibles = 0;
 
+        // escapar regex
+        const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
         cards.forEach(card=>{
           const nameAttr = norm(card.dataset.name || '');
           const titleEl  = card.querySelector('.js-title');
-          const titleTxt = norm(titleEl ? titleEl.textContent : '');
-          const matchesText = !q || nameAttr.includes(q) || titleTxt.includes(q);
-          const matchesCat  = matchCategory(card);
 
+          // guardamos el texto original una sola vez
+          if (titleEl && !titleEl.dataset.orig) {
+            titleEl.dataset.orig = titleEl.textContent.trim();
+          }
+          const titleRaw = titleEl ? titleEl.dataset.orig || '' : '';
+          const titleNorm = norm(titleRaw);
+
+          const matchesText = !q || nameAttr.includes(q) || titleNorm.includes(q);
+          const matchesCat  = matchCategory(card);
           const show = matchesText && matchesCat;
+
+          // mostrar/ocultar tarjeta
           card.style.display = show ? '' : 'none';
           if (show) visibles++;
+
+          // ---- RESALTADO EN EL TÍTULO ----
+          if (titleEl) {
+            if (q && titleNorm.includes(q)) {
+              const rx = new RegExp(`(${esc(q)})`, 'gi');
+              titleEl.innerHTML = titleRaw.replace(rx, '<mark class="search-hit">$1</mark>');
+            } else {
+              titleEl.textContent = titleRaw;
+            }
+          }
         });
 
         $countV.textContent = visibles;
@@ -614,20 +865,19 @@
       }
 
       function setActive(button){
-        // quita active de los principales
+        // quita active de principales
         filterBtns.forEach(b=>b.classList.remove('active'));
-        // “Departamentos” queda activo si se elige depto-* también
+        // “Departamentos” activo si se elige depto-*
         if (currentFilter.startsWith('depto-')) {
           const depBtn = filterBtns.find(b=>b.dataset.filter==='departamentos');
           if (depBtn) depBtn.classList.add('active');
         }
-        // activa el propio si no es subfiltro
         if (button && button.classList.contains('filter-btn')) {
           button.classList.add('active');
         }
       }
 
-      // eventos filtro principal
+      // filtros principales
       filterBtns.forEach(btn=>{
         btn.addEventListener('click', ()=>{
           currentFilter = btn.dataset.filter;
@@ -636,11 +886,11 @@
         });
       });
 
-      // eventos subfiltros (superior/plus)
+      // subfiltros (superior/plus)
       subfilterBtns.forEach(btn=>{
         btn.addEventListener('click', ()=>{
           currentFilter = btn.dataset.filter; // 'depto-superior' | 'depto-plus'
-          setActive(null); // manejar active manual para "Departamentos"
+          setActive(null);
           applyAll();
         });
       });
@@ -657,5 +907,32 @@
       applyAll();
     })();
   </script>
+
+  <!-- BackToTop: mostrar al hacer scroll + scroll suave -->
+  <script>
+    (function(){
+      var btn = document.querySelector('.back-to-top');
+      if(!btn) return;
+
+      var toggle = function(){
+        if (window.pageYOffset > 240) {
+          btn.classList.add('show');
+        } else {
+          btn.classList.remove('show');
+        }
+      };
+      toggle();
+      window.addEventListener('scroll', toggle, {passive:true});
+
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, false);
+    })();
+  </script>
+
+  <!-- Core JS (navbar / colapsables / etc.) -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
