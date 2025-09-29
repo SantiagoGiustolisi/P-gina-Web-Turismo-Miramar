@@ -155,6 +155,87 @@
     </div>
     <!-- Contact End -->
    <!-- Footer Start (limpio y en español) -->
+<style>
+/* ===== Footer estilo Miramar oscuro ===== */
+footer,
+.container-fluid.bg-dark{
+  background: linear-gradient(180deg, #0b1421, #0a0f18);
+  color:#cbd5e1;
+  font-size:.96rem;
+  line-height:1.65;
+}
+
+/* Texto y links */
+.container-fluid.bg-dark p,
+.container-fluid.bg-dark a{
+  color:#c9d5ffb3;
+  text-decoration:none;
+}
+.container-fluid.bg-dark a:hover{
+  color:#7cd2a5;
+  text-decoration:none;
+}
+
+/* Títulos */
+.container-fluid.bg-dark h5,
+.container-fluid.bg-dark h6{
+  color:#fff;
+  font-weight:700;
+  margin-bottom:1rem;
+  letter-spacing:2px; /* ya traías 4px inline; esto suaviza */
+}
+
+/* Logo */
+.container-fluid.bg-dark .navbar-brand img{
+  height:42px; width:auto;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,.35));
+}
+
+/* Botones sociales */
+.container-fluid.bg-dark .btn-square{
+  width:38px; height:38px;
+  border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center;
+  color:#fff !important;
+  border:1px solid #4a72d9 !important;
+  background: linear-gradient(180deg,#20315a,#1a2747) !important;
+  box-shadow: none;
+  transition: transform .25s ease, background .25s ease, border-color .25s ease;
+}
+.container-fluid.bg-dark .btn-square:hover{
+  transform: translateY(-2px);
+  background:#2c5fb8 !important; border-color:#2c5fb8 !important;
+}
+
+/* CTA WhatsApp */
+.container-fluid.bg-dark .btn-success{
+  background-color:#35d07f !important;
+  border:none; font-weight:700;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.container-fluid.bg-dark .btn-success:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(53,208,127,.35);
+}
+
+/* Línea separadora inferior */
+.container-fluid.bg-dark.border-top{
+  border-color: rgba(255,255,255,.12) !important;
+}
+
+/* Pequeños */
+.container-fluid.bg-dark small{
+  font-size:.86rem; color:#9fb0c8 !important;
+}
+
+/* Responsive */
+@media (max-width: 575.98px){
+  .container-fluid.bg-dark .btn-square{ width:36px; height:36px; }
+  .container-fluid.bg-dark .navbar-brand img{ height:38px; }
+}
+</style>
+
+<!-- ===== FOOTER ===== -->
 <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
   <div class="row pt-4">
     <!-- Col 1: Logo + breve -->
@@ -192,21 +273,21 @@
       <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
       <p><i class="fa fa-envelope mr-2"></i> oficinadeturismo2@gmail.com <br> infomiramarcba@gmail.com </p>
 
-      <!-- CTA WhatsApp (mejor que newsletter) -->
-      <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Recibí nuestras novedades</h6>
-                <p>Dejanos tu Email, para enterarte sobre nuevas novedades....</p>
-                <div class="w-100">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Su Email">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary px-3">Anotarse</button>
-                        </div>
-                    </div>
+      <!-- CTA WhatsApp -->
+      <div class="mt-3">
+        <a class="btn btn-success btn-block"
+           href="https://wa.me/5493563409731" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp mr-2"></i>Escribinos por WhatsApp
+        </a>
+        <small class="d-block mt-2 text-muted">
+          Horario de atención: Lunes a Viernes 08:00–13:00
+        </small>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="container-fluid bg-dark text-white border-top py-3 px-sm-3 px-md-5" style="border-color: rgba(255,255,255,.08) !important;">
+<div class="container-fluid bg-dark text-white border-top py-3 px-sm-3 px-md-5">
   <div class="row">
     <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
       <small class="m-0 text-white-50">© <span id="year"></span> Municipalidad de Miramar de Ansenuza. Todos los derechos reservados.</small>
@@ -216,6 +297,12 @@
     </div>
   </div>
 </div>
+
+<script>
+  // año automático en el footer
+  (function(){ var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); })();
+</script>
+
 <!-- Footer End -->
                 
                 </div>

@@ -26,6 +26,14 @@
     <link href="css/style.css" rel="stylesheet">
 
 <style>
+    /* ========= Variables PINK + BackToTop ========= */
+    :root{
+      --pink-size: 88px;      /* tamaño del botón Pink */
+      --pink-gap: 16px;       /* separación vertical entre Pink y la flecha */
+      --pink-bottom: 20px;    /* distancia de Pink al borde inferior */
+      --pink-right: 20px;     /* distancia de Pink al borde derecho */
+    }
+
     /* --------- Header / Hero --------- */
     .page-header-ansenuza{
       position:relative; color:#fff;
@@ -116,7 +124,49 @@
       color:#fff; border-radius:16px; padding:24px; box-shadow:0 10px 28px rgba(30,58,109,.28);
     }
 
-    /* Responsive */
+    /* ===== Botón Pink + Back to Top (no se pisan) ===== */
+    .pinky-float{
+      position: fixed;
+      bottom: var(--pink-bottom);
+      right: var(--pink-right);
+      width: var(--pink-size);
+      height: var(--pink-size);
+      background:#fff;
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 10px 24px rgba(0,0,0,.20);
+      z-index:1001;
+      transition:transform .2s ease-in-out, box-shadow .2s ease-in-out;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.06);
+      cursor:pointer;
+    }
+    .pinky-float img.pink-icon{ width:76%; height:auto; }
+    .pinky-float:hover{ transform:scale(1.07); box-shadow:0 14px 30px rgba(0,0,0,.25); }
+
+    .back-to-top{
+      position: fixed;
+      bottom: calc(var(--pink-bottom) + var(--pink-size) + var(--pink-gap));
+      right: calc(var(--pink-right) + 8px);
+      z-index:1000;
+      border-radius:12px !important;
+      box-shadow:0 10px 20px rgba(0,0,0,.18);
+      border:0;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .back-to-top:hover{ transform: translateY(-2px); box-shadow:0 14px 26px rgba(0,0,0,.22); }
+
+    /* Responsive: Pink más chico y posiciones recalculadas */
+    @media (max-width:575.98px){
+      :root{
+        --pink-size: 74px;
+        --pink-gap: 12px;
+        --pink-bottom: 16px;
+        --pink-right: 16px;
+      }
+    }
+
+    /* Responsive general */
     @media (max-width: 991.98px){
       .timeline::before{ left:28px; }
       .timeline-bullet{ left:28px; transform:translate(-50%,-50%); }
@@ -169,9 +219,8 @@
           <div class="navbar-nav ml-auto py-0">
             <a href="index.html" class="nav-item nav-link">Inicio</a>
             <a href="about.html" class="nav-item nav-link">Acerca de</a>
-              <a href="Actividades.html" class="nav-item nav-link active">Actividades</a>
+            <a href="Actividades.html" class="nav-item nav-link active">Actividades</a>
             <a href="pruebaalejo.html" class="nav-item nav-link">Recibir información</a>
-           
           </div>
         </div>
       </nav>
@@ -185,10 +234,8 @@
   <div class="container">
     <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
       <span class="hero-kicker">Actividades</span>
-     <h1 class="hero-title"><span class="hero-accent">Actividades & Excursiones</span></h1>
-
+      <h1 class="hero-title"><span class="hero-accent">Actividades & Excursiones</span></h1>
       <p class="hero-subtitle">Los mejores pasatiempos</p>
-
       <nav aria-label="breadcrumb" class="hero-breadcrumb">
         <ol class="breadcrumb justify-content-center">
           <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
@@ -230,14 +277,8 @@
     padding:.3rem .7rem;
     font-size:.8rem;
   }
-
-  /* Texto un poco más abajo en desktop */
   .xp-text{ max-width:560px; }
-  @media (min-width: 992px){
-    .xp-text{ padding-top:.85rem; }
-  }
-
-  /* Mosaico (igual que antes) */
+  @media (min-width: 992px){ .xp-text{ padding-top:.85rem; } }
   .xp-mosaic{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -254,21 +295,14 @@
     box-shadow:0 10px 24px rgba(0,0,0,.12);
   }
   .xp-mosaic img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transform:scale(1);
-    transition:transform .45s ease;
+    width:100%; height:100%; object-fit:cover;
+    transform:scale(1); transition:transform .45s ease;
   }
   .xp-mosaic figure:hover img{ transform:scale(1.06); }
   .xp-tag{
-    position:absolute;
-    left:10px; bottom:10px;
-    font-size:.8rem; color:#fff;
-    background:rgba(0,0,0,.48);
-    padding:.25rem .55rem;
-    border-radius:999px;
-    display:inline-flex; align-items:center; gap:.35rem;
+    position:absolute; left:10px; bottom:10px;
+    font-size:.8rem; color:#fff; background:rgba(0,0,0,.48);
+    padding:.25rem .55rem; border-radius:999px; display:inline-flex; gap:.35rem; align-items:center;
   }
 </style>
 
@@ -276,13 +310,10 @@
   <div class="container">
     <div class="xp-hero p-4 p-md-5">
       <div class="row align-items-start">
-        <!-- Columna de texto (sin chips) -->
+        <!-- Columna de texto -->
         <div class="col-lg-6">
           <div class="xp-text">
-            <br>
-            <br>
-            <br>
-            <br>
+            <br><br><br><br>
             <div class="xp-badge mb-2"><i class="fas fa-location-arrow"></i><span>Miramar de Ansenuza</span></div>
             <h3 class="mb-2">¿Qué hacer <span class="text-primary">hoy</span>?</h3>
             <p class="text-muted">Elegí una categoría y encontrá prestadores, recorridos y tips locales.</p>
@@ -293,8 +324,7 @@
             </div>
           </div>
         </div>
-
-        <!-- Columna del mosaico de imágenes -->
+        <!-- Columna del mosaico -->
         <div class="col-lg-6 mt-4 mt-lg-0">
           <div class="xp-mosaic">
             <figure class="tall">
@@ -327,77 +357,37 @@
 
 <!-- DETALLES (mod) -->
 <style>
-  /* Ajustes rápidos editables */
   :root{
-    --xp-detail-h: 230px;      /* alto de todas las tarjetas en desktop */
-    --xp-detail-img-w: 220px;  /* ancho fijo de la imagen en desktop   */
+    --xp-detail-h: 230px;
+    --xp-detail-img-w: 220px;
     --xp-radius: 16px;
   }
   .xp-detail{
-    display:flex;
-    align-items:stretch;
-    gap:16px;
-    background:#fff;
-    border-radius:var(--xp-radius);
-    box-shadow:0 12px 30px rgba(0,0,0,.08);
-    overflow:hidden;
-    min-height: var(--xp-detail-h);   /* mismo alto para todas */
+    display:flex; align-items:stretch; gap:16px; background:#fff;
+    border-radius:var(--xp-radius); box-shadow:0 12px 30px rgba(0,0,0,.08);
+    overflow:hidden; min-height: var(--xp-detail-h);
   }
-  /* Imágenes iguales */
   .xp-detail img{
-    width: var(--xp-detail-img-w);
-    height: 100%;
-    object-fit: cover;
-    flex: 0 0 var(--xp-detail-img-w);
+    width: var(--xp-detail-img-w); height: 100%; object-fit: cover; flex: 0 0 var(--xp-detail-img-w);
   }
-  /* Contenido centrado verticalmente para que todo se vea parejo */
-  .xp-detail-body{
-    padding:16px 18px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-  }
+  .xp-detail-body{ padding:16px 18px; display:flex; flex-direction:column; justify-content:center; }
   .xp-detail h4{ margin-bottom:.4rem; }
-  /* (Opcional) Limitar texto a 3 líneas para evitar que una card se estire */
   .xp-detail p{
-    display:-webkit-box;
-    -webkit-line-clamp:3;
-    -webkit-box-orient:vertical;
-    overflow:hidden;
-    margin-bottom:.4rem;
+    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical;
+    overflow:hidden; margin-bottom:.4rem;
   }
-  .xp-detail ul{
-    margin-bottom:.4rem;
-    max-height: 4.8em; /* ~3 líneas */
-    overflow:hidden;
-  }
-  /* Tablet: un toque más compacto */
+  .xp-detail ul{ margin-bottom:.4rem; max-height: 4.8em; overflow:hidden; }
   @media (max-width: 991.98px){
-    :root{
-      --xp-detail-h: 210px;
-      --xp-detail-img-w: 200px;
-    }
+    :root{ --xp-detail-h: 210px; --xp-detail-img-w: 200px; }
   }
-  /* Mobile: stack (imagen arriba) y altura automática */
   @media (max-width: 767.98px){
-    .xp-detail{
-      flex-direction:column;
-      min-height:auto;
-    }
-    .xp-detail img{
-      width:100%;
-      height:190px;         /* todas iguales en mobile */
-      flex: 0 0 190px;
-    }
-    .xp-detail p, .xp-detail ul{
-      -webkit-line-clamp: unset;
-      max-height: none;
-    }
+    .xp-detail{ flex-direction:column; min-height:auto; }
+    .xp-detail img{ width:100%; height:190px; flex: 0 0 190px; }
+    .xp-detail p, .xp-detail ul{ -webkit-line-clamp: unset; max-height: none; }
   }
 </style>
 
-
-<!-- Bloques de detalle (anclas) -->
+<!-- Bloques de detalle -->
 <div class="row mt-4">
   <div class="col-lg-6">
     <div id="aves" class="mb-4 xp-detail">
@@ -470,33 +460,29 @@
           Único multiparque de la zona, con piscina playa +1500 m². Diversión y relax asegurados.
         </p>
           Ubicación: <strong>Zona Rural Colonia Muller, Miramar, Córdoba</strong></small></p>
-
-           <p class="mb-0"><small>Información: <strong>arenasclubparqueacuatico@gmail.com</strong> 
-           <p class="mb-0"><small>Información: <strong>3563-432621</strong> 
+          <p class="mb-0"><small>Información: <strong>arenasclubparqueacuatico@gmail.com</strong> 
+          <p class="mb-0"><small>Información: <strong>3563-432621</strong> 
       </div>
     </div>
   </div>
 </div>
-<!-- PRESTADORES (mod) - con ubicación en vez de foto -->
+
+<!-- PRESTADORES -->
 <style>
   .xp-providers{background:linear-gradient(180deg,#f8fafc 0%, #eef2ff 100%);}
   .xp-prov{
     display:flex; gap:14px; background:#fff; border-radius:14px;
     box-shadow:0 10px 24px rgba(0,0,0,.08); padding:12px; align-items:center; height:100%;
   }
-  /* Bloque ubicación */
   .xp-loc{
     display:flex; align-items:center; gap:8px;
-    background:#f1f5f9; border-radius:10px; padding:8px 10px; white-space:nowrap;
-    font-size:.92rem;
+    background:#f1f5f9; border-radius:10px; padding:8px 10px; white-space:nowrap; font-size:.92rem;
   }
-  .xp-loc i{ color:#ef4444; } /* pin rojo */
+  .xp-loc i{ color:#ef4444; }
   .xp-prov h5{margin:0; font-size:1.05rem;}
   .xp-prov small{opacity:.9; display:block;}
   .xp-actions{display:flex; flex-direction:column; gap:6px;}
-  @media (max-width: 575.98px){
-    .xp-actions{flex-direction:row; gap:8px;}
-  }
+  @media (max-width: 575.98px){ .xp-actions{flex-direction:row; gap:8px;} }
 </style>
 
 <div id="prestadores" class="container-fluid py-5 xp-providers">
@@ -520,7 +506,6 @@
             <small>Tel: 3563-668756</small>
           </div>
           <div class="xp-actions">
-            
             <a class="btn btn-light btn-sm" target="_blank"
                href="https://www.google.com/maps/search/?api=1&query=Excursiones+El+Flamenco+Miramar+de+Ansenuza">
                <i class="fas fa-map mr-1"></i>Ver ubicación
@@ -538,7 +523,6 @@
             <small>Tel: 3563-563271</small>
           </div>
           <div class="xp-actions">
-          
             <a class="btn btn-light btn-sm" target="_blank"
                href="https://www.google.com/maps/search/?api=1&query=Excursiones+Michelutti+Miramar+de+Ansenuza">
                <i class="fas fa-map mr-1"></i>Ver ubicación
@@ -556,7 +540,6 @@
             <small>Tel: 3563-563023 / 403102</small>
           </div>
           <div class="xp-actions">
-           
             <a class="btn btn-light btn-sm" target="_blank"
                href="https://www.google.com/maps/search/?api=1&query=Excursiones+Miramar+de+Ansenuza">
                <i class="fas fa-map mr-1"></i>Ver ubicación
@@ -574,7 +557,6 @@
             <small>Tel: 3563-406195</small>
           </div>
           <div class="xp-actions">
-            
             <a class="btn btn-light btn-sm" target="_blank"
                href="https://www.google.com/maps/search/?api=1&query=Excursiones+Estrella+Azul+Miramar+de+Ansenuza">
                <i class="fas fa-map mr-1"></i>Ver ubicación
@@ -592,7 +574,6 @@
             <small>Tel: 3563-402541</small>
           </div>
           <div class="xp-actions">
-            
             <a class="btn btn-light btn-sm" target="_blank"
                href="https://www.google.com/maps/search/?api=1&query=Excursiones+Mar+Chiquita+Miramar+de+Ansenuza">
                <i class="fas fa-map mr-1"></i>Ver ubicación
@@ -610,7 +591,6 @@
             <small>Tel: 3563-407637</small>
           </div>
           <div class="xp-actions">
-            
             <a class="btn btn-light btn-sm" target="_blank"
                href="https://www.google.com/maps/search/?api=1&query=Vive+Paseos+N%C3%A1uticos+Miramar+de+Ansenuza">
                <i class="fas fa-map mr-1"></i>Ver ubicación
@@ -620,26 +600,114 @@
       </div>
     </div>
 
-   
- <div class="bg-white shadow p-4 mt-3" style="border-radius:14px;">
-  <div class="row align-items-center">
-    <div class="col-md-8">
-      <h5 class="mb-1">¿Tenés dudas o querés listar tu servicio?</h5>
-      <p class="mb-0">Escribinos por WhatsApp y te respondemos a la brevedad.</p>
+    <div class="bg-white shadow p-4 mt-3" style="border-radius:14px;">
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <h5 class="mb-1">¿Tenés dudas o querés listar tu servicio?</h5>
+          <p class="mb-0">Escribinos por WhatsApp y te respondemos a la brevedad.</p>
+        </div>
+        <div class="col-md-4 text-md-right mt-3 mt-md-0">
+          <a href="https://wa.me/5493563409731" target="_blank" rel="noopener"
+             class="btn btn-success" aria-label="Contactar por WhatsApp">
+            <i class="fab fa-whatsapp mr-2"></i>Contactar por WhatsApp
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="col-md-4 text-md-right mt-3 mt-md-0">
-      <a href="https://wa.me/5493563409731"
-         target="_blank" rel="noopener"
-         class="btn btn-success" aria-label="Contactar por WhatsApp">
-        <i class="fab fa-whatsapp mr-2"></i>Contactar por WhatsApp
-      </a>
-    </div>
-  </div>
-</div>
 
   </div>
 </div>
+
+<!-- ===== Botón PINK (flamenco) ===== -->
+<a href="https://wa.me/3563401392?text=Hola%20PINK,%20quisiera%20hacer%20una%20consulta"
+   class="pinky-float" target="_blank"
+   aria-label="Contactar con PINK por WhatsApp"
+   title="Hola soy Pink, tu asistente virtual">
+  <img src="img/eda83ab2-b9e0-456f-844d-81a7b667e614.jpeg" alt="PINK" class="pink-icon">
+</a>
+
     <!-- Footer Start (limpio y en español) -->
+<style>
+/* ===== Footer estilo Miramar oscuro ===== */
+footer,
+.container-fluid.bg-dark{
+  background: linear-gradient(180deg, #0b1421, #0a0f18);
+  color:#cbd5e1;
+  font-size:.96rem;
+  line-height:1.65;
+}
+
+/* Texto y links */
+.container-fluid.bg-dark p,
+.container-fluid.bg-dark a{
+  color:#c9d5ffb3;
+  text-decoration:none;
+}
+.container-fluid.bg-dark a:hover{
+  color:#7cd2a5;
+  text-decoration:none;
+}
+
+/* Títulos */
+.container-fluid.bg-dark h5,
+.container-fluid.bg-dark h6{
+  color:#fff;
+  font-weight:700;
+  margin-bottom:1rem;
+  letter-spacing:2px; /* ya traías 4px inline; esto suaviza */
+}
+
+/* Logo */
+.container-fluid.bg-dark .navbar-brand img{
+  height:42px; width:auto;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,.35));
+}
+
+/* Botones sociales */
+.container-fluid.bg-dark .btn-square{
+  width:38px; height:38px;
+  border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center;
+  color:#fff !important;
+  border:1px solid #4a72d9 !important;
+  background: linear-gradient(180deg,#20315a,#1a2747) !important;
+  box-shadow: none;
+  transition: transform .25s ease, background .25s ease, border-color .25s ease;
+}
+.container-fluid.bg-dark .btn-square:hover{
+  transform: translateY(-2px);
+  background:#2c5fb8 !important; border-color:#2c5fb8 !important;
+}
+
+/* CTA WhatsApp */
+.container-fluid.bg-dark .btn-success{
+  background-color:#35d07f !important;
+  border:none; font-weight:700;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.container-fluid.bg-dark .btn-success:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(53,208,127,.35);
+}
+
+/* Línea separadora inferior */
+.container-fluid.bg-dark.border-top{
+  border-color: rgba(255,255,255,.12) !important;
+}
+
+/* Pequeños */
+.container-fluid.bg-dark small{
+  font-size:.86rem; color:#9fb0c8 !important;
+}
+
+/* Responsive */
+@media (max-width: 575.98px){
+  .container-fluid.bg-dark .btn-square{ width:36px; height:36px; }
+  .container-fluid.bg-dark .navbar-brand img{ height:38px; }
+}
+</style>
+
+<!-- ===== FOOTER ===== -->
 <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
   <div class="row pt-4">
     <!-- Col 1: Logo + breve -->
@@ -663,6 +731,7 @@
       <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Navegación</h5>
       <div class="d-flex flex-column">
         <a class="text-white-50 mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+        <a class="text-white-50 mb-2" href="service.html"><i class="fa fa-angle-right mr-2"></i>Servicios</a>
         <a class="text-white-50 mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Acerca de</a>
         <a class="text-white-50 mb-2" href="package.html"><i class="fa fa-angle-right mr-2"></i>Alojamientos</a>
         <a class="text-white-50" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
@@ -676,7 +745,7 @@
       <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
       <p><i class="fa fa-envelope mr-2"></i> oficinadeturismo2@gmail.com <br> infomiramarcba@gmail.com </p>
 
-      <!-- CTA WhatsApp (mejor que newsletter) -->
+      <!-- CTA WhatsApp -->
       <div class="mt-3">
         <a class="btn btn-success btn-block"
            href="https://wa.me/5493563409731" target="_blank" rel="noopener">
@@ -690,7 +759,7 @@
   </div>
 </div>
 
-<div class="container-fluid bg-dark text-white border-top py-3 px-sm-3 px-md-5" style="border-color: rgba(255,255,255,.08) !important;">
+<div class="container-fluid bg-dark text-white border-top py-3 px-sm-3 px-md-5">
   <div class="row">
     <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
       <small class="m-0 text-white-50">© <span id="year"></span> Municipalidad de Miramar de Ansenuza. Todos los derechos reservados.</small>
@@ -700,9 +769,14 @@
     </div>
   </div>
 </div>
-<!-- Footer End -->
-  <!-- Back to Top -->
-  <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+<script>
+  // año automático en el footer
+  (function(){ var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); })();
+</script>
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
   <!-- JavaScript Libraries -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
