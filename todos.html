@@ -42,10 +42,10 @@
       --speed: .25s;
 
       /* PINK + BackToTop */
-       --pink-size: 88px;      /* tamaño del botón Pink */
-      --pink-gap: 16px;       /* espacio entre Pink y la flecha */
-      --pink-bottom: 20px;    /* distancia al borde inferior */
-      --pink-right: 20px; 
+      --pink-size: 88px;
+      --pink-gap: 16px;
+      --pink-bottom: 20px;
+      --pink-right: 20px;
     }
 
     * { box-sizing: border-box; }
@@ -278,7 +278,7 @@
       border:1px solid rgba(0,0,0,.06);
       cursor:pointer;
     }
-   .pinky-float img.pink-icon{ width:76%; height:auto; }
+    .pinky-float img.pink-icon{ width:76%; height:auto; }
     .pinky-float:hover{ transform:scale(1.07); box-shadow:0 14px 30px rgba(0,0,0,.25); }
 
     .back-to-top{
@@ -443,7 +443,7 @@
     <div id="lodging-list"></div>
     <div id="no-results" class="no-results">No se encontraron alojamientos que coincidan con los filtros.</div>
   </section>
-<style>
+  <style>
     /* ===== Footer estilo Miramar oscuro ===== */
     footer,
     .container-fluid.bg-dark{
@@ -548,242 +548,162 @@
   <script src="js/main.js"></script>
 
   <!-- Dinámico desde API -->
-  <script type="module">
-    // === CONFIG API ===
-    // const API_BASE = '/api'; // si servís front y back en el mismo host
-    const API_BASE = 'http://localhost:3000/api'; // cambialo si tu backend está en otro dominio
+  <!-- (el <head> y estilos quedan tal cual tu versión) -->
+<!-- …contenido anterior sin cambios… -->
 
-    const $list   = document.getElementById('lodging-list');
-    const $noRes  = document.getElementById('no-results');
-    const $q      = document.getElementById('search-input');
-    const $clear  = document.getElementById('clear-search');
-    const $vis    = document.getElementById('count-visible');
-    const $tot    = document.getElementById('count-total');
-    const $year   = document.getElementById('year');
-    if ($year) $year.textContent = new Date().getFullYear();
+<!-- Dinámico desde API -->
+<script type="module">
+  const API_BASE   = 'http://localhost:3000/api';
+  const API_ORIGIN = new URL(API_BASE).origin;
 
-    const safe = (s) => String(s ?? '')
-      .replace(/&/g,'&amp;')
-      .replace(/</g,'&lt;')
-      .replace(/>/g,'&gt;')
-      .replace(/"/g,'&quot;');
+  const abs = (u) => {
+    if (!u) return '';
+    if (/^https?:\/\//i.test(u)) return u;
+    return API_ORIGIN + (u.startsWith('/') ? u : '/' + u);
+  };
 
-    const mapsHref = (direccion) => {
-      const q = encodeURIComponent(`${direccion}, Miramar de Ansenuza, Córdoba, Argentina`);
-      return `https://www.google.com/maps/search/?api=1&query=${q}`;
-    };
+  const $list   = document.getElementById('lodging-list');
+  const $noRes  = document.getElementById('no-results');
+  const $q      = document.getElementById('search-input');
+  const $clear  = document.getElementById('clear-search');
 
-    // Normaliza tipos a categorías de filtro (incluye subfiltros de deptos)
-    const catFromTipo = (tipo='') => {
-      const t = String(tipo).toLowerCase();
-      if (t.includes('hotel') || t.includes('hoster')) return 'hoteles';
-      if (t.includes('caba')) return 'cabanas';
-      if (t.includes('camp')) return 'camping';
-      if (t.includes('apart') || t.includes('depto') || t.includes('depart')){
-        if (t.includes('superior') || t.includes('premium')) return 'depto-superior';
-        if (t.includes('plus') || t.includes('confort') || t.includes('estandar') || t.includes('estándar')) return 'depto-plus';
-        return 'departamentos';
-      }
-      return 'otros';
-    };
+  const safe = (s) => String(s ?? '')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  const nl2brSafe = (s) => safe(String(s)).replace(/\r?\n/g,'<br>');
 
-    const amenitiesDefault = `
-      <ul class="amenities mb-3" aria-label="Servicios">
-        <li title="Estacionamiento"><i class="fas fa-car" aria-hidden="true"></i></li>
-        <li title="Wi-Fi"><i class="fas fa-wifi" aria-hidden="true"></i></li>
-        <li title="TV"><i class="fas fa-tv" aria-hidden="true"></i></li>
-      </ul>`;
+  const mapsHref = (direccion) => {
+    const q = encodeURIComponent(`${direccion}, Miramar de Ansenuza, Córdoba, Argentina`);
+    return `https://www.google.com/maps/search/?api=1&query=${q}`;
+  };
 
-    const renderCard = (h) => {
-      const img = h.imagen_url || 'img/hotel/placeholder.jpg';
-      const nombre = safe(h.nombre);
-      const tipo = safe(h.tipo || '');
-      const dir  = safe(h.direccion || '');
-      const tel  = safe(h.telefono || '');
-      const web  = safe(h.web || '');
-      const mail = safe(h.email || h.mail || '');
-      const map  = h.maps_url || (dir ? mapsHref(dir) : '');
-      const cat  = catFromTipo(h.tipo);
-
-      return `
-        <article class="lodging row no-gutters" data-name="${nombre}" data-cat="${cat}">
-          <div class="col-lg-7">
-            <a class="lodging-photo" ${img ? `href="${safe(img)}"` : ''} aria-label="Ver imagen de ${nombre}">
-              <img src="${safe(img)}" alt="${nombre}" onerror="this.src='img/hotel/placeholder.jpg'">
-            </a>
-          </div>
-          <div class="col-lg-5 bg-white p-4 p-md-4">
-            <h3 class="lodging-title js-title">${nombre}</h3>
-            ${tipo ? `<p class="mb-2"><span class="badge badge-secondary">${tipo}</span></p>` : ''}
-
-            ${amenitiesDefault}
-
-            ${dir ? `
-              <div class="mb-2">
-                <h6 class="mb-1">Dirección:</h6>
-                <p class="mb-0 addr"><i class="fas fa-map-marker-alt text-primary mr-2" aria-hidden="true"></i>${dir}
-                  ${map ? `<a class="map-link" target="_blank" rel="noopener" href="${safe(map)}">(Ver en Google Maps)</a>` : ''}
-                </p>
-              </div>` : ''}
-
-            ${tel ? `<p class="mb-1"><i class="fas fa-phone-alt text-primary mr-2" aria-hidden="true"></i><a href="tel:${tel.replace(/[^+\d]/g,'')}">${tel}</a></p>` : ''}
-            ${mail ? `<p class="mb-1"><i class="fas fa-envelope text-primary mr-2" aria-hidden="true"></i><a href="mailto:${mail}">${mail}</a></p>` : ''}
-            ${web ? `<p class="mb-0"><i class="fas fa-globe text-primary mr-2" aria-hidden="true"></i><a href="${web}" target="_blank" rel="noopener">${web.replace(/^https?:\/\//,'')}</a></p>` : ''}
-          </div>
-        </article>
-      `;
-    };
-
-    let currentFilter = 'todos';
-    let items = []; // NodeList de artículos
-    let data = [];  // Array del API
-
-    const norm = (s='') => String(s)
-      .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-      .toLowerCase().trim();
-
-    // Aplica búsqueda + filtro + resaltado de coincidencias en el título
-    function applyAll(){
-      const term = norm($q.value);
-      let visible = 0;
-
-      // util para regex safe
-      const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-
-      items.forEach(card => {
-        const cat = (card.dataset.cat || 'otros').toLowerCase();
-
-        // match de categoría (incluye agrupación de 'departamentos')
-        let matchCat = true;
-        if (currentFilter !== 'todos') {
-          if (currentFilter === 'departamentos') {
-            matchCat = (cat === 'depto-superior' || cat === 'depto-plus' || cat === 'departamentos');
-          } else {
-            matchCat = (cat === currentFilter);
-          }
-        }
-
-        // match de texto
-        const nameAttr = norm(card.dataset.name || '');
-        const titleEl  = card.querySelector('.js-title');
-
-        // cacheo del título original para no perder marcado
-        if (titleEl && !titleEl.dataset.orig) {
-          titleEl.dataset.orig = titleEl.textContent.trim();
-        }
-        const titleRaw  = titleEl ? titleEl.dataset.orig || '' : '';
-        const titleNorm = norm(titleRaw);
-
-        const matchText = !term || nameAttr.includes(term) || titleNorm.includes(term);
-        const show = matchCat && matchText;
-
-        card.style.display = show ? '' : 'none';
-        if (show) visible++;
-
-        // resaltado
-        if (titleEl) {
-          if (term && titleNorm.includes(term)) {
-            const rx = new RegExp(`(${esc(term)})`, 'gi');
-            titleEl.innerHTML = titleRaw.replace(rx, '<mark class="search-hit">$1</mark>');
-          } else {
-            titleEl.textContent = titleRaw;
-          }
-        }
-      });
-
-      $vis.textContent = String(visible);
-      $noRes.style.display = visible ? 'none' : 'block';
+  const catFromTipo = (tipo='') => {
+    const t = String(tipo).toLowerCase();
+    if (t.includes('hotel') || t.includes('hoster')) return 'hoteles';
+    if (t.includes('caba')) return 'cabanas';
+    if (t.includes('camp')) return 'camping';
+    if (t.includes('apart') || t.includes('depto') || t.includes('depart')){
+      if (t.includes('superior') || t.includes('premium')) return 'depto-superior';
+      if (t.includes('plus') || t.includes('confort') || t.includes('estandar') || t.includes('estándar')) return 'depto-plus';
+      return 'departamentos';
     }
+    return 'otros';
+  };
 
-    function wireFilters(){
-      const filterBtns = Array.from(document.querySelectorAll('.filter-btn'));
-      const subfilterBtns = Array.from(document.querySelectorAll('.subfilter-btn'));
+  // 🔸 Íconos dinámicos según flags amen_*
+  const amenIcons = (h) => {
+    const out = [];
+    if (h.amen_cochera)  out.push('<li title="Cochera"><i class="fas fa-car"></i><span class="d-none d-sm-inline">Cochera</span></li>');
+    if (h.amen_aire)     out.push('<li title="Aire acondicionado"><i class="fas fa-snowflake"></i><span class="d-none d-sm-inline">Aire</span></li>');
+    if (h.amen_asador)   out.push('<li title="Asador"><i class="fas fa-fire"></i><span class="d-none d-sm-inline">Asador</span></li>');
+    if (h.amen_pileta)   out.push('<li title="Pileta"><i class="fas fa-swimming-pool"></i><span class="d-none d-sm-inline">Pileta</span></li>');
+    if (h.amen_wifi)     out.push('<li title="Wi-Fi"><i class="fas fa-wifi"></i><span class="d-none d-sm-inline">Wi-Fi</span></li>');
+    if (h.amen_tv)       out.push('<li title="Televisión"><i class="fas fa-tv"></i><span class="d-none d-sm-inline">TV</span></li>');
+    if (h.amen_desayuno) out.push('<li title="Desayuno"><i class="fas fa-mug-hot"></i><span class="d-none d-sm-inline">Desayuno</span></li>');
+    if (h.amen_mascotas) out.push('<li title="Mascotas"><i class="fas fa-paw"></i><span class="d-none d-sm-inline">Mascotas</span></li>');
+    return out.length ? `<ul class="amenities mb-3" aria-label="Servicios">${out.join('')}</ul>` : '';
+  };
 
-      const setActive = (btn) => {
-        filterBtns.forEach(b=>b.classList.remove('active'));
-        if (currentFilter.startsWith('depto-') || currentFilter === 'departamentos') {
-          const depBtn = filterBtns.find(b=>b.dataset.filter==='departamentos');
-          if (depBtn) depBtn.classList.add('active');
-        }
-        if (btn && btn.classList.contains('filter-btn')) btn.classList.add('active');
-        if (btn && btn.dataset.filter === 'todos') btn.classList.add('active');
-      };
+  const renderCard = (h) => {
+    const imgAbs = abs(h.imagen_url) || 'img/hotel/placeholder.jpg';
+    const nombre = safe(h.nombre);
+    const tipo   = safe(h.tipo || '');
+    const dir    = safe(h.direccion || '');
+    const tel    = safe(h.telefono || '');
+    const mail   = safe(h.email || h.mail || '');
+    const web    = safe(h.web || '');
+    const map    = h.maps_url || (h.direccion ? mapsHref(h.direccion) : '');
+    const cat    = catFromTipo(h.tipo);
 
-      filterBtns.forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-          currentFilter = btn.dataset.filter || 'todos';
-          setActive(btn);
-          applyAll();
-          const top = $list.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({ top, behavior:'smooth' });
-        });
-      });
+    return `
+      <article class="lodging row no-gutters" data-name="${nombre}" data-cat="${cat}">
+        <div class="col-lg-7">
+          <a class="lodging-photo" ${imgAbs ? `href="${imgAbs}" target="_blank"` : ''} aria-label="Ver imagen de ${nombre}">
+            <img src="${imgAbs}" alt="${nombre}" onerror="this.src='img/hotel/placeholder.jpg'">
+          </a>
+        </div>
+        <div class="col-lg-5 bg-white p-4 p-md-4">
+          <h3 class="lodging-title js-title">${nombre}</h3>
+          ${tipo ? `<p class="mb-2"><span class="badge badge-secondary">${tipo}</span></p>` : ''}
 
-      subfilterBtns.forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-          currentFilter = btn.dataset.filter; // 'depto-superior' | 'depto-plus'
-          setActive(null);
-          applyAll();
-          const top = $list.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({ top, behavior:'smooth' });
-        });
-      });
-    }
+          ${amenIcons(h)}
 
-    async function load(){
-      $list.innerHTML = `<div class="text-center my-3">Cargando alojamientos…</div>`;
-      try{
-        const res = await fetch(`${API_BASE}/hospedaje`);
-        if(!res.ok) throw new Error('HTTP '+res.status);
-        data = await res.json();
+          ${h.nota ? `<div class="small-muted mb-2">${nl2brSafe(h.nota)}</div>` : ''}
 
-        if(!Array.isArray(data) || !data.length){
-          $list.innerHTML = '';
-          $noRes.style.display = 'block';
-          $vis.textContent = '0';
-          $tot.textContent = '0';
-          return;
-        }
+          ${dir ? `<p class="mb-1"><i class="fas fa-map-marker-alt text-primary mr-2"></i>${dir}
+            ${map ? `<a class="link-map" target="_blank" rel="noopener" href="${safe(map)}">(Ver en Google Maps)</a>` : ''}
+          </p>` : ''}
 
-        $list.innerHTML = data.map(renderCard).join('');
-        items = Array.from(document.querySelectorAll('#lodging-list article.lodging'));
-        $tot.textContent = String(items.length);
-        wireFilters();
-        applyAll();
-      }catch(err){
-        console.error(err);
-        $list.innerHTML = `<div class="text-center text-danger my-3">Error cargando alojamientos.<br><small>${safe(err.message)}</small></div>`;
-      }
-    }
+          ${tel  ? `<p class="mb-1"><i class="fas fa-phone-alt text-primary mr-2"></i><a href="tel:${tel.replace(/[^+\d]/g,'')}">${tel}</a></p>` : '' }
+          ${mail ? `<p class="mb-1"><i class="fas fa-envelope text-primary mr-2"></i><a href="mailto:${mail}">${mail}</a></p>` : '' }
+          ${web  ? `<p class="mb-0"><i class="fas fa-globe text-primary mr-2"></i><a href="${web}" target="_blank" rel="noopener">${web.replace(/^https?:\/\//,'')}</a></p>` : '' }
+        </div>
+      </article>
+    `;
+  };
 
-    // Búsqueda
-    $q.addEventListener('input', applyAll);
-    $clear.addEventListener('click', ()=>{ $q.value=''; applyAll(); });
+  let items = [];
 
-    load();
-  </script>
+  const norm = (s='') => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
 
-  <!-- BackToTop: mostrar al hacer scroll + scroll suave -->
-  <script>
-    (function(){
-      var btn = document.querySelector('.back-to-top');
-      if(!btn) return;
+  function applyAll(){
+    const term = norm($q.value);
+    let visible = 0;
 
-      var toggle = function(){
-        if (window.pageYOffset > 240) {
-          btn.classList.add('show');
+    const rxEsc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+
+    items.forEach(card => {
+      const name = norm(card.dataset.name || '');
+      const show = !term || name.includes(term);
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+
+      const titleEl = card.querySelector('.js-title');
+      if (titleEl && !titleEl.dataset.orig) titleEl.dataset.orig = titleEl.textContent.trim();
+      const raw = titleEl ? titleEl.dataset.orig || '' : '';
+      const normRaw = norm(raw);
+      if (titleEl){
+        if (term && normRaw.includes(term)){
+          titleEl.innerHTML = raw.replace(new RegExp(`(${rxEsc(term)})`,'gi'),'<mark class="search-hit">$1</mark>');
         } else {
-          btn.classList.remove('show');
+          titleEl.textContent = raw;
         }
-      };
-      toggle();
-      window.addEventListener('scroll', toggle, {passive:true});
+      }
+    });
 
-      btn.addEventListener('click', function(e){
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, false);
-    })();
-  </script>
+    document.getElementById('count-visible').textContent = String(visible);
+    $noRes.style.display = visible ? 'none' : 'block';
+  }
+
+  async function load(){
+    $list.innerHTML = `<div class="text-center my-3">Cargando alojamientos…</div>`;
+    try{
+      const res = await fetch(`${API_BASE}/hospedaje`);
+      const data = await res.json();
+
+      if (!Array.isArray(data) || !data.length){
+        $list.innerHTML = '';
+        $noRes.style.display = 'block';
+        document.getElementById('count-visible').textContent = '0';
+        document.getElementById('count-total').textContent = '0';
+        return;
+      }
+
+      $list.innerHTML = data.map(renderCard).join('');
+      items = Array.from(document.querySelectorAll('#lodging-list article.lodging'));
+      document.getElementById('count-total').textContent = String(items.length);
+      applyAll();
+    }catch(err){
+      console.error(err);
+      $list.innerHTML = `<div class="text-center text-danger my-3">Error cargando alojamientos.<br><small>${safe(err.message)}</small></div>`;
+    }
+  }
+
+  $q.addEventListener('input', applyAll);
+  $clear.addEventListener('click', ()=>{ $q.value=''; applyAll(); });
+
+  load();
+</script>
+
 </body>
 </html>
