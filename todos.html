@@ -441,68 +441,8 @@
     <div id="lodging-list"></div>
     <div id="no-results" class="no-results">No se encontraron alojamientos que coincidan con los filtros.</div>
   </section>
-  <style>
-    /* ===== Footer estilo Miramar oscuro ===== */
-    footer,
-    .container-fluid.bg-dark{
-      background: linear-gradient(180deg, #0b1421, #0a0f18);
-      color:#cbd5e1;
-      font-size:.96rem;
-      line-height:1.65;
-    }
-    .container-fluid.bg-dark p,
-    .container-fluid.bg-dark a{ color:#c9d5ffb3; text-decoration:none; }
-    .container-fluid.bg-dark a:hover{ color:#7cd2a5; text-decoration:none; }
-    .container-fluid.bg-dark h5,
-    .container-fluid.bg-dark h6{ color:#fff; font-weight:700; margin-bottom:1rem; letter-spacing:2px; }
-    .container-fluid.bg-dark .navbar-brand img{ height:42px; width:auto; filter: drop-shadow(0 8px 16px rgba(0,0,0,.35)); }
-    .container-fluid.bg-dark .btn-square{
-      width:38px; height:38px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;
-      color:#fff !important; border:1px solid #4a72d9 !important;
-      background: linear-gradient(180deg,#20315a,#1a2747) !important;
-      transition: transform .25s ease, background .25s ease, border-color .25s ease;
-    }
-    .container-fluid.bg-dark .btn-square:hover{ transform: translateY(-2px); background:#2c5fb8 !important; border-color:#2c5fb8 !important; }
-    .container-fluid.bg-dark .btn-success{ background-color:#35d07f !important; border:none; font-weight:700; transition: transform .25s ease, box-shadow .25s ease; }
-    .container-fluid.bg-dark .btn-success:hover{ transform: translateY(-1px); box-shadow: 0 10px 26px rgba(53,208,127,.35); }
-    .container-fluid.bg-dark.border-top{ border-color: rgba(255,255,255,.12) !important; }
-    .container-fluid.bg-dark small{ font-size:.86rem; color:#9fb0c8 !important; }
-    @media (max-width: 575.98px){
-      .container-fluid.bg-dark .btn-square{ width:36px; height:36px; }
-      .container-fluid.bg-dark .navbar-brand img{ height:38px; }
-    }
-    /* ✨ Efecto especial en los links del footer */
-.container-fluid.bg-dark .d-flex.flex-column a {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  transition: color .3s ease, transform .3s ease;
-}
 
-.container-fluid.bg-dark .d-flex.flex-column a i {
-  transition: transform .5s ease;
-}
-
-.container-fluid.bg-dark .d-flex.flex-column a:hover {
-  color: #7cd2a5; /* el verde que ya usás */
-  transform: translateX(4px);
-}
-
-.container-fluid.bg-dark .d-flex.flex-column a:hover i {
-  transform: rotate(360deg);
-}
-/* ✨ Efecto especial en los íconos sociales del footer */
-.container-fluid.bg-dark .btn-square i {
-  transition: transform .5s ease;
-}
-
-.container-fluid.bg-dark .btn-square:hover i {
-  transform: rotate(360deg) scale(1.15);
-}
-
-  </style>
-
-  <!-- ===== FOOTER COMPLETO (igual al de "Acerca de") ===== -->
+  <!-- ===== FOOTER COMPLETO ===== -->
   <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
     <div class="row pt-4">
       <div class="col-lg-4 col-md-6 mb-4">
@@ -537,11 +477,10 @@
         <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
         <p><i class="fa fa-envelope mr-2"></i> oficinadeturismo2@gmail.com - infomiramarcba@gmail.com </p>
         <div class="mt-3">
-          <a class="btn btn-success btn-block"
-             href="https://wa.me/5493563409731" target="_blank" rel="noopener">
+          <a class="btn btn-success btn-block" href="https://wa.me/5493563409731" target="_blank" rel="noopener">
             <i class="fab fa-whatsapp mr-2"></i>Escribinos por WhatsApp
           </a>
-           <small class="d-block mt-2 text-muted" style="margin-left: 90px;">Horario de atención: Lunes a Viernes 08:00–13:00</small>
+          <small class="d-block mt-2 text-muted" style="margin-left: 90px;">Horario de atención: Lunes a Viernes 08:00–13:00</small>
         </div>
       </div>
     </div>
@@ -566,18 +505,20 @@
      title="Hola soy Pink, tu asistente virtual">
     <img src="img/eda83ab2-b9e0-456f-844d-81a7b667e614.jpeg" alt="PINK" class="pink-icon">
   </a>
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
+  <i class="fa fa-angle-double-up"></i>
+</a>
+  <!-- Flecha Back to Top -->
+  <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
+    <i class="fa fa-angle-double-up"></i>
+  </a>
 
   <!-- Libs básicos del template -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
 
-  <!-- Dinámico desde API -->
-  <!-- (el <head> y estilos quedan tal cual tu versión) -->
-<!-- …contenido anterior sin cambios… -->
-
-<!-- Dinámico desde API -->
-<script type="module">
+  <script type="module">
   const API_BASE   = 'http://localhost:3000/api';
   const API_ORIGIN = new URL(API_BASE).origin;
 
@@ -591,6 +532,8 @@
   const $noRes  = document.getElementById('no-results');
   const $q      = document.getElementById('search-input');
   const $clear  = document.getElementById('clear-search');
+  const $vis    = document.getElementById('count-visible');
+  const $tot    = document.getElementById('count-total');
 
   const safe = (s) => String(s ?? '')
     .replace(/&/g,'&amp;').replace(/</g,'&lt;')
@@ -602,6 +545,7 @@
     return `https://www.google.com/maps/search/?api=1&query=${q}`;
   };
 
+  // Normaliza "tipo" a categorías de filtro (y subfiltros de departamentos)
   const catFromTipo = (tipo='') => {
     const t = String(tipo).toLowerCase();
     if (t.includes('hotel') || t.includes('hoster')) return 'hoteles';
@@ -615,7 +559,7 @@
     return 'otros';
   };
 
-  // 🔸 Íconos dinámicos según flags amen_*
+  // Íconos dinámicos según flags amen_*
   const amenIcons = (h) => {
     const out = [];
     if (h.amen_cochera)  out.push('<li title="Cochera"><i class="fas fa-car"></i><span class="d-none d-sm-inline">Cochera</span></li>');
@@ -668,21 +612,38 @@
   };
 
   let items = [];
+  let currentFilter = 'todos'; // 🔹 estado del filtro actual
 
   const norm = (s='') => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+  const rxEsc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 
+  // 🔹 Aplica búsqueda + filtro + resaltado
   function applyAll(){
     const term = norm($q.value);
     let visible = 0;
 
-    const rxEsc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-
     items.forEach(card => {
+      const cat  = (card.dataset.cat || 'otros').toLowerCase();
       const name = norm(card.dataset.name || '');
-      const show = !term || name.includes(term);
+
+      // match de categoría (incluye agrupación de 'departamentos')
+      let matchCat = true;
+      if (currentFilter !== 'todos') {
+        if (currentFilter === 'departamentos') {
+          matchCat = (cat === 'depto-superior' || cat === 'depto-plus' || cat === 'departamentos');
+        } else {
+          matchCat = (cat === currentFilter);
+        }
+      }
+
+      // match de texto
+      const matchText = !term || name.includes(term);
+      const show = matchCat && matchText;
+
       card.style.display = show ? '' : 'none';
       if (show) visible++;
 
+      // resaltado en el título
       const titleEl = card.querySelector('.js-title');
       if (titleEl && !titleEl.dataset.orig) titleEl.dataset.orig = titleEl.textContent.trim();
       const raw = titleEl ? titleEl.dataset.orig || '' : '';
@@ -696,77 +657,80 @@
       }
     });
 
-    document.getElementById('count-visible').textContent = String(visible);
+    if ($vis) $vis.textContent = String(visible);
     $noRes.style.display = visible ? 'none' : 'block';
+  }
+
+  // 🔹 Clicks de filtros (y subfiltros)
+  function wireFilters(){
+    const filterBtns    = Array.from(document.querySelectorAll('.filter-btn'));
+    const subfilterBtns = Array.from(document.querySelectorAll('.subfilter-btn'));
+
+    const setActive = (btn) => {
+      filterBtns.forEach(b=>b.classList.remove('active'));
+      // si eligieron subfiltro, dejamos activo "Departamentos"
+      if (currentFilter.startsWith('depto-') || currentFilter === 'departamentos') {
+        const depBtn = filterBtns.find(b=>b.dataset.filter==='departamentos');
+        if (depBtn) depBtn.classList.add('active');
+      }
+      if (btn && btn.classList.contains('filter-btn')) btn.classList.add('active');
+      if (btn && btn.dataset.filter === 'todos') btn.classList.add('active');
+    };
+
+    filterBtns.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        currentFilter = btn.dataset.filter || 'todos';
+        setActive(btn);
+        applyAll();
+        // opcional: scroll a resultados
+        const top = $list.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior:'smooth' });
+      });
+    });
+
+    subfilterBtns.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        currentFilter = btn.dataset.filter; // 'depto-superior' | 'depto-plus'
+        setActive(null);
+        applyAll();
+        const top = $list.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior:'smooth' });
+      });
+    });
   }
 
   async function load(){
     $list.innerHTML = `<div class="text-center my-3">Cargando alojamientos…</div>`;
     try{
-      const res = await fetch(`${API_BASE}/hospedaje`);
+      const res  = await fetch(`${API_BASE}/hospedaje`);
       const data = await res.json();
 
       if (!Array.isArray(data) || !data.length){
         $list.innerHTML = '';
         $noRes.style.display = 'block';
-        document.getElementById('count-visible').textContent = '0';
-        document.getElementById('count-total').textContent = '0';
+        if ($vis) $vis.textContent = '0';
+        if ($tot) $tot.textContent = '0';
         return;
       }
 
       $list.innerHTML = data.map(renderCard).join('');
       items = Array.from(document.querySelectorAll('#lodging-list article.lodging'));
-      document.getElementById('count-total').textContent = String(items.length);
-      applyAll();
+      if ($tot) $tot.textContent = String(items.length);
+
+      wireFilters();  // 🔹 activar botones
+      applyAll();    // 🔹 aplicar filtro/búsqueda actual
     }catch(err){
       console.error(err);
       $list.innerHTML = `<div class="text-center text-danger my-3">Error cargando alojamientos.<br><small>${safe(err.message)}</small></div>`;
     }
   }
 
+  // Búsqueda
   $q.addEventListener('input', applyAll);
   $clear.addEventListener('click', ()=>{ $q.value=''; applyAll(); });
 
   load();
 </script>
 
-<<<<<<< HEAD
-=======
-      btn.addEventListener('click', function(e){
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, false);
-    })();
-  </script>
-    <!-- Back to Top -->
- <!-- Flecha verde Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
-  <i class="fa fa-angle-double-up"></i>
-</a>
-
-  <!-- Script para mostrar/ocultar la flecha al hacer scroll -->
-  <script>
-    (function(){
-      var btn = document.querySelector('.back-to-top');
-      if(!btn) return;
-
-      var toggle = function(){
-        if (window.pageYOffset > 240) {
-          btn.classList.add('show');
-        } else {
-          btn.classList.remove('show');
-        }
-      };
-      toggle();
-      window.addEventListener('scroll', toggle, {passive:true});
-
-      btn.addEventListener('click', function(e){
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, false);
-    })();
-  </script>
-
->>>>>>> fd2c91acfa54fa4db931fc9a18fd2245c089a9ac
 </body>
 </html>
