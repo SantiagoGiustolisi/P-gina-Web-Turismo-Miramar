@@ -138,6 +138,7 @@
       background: #fff;
       transition: transform var(--speed) ease, box-shadow var(--speed) ease, color var(--speed) ease, border-color var(--speed) ease;
       cursor: pointer;
+      margin-left: 85px;
       font-weight:600;
       box-shadow: 0 8px 18px rgba(0,0,0,.04);
     }
@@ -281,27 +282,24 @@
    .pinky-float img.pink-icon{ width:76%; height:auto; }
     .pinky-float:hover{ transform:scale(1.07); box-shadow:0 14px 30px rgba(0,0,0,.25); }
 
-    .back-to-top{
-      position: fixed;
-      bottom: calc(var(--pink-bottom) + var(--pink-size) + var(--pink-gap));
-      right: calc(var(--pink-right) + 8px);
-      width: 54px;
-      height: 54px;
-      border-radius: 14px !important;
-      display: flex !important;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(180deg, #49b14a, #2f9f31);
-      border: none;
-      box-shadow: 0 8px 22px rgba(47,159,49,.35), 0 2px 8px rgba(0,0,0,.12);
-      z-index: 1000;
-      opacity: 0; visibility: hidden;
-      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease, visibility .2s;
-      color:#fff;
-    }
-    .back-to-top i{ font-size: 20px; line-height: 1; }
-    .back-to-top:hover{ transform: translateY(-2px); box-shadow: 0 12px 28px rgba(47,159,49,.45); }
-    .back-to-top.show{ opacity: 1; visibility: visible; }
+    /* ===== Flecha verde Back to Top (estilo Museos) ===== */
+/* ===== Back to Top original (Museos) ===== */
+.back-to-top{
+  position: fixed;
+  bottom: calc(var(--pink-bottom) + var(--pink-size) + var(--pink-gap));
+  right: calc(var(--pink-right) + 8px);
+  z-index:1000;
+  border-radius:12px !important;
+  box-shadow:0 10px 20px rgba(0,0,0,.18);
+  border:0;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.back-to-top:hover{
+  transform: translateY(-2px);
+  box-shadow:0 14px 26px rgba(0,0,0,.22);
+}
+
+
 
     /* ============================
       RESPONSIVE
@@ -473,6 +471,35 @@
       .container-fluid.bg-dark .btn-square{ width:36px; height:36px; }
       .container-fluid.bg-dark .navbar-brand img{ height:38px; }
     }
+    /* ✨ Efecto especial en los links del footer */
+.container-fluid.bg-dark .d-flex.flex-column a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  transition: color .3s ease, transform .3s ease;
+}
+
+.container-fluid.bg-dark .d-flex.flex-column a i {
+  transition: transform .5s ease;
+}
+
+.container-fluid.bg-dark .d-flex.flex-column a:hover {
+  color: #7cd2a5; /* el verde que ya usás */
+  transform: translateX(4px);
+}
+
+.container-fluid.bg-dark .d-flex.flex-column a:hover i {
+  transform: rotate(360deg);
+}
+/* ✨ Efecto especial en los íconos sociales del footer */
+.container-fluid.bg-dark .btn-square i {
+  transition: transform .5s ease;
+}
+
+.container-fluid.bg-dark .btn-square:hover i {
+  transform: rotate(360deg) scale(1.15);
+}
+
   </style>
 
   <!-- ===== FOOTER COMPLETO (igual al de "Acerca de") ===== -->
@@ -508,7 +535,7 @@
         <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Contacto</h5>
         <p><i class="fa fa-map-marker-alt mr-2"></i>DIRECCIÓN OFICINA DE TURISMO (General Paz 465, Miramar Córdoba.)</p>
         <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
-        <p><i class="fa fa-envelope mr-2"></i> oficinadeturismo2@gmail.com <br> infomiramarcba@gmail.com </p>
+        <p><i class="fa fa-envelope mr-2"></i> oficinadeturismo2@gmail.com - infomiramarcba@gmail.com </p>
         <div class="mt-3">
           <a class="btn btn-success btn-block"
              href="https://wa.me/5493563409731" target="_blank" rel="noopener">
@@ -785,5 +812,34 @@
       }, false);
     })();
   </script>
+    <!-- Back to Top -->
+ <!-- Flecha verde Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
+  <i class="fa fa-angle-double-up"></i>
+</a>
+
+  <!-- Script para mostrar/ocultar la flecha al hacer scroll -->
+  <script>
+    (function(){
+      var btn = document.querySelector('.back-to-top');
+      if(!btn) return;
+
+      var toggle = function(){
+        if (window.pageYOffset > 240) {
+          btn.classList.add('show');
+        } else {
+          btn.classList.remove('show');
+        }
+      };
+      toggle();
+      window.addEventListener('scroll', toggle, {passive:true});
+
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, false);
+    })();
+  </script>
+
 </body>
 </html>
