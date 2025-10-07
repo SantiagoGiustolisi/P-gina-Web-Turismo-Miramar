@@ -133,6 +133,18 @@
         --pink-right: 16px;
       }
     }
+
+    /* ===== Detalles visuales de los modales ===== */
+    .modal-header{ border-bottom: 1px solid #e9edf3; }
+    .modal-footer{ border-top: 1px solid #e9edf3; }
+    .list-phones li + li{ margin-top:.35rem; }
+    .badge-soft{
+      background:#eef2ff; color:#1d4ed8; border-radius:999px; padding:.25rem .6rem; font-size:.8rem;
+    }
+    .icon-bullet{
+      width:26px;height:26px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;
+      background:#f1f5f9;color:#0f172a;margin-right:.35rem;
+    }
   </style>
 
   <!-- Estilos del logo en navbar -->
@@ -371,8 +383,218 @@
     </div>
   </div>
 
-  <!-- Modales (ubicación, transporte, teléfonos) – se mantienen iguales que tu versión -->
-  <!-- ... [los modales que ya tenías aquí sin cambios] ... -->   
+  <!-- Modal: Ubicación -->
+  <div class="modal fade" id="modalUbicacion" tabindex="-1" role="dialog" aria-labelledby="tituloUbicacion" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="tituloUbicacion" class="modal-title"><i class="fas fa-map-marker-alt mr-2"></i>Cómo llegar a Miramar de Ansenuza</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <div class="embed-responsive embed-responsive-4by3">
+                <!-- ⚠️ EDITAR si querés un mapa diferente -->
+                <iframe class="embed-responsive-item" title="Mapa Miramar de Ansenuza"
+                        src="https://www.google.com/maps?q=Miramar%20de%20Ansenuza,%20C%C3%B3rdoba&output=embed" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <p class="mb-2">
+                <span class="badge-soft"><i class="far fa-compass mr-1"></i> Referencia</span>
+              </p>
+              <p>Miramar de Ansenuza está ubicada al noreste de la provincia de Córdoba, a orillas de la Laguna Mar Chiquita.</p>
+
+              <ul class="list-unstyled mb-3">
+                <li><span class="icon-bullet"><i class="fas fa-car"></i></span>
+                  <strong>En auto:</strong> desde Córdoba capital por <em>RN 19</em> y <em>RP 3</em> / <em>RP 17</em>.
+                </li>
+                <li><span class="icon-bullet"><i class="fas fa-train"></i></span>
+                  <strong>En tren:</strong> hasta <em>San Francisco</em> / <em>Arroyito</em> y combinar con bus.
+                </li>
+                <li><span class="icon-bullet"><i class="fas fa-bus"></i></span>
+                  <strong>En bus:</strong> ver opciones en la pestaña <em>Transporte</em>.
+                </li>
+              </ul>
+
+              <a class="btn btn-primary btn-block mb-2" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/dir//Miramar+de+Ansenuza,+C%C3%B3rdoba">
+                <i class="fas fa-directions mr-2"></i> Abrir en Google Maps
+              </a>
+              <!-- ⚠️ EDITAR dirección si corresponde -->
+              <small class="text-muted d-block">Oficina de Turismo: General Paz 465, Miramar, Córdoba.</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link text-muted" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!-- Modal: Transportes (actualizado) -->
+<div class="modal fade" id="modalTransporte" tabindex="-1" role="dialog" aria-labelledby="tituloTransporte" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="tituloTransporte" class="modal-title"><i class="fas fa-bus mr-2"></i>Transporte</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="mb-4">
+          <h6 class="mb-1">Morteros S.R.L</h6>
+          <div>Telefax: <a href="tel:+543562422470">03562–422470</a></div>
+          <div>E-mail: <a href="mailto:transportemorteros@coopmorteros.com.ar">transportemorteros@coopmorteros.com.ar</a></div>
+        </div>
+
+        <div class="mb-4">
+          <h6 class="mb-1">Empresa Fono bus</h6>
+          <div>Teléfono: <a href="tel:08108883666">0810 888 3666</a></div>
+          <div>E-mail: <a href="mailto:info@grupofonobus.com.ar">info@grupofonobus.com.ar</a></div>
+        </div>
+
+        <div class="mb-1">
+          <h6 class="mb-1">Empresa Mar chiquita</h6>
+          <div>Teléfono: <a href="tel:08102225202">0810 222 5202</a></div>
+          <div>WhatsApp: <a href="https://wa.me/54351152966496" target="_blank" rel="noopener">0351-152966496</a></div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link text-muted" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Teléfonos útiles (estilo visual mejorado) -->
+<div class="modal fade" id="modalTelefonos" tabindex="-1" role="dialog" aria-labelledby="tituloTelefonos" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content border-0">
+      <div class="modal-header bg-light">
+        <h4 id="tituloTelefonos" class="modal-title font-weight-bold text-primary">
+          <i class="fas fa-phone-alt mr-2"></i>Teléfonos útiles
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body p-4">
+        <div class="container-fluid">
+          <div class="row text-center">
+
+            <!-- 1 -->
+            <div class="col-md-4 mb-4">
+              <i class="fas fa-landmark fa-2x text-primary mb-2"></i>
+              <h6 class="font-weight-bold">Municipalidad de Miramar de Ansenuza</h6>
+              <p class="mb-0 text-muted">03563 – 493003</p>
+            </div>
+
+            <!-- 2 -->
+            <div class="col-md-4 mb-4">
+              <i class="fas fa-info-circle fa-2x text-primary mb-2"></i>
+              <h6 class="font-weight-bold">Oficina de Informes Turísticos</h6>
+              <p class="mb-0 text-muted">03563 – 493777 / 3563-409731</p>
+            </div>
+
+            <!-- 3 -->
+            <div class="col-md-4 mb-4">
+              <i class="fas fa-shield-alt fa-2x text-primary mb-2"></i>
+              <h6 class="font-weight-bold">Policía</h6>
+              <p class="mb-0 text-muted">03563 – 493299<br>03563 15406192 | 101</p>
+            </div>
+
+            <!-- 4 -->
+            <div class="col-md-4 mb-4">
+              <i class="fas fa-fire-extinguisher fa-2x text-primary mb-2"></i>
+              <h6 class="font-weight-bold">Bomberos</h6>
+              <p class="mb-0 text-muted">03563 – 15409949<br>03563 15412420 | 101</p>
+            </div>
+
+            <!-- 5 -->
+            <div class="col-md-4 mb-4">
+              <i class="fas fa-hospital fa-2x text-primary mb-2"></i>
+              <h6 class="font-weight-bold">Hosp. Zonal de Balnearia</h6>
+              <p class="mb-0 text-muted">03563 – 420158</p>
+            </div>
+
+            <!-- 6 -->
+            <div class="col-md-4 mb-4">
+              <i class="fas fa-clinic-medical fa-2x text-primary mb-2"></i>
+              <h6 class="font-weight-bold">Dispensario Municipal</h6>
+              <p class="mb-0 text-muted">03563 – 493298</p>
+            </div>
+
+            <!-- 7 -->
+            <div class="col-md-4 mb-4">
+              <i class="fas fa-anchor fa-2x text-primary mb-2"></i>
+              <h6 class="font-weight-bold">Seguridad Náutica</h6>
+              <p class="mb-0 text-muted">03563 – 493935</p>
+            </div>
+
+            <!-- 8 -->
+            <div class="col-md-4 mb-4">
+              <i class="fas fa-star-of-life fa-2x text-primary mb-2"></i>
+              <h6 class="font-weight-bold">G.E.R.S.</h6>
+              <p class="mb-0 text-muted">03563 – 493935</p>
+            </div>
+
+            <!-- 9 -->
+            <div class="col-md-4 mb-4">
+              <i class="fas fa-church fa-2x text-primary mb-2"></i>
+              <h6 class="font-weight-bold">Parroquia Santa Teresita</h6>
+              <p class="mb-0 text-muted">03563 – 493175</p>
+            </div>
+
+            <!-- 10 -->
+            <div class="col-md-4 mb-4">
+              <i class="fas fa-envelope fa-2x text-primary mb-2"></i>
+              <h6 class="font-weight-bold">Oficina de Correo Argentino</h6>
+              <p class="mb-0 text-muted">03563 – 493064</p>
+            </div>
+
+            <!-- 11 -->
+            <div class="col-md-4 mb-4">
+              <i class="fas fa-bolt fa-2x text-primary mb-2"></i>
+              <h6 class="font-weight-bold">Cooperativa Eléctrica</h6>
+              <p class="mb-0 text-muted">03563 – 493078</p>
+            </div>
+
+            <!-- 12 -->
+            <div class="col-md-4 mb-2">
+              <i class="fas fa-money-check-alt fa-2x text-primary mb-2"></i>
+              <h6 class="font-weight-bold">Cajero Automático | Red Link</h6>
+              <p class="mb-0 text-muted">Buenos Aires 419<br>03563 – 493025</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+  
+        <div class="modal-footer">
+        <button type="button" class="btn btn-link text-muted" data-dismiss="modal">Cerrar</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <!-- ====== / M O D A L E S ====== -->
+>>>>>>> 4fcce76d7503e2ab0c820e98e812231ff04e5b8f
 
   <!-- Botón Pinky -->
   <a href="https://wa.me/3563401392?text=Hola%20PINK,%20quisiera%20hacer%20una%20consulta"
@@ -414,34 +636,18 @@
       .container-fluid.bg-dark .navbar-brand img{ height:38px; }
     }
     /* ✨ Efecto especial en los links del footer */
-.container-fluid.bg-dark .d-flex.flex-column a {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  transition: color .3s ease, transform .3s ease;
-}
-
-.container-fluid.bg-dark .d-flex.flex-column a i {
-  transition: transform .5s ease;
-}
-
-.container-fluid.bg-dark .d-flex.flex-column a:hover {
-  color: #7cd2a5; /* el verde que ya usás */
-  transform: translateX(4px);
-}
-
-.container-fluid.bg-dark .d-flex.flex-column a:hover i {
-  transform: rotate(360deg);
-}
-/* ✨ Efecto especial en los íconos sociales del footer */
-.container-fluid.bg-dark .btn-square i {
-  transition: transform .5s ease;
-}
-
-.container-fluid.bg-dark .btn-square:hover i {
-  transform: rotate(360deg) scale(1.15);
-}
-
+    .container-fluid.bg-dark .d-flex.flex-column a {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      transition: color .3s ease, transform .3s ease;
+    }
+    .container-fluid.bg-dark .d-flex.flex-column a i { transition: transform .5s ease; }
+    .container-fluid.bg-dark .d-flex.flex-column a:hover { color: #7cd2a5; transform: translateX(4px); }
+    .container-fluid.bg-dark .d-flex.flex-column a:hover i { transform: rotate(360deg); }
+    /* ✨ Efecto especial en los íconos sociales del footer */
+    .container-fluid.bg-dark .btn-square i { transition: transform .5s ease; }
+    .container-fluid.bg-dark .btn-square:hover i { transform: rotate(360deg) scale(1.15); }
   </style>
 
   <!-- ===== FOOTER ===== -->
