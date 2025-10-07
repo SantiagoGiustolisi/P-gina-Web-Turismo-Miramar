@@ -1,179 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>TRAVELER - Free Travel Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+  <meta charset="utf-8" />
+  <title>Actividades – Miramar de Ansenuza</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+  <!-- Libraries Stylesheet -->
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+  <!-- Bootstrap / tu CSS -->
+  <link href="css/style.css" rel="stylesheet">
 
-<style>
-    /* ========= Variables PINK + BackToTop ========= */
+  <style>
+    /* ===== Variables botón Pink + BackToTop ===== */
     :root{
-      --pink-size: 88px;      /* tamaño del botón Pink */
-      --pink-gap: 16px;       /* separación vertical entre Pink y la flecha */
-      --pink-bottom: 20px;    /* distancia de Pink al borde inferior */
-      --pink-right: 20px;     /* distancia de Pink al borde derecho */
+      --pink-size: 88px; --pink-gap: 16px; --pink-bottom: 20px; --pink-right: 20px;
+      --xp-detail-h: 230px; --xp-detail-img-w: 220px; --xp-radius: 16px;
     }
+    /* Header */
+    .page-header-ansenuza{position:relative;color:#fff;min-height:380px;background-position:center;background-size:cover;background-repeat:no-repeat}
+    .page-header-ansenuza::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.45))}
+    .page-header-ansenuza .hero-wrap{position:relative;z-index:2;min-height:380px;padding:60px 0;text-align:center}
+    .hero-kicker{display:inline-block;background:#eaf0ff;color:#1e3a6d;font-weight:600;padding:.35rem .75rem;border-radius:999px;margin-bottom:10px;letter-spacing:.08em}
+    .hero-title{font-weight:700;margin:0 0 .5rem}
+    .hero-accent{background:linear-gradient(90deg,#fff,#dbeafe);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero-subtitle{margin:0 0 12px;font-size:1.05rem}
 
-    /* --------- Header / Hero --------- */
-    .page-header-ansenuza{
-      position:relative; color:#fff;
-      background-position:center; background-size:cover; background-repeat:no-repeat;
-      min-height: 380px;
+    /* Intro NAV */
+    .xp-nav{
+      background:
+        radial-gradient(1200px 500px at 10% -10%, rgba(96,165,250,.18), transparent 60%),
+        radial-gradient(900px 500px at 110% 20%, rgba(236,72,153,.18), transparent 60%),
+        #f7fafc;
     }
-    .page-header-ansenuza::after{
-      content:""; position:absolute; inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.45));
-    }
-    .page-header-ansenuza .hero-wrap{
-      position:relative; z-index:2; min-height:380px; padding:60px 0;
-      text-align:center;
-    }
-    .hero-kicker{
-      display:inline-block; background:#eaf0ff; color:#1e3a6d; font-weight:600;
-      padding:.35rem .75rem; border-radius:999px; margin-bottom:10px; letter-spacing:.08em;
-    }
-    .hero-title{ font-weight:700; margin:0 0 .5rem; }
-    .hero-accent{ background:linear-gradient(90deg,#fff, #dbeafe); -webkit-background-clip:text; background-clip:text; color:transparent; }
-    .hero-subtitle{ margin:0 0 12px; font-size:1.05rem; }
+    .xp-hero{backdrop-filter:saturate(1.15) blur(6px);background:rgba(255,255,255,.75);border-radius:20px;box-shadow:0 20px 35px rgba(31,38,135,.12)}
+    .xp-cta{border-radius:14px;padding:.9rem 1.1rem;display:inline-flex;align-items:center;gap:.5rem}
+    .xp-badge{display:inline-flex;align-items:center;gap:.35rem;background:linear-gradient(90deg,#ea580c,#f59e0b);color:#fff;border-radius:999px;padding:.3rem .7rem;font-size:.8rem}
+    .xp-text{max-width:560px}
+    .xp-mosaic{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:120px;gap:14px}
+    .xp-mosaic .tall{grid-row:span 2}.xp-mosaic .wide{grid-column:span 2}
+    .xp-mosaic figure{position:relative;overflow:hidden;border-radius:18px;margin:0;box-shadow:0 10px 24px rgba(0,0,0,.12)}
+    .xp-mosaic img{width:100%;height:100%;object-fit:cover;transform:scale(1);transition:transform .45s ease}
+    .xp-mosaic figure:hover img{transform:scale(1.06)}
+    .xp-tag{position:absolute;left:10px;bottom:10px;font-size:.8rem;color:#fff;background:rgba(0,0,0,.48);padding:.25rem .55rem;border-radius:999px;display:inline-flex;gap:.35rem;align-items:center}
 
-    /* --------- Sección Historia --------- */
-    .historia-section{
-      position:relative; padding:80px 0 40px;
-      background: linear-gradient(180deg, rgba(30,58,109,.06), rgba(30,58,109,0)), #fff;
-    }
-    .historia-lead{ max-width:900px; margin:0 auto 1.5rem; font-size:1.1rem; }
+    /* Card actividad */
+    .xp-detail{display:flex;align-items:stretch;gap:16px;background:#fff;border-radius:var(--xp-radius);box-shadow:0 12px 30px rgba(0,0,0,.08);overflow:hidden;min-height:var(--xp-detail-h)}
+    .xp-detail img{width:var(--xp-detail-img-w);height:100%;object-fit:cover;flex:0 0 var(--xp-detail-img-w)}
+    .xp-detail-body{padding:16px 18px;display:flex;flex-direction:column;justify-content:center}
+    .xp-detail h4{margin-bottom:.4rem}
+    .xp-detail p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:.4rem}
+    .xp-detail ul{margin-bottom:.4rem;max-height:4.8em;overflow:hidden}
 
-    /* Línea central */
-    .timeline{ position:relative; padding:40px 0; }
-    .timeline::before{
-      content:""; position:absolute; top:0; bottom:0; left:50%;
-      width:3px; background:linear-gradient(180deg,#e5e7eb,#cbd5e1); transform:translateX(-50%);
-    }
+    /* Prestadores */
+    .xp-providers{background:linear-gradient(180deg,#f8fafc 0%, #eef2ff 100%)}
+    .xp-prov{display:flex;gap:14px;background:#fff;border-radius:14px;box-shadow:0 10px 24px rgba(0,0,0,.08);padding:12px;align-items:center;height:100%}
+    .xp-loc{display:flex;align-items:center;gap:8px;background:#f1f5f9;border-radius:10px;padding:8px 10px;white-space:nowrap;font-size:.92rem}
+    .xp-loc i{color:#ef4444}
+    .xp-prov h5{margin:0;font-size:1.05rem}
+    .xp-actions{display:flex;flex-direction:column;gap:6px}
 
-    .timeline-item{ position:relative; margin-bottom:40px; }
-    .timeline-bullet{
-      position:absolute; top:16px; left:50%; transform:translate(-50%,-50%);
-      width:46px; height:46px; border-radius:50%; background:#fff; border:3px solid #1e3a6d;
-      display:flex; align-items:center; justify-content:center; font-weight:700; color:#1e3a6d;
-      box-shadow:0 6px 16px rgba(0,0,0,.08);
-    }
-    .timeline-col{ width:50%; padding:0 20px; }
-    .timeline-left{ float:left; clear:left; }
-    .timeline-right{ float:right; clear:right; }
+    /* Botón Pink + BackToTop */
+    .pinky-float{position:fixed;bottom:var(--pink-bottom);right:var(--pink-right);width:var(--pink-size);height:var(--pink-size);background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,0,0,.20);z-index:1001;border:1px solid rgba(0,0,0,.06);cursor:pointer;transition:transform .2s,box-shadow .2s;overflow:hidden}
+    .pinky-float img.pink-icon{width:76%;height:auto}
+    .pinky-float:hover{transform:scale(1.07);box-shadow:0 14px 30px rgba(0,0,0,.25)}
+    .back-to-top{position:fixed;bottom:calc(var(--pink-bottom) + var(--pink-size) + var(--pink-gap));right:calc(var(--pink-right) + 8px);z-index:1000;border-radius:12px !important;box-shadow:0 10px 20px rgba(0,0,0,.18);border:0}
+    .back-to-top:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(0,0,0,.22)}
 
-    .timeline-card{
-      background:#fff; border:1px solid #eef2f7; border-radius:14px;
-      box-shadow:0 8px 24px rgba(0,0,0,.06); overflow:hidden;
-      transition:transform .25s ease, box-shadow .25s ease;
-    }
-    .timeline-card:hover{ transform:translateY(-3px); box-shadow:0 16px 36px rgba(0,0,0,.10); }
-
-    /* Galería (OwlCarousel) */
-    .timeline-media{ height:220px; width:100%; object-fit:cover; display:block; }
-    .timeline-card .owl-dots{ text-align:center; margin:8px 0 0; }
-    .timeline-card .owl-dot span{
-      width:8px; height:8px; margin:3px; display:block; border-radius:999px; background:#c7d2fe;
-    }
-    .timeline-card .owl-dot.active span{ background:#1e3a6d; }
-    .timeline-card .owl-nav{
-      position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between;
-      pointer-events:none; padding:0 8px;
-    }
-    .timeline-card .owl-nav button{
-      pointer-events:auto; width:34px; height:34px; border-radius:999px;
-      background:rgba(255,255,255,.9)!important; border:1px solid #e5e7eb;
-      display:flex; align-items:center; justify-content:center; line-height:1;
-      transition:transform .2s ease;
-    }
-    .timeline-card .owl-nav button:hover{ transform:scale(1.06); }
-    .timeline-card .owl-nav .owl-prev::after{ content:"‹"; font-size:20px; color:#1e3a6d; }
-    .timeline-card .owl-nav .owl-next::after{ content:"›"; font-size:20px; color:#1e3a6d; }
-
-    .timeline-body{ padding:18px 18px 16px; }
-    .timeline-year{ font-weight:700; color:#1e3a6d; margin:0 0 6px; }
-    .timeline-title{ margin:0 0 6px; }
-    .timeline-tags{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem; }
-    .chip{
-      font-size:.85rem; padding:.25rem .6rem; border-radius:999px;
-      background:#f3f4f6; border:1px solid #e5e7eb; color:#374151;
-    }
-
-    /* CTA */
-    .historia-cta{
-      margin-top:30px; background:linear-gradient(135deg,#1e3a6d,#2d4d9b);
-      color:#fff; border-radius:16px; padding:24px; box-shadow:0 10px 28px rgba(30,58,109,.28);
-    }
-
-    /* ===== Botón Pink + Back to Top (no se pisan) ===== */
-    .pinky-float{
-      position: fixed;
-      bottom: var(--pink-bottom);
-      right: var(--pink-right);
-      width: var(--pink-size);
-      height: var(--pink-size);
-      background:#fff;
-      border-radius:50%;
-      display:flex; align-items:center; justify-content:center;
-      box-shadow:0 10px 24px rgba(0,0,0,.20);
-      z-index:1001;
-      transition:transform .2s ease-in-out, box-shadow .2s ease-in-out;
-      overflow:hidden;
-      border:1px solid rgba(0,0,0,.06);
-      cursor:pointer;
-    }
-    .pinky-float img.pink-icon{ width:76%; height:auto; }
-    .pinky-float:hover{ transform:scale(1.07); box-shadow:0 14px 30px rgba(0,0,0,.25); }
-
-    .back-to-top{
-      position: fixed;
-      bottom: calc(var(--pink-bottom) + var(--pink-size) + var(--pink-gap));
-      right: calc(var(--pink-right) + 8px);
-      z-index:1000;
-      border-radius:12px !important;
-      box-shadow:0 10px 20px rgba(0,0,0,.18);
-      border:0;
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .back-to-top:hover{ transform: translateY(-2px); box-shadow:0 14px 26px rgba(0,0,0,.22); }
-
-    /* Responsive: Pink más chico y posiciones recalculadas */
-    @media (max-width:575.98px){
-      :root{
-        --pink-size: 74px;
-        --pink-gap: 12px;
-        --pink-bottom: 16px;
-        --pink-right: 16px;
-      }
-    }
-
-    /* Responsive general */
+    /* Responsive */
     @media (max-width: 991.98px){
-      .timeline::before{ left:28px; }
-      .timeline-bullet{ left:28px; transform:translate(-50%,-50%); }
-      .timeline-col{ width:100%; padding-left:64px; padding-right:0; float:none; }
-      .timeline-left, .timeline-right{ float:none; }
-      .page-header-ansenuza, .page-header-ansenuza .hero-wrap{ min-height:320px; }
+      .page-header-ansenuza, .page-header-ansenuza .hero-wrap{min-height:320px}
+      .xp-detail{flex-direction:column;min-height:auto}
+      .xp-detail img{width:100%;height:190px;flex:0 0 190px}
+      .xp-detail p, .xp-detail ul{-webkit-line-clamp:unset;max-height:none}
     }
+    /* ---- Leer más / Leer menos ---- */
+.xp-detail p { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.xp-detail p.expanded { display:block; -webkit-line-clamp:unset; max-height:none; overflow:visible; }
+.btn-readmore { border:0; background:none; padding:0; margin-top:4px; font-weight:600; }
+.btn-readmore:focus { outline: 2px solid rgba(59,130,246,.5); outline-offset: 2px; }
+
   </style>
 </head>
 
@@ -191,22 +108,17 @@
         </div>
         <div class="col-lg-6 text-center text-lg-right">
           <div class="d-inline-flex align-items-center">
-            <a class="text-primary px-3" href="https://www.facebook.com/turismomiramardeansenuza/" aria-label="Facebook">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a class="text-primary px-3" href="https://www.instagram.com/miramardeansenuza/" aria-label="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
+            <a class="text-primary px-3" href="https://www.facebook.com/turismomiramardeansenuza/"><i class="fab fa-facebook-f"></i></a>
+            <a class="text-primary px-3" href="https://www.instagram.com/miramardeansenuza/"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- /Topbar -->
 
   <!-- Navbar -->
   <div class="container-fluid position-relative nav-bar p-0">
-    <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+    <div class="container-lg position-relative p-0 px-lg-3" style="z-index:9;">
       <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
         <a href="index.html" class="navbar-brand d-flex align-items-center">
           <img src="img/logo-miramar.png" srcset="img/logo-miramar@2x.png 2x" alt="Miramar de Ansenuza" style="height:46px;">
@@ -226,488 +138,84 @@
       </nav>
     </div>
   </div>
-  <!-- /Navbar -->
 
-<!-- Header -->
-<header class="page-header-ansenuza"
-        style="background-image:url('img/flamencos.jpg'); background-position:center; background-size:cover;">
-  <div class="container">
-    <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
-      <span class="hero-kicker">Actividades</span>
-      <h1 class="hero-title"><span class="hero-accent">Actividades & Excursiones</span></h1>
-      <p class="hero-subtitle">Los mejores pasatiempos</p>
-      <nav aria-label="breadcrumb" class="hero-breadcrumb">
-        <ol class="breadcrumb justify-content-center">
-          <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Actividades</li>
-        </ol>
-      </nav>
+  <!-- Header -->
+  <header class="page-header-ansenuza" style="background-image:url('img/flamencos.jpg')">
+    <div class="container">
+      <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
+        <span class="hero-kicker">Actividades</span>
+        <h1 class="hero-title"><span class="hero-accent">Actividades & Excursiones</span></h1>
+        <p class="hero-subtitle">Los mejores pasatiempos</p>
+        <nav aria-label="breadcrumb" class="hero-breadcrumb">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Actividades</li>
+          </ol>
+        </nav>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<!-- EXPERIENCIAS NAV (mod) -->
-<style>
-  .xp-nav{
-    background:
-      radial-gradient(1200px 500px at 10% -10%, rgba(96,165,250,.18), transparent 60%),
-      radial-gradient(900px 500px at 110% 20%, rgba(236,72,153,.18), transparent 60%),
-      #f7fafc;
-  }
-  .xp-hero{
-    backdrop-filter:saturate(1.15) blur(6px);
-    background:rgba(255,255,255,.75);
-    border-radius:20px;
-    box-shadow:0 20px 35px rgba(31,38,135,.12);
-  }
-  .xp-cta{
-    border-radius:14px;
-    padding:.9rem 1.1rem;
-    display:inline-flex;
-    align-items:center;
-    gap:.5rem;
-  }
-  .xp-badge{
-    display:inline-flex;
-    align-items:center;
-    gap:.35rem;
-    background:linear-gradient(90deg,#ea580c,#f59e0b);
-    color:#fff;
-    border-radius:999px;
-    padding:.3rem .7rem;
-    font-size:.8rem;
-  }
-  .xp-text{ max-width:560px; }
-  @media (min-width: 992px){ .xp-text{ padding-top:.85rem; } }
-  .xp-mosaic{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    grid-auto-rows:120px;
-    gap:14px;
-  }
-  .xp-mosaic .tall{grid-row:span 2;}
-  .xp-mosaic .wide{grid-column:span 2;}
-  .xp-mosaic figure{
-    position:relative;
-    overflow:hidden;
-    border-radius:18px;
-    margin:0;
-    box-shadow:0 10px 24px rgba(0,0,0,.12);
-  }
-  .xp-mosaic img{
-    width:100%; height:100%; object-fit:cover;
-    transform:scale(1); transition:transform .45s ease;
-  }
-  .xp-mosaic figure:hover img{ transform:scale(1.06); }
-  .xp-tag{
-    position:absolute; left:10px; bottom:10px;
-    font-size:.8rem; color:#fff; background:rgba(0,0,0,.48);
-    padding:.25rem .55rem; border-radius:999px; display:inline-flex; gap:.35rem; align-items:center;
-  }
-</style>
-
-<div class="container-fluid xp-nav py-5 mt-4">
-  <div class="container">
-    <div class="xp-hero p-4 p-md-5">
-      <div class="row align-items-start">
-        <!-- Columna de texto -->
-        <div class="col-lg-6">
-          <div class="xp-text">
-            <br><br><br><br>
-            <div class="xp-badge mb-2"><i class="fas fa-location-arrow"></i><span>Miramar de Ansenuza</span></div>
-            <h3 class="mb-2">¿Qué hacer <span class="text-primary">hoy</span>?</h3>
-            <p class="text-muted">Elegí una categoría y encontrá prestadores, recorridos y tips locales.</p>
-            <div class="mt-3">
-              <a href="#prestadores" class="btn btn-primary xp-cta">
-                <i class="fas fa-address-book"></i> Ver excursiones nauticas 
-              </a>
+  <!-- Intro “¿Qué hacer hoy?” -->
+  <div class="container-fluid xp-nav py-5 mt-4">
+    <div class="container">
+      <div class="xp-hero p-4 p-md-5">
+        <div class="row align-items-start">
+          <div class="col-lg-6">
+            <div class="xp-text">
+              <br><br><br><br>
+              <div class="xp-badge mb-2"><i class="fas fa-location-arrow"></i><span>Miramar de Ansenuza</span></div>
+              <h3 class="mb-2">¿Qué hacer <span class="text-primary">hoy</span>?</h3>
+              <p class="text-muted">Elegí una categoría y encontrá prestadores, recorridos y tips locales.</p>
+              <div class="mt-3">
+                <a href="#prestadores" class="btn btn-primary xp-cta"><i class="fas fa-address-book"></i> Ver excursiones náuticas</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="xp-mosaic">
+              <figure class="tall"><img src="img/12577576.jpg" alt="Excursiones en lancha"><span class="xp-tag"><i class="fas fa-ship"></i> Excursiones</span></figure>
+              <figure><img src="img/709ccfaf-1b99-4fd0-8d1f-ded61585eeaa.webp" alt="Avistaje de aves"><span class="xp-tag"><i class="fas fa-dove"></i> Aves</span></figure>
+              <figure class="wide"><img src="img/HUGUI-15-scaled.jpg" alt="Atardecer"><span class="xp-tag"><i class="far fa-sun"></i> Atardecer</span></figure>
+              <figure><img src="img/kayak.jpeg" alt="Kayak"><span class="xp-tag"><i class="fas fa-water"></i> Kayak</span></figure>
+              <figure><img src="img/photo-1582903654759-585acfc74ac3.avif" alt="Cabalgatas"><span class="xp-tag"><i class="fas fa-horse"></i> Cabalgatas</span></figure>
             </div>
           </div>
         </div>
-        <!-- Columna del mosaico -->
-        <div class="col-lg-6 mt-4 mt-lg-0">
-          <div class="xp-mosaic">
-            <figure class="tall">
-              <img src="img/12577576.jpg" alt="Excursiones en lancha" loading="lazy">
-              <span class="xp-tag"><i class="fas fa-ship"></i> Excursiones</span>
-            </figure>
-            <figure>
-              <img src="img/709ccfaf-1b99-4fd0-8d1f-ded61585eeaa.webp" alt="Avistaje de aves" loading="lazy">
-              <span class="xp-tag"><i class="fas fa-dove"></i> Aves</span>
-            </figure>
-            <figure class="wide">
-              <img src="img/HUGUI-15-scaled.jpg" alt="Atardecer en Ansenuza" loading="lazy">
-              <span class="xp-tag"><i class="far fa-sun"></i> Atardecer</span>
-            </figure>
-            <figure>
-              <img src="img/kayak.jpeg" alt="Kayak y trekking" loading="lazy">
-              <span class="xp-tag"><i class="fas fa-water"></i> Kayak</span>
-            </figure>
-            <figure>
-              <img src="img/photo-1582903654759-585acfc74ac3.avif" alt="Cabalgatas" loading="lazy">
-              <span class="xp-tag"><i class="fas fa-horse"></i> Cabalgatas</span>
-            </figure>
-          </div>
-        </div>
-        <!-- /col mosaico -->
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- DETALLES (mod) -->
-<style>
-  :root{
-    --xp-detail-h: 230px;
-    --xp-detail-img-w: 220px;
-    --xp-radius: 16px;
-  }
-  .xp-detail{
-    display:flex; align-items:stretch; gap:16px; background:#fff;
-    border-radius:var(--xp-radius); box-shadow:0 12px 30px rgba(0,0,0,.08);
-    overflow:hidden; min-height: var(--xp-detail-h);
-  }
-  .xp-detail img{
-    width: var(--xp-detail-img-w); height: 100%; object-fit: cover; flex: 0 0 var(--xp-detail-img-w);
-  }
-  .xp-detail-body{ padding:16px 18px; display:flex; flex-direction:column; justify-content:center; }
-  .xp-detail h4{ margin-bottom:.4rem; }
-  .xp-detail p{
-    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical;
-    overflow:hidden; margin-bottom:.4rem;
-  }
-  .xp-detail ul{ margin-bottom:.4rem; max-height: 4.8em; overflow:hidden; }
-  @media (max-width: 991.98px){
-    :root{ --xp-detail-h: 210px; --xp-detail-img-w: 200px; }
-  }
-  @media (max-width: 767.98px){
-    .xp-detail{ flex-direction:column; min-height:auto; }
-    .xp-detail img{ width:100%; height:190px; flex: 0 0 190px; }
-    .xp-detail p, .xp-detail ul{ -webkit-line-clamp: unset; max-height: none; }
-  }
-</style>
-
-<!-- Bloques de detalle -->
-<div class="row mt-4">
-  <div class="col-lg-6">
-    <div id="aves" class="mb-4 xp-detail">
-      <img src="img/709ccfaf-1b99-4fd0-8d1f-ded61585eeaa.webp" alt="Avistaje de aves en Miramar" loading="lazy">
-      <div class="xp-detail-body">
-        <h4><i class="fas fa-feather-alt text-primary mr-2"></i>Avistaje de aves</h4>
-        <p class="mb-2">
-          Miramar de Ansenuza es reconocida internacionalmente por su diversidad de aves autóctonas.
-          Recomendado: <strong>Mirador de Aves y desembocadura del Río Xanáes</strong>. Podés llegar con guía local
-          o mediante excursiones en embarcación por la laguna.
-        </p>
-        <p class="mb-0"><small>Información: <strong>03563-409731</strong></small></p>
-      </div>
-    </div>
-
-    <div id="kayak" class="mb-4 xp-detail">
-      <img src="img/DTNAJMHQAVGKFJV6BI2VNPBUTQ.jpg" alt="Kayak y trekking" loading="lazy">
-      <div class="xp-detail-body">
-        <h4><i class="fas fa-hiking text-primary mr-2"></i>Kayak & Trekking</h4>
-        <ul class="mb-2">
-          <li>Avistaje de aves y recorridos educativos</li>
-          <li>Salidas grupales con guía o paseos libres</li>
-          <li>Senderos históricos & naturales, caminatas</li>
-          <li>Excursiones especiales para fotógrafos</li>
-        </ul>
-        <p class="mb-0"><small>Información: <strong>351-7404770</strong></small></p>
-      </div>
-    </div>
-
-    <div id="granja" class="mb-4 xp-detail">
-      <img src="img/cropped-granja-1.jpeg.webp" alt="Granja Las Palmeras" loading="lazy">
-      <div class="xp-detail-body">
-        <h4><i class="fas fa-tractor text-primary mr-2"></i>Granja Las Palmeras</h4>
-        <p class="mb-2">
-          Producción de bovinos, caprinos y ovinos. Ideal para disfrutar de la naturaleza, aprender y emocionarse.
-          Verás coipos/nutrias, ovejas, toros, cabras, gallinas, pavos reales, peces y más.
-        </p>
-        <p class="mb-0"><small>Información: <strong>3563-411837</strong></small></p>
       </div>
     </div>
   </div>
 
-  <div class="col-lg-6">
-    <div id="cabalgatas" class="mb-4 xp-detail">
-      <img src="img/cabalgata.jpeg" alt="Cabalgatas Ansenuza" loading="lazy">
-      <div class="xp-detail-body">
-        <h4><i class="fas fa-horse text-primary mr-2"></i>Cabalgatas “Ansenuza”</h4>
-        <p class="mb-2">Seguras e ideales también para niñ@s. Duración aproximada: <strong>1h 40m</strong>.</p>
-        <p class="mb-0"><small>información: <strong>3563-432067</strong></small></p>
-      </div>
-    </div>
-
-    <div id="criaderos" class="mb-4 xp-detail">
-      <img src="img/las-tres-hermanas.jpg" alt="Criaderos de nutrias" loading="lazy">
-      <div class="xp-detail-body">
-        <h4><i class="fas fa-otter text-primary mr-2"></i>Criaderos de Nutrias</h4>
-        <p class="mb-2">Visitas todo el año con guía por las instalaciones y el proceso de cría.</p>
-        <ul class="mb-0">
-          <p class="mb-0"><small>información: <strong>3563-403333</strong></small></p>
-          <p class="mb-0"><small>información: <strong>3563-668059</strong></small></p>
-        </ul>
-      </div>
-    </div>
-
-    <div id="parque" class="mb-4 xp-detail">
-      <img src="img/parque-acuatico.jpg.webp" alt="Parque acuático Arenas Club" loading="lazy">
-      <div class="xp-detail-body">
-        <h4><i class="fas fa-water text-primary mr-2"></i>Parque Acuático Arena’s Club</h4>
-        <p class="mb-2">
-          Único multiparque de la zona, con piscina playa +1500 m². Diversión y relax asegurados.
-        </p>
-          Ubicación: <strong>Zona Rural Colonia Muller, Miramar, Córdoba</strong></small></p>
-          <p class="mb-0"><small>Información: <strong>arenasclubparqueacuatico@gmail.com</strong> 
-          <p class="mb-0"><small>Información: <strong>3563-432621</strong> 
-      </div>
-    </div>
+  <!-- Listado dinámico: Otras actividades -->
+  <div class="container my-4">
+    <h2 class="mb-3">Experiencias</h2>
+    <div id="act-otros" class="row"></div>
   </div>
-</div>
 
-<!-- PRESTADORES -->
-<style>
-  .xp-providers{background:linear-gradient(180deg,#f8fafc 0%, #eef2ff 100%);}
-  .xp-prov{
-    display:flex; gap:14px; background:#fff; border-radius:14px;
-    box-shadow:0 10px 24px rgba(0,0,0,.08); padding:12px; align-items:center; height:100%;
-  }
-  .xp-loc{
-    display:flex; align-items:center; gap:8px;
-    background:#f1f5f9; border-radius:10px; padding:8px 10px; white-space:nowrap; font-size:.92rem;
-  }
-  .xp-loc i{ color:#ef4444; }
-  .xp-prov h5{margin:0; font-size:1.05rem;}
-  .xp-prov small{opacity:.9; display:block;}
-  .xp-actions{display:flex; flex-direction:column; gap:6px;}
-  @media (max-width: 575.98px){ .xp-actions{flex-direction:row; gap:8px;} }
-</style>
-
-<div id="prestadores" class="container-fluid py-5 xp-providers">
-  <div class="container pt-3">
-    <div class="text-center mb-4">
-      <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Prestadores</h6>
-      <h2>Contactos de excursiones náuticas</h2>
-      <p class="mb-0">Encontralos sobre Av. Costanera o contactalos directo por teléfono.</p>
-    </div>
-
-    <div class="row">
-      <!-- El Flamenco -->
-      <div class="col-md-6 col-lg-4 mb-3">
-        <div class="xp-prov">
-          <div class="flex-grow-1">
-            <h5>Excursiones El Flamenco</h5>
-            <div class="xp-loc">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>Av. Costanera, Miramar</span>
-            </div>
-            <small>Tel: 3563-668756</small>
-          </div>
-          <div class="xp-actions">
-            <a class="btn btn-light btn-sm" target="_blank"
-               href="https://www.google.com/maps/search/?api=1&query=Excursiones+El+Flamenco+Miramar+de+Ansenuza">
-               <i class="fas fa-map mr-1"></i>Ver ubicación
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Michelutti -->
-      <div class="col-md-6 col-lg-4 mb-3">
-        <div class="xp-prov">
-          <div class="flex-grow-1">
-            <h5>Excursiones Michelutti</h5>
-            <div class="xp-loc"><i class="fas fa-map-marker-alt"></i><span>Av. Costanera, Miramar</span></div>
-            <small>Tel: 3563-563271</small>
-          </div>
-          <div class="xp-actions">
-            <a class="btn btn-light btn-sm" target="_blank"
-               href="https://www.google.com/maps/search/?api=1&query=Excursiones+Michelutti+Miramar+de+Ansenuza">
-               <i class="fas fa-map mr-1"></i>Ver ubicación
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Excursiones Miramar -->
-      <div class="col-md-6 col-lg-4 mb-3">
-        <div class="xp-prov">
-          <div class="flex-grow-1">
-            <h5>Excursiones Miramar</h5>
-            <div class="xp-loc"><i class="fas fa-map-marker-alt"></i><span>Av. Costanera, Miramar</span></div>
-            <small>Tel: 3563-563023 / 403102</small>
-          </div>
-          <div class="xp-actions">
-            <a class="btn btn-light btn-sm" target="_blank"
-               href="https://www.google.com/maps/search/?api=1&query=Excursiones+Miramar+de+Ansenuza">
-               <i class="fas fa-map mr-1"></i>Ver ubicación
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Estrella Azul -->
-      <div class="col-md-6 col-lg-4 mb-3">
-        <div class="xp-prov">
-          <div class="flex-grow-1">
-            <h5>Excursiones Estrella Azul</h5>
-            <div class="xp-loc"><i class="fas fa-map-marker-alt"></i><span>Av. Costanera, Miramar</span></div>
-            <small>Tel: 3563-406195</small>
-          </div>
-          <div class="xp-actions">
-            <a class="btn btn-light btn-sm" target="_blank"
-               href="https://www.google.com/maps/search/?api=1&query=Excursiones+Estrella+Azul+Miramar+de+Ansenuza">
-               <i class="fas fa-map mr-1"></i>Ver ubicación
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mar Chiquita -->
-      <div class="col-md-6 col-lg-4 mb-3">
-        <div class="xp-prov">
-          <div class="flex-grow-1">
-            <h5>Excursiones Mar Chiquita</h5>
-            <div class="xp-loc"><i class="fas fa-map-marker-alt"></i><span>Av. Costanera, Miramar</span></div>
-            <small>Tel: 3563-402541</small>
-          </div>
-          <div class="xp-actions">
-            <a class="btn btn-light btn-sm" target="_blank"
-               href="https://www.google.com/maps/search/?api=1&query=Excursiones+Mar+Chiquita+Miramar+de+Ansenuza">
-               <i class="fas fa-map mr-1"></i>Ver ubicación
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Vive Paseos Náuticos -->
-      <div class="col-md-6 col-lg-4 mb-3">
-        <div class="xp-prov">
-          <div class="flex-grow-1">
-            <h5>Vive Paseos Náuticos</h5>
-            <div class="xp-loc"><i class="fas fa-map-marker-alt"></i><span>Av. Costanera, Miramar</span></div>
-            <small>Tel: 3563-407637</small>
-          </div>
-          <div class="xp-actions">
-            <a class="btn btn-light btn-sm" target="_blank"
-               href="https://www.google.com/maps/search/?api=1&query=Vive+Paseos+N%C3%A1uticos+Miramar+de+Ansenuza">
-               <i class="fas fa-map mr-1"></i>Ver ubicación
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="bg-white shadow p-4 mt-3" style="border-radius:14px;">
-      <div class="row align-items-center">
-        <div class="col-md-8">
-          <h5 class="mb-1">¿Tenés dudas o querés listar tu servicio?</h5>
-          <p class="mb-0">Escribinos por WhatsApp y te respondemos a la brevedad.</p>
-        </div>
-        <div class="col-md-4 text-md-right mt-3 mt-md-0">
-          <a href="https://wa.me/5493563409731" target="_blank" rel="noopener"
-             class="btn btn-success" aria-label="Contactar por WhatsApp">
-            <i class="fab fa-whatsapp mr-2"></i>Contactar por WhatsApp
-          </a>
-        </div>
-      </div>
-    </div>
-
+  <!-- Listado dinámico: Náuticas -->
+  <div class="container my-4">
+    <h2 class="mb-3">Náuticas</h2>
+    <div id="act-nauticas" class="row"></div>
   </div>
-</div>
 
-<!-- ===== Botón PINK (flamenco) ===== -->
-<a href="https://wa.me/3563401392?text=Hola%20PINK,%20quisiera%20hacer%20una%20consulta"
-   class="pinky-float" target="_blank"
-   aria-label="Contactar con PINK por WhatsApp"
-   title="Hola soy Pink, tu asistente virtual">
-  <img src="img/eda83ab2-b9e0-456f-844d-81a7b667e614.jpeg" alt="PINK" class="pink-icon">
-</a>
+  
 
-    <!-- Footer Start (limpio y en español) -->
-<style>
-    /* ===== Footer estilo Miramar oscuro ===== */
-    footer,
-    .container-fluid.bg-dark{
-      background: linear-gradient(180deg, #0b1421, #0a0f18);
-      color:#cbd5e1;
-      font-size:.96rem;
-      line-height:1.65;
-    }
-    .container-fluid.bg-dark p,
-    .container-fluid.bg-dark a{ color:#c9d5ffb3; text-decoration:none; }
-    .container-fluid.bg-dark a:hover{ color:#7cd2a5; text-decoration:none; }
-    .container-fluid.bg-dark h5,
-    .container-fluid.bg-dark h6{ color:#fff; font-weight:700; margin-bottom:1rem; letter-spacing:2px; }
-    .container-fluid.bg-dark .navbar-brand img{ height:42px; width:auto; filter: drop-shadow(0 8px 16px rgba(0,0,0,.35)); }
-    .container-fluid.bg-dark .btn-square{
-      width:38px; height:38px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;
-      color:#fff !important; border:1px solid #4a72d9 !important;
-      background: linear-gradient(180deg,#20315a,#1a2747) !important;
-      transition: transform .25s ease, background .25s ease, border-color .25s ease;
-    }
-    .container-fluid.bg-dark .btn-square:hover{ transform: translateY(-2px); background:#2c5fb8 !important; border-color:#2c5fb8 !important; }
-    .container-fluid.bg-dark .btn-success{ background-color:#35d07f !important; border:none; font-weight:700; transition: transform .25s ease, box-shadow .25s ease; }
-    .container-fluid.bg-dark .btn-success:hover{ transform: translateY(-1px); box-shadow: 0 10px 26px rgba(53,208,127,.35); }
-    .container-fluid.bg-dark.border-top{ border-color: rgba(255,255,255,.12) !important; }
-    .container-fluid.bg-dark small{ font-size:.86rem; color:#9fb0c8 !important; }
-    @media (max-width: 575.98px){
-      .container-fluid.bg-dark .btn-square{ width:36px; height:36px; }
-      .container-fluid.bg-dark .navbar-brand img{ height:38px; }
-    }
-    /* ✨ Efecto especial en los links del footer */
-.container-fluid.bg-dark .d-flex.flex-column a {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  transition: color .3s ease, transform .3s ease;
-}
+  <!-- Botón Pink -->
+  <a href="https://wa.me/3563401392?text=Hola%20PINK,%20quisiera%20hacer%20una%20consulta" class="pinky-float" target="_blank" aria-label="Contactar con PINK por WhatsApp" title="Hola soy Pink, tu asistente virtual">
+    <img src="img/eda83ab2-b9e0-456f-844d-81a7b667e614.jpeg" alt="PINK" class="pink-icon">
+  </a>
 
-.container-fluid.bg-dark .d-flex.flex-column a i {
-  transition: transform .5s ease;
-}
-
-.container-fluid.bg-dark .d-flex.flex-column a:hover {
-  color: #7cd2a5; /* el verde que ya usás */
-  transform: translateX(4px);
-}
-
-.container-fluid.bg-dark .d-flex.flex-column a:hover i {
-  transform: rotate(360deg);
-}
-/* ✨ Efecto especial en los íconos sociales del footer */
-.container-fluid.bg-dark .btn-square i {
-  transition: transform .5s ease;
-}
-
-.container-fluid.bg-dark .btn-square:hover i {
-  transform: rotate(360deg) scale(1.15);
-}
-
-  </style>
-
-  <!-- ===== FOOTER ===== -->
-  <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+  <!-- Footer (resumido) -->
+  <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top:90px;">
     <div class="row pt-4">
       <div class="col-lg-4 col-md-6 mb-4">
         <a href="index.html" class="navbar-brand d-inline-flex align-items-center mb-2">
           <img src="img/logo-miramar@2x.png" alt="Miramar de Ansenuza" style="height:34px;width:auto;">
         </a>
-        <p class="mt-2">
-          Miramar de Ansenuza, puerta del Parque y Reserva Nacional Ansenuza. 
-          Atardeceres únicos, avistaje de aves y la laguna salada más grande de Sudamérica.
-        </p>
-        <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 4px;">Seguinos</h6>
-        <div class="d-flex">
-          <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/turismomiramardeansenuza/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/miramardeansenuza/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
+        <p class="mt-2">Miramar de Ansenuza, puerta del Parque y Reserva Nacional Ansenuza. Atardeceres únicos, avistaje de aves y la laguna salada más grande de Sudamérica.</p>
       </div>
-
       <div class="col-lg-4 col-md-6 mb-4">
-        <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Navegación</h5>
+        <h5 class="text-white text-uppercase mb-4" style="letter-spacing:4px;">Navegación</h5>
         <div class="d-flex flex-column">
           <a class="text-white-50 mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
           <a class="text-white-50 mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Acerca de</a>
@@ -715,26 +223,18 @@
           <a class="text-white-50" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
         </div>
       </div>
-
       <div class="col-lg-4 col-md-6 mb-4">
-        <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 4px;">Contacto</h5>
-        <p><i class="fa fa-map-marker-alt mr-2"></i>DIRECCIÓN OFICINA DE TURISMO (General Paz 465, Miramar Córdoba.)</p>
+        <h5 class="text-white text-uppercase mb-4" style="letter-spacing:4px;">Contacto</h5>
+        <p><i class="fa fa-map-marker-alt mr-2"></i>General Paz 465, Miramar (Córdoba)</p>
         <p><i class="fa fa-phone-alt mr-2"></i>3563 - 409731</p>
-        <p><i class="fa fa-envelope mr-2"></i> oficinadeturismo2@gmail.com - infomiramarcba@gmail.com </p>
-        <div class="mt-3">
-          <a class="btn btn-success btn-block" href="https://wa.me/5493563409731" target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp mr-2"></i>Escribinos por WhatsApp
-          </a>
-          <small class="d-block mt-2 text-muted" style="margin-left: 90px;">Horario de atención: Lunes a Viernes 08:00–13:00</small>
-        </div>
+        <p><i class="fa fa-envelope mr-2"></i>oficinadeturismo2@gmail.com</p>
       </div>
     </div>
   </div>
-
   <div class="container-fluid bg-dark text-white border-top py-3 px-sm-3 px-md-5">
     <div class="row">
       <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
-        <small class="m-0 text-white-50">© <span id="year"></span> Municipalidad de Miramar de Ansenuza. Todos los derechos reservados.</small>
+        <small class="m-0 text-white-50">© <span id="year"></span> Municipalidad de Miramar de Ansenuza.</small>
       </div>
       <div class="col-md-6 text-center text-md-right">
         <small class="m-0 text-white-50">Sitio oficial de Turismo</small>
@@ -742,16 +242,7 @@
     </div>
   </div>
 
-
-<script>
-  // año automático en el footer
-  (function(){ var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); })();
-</script>
-
-<!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-  <!-- JavaScript Libraries -->
+  <!-- JS libs -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
   <script src="lib/easing/easing.min.js"></script>
@@ -759,12 +250,154 @@
   <script src="lib/tempusdominus/js/moment.min.js"></script>
   <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
   <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
-  <!-- Contact Javascript File -->
-  <script src="mail/jqBootstrapValidation.min.js"></script>
-  <script src="mail/contact.js"></script>
-
-  <!-- Template Javascript -->
   <script src="js/main.js"></script>
+
+  <!-- Dinámica: trae datos del backend -->
+  <script>
+(function () {
+  const API_BASE = 'http://localhost:3000';
+
+  const $otros    = document.getElementById('act-otros');
+  const $nauticas = document.getElementById('act-nauticas');
+  const $provList = document.getElementById('prov-list');
+
+  const abs = (u) => {
+    if (!u) return null;
+    if (/^https?:\/\//i.test(u)) return u;
+    return `${API_BASE}${u.startsWith('/') ? u : '/' + u}`;
+  };
+
+  const normCat = (s) =>
+    (s || '')
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, '')
+      .toLowerCase()
+      .trim();
+
+  function esc(s){ return (s??'').toString()
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  /* ==== NUEVO: tarjeta con "Leer más" ==== */
+  function cardActividad(a){
+    const img = abs(a.imagen_url) || 'img/placeholder.jpg';
+    const nota = (a.nota ?? '').toString();
+    // data-full guarda el texto para que no se pierdan caracteres especiales
+    return `
+      <div class="col-lg-6 mb-4">
+        <div class="xp-detail">
+          <img src="${img}" alt="${esc(a.nombre)}" loading="lazy">
+          <div class="xp-detail-body">
+            <h4><i class="fas fa-map-pin text-primary mr-2"></i>${esc(a.nombre)}</h4>
+            ${nota
+              ? `<p class="mb-2 xp-nota" data-full="${esc(nota)}">${esc(nota)}</p>
+                 <button type="button" class="btn-readmore text-primary small d-inline-block">Leer más</button>`
+              : ''}
+            <p class="mb-0">
+              ${a.ubicacion ? `<small><i class="fas fa-map-marker-alt"></i> <strong>${esc(a.ubicacion)}</strong></small>` : ''}
+              ${a.telefono  ? `<br><small>Info: <strong>${esc(a.telefono)}</strong></small>` : ''}
+            </p>
+            <div class="mt-2">
+              ${a.maps_url ? `<a class="btn btn-light btn-sm" target="_blank" href="${a.maps_url}"><i class="fas fa-map mr-1"></i>Ver ubicación</a>` : ''}
+              ${a.web      ? `<a class="btn btn-light btn-sm" target="_blank" href="${a.web}"><i class="fas fa-external-link-alt mr-1"></i>Sitio</a>` : ''}
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function cardPrestador(p){
+    const img = abs(p.imagen_url);
+    return `
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="xp-prov">
+          <div class="flex-grow-1">
+            <h5>${esc(p.nombre)}</h5>
+            <div class="xp-loc"><i class="fas fa-map-marker-alt"></i><span>${esc(p.ubicacion||'Miramar')}</span></div>
+            ${p.telefono ? `<small>Tel: ${esc(p.telefono)}</small>` : ''}
+          </div>
+          <div class="xp-actions">
+            ${p.maps_url ? `<a class="btn btn-light btn-sm" target="_blank" href="${p.maps_url}"><i class="fas fa-map mr-1"></i>Ver ubicación</a>` : ''}
+            ${p.web      ? `<a class="btn btn-light btn-sm" target="_blank" href="${p.web}"><i class="fas fa-external-link-alt mr-1"></i>Sitio</a>` : ''}
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function applyReadMore(scope){
+  const MIN_CHARS = 120; // umbral más sensible
+  scope.querySelectorAll('.xp-detail').forEach(card => {
+    const p   = card.querySelector('.xp-nota');
+    const btn = card.querySelector('.btn-readmore');
+    if (!p || !btn) return;
+
+    // limpiamos saltos y espacios extra
+    const full = (p.getAttribute('data-full') || p.textContent || '')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    // siempre forzamos el texto limpio
+    p.textContent = full;
+
+    // mostrar el botón solo si realmente se trunca visualmente
+    const temp = document.createElement('span');
+    temp.style.visibility = 'hidden';
+    temp.style.position = 'absolute';
+    temp.style.whiteSpace = 'nowrap';
+    temp.textContent = full;
+    document.body.appendChild(temp);
+    const textWidth = temp.offsetWidth;
+    document.body.removeChild(temp);
+
+    if (full.length < MIN_CHARS && textWidth < 600) {
+      btn.style.display = 'none';
+      return;
+    }
+
+    btn.addEventListener('click', () => {
+      const expanded = p.classList.toggle('expanded');
+      btn.textContent = expanded ? 'Leer menos' : 'Leer más';
+    });
+  });
+}
+
+
+  async function cargarActividades(){
+    try{
+      const r = await fetch(`${API_BASE}/api/actividades`, { credentials:'omit' });
+      const items = await r.json();
+
+      const nauticas = items.filter(a => normCat(a.categoria) === 'nauticas');
+      const otros    = items.filter(a => normCat(a.categoria) !== 'nauticas');
+
+      $otros.innerHTML    = otros.map(cardActividad).join('') || '<div class="col-12"><div class="alert alert-info">No hay actividades por ahora.</div></div>';
+      $nauticas.innerHTML = nauticas.map(cardActividad).join('') || '';
+
+      // activar "leer más" en ambas listas
+      applyReadMore(document);
+    }catch(e){
+      console.error('Error actividades:', e);
+      $otros.innerHTML = '<div class="col-12"><div class="alert alert-danger">Error cargando actividades.</div></div>';
+    }
+  }
+
+  async function cargarPrestadores(){
+    try{
+      const r = await fetch(`${API_BASE}/api/prestadores?categoria=nauticas`, { credentials:'omit' });
+      const items = await r.json();
+      if ($provList) {
+        $provList.innerHTML = items.map(cardPrestador).join('') || '<div class="col-12"><div class="alert alert-info">Aún no hay prestadores náuticos.</div></div>';
+      }
+    }catch(e){
+      console.error('Error prestadores:', e);
+    }
+  }
+
+  const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
+  cargarActividades();
+  cargarPrestadores();
+})();
+</script>
+
+
 </body>
 </html>
