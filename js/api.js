@@ -1,15 +1,12 @@
 // ===== CONFIGURA TU BASE API =====
-// Si la web y la API salen del MISMO dominio (sirves con el Express del panel):
-// const API_BASE = '/api';
-// Si estás probando local con la web en un servidor aparte:
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = 'https://turismomiramar.com/api_miramar/public';
 
 // ------- Helpers -------
 const fmtFecha = (iso) => {
   const f = new Date(iso);
-  const dia = String(f.getDate()).padStart(2,'0');
+  const dia = String(f.getDate()).padStart(2, '0');
   const mes = f.toLocaleString('es-AR', { month: 'short' }).toUpperCase();
-  const human = f.toLocaleDateString('es-AR', { weekday:'short', day:'2-digit', month:'short' });
+  const human = f.toLocaleDateString('es-AR', { weekday: 'short', day: '2-digit', month: 'short' });
   return { dia, mes, human };
 };
 
@@ -20,18 +17,21 @@ export async function cargarEventos({ contenedorSelector }) {
   cont.innerHTML = '<p>Cargando eventos…</p>';
 
   try {
-    const res = await fetch(`${API_BASE}/eventos`);
+    const res = await fetch(`${API_BASE}/eventos-json.php`);
     const data = await res.json();
 
-    if (!data.length) { cont.innerHTML = '<p>No hay eventos publicados.</p>'; return; }
+    if (!data.length) {
+      cont.innerHTML = '<p>No hay eventos publicados.</p>';
+      return;
+    }
 
     cont.innerHTML = data.map(ev => {
       const { dia, mes, human } = fmtFecha(ev.fecha);
       const hora = ev.hora || '';
-      const img  = ev.imagen_url || 'img/placeholder.jpg';
+      const img = ev.imagen_url || 'img/placeholder.jpg';
 
       return `
-        <div class="col-12 col-md-6 col-lg-4" data-cat="${(ev.categoria||'').toLowerCase()}" data-title="${ev.titulo}">
+        <div class="col-12 col-md-6 col-lg-4" data-cat="${(ev.categoria || '').toLowerCase()}" data-title="${ev.titulo}">
           <article class="card h-100 shadow-sm">
             <div class="position-relative">
               <img src="${img}" class="card-img-top" alt="${ev.titulo}">
@@ -60,13 +60,16 @@ export async function cargarGastronomia({ contenedorSelector }) {
   cont.innerHTML = '<p>Cargando gastronomía…</p>';
 
   try {
-    const res = await fetch(`${API_BASE}/gastronomia`);
+    const res = await fetch(`${API_BASE}/gastro-json.php`);
     const data = await res.json();
 
-    if (!data.length) { cont.innerHTML = '<p>Sin locales publicados.</p>'; return; }
+    if (!data.length) {
+      cont.innerHTML = '<p>Sin locales publicados.</p>';
+      return;
+    }
 
     cont.innerHTML = data.map(g => `
-      <div class="col-12 col-md-6 col-lg-4" data-cat="${(g.categoria||'').toLowerCase()}">
+      <div class="col-12 col-md-6 col-lg-4" data-cat="${(g.categoria || '').toLowerCase()}">
         <article class="card h-100 shadow-sm">
           <img src="${g.imagen_url || 'img/gastro/placeholder.jpg'}" class="card-img-top" alt="${g.nombre}">
           <div class="card-body">
@@ -94,13 +97,16 @@ export async function cargarHospedaje({ contenedorSelector }) {
   cont.innerHTML = '<p>Cargando hospedajes…</p>';
 
   try {
-    const res = await fetch(`${API_BASE}/hospedaje`);
+    const res = await fetch(`${API_BASE}/hospedajes-json.php`);
     const data = await res.json();
 
-    if (!data.length) { cont.innerHTML = '<p>Sin hospedajes publicados.</p>'; return; }
+    if (!data.length) {
+      cont.innerHTML = '<p>Sin hospedajes publicados.</p>';
+      return;
+    }
 
     cont.innerHTML = data.map(h => `
-      <div class="col-12 col-md-6 col-lg-4" data-tipo="${(h.tipo||'').toLowerCase()}">
+      <div class="col-12 col-md-6 col-lg-4" data-tipo="${(h.tipo || '').toLowerCase()}">
         <article class="card h-100 shadow-sm">
           <img src="${h.imagen_url || 'img/hotel/placeholder.jpg'}" class="card-img-top" alt="${h.nombre}">
           <div class="card-body">

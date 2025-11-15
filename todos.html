@@ -282,24 +282,21 @@
     .pinky-float img.pink-icon{ width:76%; height:auto; }
     .pinky-float:hover{ transform:scale(1.07); box-shadow:0 14px 30px rgba(0,0,0,.25); }
 
-    /* ===== Flecha verde Back to Top (estilo Museos) ===== */
-/* ===== Back to Top original (Museos) ===== */
-.back-to-top{
-  position: fixed;
-  bottom: calc(var(--pink-bottom) + var(--pink-size) + var(--pink-gap));
-  right: calc(var(--pink-right) + 8px);
-  z-index:1000;
-  border-radius:12px !important;
-  box-shadow:0 10px 20px rgba(0,0,0,.18);
-  border:0;
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-.back-to-top:hover{
-  transform: translateY(-2px);
-  box-shadow:0 14px 26px rgba(0,0,0,.22);
-}
-
-
+    /* ===== Back to Top original (Museos) ===== */
+    .back-to-top{
+      position: fixed;
+      bottom: calc(var(--pink-bottom) + var(--pink-size) + var(--pink-gap));
+      right: calc(var(--pink-right) + 8px);
+      z-index:1000;
+      border-radius:12px !important;
+      box-shadow:0 10px 20px rgba(0,0,0,.18);
+      border:0;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .back-to-top:hover{
+      transform: translateY(-2px);
+      box-shadow:0 14px 26px rgba(0,0,0,.22);
+    }
 
     /* ============================
       RESPONSIVE
@@ -505,10 +502,8 @@
      title="Hola soy Pink, tu asistente virtual">
     <img src="img/eda83ab2-b9e0-456f-844d-81a7b667e614.jpeg" alt="PINK" class="pink-icon">
   </a>
-<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
-  <i class="fa fa-angle-double-up"></i>
-</a>
-  <!-- Flecha Back to Top -->
+
+  <!-- Flecha Back to Top (una sola) -->
   <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
     <i class="fa fa-angle-double-up"></i>
   </a>
@@ -519,219 +514,223 @@
   <script src="js/main.js"></script>
 
   <script type="module">
-  const API_BASE   = 'http://localhost:3000/api';
-  const API_ORIGIN = new URL(API_BASE).origin;
+    // ✅ Base real PHP en DonWeb
+    const API_BASE = 'https://turismomiramar.com/api_miramar/public';
+    // Si algún día probás local:
+    // const API_BASE = 'http://localhost/api_miramar/public';
 
-  const abs = (u) => {
-    if (!u) return '';
-    if (/^https?:\/\//i.test(u)) return u;
-    return API_ORIGIN + (u.startsWith('/') ? u : '/' + u);
-  };
-
-  const $list   = document.getElementById('lodging-list');
-  const $noRes  = document.getElementById('no-results');
-  const $q      = document.getElementById('search-input');
-  const $clear  = document.getElementById('clear-search');
-  const $vis    = document.getElementById('count-visible');
-  const $tot    = document.getElementById('count-total');
-
-  const safe = (s) => String(s ?? '')
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  const nl2brSafe = (s) => safe(String(s)).replace(/\r?\n/g,'<br>');
-
-  const mapsHref = (direccion) => {
-    const q = encodeURIComponent(`${direccion}, Miramar de Ansenuza, Córdoba, Argentina`);
-    return `https://www.google.com/maps/search/?api=1&query=${q}`;
-  };
-
-  // Normaliza "tipo" a categorías de filtro (y subfiltros de departamentos)
-  const catFromTipo = (tipo='') => {
-    const t = String(tipo).toLowerCase();
-    if (t.includes('hotel') || t.includes('hoster')) return 'hoteles';
-    if (t.includes('caba')) return 'cabanas';
-    if (t.includes('camp')) return 'camping';
-    if (t.includes('apart') || t.includes('depto') || t.includes('depart')){
-      if (t.includes('superior') || t.includes('premium')) return 'depto-superior';
-      if (t.includes('plus') || t.includes('confort') || t.includes('estandar') || t.includes('estándar')) return 'depto-plus';
-      return 'departamentos';
-    }
-    return 'otros';
-  };
-
-  // Íconos dinámicos según flags amen_*
-  const amenIcons = (h) => {
-    const out = [];
-    if (h.amen_cochera)  out.push('<li title="Cochera"><i class="fas fa-car"></i><span class="d-none d-sm-inline">Cochera</span></li>');
-    if (h.amen_aire)     out.push('<li title="Aire acondicionado"><i class="fas fa-snowflake"></i><span class="d-none d-sm-inline">Aire</span></li>');
-    if (h.amen_asador)   out.push('<li title="Asador"><i class="fas fa-fire"></i><span class="d-none d-sm-inline">Asador</span></li>');
-    if (h.amen_pileta)   out.push('<li title="Pileta"><i class="fas fa-swimming-pool"></i><span class="d-none d-sm-inline">Pileta</span></li>');
-    if (h.amen_wifi)     out.push('<li title="Wi-Fi"><i class="fas fa-wifi"></i><span class="d-none d-sm-inline">Wi-Fi</span></li>');
-    if (h.amen_tv)       out.push('<li title="Televisión"><i class="fas fa-tv"></i><span class="d-none d-sm-inline">TV</span></li>');
-    if (h.amen_desayuno) out.push('<li title="Desayuno"><i class="fas fa-mug-hot"></i><span class="d-none d-sm-inline">Desayuno</span></li>');
-    if (h.amen_mascotas) out.push('<li title="Mascotas"><i class="fas fa-paw"></i><span class="d-none d-sm-inline">Mascotas</span></li>');
-    return out.length ? `<ul class="amenities mb-3" aria-label="Servicios">${out.join('')}</ul>` : '';
-  };
-
-  const renderCard = (h) => {
-    const imgAbs = abs(h.imagen_url) || 'img/hotel/placeholder.jpg';
-    const nombre = safe(h.nombre);
-    const tipo   = safe(h.tipo || '');
-    const dir    = safe(h.direccion || '');
-    const tel    = safe(h.telefono || '');
-    const mail   = safe(h.email || h.mail || '');
-    const web    = safe(h.web || '');
-    const map    = h.maps_url || (h.direccion ? mapsHref(h.direccion) : '');
-    const cat    = catFromTipo(h.tipo);
-
-    return `
-      <article class="lodging row no-gutters" data-name="${nombre}" data-cat="${cat}">
-        <div class="col-lg-7">
-          <a class="lodging-photo" ${imgAbs ? `href="${imgAbs}" target="_blank"` : ''} aria-label="Ver imagen de ${nombre}">
-            <img src="${imgAbs}" alt="${nombre}" onerror="this.src='img/hotel/placeholder.jpg'">
-          </a>
-        </div>
-        <div class="col-lg-5 bg-white p-4 p-md-4">
-          <h3 class="lodging-title js-title">${nombre}</h3>
-          ${tipo ? `<p class="mb-2"><span class="badge badge-secondary">${tipo}</span></p>` : ''}
-
-          ${amenIcons(h)}
-
-          ${h.nota ? `<div class="small-muted mb-2">${nl2brSafe(h.nota)}</div>` : ''}
-
-          ${dir ? `<p class="mb-1"><i class="fas fa-map-marker-alt text-primary mr-2"></i>${dir}
-            ${map ? `<a class="link-map" target="_blank" rel="noopener" href="${safe(map)}">(Ver en Google Maps)</a>` : ''}
-          </p>` : ''}
-
-          ${tel  ? `<p class="mb-1"><i class="fas fa-phone-alt text-primary mr-2"></i><a href="tel:${tel.replace(/[^+\d]/g,'')}">${tel}</a></p>` : '' }
-          ${mail ? `<p class="mb-1"><i class="fas fa-envelope text-primary mr-2"></i><a href="mailto:${mail}">${mail}</a></p>` : '' }
-          ${web  ? `<p class="mb-0"><i class="fas fa-globe text-primary mr-2"></i><a href="${web}" target="_blank" rel="noopener">${web.replace(/^https?:\/\//,'')}</a></p>` : '' }
-        </div>
-      </article>
-    `;
-  };
-
-  let items = [];
-  let currentFilter = 'todos'; // 🔹 estado del filtro actual
-
-  const norm = (s='') => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
-  const rxEsc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-
-  // 🔹 Aplica búsqueda + filtro + resaltado
-  function applyAll(){
-    const term = norm($q.value);
-    let visible = 0;
-
-    items.forEach(card => {
-      const cat  = (card.dataset.cat || 'otros').toLowerCase();
-      const name = norm(card.dataset.name || '');
-
-      // match de categoría (incluye agrupación de 'departamentos')
-      let matchCat = true;
-      if (currentFilter !== 'todos') {
-        if (currentFilter === 'departamentos') {
-          matchCat = (cat === 'depto-superior' || cat === 'depto-plus' || cat === 'departamentos');
-        } else {
-          matchCat = (cat === currentFilter);
-        }
-      }
-
-      // match de texto
-      const matchText = !term || name.includes(term);
-      const show = matchCat && matchText;
-
-      card.style.display = show ? '' : 'none';
-      if (show) visible++;
-
-      // resaltado en el título
-      const titleEl = card.querySelector('.js-title');
-      if (titleEl && !titleEl.dataset.orig) titleEl.dataset.orig = titleEl.textContent.trim();
-      const raw = titleEl ? titleEl.dataset.orig || '' : '';
-      const normRaw = norm(raw);
-      if (titleEl){
-        if (term && normRaw.includes(term)){
-          titleEl.innerHTML = raw.replace(new RegExp(`(${rxEsc(term)})`,'gi'),'<mark class="search-hit">$1</mark>');
-        } else {
-          titleEl.textContent = raw;
-        }
-      }
-    });
-
-    if ($vis) $vis.textContent = String(visible);
-    $noRes.style.display = visible ? 'none' : 'block';
-  }
-
-  // 🔹 Clicks de filtros (y subfiltros)
-  function wireFilters(){
-    const filterBtns    = Array.from(document.querySelectorAll('.filter-btn'));
-    const subfilterBtns = Array.from(document.querySelectorAll('.subfilter-btn'));
-
-    const setActive = (btn) => {
-      filterBtns.forEach(b=>b.classList.remove('active'));
-      // si eligieron subfiltro, dejamos activo "Departamentos"
-      if (currentFilter.startsWith('depto-') || currentFilter === 'departamentos') {
-        const depBtn = filterBtns.find(b=>b.dataset.filter==='departamentos');
-        if (depBtn) depBtn.classList.add('active');
-      }
-      if (btn && btn.classList.contains('filter-btn')) btn.classList.add('active');
-      if (btn && btn.dataset.filter === 'todos') btn.classList.add('active');
+    const abs = (u) => {
+      if (!u) return '';
+      if (/^https?:\/\//i.test(u)) return u;
+      return API_BASE + (u.startsWith('/') ? u : '/' + u);
     };
 
-    filterBtns.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        currentFilter = btn.dataset.filter || 'todos';
-        setActive(btn);
-        applyAll();
-        // opcional: scroll a resultados
-        const top = $list.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top, behavior:'smooth' });
-      });
-    });
+    const $list   = document.getElementById('lodging-list');
+    const $noRes  = document.getElementById('no-results');
+    const $q      = document.getElementById('search-input');
+    const $clear  = document.getElementById('clear-search');
+    const $vis    = document.getElementById('count-visible');
+    const $tot    = document.getElementById('count-total');
 
-    subfilterBtns.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        currentFilter = btn.dataset.filter; // 'depto-superior' | 'depto-plus'
-        setActive(null);
-        applyAll();
-        const top = $list.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top, behavior:'smooth' });
-      });
-    });
-  }
+    const safe = (s) => String(s ?? '')
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    const nl2brSafe = (s) => safe(String(s)).replace(/\r?\n/g,'<br>');
 
-  async function load(){
-    $list.innerHTML = `<div class="text-center my-3">Cargando alojamientos…</div>`;
-    try{
-      const res  = await fetch(`${API_BASE}/hospedaje`);
-      const data = await res.json();
+    const mapsHref = (direccion) => {
+      const q = encodeURIComponent(`${direccion}, Miramar de Ansenuza, Córdoba, Argentina`);
+      return `https://www.google.com/maps/search/?api=1&query=${q}`;
+    };
 
-      if (!Array.isArray(data) || !data.length){
-        $list.innerHTML = '';
-        $noRes.style.display = 'block';
-        if ($vis) $vis.textContent = '0';
-        if ($tot) $tot.textContent = '0';
-        return;
+    // Normaliza "tipo" a categorías de filtro (y subfiltros de departamentos)
+    const catFromTipo = (tipo='') => {
+      const t = String(tipo).toLowerCase();
+      if (t.includes('hotel') || t.includes('hoster')) return 'hoteles';
+      if (t.includes('caba')) return 'cabanas';
+      if (t.includes('camp')) return 'camping';
+      if (t.includes('apart') || t.includes('depto') || t.includes('depart')){
+        if (t.includes('superior') || t.includes('premium')) return 'depto-superior';
+        if (t.includes('plus') || t.includes('confort') || t.includes('estandar') || t.includes('estándar')) return 'depto-plus';
+        return 'departamentos';
       }
+      return 'otros';
+    };
 
-      $list.innerHTML = data.map(renderCard).join('');
-      items = Array.from(document.querySelectorAll('#lodging-list article.lodging'));
-      if ($tot) $tot.textContent = String(items.length);
+    // Íconos dinámicos según flags amen_*
+    const amenIcons = (h) => {
+      const out = [];
+      if (h.amen_cochera)  out.push('<li title="Cochera"><i class="fas fa-car"></i><span class="d-none d-sm-inline">Cochera</span></li>');
+      if (h.amen_aire)     out.push('<li title="Aire acondicionado"><i class="fas fa-snowflake"></i><span class="d-none d-sm-inline">Aire</span></li>');
+      if (h.amen_asador)   out.push('<li title="Asador"><i class="fas fa-fire"></i><span class="d-none d-sm-inline">Asador</span></li>');
+      if (h.amen_pileta)   out.push('<li title="Pileta"><i class="fas fa-swimming-pool"></i><span class="d-none d-sm-inline">Pileta</span></li>');
+      if (h.amen_wifi)     out.push('<li title="Wi-Fi"><i class="fas fa-wifi"></i><span class="d-none d-sm-inline">Wi-Fi</span></li>');
+      if (h.amen_tv)       out.push('<li title="Televisión"><i class="fas fa-tv"></i><span class="d-none d-sm-inline">TV</span></li>');
+      if (h.amen_desayuno) out.push('<li title="Desayuno"><i class="fas fa-mug-hot"></i><span class="d-none d-sm-inline">Desayuno</span></li>');
+      if (h.amen_mascotas) out.push('<li title="Mascotas"><i class="fas fa-paw"></i><span class="d-none d-sm-inline">Mascotas</span></li>');
+      return out.length ? `<ul class="amenities mb-3" aria-label="Servicios">${out.join('')}</ul>` : '';
+    };
 
-      wireFilters();  // 🔹 activar botones
-      applyAll();    // 🔹 aplicar filtro/búsqueda actual
-    }catch(err){
-      console.error(err);
-      $list.innerHTML = `<div class="text-center text-danger my-3">Error cargando alojamientos.<br><small>${safe(err.message)}</small></div>`;
+    const renderCard = (h) => {
+      const imgAbs = abs(h.imagen_url) || 'img/hotel/placeholder.jpg';
+      const nombre = safe(h.nombre);
+      const tipo   = safe(h.tipo || '');
+      const dir    = safe(h.direccion || '');
+      const tel    = safe(h.telefono || '');
+      const mail   = safe(h.email || h.mail || '');
+      const web    = safe(h.web || '');
+      const map    = h.maps_url || (h.direccion ? mapsHref(h.direccion) : '');
+      const cat    = catFromTipo(h.tipo);
+
+      return `
+        <article class="lodging row no-gutters" data-name="${nombre}" data-cat="${cat}">
+          <div class="col-lg-7">
+            <a class="lodging-photo" ${imgAbs ? `href="${imgAbs}" target="_blank"` : ''} aria-label="Ver imagen de ${nombre}">
+              <img src="${imgAbs}" alt="${nombre}" onerror="this.src='img/hotel/placeholder.jpg'">
+            </a>
+          </div>
+          <div class="col-lg-5 bg-white p-4 p-md-4">
+            <h3 class="lodging-title js-title">${nombre}</h3>
+            ${tipo ? `<p class="mb-2"><span class="badge badge-secondary">${tipo}</span></p>` : ''}
+
+            ${amenIcons(h)}
+
+            ${h.nota ? `<div class="small-muted mb-2">${nl2brSafe(h.nota)}</div>` : ''}
+
+            ${dir ? `<p class="mb-1"><i class="fas fa-map-marker-alt text-primary mr-2"></i>${dir}
+              ${map ? `<a class="link-map" target="_blank" rel="noopener" href="${safe(map)}">(Ver en Google Maps)</a>` : ''}
+            </p>` : ''}
+
+            ${tel  ? `<p class="mb-1"><i class="fas fa-phone-alt text-primary mr-2"></i><a href="tel:${tel.replace(/[^+\d]/g,'')}">${tel}</a></p>` : '' }
+            ${mail ? `<p class="mb-1"><i class="fas fa-envelope text-primary mr-2"></i><a href="mailto:${mail}">${mail}</a></p>` : '' }
+            ${web  ? `<p class="mb-0"><i class="fas fa-globe text-primary mr-2"></i><a href="${web}" target="_blank" rel="noopener">${web.replace(/^https?:\/\//,'')}</a></p>` : '' }
+          </div>
+        </article>
+      `;
+    };
+
+    let items = [];
+    let currentFilter = 'todos'; // estado del filtro actual
+
+    const norm = (s='') => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+    const rxEsc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+
+    // Aplica búsqueda + filtro + resaltado
+    function applyAll(){
+      const term = norm($q.value);
+      let visible = 0;
+
+      items.forEach(card => {
+        const cat  = (card.dataset.cat || 'otros').toLowerCase();
+        const name = norm(card.dataset.name || '');
+
+        // match de categoría (incluye agrupación de 'departamentos')
+        let matchCat = true;
+        if (currentFilter !== 'todos') {
+          if (currentFilter === 'departamentos') {
+            matchCat = (cat === 'depto-superior' || cat === 'depto-plus' || cat === 'departamentos');
+          } else {
+            matchCat = (cat === currentFilter);
+          }
+        }
+
+        // match de texto
+        const matchText = !term || name.includes(term);
+        const show = matchCat && matchText;
+
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+
+        // resaltado en el título
+        const titleEl = card.querySelector('.js-title');
+        if (titleEl && !titleEl.dataset.orig) titleEl.dataset.orig = titleEl.textContent.trim();
+        const raw = titleEl ? titleEl.dataset.orig || '' : '';
+        const normRaw = norm(raw);
+        if (titleEl){
+          if (term && normRaw.includes(term)){
+            titleEl.innerHTML = raw.replace(new RegExp(`(${rxEsc(term)})`,'gi'),'<mark class="search-hit">$1</mark>');
+          } else {
+            titleEl.textContent = raw;
+          }
+        }
+      });
+
+      if ($vis) $vis.textContent = String(visible);
+      $noRes.style.display = visible ? 'none' : 'block';
     }
-  }
 
-  // Búsqueda
-  $q.addEventListener('input', applyAll);
-  $clear.addEventListener('click', ()=>{ $q.value=''; applyAll(); });
+    // Clicks de filtros (y subfiltros)
+    function wireFilters(){
+      const filterBtns    = Array.from(document.querySelectorAll('.filter-btn'));
+      const subfilterBtns = Array.from(document.querySelectorAll('.subfilter-btn'));
 
-  load();
-</script>
-<style>
+      const setActive = (btn) => {
+        filterBtns.forEach(b=>b.classList.remove('active'));
+        // si eligieron subfiltro, dejamos activo "Departamentos"
+        if (currentFilter.startsWith('depto-') || currentFilter === 'departamentos') {
+          const depBtn = filterBtns.find(b=>b.dataset.filter==='departamentos');
+          if (depBtn) depBtn.classList.add('active');
+        }
+        if (btn && btn.classList.contains('filter-btn')) btn.classList.add('active');
+        if (btn && btn.dataset.filter === 'todos') btn.classList.add('active');
+      };
+
+      filterBtns.forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          currentFilter = btn.dataset.filter || 'todos';
+          setActive(btn);
+          applyAll();
+          const top = $list.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior:'smooth' });
+        });
+      });
+
+      subfilterBtns.forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          currentFilter = btn.dataset.filter; // 'depto-superior' | 'depto-plus'
+          setActive(null);
+          applyAll();
+          const top = $list.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior:'smooth' });
+        });
+      });
+    }
+
+    async function load(){
+      $list.innerHTML = `<div class="text-center my-3">Cargando alojamientos…</div>`;
+      try{
+        // 🔴 antes: `${API_BASE}/hospedaje` (Node)
+        // ✅ ahora: endpoint PHP que devuelve JSON
+        const res  = await fetch(`${API_BASE}/hospedaje-json.php`);
+        const data = await res.json();
+
+        if (!Array.isArray(data) || !data.length){
+          $list.innerHTML = '';
+          $noRes.style.display = 'block';
+          if ($vis) $vis.textContent = '0';
+          if ($tot) $tot.textContent = '0';
+          return;
+        }
+
+        $list.innerHTML = data.map(renderCard).join('');
+        items = Array.from(document.querySelectorAll('#lodging-list article.lodging'));
+        if ($tot) $tot.textContent = String(items.length);
+
+        wireFilters();
+        applyAll();
+      }catch(err){
+        console.error(err);
+        $list.innerHTML = `<div class="text-center text-danger my-3">Error cargando alojamientos.<br><small>${safe(err.message)}</small></div>`;
+      }
+    }
+
+    // Búsqueda
+    $q.addEventListener('input', applyAll);
+    $clear.addEventListener('click', ()=>{ $q.value=''; applyAll(); });
+
+    load();
+  </script>
+
+  <style>
     /* ===== Footer estilo Miramar oscuro ===== */
     footer,
     .container-fluid.bg-dark{
@@ -762,34 +761,33 @@
       .container-fluid.bg-dark .navbar-brand img{ height:38px; }
     }
     /* ✨ Efecto especial en los links del footer */
-.container-fluid.bg-dark .d-flex.flex-column a {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  transition: color .3s ease, transform .3s ease;
-}
+    .container-fluid.bg-dark .d-flex.flex-column a {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      transition: color .3s ease, transform .3s ease;
+    }
 
-.container-fluid.bg-dark .d-flex.flex-column a i {
-  transition: transform .5s ease;
-}
+    .container-fluid.bg-dark .d-flex.flex-column a i {
+      transition: transform .5s ease;
+    }
 
-.container-fluid.bg-dark .d-flex.flex-column a:hover {
-  color: #7cd2a5; /* el verde que ya usás */
-  transform: translateX(4px);
-}
+    .container-fluid.bg-dark .d-flex.flex-column a:hover {
+      color: #7cd2a5;
+      transform: translateX(4px);
+    }
 
-.container-fluid.bg-dark .d-flex.flex-column a:hover i {
-  transform: rotate(360deg);
-}
-/* ✨ Efecto especial en los íconos sociales del footer */
-.container-fluid.bg-dark .btn-square i {
-  transition: transform .5s ease;
-}
+    .container-fluid.bg-dark .d-flex.flex-column a:hover i {
+      transform: rotate(360deg);
+    }
+    /* ✨ Efecto especial en los íconos sociales del footer */
+    .container-fluid.bg-dark .btn-square i {
+      transition: transform .5s ease;
+    }
 
-.container-fluid.bg-dark .btn-square:hover i {
-  transform: rotate(360deg) scale(1.15);
-}
-
+    .container-fluid.bg-dark .btn-square:hover i {
+      transform: rotate(360deg) scale(1.15);
+    }
   </style>
 </body>
 </html>

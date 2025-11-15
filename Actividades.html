@@ -86,10 +86,10 @@
       .xp-detail p, .xp-detail ul{-webkit-line-clamp:unset;max-height:none}
     }
     /* ---- Leer más / Leer menos ---- */
-.xp-detail p { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
-.xp-detail p.expanded { display:block; -webkit-line-clamp:unset; max-height:none; overflow:visible; }
-.btn-readmore { border:0; background:none; padding:0; margin-top:4px; font-weight:600; }
-.btn-readmore:focus { outline: 2px solid rgba(59,130,246,.5); outline-offset: 2px; }
+    .xp-detail p { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+    .xp-detail p.expanded { display:block; -webkit-line-clamp:unset; max-height:none; overflow:visible; }
+    .btn-readmore { border:0; background:none; padding:0; margin-top:4px; font-weight:600; }
+    .btn-readmore:focus { outline: 2px solid rgba(59,130,246,.5); outline-offset: 2px; }
 
   </style>
 </head>
@@ -198,14 +198,12 @@
     <div id="act-nauticas" class="row"></div>
   </div>
 
-  
-
   <!-- Botón Pink -->
   <a href="https://wa.me/3563401392?text=Hola%20PINK,%20quisiera%20hacer%20una%20consulta" class="pinky-float" target="_blank" aria-label="Contactar con PINK por WhatsApp" title="Hola soy Pink, tu asistente virtual">
     <img src="img/eda83ab2-b9e0-456f-844d-81a7b667e614.jpeg" alt="PINK" class="pink-icon">
   </a>
 
-    <style>
+  <style>
     /* ===== Footer estilo Miramar oscuro ===== */
     footer,
     .container-fluid.bg-dark{
@@ -323,152 +321,158 @@
   <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
   <script src="js/main.js"></script>
 
-  <!-- Dinámica: trae datos del backend -->
+  <!-- Dinámica: trae datos del backend PHP -->
   <script>
-(function () {
-  const API_BASE = 'http://localhost:3000';
+  (function () {
+    // 👉 ahora apuntamos a la API PHP en DonWeb
+    const API_BASE = 'https://turismomiramar.com/api_miramar/public';
 
-  const $otros    = document.getElementById('act-otros');
-  const $nauticas = document.getElementById('act-nauticas');
-  const $provList = document.getElementById('prov-list');
+    const $otros    = document.getElementById('act-otros');
+    const $nauticas = document.getElementById('act-nauticas');
+    const $provList = document.getElementById('prov-list'); // por si luego agregamos prestadores
 
-  const abs = (u) => {
-    if (!u) return null;
-    if (/^https?:\/\//i.test(u)) return u;
-    return `${API_BASE}${u.startsWith('/') ? u : '/' + u}`;
-  };
+    const abs = (u) => {
+      if (!u) return null;
+      if (/^https?:\/\//i.test(u)) return u;
+      return `${API_BASE}${u.startsWith('/') ? u : '/' + u}`;
+    };
 
-  const normCat = (s) =>
-    (s || '')
-      .normalize('NFD')
-      .replace(/\p{Diacritic}/gu, '')
-      .toLowerCase()
-      .trim();
+    const normCat = (s) =>
+      (s || '')
+        .normalize('NFD')
+        .replace(/\p{Diacritic}/gu, '')
+        .toLowerCase()
+        .trim();
 
-  function esc(s){ return (s??'').toString()
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function esc(s){
+      return (s ?? '').toString()
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;');
+    }
 
-  /* ==== NUEVO: tarjeta con "Leer más" ==== */
-  function cardActividad(a){
-    const img = abs(a.imagen_url) || 'img/placeholder.jpg';
-    const nota = (a.nota ?? '').toString();
-    // data-full guarda el texto para que no se pierdan caracteres especiales
-    return `
-      <div class="col-lg-6 mb-4">
-        <div class="xp-detail">
-          <img src="${img}" alt="${esc(a.nombre)}" loading="lazy">
-          <div class="xp-detail-body">
-            <h4><i class="fas fa-map-pin text-primary mr-2"></i>${esc(a.nombre)}</h4>
-            ${nota
-              ? `<p class="mb-2 xp-nota" data-full="${esc(nota)}">${esc(nota)}</p>
-                 <button type="button" class="btn-readmore text-primary small d-inline-block">Leer más</button>`
-              : ''}
-            <p class="mb-0">
-              ${a.ubicacion ? `<small><i class="fas fa-map-marker-alt"></i> <strong>${esc(a.ubicacion)}</strong></small>` : ''}
-              ${a.telefono  ? `<br><small>Info: <strong>${esc(a.telefono)}</strong></small>` : ''}
-            </p>
-            <div class="mt-2">
-              ${a.maps_url ? `<a class="btn btn-light btn-sm" target="_blank" href="${a.maps_url}"><i class="fas fa-map mr-1"></i>Ver ubicación</a>` : ''}
-              ${a.web      ? `<a class="btn btn-light btn-sm" target="_blank" href="${a.web}"><i class="fas fa-external-link-alt mr-1"></i>Sitio</a>` : ''}
+    /* ==== tarjeta de actividad con "Leer más" ==== */
+    function cardActividad(a){
+      const img  = abs(a.imagen_url) || 'img/placeholder.jpg';
+      const nota = (a.nota ?? '').toString();
+
+      return `
+        <div class="col-lg-6 mb-4">
+          <div class="xp-detail">
+            <img src="${img}" alt="${esc(a.nombre)}" loading="lazy">
+            <div class="xp-detail-body">
+              <h4><i class="fas fa-map-pin text-primary mr-2"></i>${esc(a.nombre)}</h4>
+              ${nota
+                ? `<p class="mb-2 xp-nota" data-full="${esc(nota)}">${esc(nota)}</p>
+                   <button type="button" class="btn-readmore text-primary small d-inline-block">Leer más</button>`
+                : ''
+              }
+              <p class="mb-0">
+                ${a.ubicacion ? `<small><i class="fas fa-map-marker-alt"></i> <strong>${esc(a.ubicacion)}</strong></small>` : ''}
+                ${a.telefono  ? `<br><small>Info: <strong>${esc(a.telefono)}</strong></small>` : ''}
+              </p>
+              <div class="mt-2">
+                ${a.maps_url ? `<a class="btn btn-light btn-sm" target="_blank" href="${a.maps_url}"><i class="fas fa-map mr-1"></i>Ver ubicación</a>` : ''}
+                ${a.web      ? `<a class="btn btn-light btn-sm" target="_blank" href="${a.web}"><i class="fas fa-external-link-alt mr-1"></i>Sitio</a>` : ''}
+              </div>
             </div>
           </div>
-        </div>
-      </div>`;
-  }
-
-  function cardPrestador(p){
-    const img = abs(p.imagen_url);
-    return `
-      <div class="col-md-6 col-lg-4 mb-3">
-        <div class="xp-prov">
-          <div class="flex-grow-1">
-            <h5>${esc(p.nombre)}</h5>
-            <div class="xp-loc"><i class="fas fa-map-marker-alt"></i><span>${esc(p.ubicacion||'Miramar')}</span></div>
-            ${p.telefono ? `<small>Tel: ${esc(p.telefono)}</small>` : ''}
-          </div>
-          <div class="xp-actions">
-            ${p.maps_url ? `<a class="btn btn-light btn-sm" target="_blank" href="${p.maps_url}"><i class="fas fa-map mr-1"></i>Ver ubicación</a>` : ''}
-            ${p.web      ? `<a class="btn btn-light btn-sm" target="_blank" href="${p.web}"><i class="fas fa-external-link-alt mr-1"></i>Sitio</a>` : ''}
-          </div>
-        </div>
-      </div>`;
-  }
-
-  function applyReadMore(scope){
-  const MIN_CHARS = 120; // umbral más sensible
-  scope.querySelectorAll('.xp-detail').forEach(card => {
-    const p   = card.querySelector('.xp-nota');
-    const btn = card.querySelector('.btn-readmore');
-    if (!p || !btn) return;
-
-    // limpiamos saltos y espacios extra
-    const full = (p.getAttribute('data-full') || p.textContent || '')
-      .replace(/\s+/g, ' ')
-      .trim();
-
-    // siempre forzamos el texto limpio
-    p.textContent = full;
-
-    // mostrar el botón solo si realmente se trunca visualmente
-    const temp = document.createElement('span');
-    temp.style.visibility = 'hidden';
-    temp.style.position = 'absolute';
-    temp.style.whiteSpace = 'nowrap';
-    temp.textContent = full;
-    document.body.appendChild(temp);
-    const textWidth = temp.offsetWidth;
-    document.body.removeChild(temp);
-
-    if (full.length < MIN_CHARS && textWidth < 600) {
-      btn.style.display = 'none';
-      return;
+        </div>`;
     }
 
-    btn.addEventListener('click', () => {
-      const expanded = p.classList.toggle('expanded');
-      btn.textContent = expanded ? 'Leer menos' : 'Leer más';
-    });
-  });
-}
-
-
-  async function cargarActividades(){
-    try{
-      const r = await fetch(`${API_BASE}/api/actividades`, { credentials:'omit' });
-      const items = await r.json();
-
-      const nauticas = items.filter(a => normCat(a.categoria) === 'nauticas');
-      const otros    = items.filter(a => normCat(a.categoria) !== 'nauticas');
-
-      $otros.innerHTML    = otros.map(cardActividad).join('') || '<div class="col-12"><div class="alert alert-info">No hay actividades por ahora.</div></div>';
-      $nauticas.innerHTML = nauticas.map(cardActividad).join('') || '';
-
-      // activar "leer más" en ambas listas
-      applyReadMore(document);
-    }catch(e){
-      console.error('Error actividades:', e);
-      $otros.innerHTML = '<div class="col-12"><div class="alert alert-danger">Error cargando actividades.</div></div>';
+    function cardPrestador(p){
+      const img = abs(p.imagen_url);
+      return `
+        <div class="col-md-6 col-lg-4 mb-3">
+          <div class="xp-prov">
+            <div class="flex-grow-1">
+              <h5>${esc(p.nombre)}</h5>
+              <div class="xp-loc"><i class="fas fa-map-marker-alt"></i><span>${esc(p.ubicacion||'Miramar')}</span></div>
+              ${p.telefono ? `<small>Tel: ${esc(p.telefono)}</small>` : ''}
+            </div>
+            <div class="xp-actions">
+              ${p.maps_url ? `<a class="btn btn-light btn-sm" target="_blank" href="${p.maps_url}"><i class="fas fa-map mr-1"></i>Ver ubicación</a>` : ''}
+              ${p.web      ? `<a class="btn btn-light btn-sm" target="_blank" href="${p.web}"><i class="fas fa-external-link-alt mr-1"></i>Sitio</a>` : ''}
+            </div>
+          </div>
+        </div>`;
     }
-  }
 
-  async function cargarPrestadores(){
-    try{
-      const r = await fetch(`${API_BASE}/api/prestadores?categoria=nauticas`, { credentials:'omit' });
-      const items = await r.json();
-      if ($provList) {
-        $provList.innerHTML = items.map(cardPrestador).join('') || '<div class="col-12"><div class="alert alert-info">Aún no hay prestadores náuticos.</div></div>';
+    function applyReadMore(scope){
+      const MIN_CHARS = 120;
+      scope.querySelectorAll('.xp-detail').forEach(card => {
+        const p   = card.querySelector('.xp-nota');
+        const btn = card.querySelector('.btn-readmore');
+        if (!p || !btn) return;
+
+        const full = (p.getAttribute('data-full') || p.textContent || '')
+          .replace(/\s+/g, ' ')
+          .trim();
+
+        p.textContent = full;
+
+        const temp = document.createElement('span');
+        temp.style.visibility = 'hidden';
+        temp.style.position = 'absolute';
+        temp.style.whiteSpace = 'nowrap';
+        temp.textContent = full;
+        document.body.appendChild(temp);
+        const textWidth = temp.offsetWidth;
+        document.body.removeChild(temp);
+
+        if (full.length < MIN_CHARS && textWidth < 600) {
+          btn.style.display = 'none';
+          return;
+        }
+
+        btn.addEventListener('click', () => {
+          const expanded = p.classList.toggle('expanded');
+          btn.textContent = expanded ? 'Leer menos' : 'Leer más';
+        });
+      });
+    }
+
+    async function cargarActividades(){
+      try{
+        // 👉 lee el JSON PHP: actividades-json.php
+        const r = await fetch(`${API_BASE}/actividades-json.php`);
+        const items = await r.json();
+
+        const nauticas = items.filter(a => normCat(a.categoria) === 'nauticas');
+        const otros    = items.filter(a => normCat(a.categoria) !== 'nauticas');
+
+        $otros.innerHTML    = otros.map(cardActividad).join('') ||
+          '<div class="col-12"><div class="alert alert-info">No hay actividades por ahora.</div></div>';
+
+        $nauticas.innerHTML = nauticas.map(cardActividad).join('') || '';
+
+        applyReadMore(document);
+      }catch(e){
+        console.error('Error actividades:', e);
+        $otros.innerHTML =
+          '<div class="col-12"><div class="alert alert-danger">Error cargando actividades.</div></div>';
       }
-    }catch(e){
-      console.error('Error prestadores:', e);
     }
-  }
 
-  const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
-  cargarActividades();
-  cargarPrestadores();
-})();
-</script>
+    async function cargarPrestadores(){
+      try{
+        // cuando tengas un prestadores-json.php, adaptamos esta URL:
+        const r = await fetch(`${API_BASE}/prestadores-json.php?categoria=nauticas`);
+        const items = await r.json();
+        if ($provList) {
+          $provList.innerHTML = items.map(cardPrestador).join('') ||
+            '<div class="col-12"><div class="alert alert-info">Aún no hay prestadores náuticos.</div></div>';
+        }
+      }catch(e){
+        console.error('Error prestadores:', e);
+      }
+    }
 
+    const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
+    cargarActividades();
+    // cargarPrestadores();   // descomentá esto cuando tengas el endpoint PHP listo
+  })();
+  </script>
 
 </body>
 </html>
