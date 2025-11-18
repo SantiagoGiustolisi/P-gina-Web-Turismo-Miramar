@@ -17,12 +17,47 @@
   <link href="css/style.css" rel="stylesheet">
 
   <style>
-    .page-header-ansenuza{position:relative;color:#fff;min-height:360px;background-position:center;background-size:cover;background-repeat:no-repeat}
-    .page-header-ansenuza::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.45))}
-    .page-header-ansenuza .hero-wrap{position:relative;z-index:2;min-height:360px;padding:60px 0;text-align:center}
-    .hero-kicker{display:inline-block;background:#eaf0ff;color:#1e3a6d;font-weight:600;padding:.35rem .75rem;border-radius:999px;margin-bottom:10px;letter-spacing:.08em}
-    .hero-title{font-weight:700;margin:0 0 .25rem}
-    .hero-accent{background:linear-gradient(90deg,#fff,#dbe4ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .page-header-ansenuza{
+      position:relative;
+      color:#fff;
+      min-height:360px;
+      background-position:center;
+      background-size:cover;
+      background-repeat:no-repeat
+    }
+    .page-header-ansenuza::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.45))
+    }
+    .page-header-ansenuza .hero-wrap{
+      position:relative;
+      z-index:2;
+      min-height:360px;
+      padding:60px 0;
+      text-align:center
+    }
+    .hero-kicker{
+      display:inline-block;
+      background:#eaf0ff;
+      color:#1e3a6d;
+      font-weight:600;
+      padding:.35rem .75rem;
+      border-radius:999px;
+      margin-bottom:10px;
+      letter-spacing:.08em
+    }
+    .hero-title{
+      font-weight:700;
+      margin:0 0 .25rem
+    }
+    .hero-accent{
+      background:linear-gradient(90deg,#fff,#dbe4ff);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent
+    }
     .btn-pill{border-radius:999px}
     #whatsapp-optin .form-control:focus,
     #whatsapp-optin .custom-control-input:focus ~ .custom-control-label::before{
@@ -33,7 +68,7 @@
 </head>
 
 <body>
-  <!-- Topbar (si no lo usás, podés quitarlo) -->
+  <!-- Topbar -->
   <div class="container-fluid bg-light pt-3 d-none d-lg-block">
     <div class="container">
       <div class="row">
@@ -54,12 +89,15 @@
     </div>
   </div>
 
-  <!-- Navbar mínima (ajustá a tu template) -->
+  <!-- Navbar -->
   <div class="container-fluid position-relative nav-bar p-0">
     <div class="container-lg position-relative p-0 px-lg-3" style="z-index:9;">
       <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
         <a href="index.html" class="navbar-brand d-flex align-items-center">
-          <img src="img/logo-miramar.png" srcset="img/logo-miramar@2x.png 2x" alt="Miramar de Ansenuza" style="height:38px;width:auto">
+          <img src="img/logo-miramar.png"
+               srcset="img/logo-miramar@2x.png 2x"
+               alt="Miramar de Ansenuza"
+               style="height:38px;width:auto">
           <span class="sr-only">Miramar de Ansenuza</span>
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -69,8 +107,7 @@
           <div class="navbar-nav ml-auto py-0">
             <a href="index.html" class="nav-item nav-link">Inicio</a>
             <a href="about.html" class="nav-item nav-link">Acerca de</a>
-            
-            <a href="contact.html" class="nav-item nav-link active">Recibir informacion</a>
+            <a href="contact.html" class="nav-item nav-link active">Recibir información</a>
           </div>
         </div>
       </nav>
@@ -83,7 +120,6 @@
       <div class="hero-wrap d-flex flex-column align-items-center justify-content-center">
         <span class="hero-kicker">Oficina de Turismo</span>
         <h1 class="hero-title"><span class="hero-accent">Contacto</span></h1>
-       
       </div>
     </div>
   </header>
@@ -107,13 +143,17 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="wa_name">Nombre</label>
-                  <input type="text" class="form-control" id="wa_name" placeholder="Tu nombre" required autocomplete="name">
+                  <input type="text"
+                         class="form-control"
+                         id="wa_name"
+                         placeholder="Tu nombre"
+                         required
+                         autocomplete="name">
                   <div class="invalid-feedback">Ingresá tu nombre.</div>
                 </div>
 
                 <div class="form-group col-md-6">
                   <label for="wa_phone">Tu WhatsApp</label>
-                  <!-- ✅ campo optimizado -->
                   <input
                     type="tel"
                     class="form-control"
@@ -139,7 +179,10 @@
               </div>
 
               <!-- Honeypot anti-spam -->
-              <input type="text" id="wa_hp" name="wa_hp" style="position:absolute;left:-9999px;" tabindex="-1" autocomplete="off">
+              <input type="text" id="wa_hp" name="wa_hp"
+                     style="position:absolute;left:-9999px;"
+                     tabindex="-1"
+                     autocomplete="off">
 
               <!-- Tracking oculto -->
               <input type="hidden" id="utm_source">
@@ -153,7 +196,6 @@
               <button type="submit" id="waBtn" class="btn btn-success rounded-pill px-4">
                 <i class="fab fa-whatsapp mr-1"></i> Quiero recibir por WhatsApp
               </button>
-              
             </form>
 
           </div>
@@ -162,7 +204,7 @@
     </div>
   </section>
 
-  <!-- Footer mínimo -->
+  <!-- Footer -->
   <div class="container-fluid bg-dark text-white border-top py-3 px-sm-3 px-md-5" style="border-color:rgba(255,255,255,.08)!important;">
     <div class="row">
       <div class="col-md-6 text-center text-md-left mb-2 mb-md-0">
@@ -174,16 +216,21 @@
     </div>
   </div>
 
-  <script>(function(){var y=document.getElementById('year');if(y) y.textContent=new Date().getFullYear();})();</script>
+  <script>
+    (function(){
+      var y=document.getElementById('year');
+      if(y) y.textContent=new Date().getFullYear();
+    })();
+  </script>
 
-  <!-- Si ya cargás jQuery/Bootstrap, podés omitir estos -->
+  <!-- JS externos (si ya están en tu template, podés sacar estos) -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Lógica: guarda en Google Apps Script (NO abre WhatsApp) -->
+  <!-- Lógica: guarda en Google Apps Script -->
   <script>
-    // Tu Web App de Apps Script (el que ya te anda)
-    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbw2XXoI_WIdC-h2bHqpQ97pDe4Qt5-udmS_0TLr4naY6JbeN1knNFAEpxxVdFI5QNIy/exec';
+    // Tu Web App de Apps Script
+    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyMMQOUjT-MyNPBPhDAzuS0Amp4Sidmc5sl0pOpnqq5X9YmpFkf4bw2f0NpmShmEYCj/exec';
 
     function getUTMs(){
       const p = new URLSearchParams(window.location.search);
@@ -198,7 +245,13 @@
 
     (function initHidden(){
       const utm = getUTMs();
-      const map = {'utm_source':'source','utm_medium':'medium','utm_campaign':'campaign','utm_content':'content','utm_term':'term'};
+      const map = {
+        'utm_source':'source',
+        'utm_medium':'medium',
+        'utm_campaign':'campaign',
+        'utm_content':'content',
+        'utm_term':'term'
+      };
       Object.keys(map).forEach(id=>{
         const el = document.getElementById(id);
         if(el) el.value = utm[map[id]] || '';
@@ -209,6 +262,11 @@
 
     (function(){
       const form = document.getElementById('wa-form');
+      if (!form) {
+        console.error('No se encontró el formulario #wa-form');
+        return;
+      }
+
       form.addEventListener('submit', async function(e){
         e.preventDefault();
         e.stopPropagation();
@@ -221,12 +279,18 @@
 
         const consentError = document.getElementById('consentError');
         consentError.style.display = consent ? 'none' : 'block';
-        if (!name || !phone || !consent || hp) return;
+
+        // Validaciones mínimas
+        if (!name || !phone || !consent || hp) {
+          console.log('Formulario incompleto o honeypot rellenado.');
+          return;
+        }
 
         const payload = {
           consent:true,
           consent_text:'Acepto recibir información por WhatsApp.',
-          name, phone,
+          name,
+          phone,
           ts_iso:new Date().toISOString(),
           utm:{
             source:document.getElementById('utm_source').value,
@@ -243,6 +307,8 @@
           user_agent:navigator.userAgent
         };
 
+        console.log('Enviando payload a Apps Script:', payload);
+
         const btn = document.getElementById('waBtn');
         const prev = btn.innerHTML;
         btn.disabled = true;
@@ -250,30 +316,33 @@
 
         const okAlert = document.getElementById('waAlert');
         const errAlert = document.getElementById('waAlertError');
-        okAlert.classList.add('d-none'); errAlert.classList.add('d-none');
+        okAlert.classList.add('d-none');
+        errAlert.classList.add('d-none');
 
         try{
-          // text/plain evita preflight CORS en Apps Script
-          const res = await fetch(WEBHOOK_URL, {
+          // Usamos no-cors para evitar problemas de CORS en el navegador.
+          await fetch(WEBHOOK_URL, {
             method:'POST',
+            mode:'no-cors',
             headers:{'Content-Type':'text/plain;charset=utf-8'},
             body: JSON.stringify(payload)
           });
-          if (!res.ok) throw new Error('Bad response');
 
+          // Como no-cors no nos deja leer la respuesta, asumimos que se envió OK.
           okAlert.classList.remove('d-none');
           form.reset();
           form.classList.remove('was-validated');
+          console.log('Datos enviados (modo no-cors). Revisá la hoja de cálculo.');
 
         }catch(err){
+          console.error('Error al enviar a Apps Script:', err);
           errAlert.classList.remove('d-none');
         }finally{
-          btn.disabled=false;
-          btn.innerHTML=prev;
+          btn.disabled = false;
+          btn.innerHTML = prev;
         }
       }, false);
     })();
   </script>
-  
 </body>
 </html>
